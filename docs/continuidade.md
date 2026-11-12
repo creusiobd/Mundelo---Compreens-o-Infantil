@@ -3,7 +3,7 @@
 **Data:** 12 de Novembro de 2026  
 **Papéis:** Principal Software Engineer, Accessibility Engineer, QA Automation Architect & Product UX Auditor  
 **Versão Atual:** Execução Controlada v1.1 (Gates UX-REAL-01B + UX-REAL-02) sobre UI/UX Redesign Home v1.0 e Baseline Foundation v0.4A.1  
-**Status de Preservação do Workspace:** `NO_GIT` — Snapshot local reversível gerado em `artifacts/snapshots/pre-v1.1-backup.tar.gz`  
+**Status do repositório remoto (atualização de 12/11/2026):** código v1.1 disponível no GitHub em `creusiobd/Mundelo---Compreens-o-Infantil`, branch `main`. O status `NO_GIT` registrado no relatório v1.1 descreve o workspace headless original, não o repositório remoto. O snapshot local anterior não foi publicado.  
 **Status dos Testes de Domínio e Segurança (`npm test`):** **92 / 92 aprovados (100% PASS em 31 suítes)**  
 **Status dos Testes E2E Completos (`npm run test:e2e`):** **42 / 42 aprovados (100% PASS em 8 suítes Playwright)**  
 **Status dos Testes Assistivos e Acessibilidade (`npm run test:a11y`):** **17 / 17 aprovados (100% PASS em 3 suítes A11y/Assistivas)**  
