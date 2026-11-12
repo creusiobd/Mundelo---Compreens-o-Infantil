@@ -1,0 +1,67 @@
+name: MUNDELO Quality Gates
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'chore/ci-quality-v1-1']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mundelo-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Domain, TypeScript, Build, E2E and A11y
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CI: 'true'
+      VITE_APP_ENV: test
+      NODE_ENV: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # TEMPORARY: no package-lock.json is committed.
+      # npm install is not reproducible; replace with npm ci after a reviewed lockfile is added.
+      - name: Install dependencies (temporary until lockfile)
+        run: npm install --no-audit --no-fund
+
+      - name: Install Playwright Chromium and OS dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Domain and security regression
+        run: npm test
+
+      - name: TypeScript checks
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build
+
+      - name: Browser E2E suite (includes accessibility)
+        run: npm run test:e2e
+
+      - name: Dedicated accessibility suite
+        run: npm run test:a11y
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mundelo-failure-artifacts
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7
