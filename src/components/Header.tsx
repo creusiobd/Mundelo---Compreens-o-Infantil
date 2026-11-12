@@ -363,7 +363,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
                   key={link.id}
                   type="button"
                   onClick={() => handleNav(link.id)}
-                  className={`px-2 lg:px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-xl transition-all whitespace-nowrap min-h-[44px] flex items-center gap-1.5 ${
+                  className={`px-2 lg:px-3 py-1.5 text-xs lg:text-[13px] font-semibold rounded-xl whitespace-nowrap min-h-[44px] flex items-center gap-1.5 ${
                     isActive
                       ? 'bg-[#133E43] text-[#F8F5EF] shadow-2xs'
                       : 'text-[#265358] hover:text-[#133E43] hover:bg-[#133E43]/6'
@@ -416,7 +416,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
                   key={link.id}
                   type="button"
                   onClick={() => handleNav(link.id)}
-                  className={`flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-xl transition-colors min-h-[44px] ${
+                  className={`flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-xl min-h-[44px] ${
                     isActive
                       ? 'bg-[#133E43] text-[#F8F5EF]'
                       : 'text-[#133E43] hover:bg-[#133E43]/6'
