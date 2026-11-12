@@ -280,7 +280,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                 aria-controls="tabpanel-facts"
                 tabIndex={focusMode === 'facts' ? 0 : -1}
                 onClick={() => switchFocusMode('facts')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
                   focusMode === 'facts'
                     ? 'bg-[#133E43] text-[#F8F5EF] border border-[#133E43] shadow-xs'
                     : 'bg-white/70 text-[#133E43] border border-transparent hover:bg-white hover:border-[#133E43]/25'
@@ -312,7 +312,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                 aria-controls="tabpanel-hypothesis"
                 tabIndex={focusMode === 'hypothesis' ? 0 : -1}
                 onClick={() => switchFocusMode('hypothesis')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
                   focusMode === 'hypothesis'
                     ? 'bg-[#F1CA91] text-[#133E43] border border-[#133E43] shadow-xs'
                     : 'bg-white/70 text-[#133E43] border border-transparent hover:bg-white hover:border-[#133E43]/25'
@@ -336,7 +336,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                 aria-controls="tabpanel-facts tabpanel-hypothesis"
                 tabIndex={focusMode === 'split' ? 0 : -1}
                 onClick={() => switchFocusMode('split', false)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F5EF] ${
                   focusMode === 'split'
                     ? 'bg-[#133E43] text-[#F8F5EF] border border-[#133E43] shadow-xs'
                     : 'bg-white/70 text-[#133E43] border border-transparent hover:bg-white hover:border-[#133E43]/25'
