@@ -1,0 +1,6 @@
+{
+  "name": "Mundelo - Compreensão Infantil",
+  "description": "Plataforma acolhedora de observação contextual infantil para responsáveis de 0 a 5 anos. Compreender é o primeiro cuidado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
