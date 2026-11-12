@@ -37,6 +37,14 @@ jobs:
       - name: Install dependencies (temporary until lockfile)
         run: npm install --no-audit --no-fund
 
+      - name: Upload generated lockfile for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: mundelo-generated-package-lock
+          path: package-lock.json
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Install Playwright Chromium and OS dependencies
         run: npx playwright install --with-deps chromium
 
