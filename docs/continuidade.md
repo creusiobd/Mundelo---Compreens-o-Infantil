@@ -67,3 +67,14 @@
    - **`UX-REAL-02-DEF-07` (P2 — Overflow horizontal `344px > 320px` em `MyWorldScreen.tsx` no viewport `320×640`):** Adicionado `min-w-0` aos 5 inputs `flex-1` de *Meu Mundo* para eliminar a largura intrínseca mínima padrão do `<input>`.
 5. **Próxima Hipótese ou Ação Recomendada:**
    - Executar os roteiros manuais assistivos documentados em `docs/ux-real-01b-assistive-manual.md` (TalkBack + Chrome no Android, NVDA no Windows e VoiceOver no macOS/iOS) e o benchmark empírico `SEC-23` em aparelho físico Android intermediário para promover os gates `UX-REAL-01B` e `Security v0.4A.1` de `CONDITIONAL` para `PASS`.
+
+
+---
+
+## Proposta documental: Manifesto e Principles Gate v1.0 (13/11/2026)
+
+- **Problema:** conectar a filosofia de cuidado e inclusão a critérios verificáveis do produto.
+- **Intervenção:** elaborados `docs/manifesto-principios-mundelo-v1.md` e `docs/principles-gate-v1.md` na branch `docs/manifesto-principios-v1`.
+- **Testes:** alteração exclusivamente documental; nenhuma execução assistiva física foi realizada nesta etapa.
+- **Resultado:** proposta de 12 princípios, cinco perguntas operacionais e avaliação preliminar; status institucional EM REVISÃO.
+- **Próxima hipótese/ação:** revisar e aprovar os textos no PR; depois disponibilizar ambiente HTTPS com dados sintéticos e executar TalkBack no Galaxy Tab S10 Ultra, registrando evidências em `docs/ux-real-01b-assistive-manual.md`. NVDA, VoiceOver e SEC-23 continuam pendentes.
