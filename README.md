@@ -1,5 +1,7 @@
 # MUNDELO — Compreensão Infantil
 
+> **Referência institucional:** [Manifesto de Princípios v1.0](docs/manifesto-principios-mundelo-v1.md) · [Principles Gate v1.0](docs/principles-gate-v1.md). Os princípios orientam produto, engenharia, acessibilidade, segurança e linguagem, sem implicar certificação de conformidade ou validação humana concluída.
+
 > **Atualização de engenharia (12/11/2026):** o projeto evoluiu além da Etapa 1 descrita abaixo. O baseline v1.1 inclui cofre local criptografado experimental, autorização/RBAC demonstrativo e testes Playwright de UI, E2E e acessibilidade. Estes controles não constituem homologação clínica nem certificação integral WCAG 2.2 AA. Veja [continuidade](docs/continuidade.md), [relatório UX-REAL-02](docs/ux-real-02-report.md) e [roteiro assistivo](docs/ux-real-01b-assistive-manual.md). Validações manuais com leitores de tela e teste físico SEC-23 permanecem pendentes.\n\n> **Slogan:** Cada criança, um mundo. Cada vínculo, uma descoberta.  
 > **Frase de Produto:** Compreender é o primeiro cuidado.  
 > **Público-alvo:** Responsáveis e cuidadores de crianças de 0 a 5 anos.
