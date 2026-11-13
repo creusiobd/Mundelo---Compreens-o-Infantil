@@ -2,7 +2,7 @@
 
 **Data de Elaboração:** 2026-11-12  
 **Escopo:** Home v1.0, Cabeçalho Global (`Header`), Barra Móvel (`BottomNav`), Modal de Observação (`ObservationModal`) e Regiões Dinâmicas (`NotificationToast`).  
-**Status Global de Execução Humana:** `NOT_EXECUTED`
+**Status Global de Execução Humana:** `PARTIALLY_EXECUTED` (TalkBack: três cenários com PASS autodeclarado; NVDA e VoiceOver: `NOT_EXECUTED`; roteiro integral TalkBack ainda pendente)
 
 ---
 
@@ -19,7 +19,23 @@ Conforme a diretriz de engenharia do MUNDELO v1.1:
 
 - **Ambiente Alvo:** Android 13+ com Google TalkBack ativo + Google Chrome estável
 - **Viewport de Referência:** `360×800` / `390×844` (retrato)
-- **Status:** `NOT_EXECUTED`
+- **Status:** `PARTIALLY_EXECUTED` (3 cenários de jornada PASS conforme relato do testador em 13/11/2026; critérios granulares abaixo ainda não todos aferidos)
+
+### Evidência humana DEVICE-REAL-01 — 13/11/2026
+
+**Origem:** relato direto do executor que utilizou Galaxy Tab S10 Ultra com TalkBack ativado e acesso à demonstração no Chrome. Não há gravação de áudio, transcrição literal dos anúncios ou log de gestos anexados. A versão exata do Android, TalkBack, Chrome, orientação, URL efetiva e SHA do deploy não foram fornecidos neste registro.
+
+| ID | Cenário executado | Resultado declarado | Escopo efetivamente confirmado |
+| --- | --- | --- | --- |
+| DR01-TB-01 | Navegação Início → Diário → Meu Mundo | **PASS (relato humano)** | Elementos lidos corretamente; navegação e abertura de telas conforme o executor |
+| DR01-TB-02 | Abrir Nova Observação e explorar título, campos e abas Fatos/Hipóteses | **PASS (relato humano)** | Formulário navegável e anunciado adequadamente segundo executor |
+| DR01-TB-03 | Fechar formulário e retornar à interação anterior | **PASS (relato humano)** | Saída do modal sem perda perceptível de contexto conforme executor |
+
+**Defeitos reportados nestes três cenários:** nenhum. Isso não demonstra inexistência de defeitos em cenários não testados.
+
+**Estado do gate:** evidência inicial positiva de dispositivo físico, **CONDITIONAL/PARTIAL**. Ainda não se pode declarar homologação integral TalkBack, certificação WCAG ou aprovação de NVDA/VoiceOver. Os itens de aceitação abaixo permanecem desmarcados até aferição individual.
+
+**Próximas verificações prioritárias:** ordem de leitura por swipe vs ordem visual; rótulos de ícones decorativos; anúncio de expandido/recolhido, selecionado/desativado; mensagens `aria-live` e notificações; cuidador sem vínculo e controles bloqueados; navegação por títulos; evidência sobre retorno real do foco; diferenças entre retrato e paisagem; documentação de versões e áudio/roteiro sem dados pessoais.
 
 ### Passos de Execução
 1. Com o TalkBack ativado, abrir a URL da aplicação no Chrome Android e aguardar o anúncio inicial do título da página (`MUNDELO — Compreender é o primeiro cuidado`).
