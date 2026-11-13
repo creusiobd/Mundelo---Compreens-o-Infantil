@@ -87,3 +87,15 @@
 - **Testes:** revisão documental e integração com CI existente; nenhuma execução física de leitores de tela nesta alteração.
 - **Resultado:** documentos institucionalizados após aprovação do PR; compromissos técnicos e limites da evidência continuam separados.
 - **Próxima hipótese:** preparar uma URL de homologação segura com dados sintéticos e executar TalkBack no Galaxy Tab S10 Ultra; registrar observações, defeitos e próxima ação no roteiro UX-REAL-01B. NVDA, VoiceOver e SEC-23 permanecem NOT_EXECUTED.
+
+
+---
+
+## DEVICE-REAL-01: preparação de ambiente HTTPS para TalkBack (13/11/2026)
+
+- **Problema:** ainda não havia demonstração HTTPS acessível pelo Galaxy Tab S10 Ultra para homologação TalkBack.
+- **Hipótese:** publicação estática controlada no GitHub Pages, com dados sintéticos e build de produção, permite testes auditivos/gestuais em dispositivo real.
+- **Intervenção:** workflow manual `.github/workflows/device-real-01-pages.yml` e roteiro `docs/device-real-01-talkback-staging.md`.
+- **Testes executados:** nenhuma execução de deployment ou TalkBack nesta intervenção; CI do PR deverá ser verificado.
+- **Resultado:** infraestrutura de publicação proposta, **NOT_EXECUTED**, sem publicação automática e sem alterações em contratos de domínio/criptografia.
+- **Próxima ação:** revisar PR, autorizar caráter público da demo, configurar GitHub Pages como GitHub Actions, disparar workflow manual, validar HTTPS e executar TalkBack com evidências humanas. NVDA/VoiceOver/SEC-23 seguem pendentes.
