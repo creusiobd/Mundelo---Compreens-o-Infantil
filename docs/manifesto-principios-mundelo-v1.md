@@ -4,12 +4,12 @@
 >
 > **Compreender é o primeiro cuidado.**
 
-**Status:** proposta institucional para revisão, não validada com usuários.  
+**Status:** referência institucional aprovada quanto aos princípios; aplicação prática sujeita à validação e evidências.  
 **Data:** 13/11/2026.
 
 ## Preâmbulo
 
-Toda criança existe para além das interpretações de quem a acompanha. Antes de explicarmos suas experiências, existe uma pessoa que merece reconhecimento. Cuidar não é ter todas as respostas: é observar, escutar, reconhecer incertezas e agir diante de necessidades reais.
+Toda criança existe para além das interpretações de quem a acompanha. Não é apenas alguém sobre quem produzimos conhecimento: também participa da construção desse conhecimento por meio de seus gestos, escolhas, interesses, recusas e formas de comunicação. Sua expressão merece ser considerada conforme sua idade e possibilidades, sem presumir que um adulto consiga interpretá-la por completo. Antes de explicarmos suas experiências, existe uma pessoa que merece reconhecimento. Cuidar não é ter todas as respostas: é observar, escutar, reconhecer incertezas e agir diante de necessidades reais.
 
 A infância não é uma corrida. É presença, desenvolvimento, vínculo e contexto. O MUNDELO existe para ajudar pessoas adultas a perceber a singularidade infantil sem transformá-la em rótulo.
 
@@ -26,10 +26,10 @@ Nenhuma criança precisa corresponder a expectativas idealizadas para ter dignid
 O fato merece registro, a hipótese merece reflexão e uma conclusão exige evidência e responsabilidade. O MUNDELO distingue fatos observados, interpretações de cuidadores e avaliações profissionais.
 
 ### III. Cuidar é construir vínculos, não dominar
-Cuidado é proteção, orientação, escuta, limites e autonomia progressiva. Crianças não são projetos destinados a satisfazer expectativas dos adultos; a tecnologia deve fortalecer as relações, não substituí-las.
+Cuidado é proteção, orientação, escuta, limites e autonomia progressiva. Crianças não são projetos destinados a satisfazer expectativas dos adultos; a tecnologia deve fortalecer as relações, não substituí-las. A escuta inclui respeitar expressões de desconforto e preferência, sem transferir à criança decisões de proteção que cabem aos responsáveis.
 
 ### IV. A inclusão começa na concepção
-Acessibilidade não é um acabamento visual. Diferenças sensoriais, motoras, cognitivas e comunicacionais devem orientar arquitetura, conteúdo e interação desde o início. Ações essenciais precisam de caminhos acessíveis equivalentes.
+Acessibilidade não é um acabamento visual. Diferenças sensoriais, motoras, cognitivas e comunicacionais devem orientar arquitetura, conteúdo e interação desde o início. Ações essenciais precisam de caminhos acessíveis equivalentes. Projetar inclusão é um compromisso; afirmar que ela foi alcançada exige testes com pessoas que utilizam as tecnologias assistivas no cotidiano.
 
 ### V. Tecnologia amplia a compreensão, não substitui o discernimento
 Recorrência não prova causalidade. Indicadores não são diagnósticos. A ferramenta ajuda a formular perguntas melhores, explicita limites e preserva a decisão humana. Qualquer futura IA exigirá transparência, validação e supervisão.
@@ -50,7 +50,7 @@ Experiências acontecem em condições específicas: ambiente, sono, relações,
 Registros e interpretações precisam de contexto e possibilidade de revisão. Não eternizar descrições transitórias como identidade da criança.
 
 ### XI. Confiança precisa de evidência
-Boas intenções não bastam. Acessibilidade exige testes com tecnologias assistivas e pessoas; segurança exige validação técnica e empírica; compreensão exige investigação com cuidadores. Limitações devem ser explícitas.
+Boas intenções não bastam. Acessibilidade exige testes com tecnologias assistivas e pessoas; segurança exige validação técnica e empírica; compreensão exige investigação com cuidadores. Distinguir sempre intenção institucional, capacidade implementada, evidência automatizada e validação humana. Limitações devem ser explícitas.
 
 ### XII. O futuro permanece aberto
 Cuidar é oferecer proteção, presença e possibilidades, sem transmitir limitações de uma geração como destino inevitável da seguinte.
@@ -70,10 +70,16 @@ Não substituímos relações por indicadores, nem confundimos diferença com di
 - **Orientação e autonomia:** informações não devem transformar o cuidador em dependente de indicadores.
 - **Acesso e simplicidade:** recursos inclusivos precisam continuar compreensíveis.
 
+## Autoridade institucional e aplicação
+
+Este manifesto é a referência institucional para decisões de produto, conteúdo, UI/UX, acessibilidade, engenharia, segurança e tratamento de dados. Sua adoção não certifica que todos os princípios já estejam implementados.
+
+Mudanças relevantes devem passar pelo [Principles Gate v1.0](principles-gate-v1.md), com responsáveis, evidências, riscos residuais e decisões registradas. Conflitos entre princípios exigem análise explícita, e não exceções silenciosas. Atualizações do manifesto devem ocorrer em revisão rastreável, com justificativa institucional e histórico de versão.
+
 ## Limites e aplicação
 
 O MUNDELO não fornece diagnóstico, tratamento ou triagem clínica validada, nem substitui profissionais habilitados. O baseline experimental usa dados sintéticos; o cofre local tem validação física SEC-23 pendente. Não declaramos conformidade integral WCAG 2.2 AA.
 
 A aplicação verificável deste manifesto é descrita em [Principles Gate v1.0](principles-gate-v1.md). O roteiro de testes assistivos está em [UX-REAL-01B](ux-real-01b-assistive-manual.md).
 
-*Documento institucional proposto, sujeito à revisão antes da aprovação definitiva.*
+*Referência institucional de orientação. A conformidade de cada funcionalidade deverá ser comprovada por evidências próprias; os testes físicos e de usabilidade pendentes continuam declarados como não executados.*
