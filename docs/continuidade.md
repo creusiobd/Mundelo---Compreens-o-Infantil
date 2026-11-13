@@ -78,3 +78,12 @@
 - **Testes:** alteração exclusivamente documental; nenhuma execução assistiva física foi realizada nesta etapa.
 - **Resultado:** proposta de 12 princípios, cinco perguntas operacionais e avaliação preliminar; status institucional EM REVISÃO.
 - **Próxima hipótese/ação:** revisar e aprovar os textos no PR; depois disponibilizar ambiente HTTPS com dados sintéticos e executar TalkBack no Galaxy Tab S10 Ultra, registrando evidências em `docs/ux-real-01b-assistive-manual.md`. NVDA, VoiceOver e SEC-23 continuam pendentes.
+
+
+## Institucionalização do Manifesto v1.0 (13/11/2026)
+
+- **Problema:** a proposta filosófica anterior precisava de autoridade formal, participação explícita da criança, honestidade na distinção entre inclusão pretendida e inclusão comprovada, e responsáveis definidos na governança.
+- **Intervenção:** revisados `docs/manifesto-principios-mundelo-v1.md` e `docs/principles-gate-v1.md`; README vincula os dois como referência institucional. Mantidos os 12 princípios, com regras de aprovação, bloqueios e exceções não críticas.
+- **Testes:** revisão documental e integração com CI existente; nenhuma execução física de leitores de tela nesta alteração.
+- **Resultado:** documentos institucionalizados após aprovação do PR; compromissos técnicos e limites da evidência continuam separados.
+- **Próxima hipótese:** preparar uma URL de homologação segura com dados sintéticos e executar TalkBack no Galaxy Tab S10 Ultra; registrar observações, defeitos e próxima ação no roteiro UX-REAL-01B. NVDA, VoiceOver e SEC-23 permanecem NOT_EXECUTED.
