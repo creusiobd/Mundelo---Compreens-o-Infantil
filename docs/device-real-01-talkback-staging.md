@@ -1,6 +1,6 @@
 # MUNDELO | DEVICE-REAL-01: Demo HTTPS e Teste TalkBack
 
-**Status:** infraestrutura proposta, publicação ainda NÃO EXECUTADA.  
+**Status:** implantação manual acionada em 13/11/2026; acesso pelo tablet e leitura TalkBack confirmados por relato humano. Evidência independente do resultado final de deploy/URL ainda não anexada a este registro.  
 **Baseline:** Manifesto institucional v1.0 + MUNDELO v1.1, dados 100% sintéticos.
 
 ## Objetivo
@@ -43,6 +43,14 @@ O app é demonstrativo, com dados fictícios em memória; o recurso de exportaç
 **TalkBack:** ordens de leitura e estados anunciados corretamente, navegação íntegra, foco restaurado, ausência de barreiras críticas, evidências observadas por humano.
 
 A aprovação do TalkBack no tablet não substitui NVDA, VoiceOver nem o SEC-23 em Android de desempenho intermediário.
+
+## Primeira execução humana relatada — 13/11/2026
+
+O executor confirmou que a demonstração abriu no Galaxy Tab S10 Ultra e que o TalkBack leu corretamente os elementos. Em seguida classificou como PASS três cenários: (1) navegação Início/Diário/Meu Mundo, (2) abertura e exploração de Nova Observação, e (3) fechamento com retorno à navegação. Nenhum defeito foi reportado nesses cenários. Evidência: relato do executor; sem vídeo, log de voz, versão exata do navegador ou SHA do deploy anexados.
+
+**Atualização do estado:** DEVICE-REAL-01 `PARTIALLY_EXECUTED`, três cenários `PASS (relato humano)`; checklist detalhado de TalkBack, outros dispositivos/leitores e SEC-23 permanecem pendentes. Os itens da lista de autorização acima são um checklist pré-publicação histórico, e não devem ser retroativamente assinalados sem comprovação própria.
+
+Detalhes: [UX-REAL-01B](ux-real-01b-assistive-manual.md).
 
 ## Registro de continuidade
 
