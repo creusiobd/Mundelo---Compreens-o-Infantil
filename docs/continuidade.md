@@ -99,3 +99,17 @@
 - **Testes executados:** nenhuma execução de deployment ou TalkBack nesta intervenção; CI do PR deverá ser verificado.
 - **Resultado:** infraestrutura de publicação proposta, **NOT_EXECUTED**, sem publicação automática e sem alterações em contratos de domínio/criptografia.
 - **Próxima ação:** revisar PR, autorizar caráter público da demo, configurar GitHub Pages como GitHub Actions, disparar workflow manual, validar HTTPS e executar TalkBack com evidências humanas. NVDA/VoiceOver/SEC-23 seguem pendentes.
+
+
+---
+
+## DEVICE-REAL-01 — Primeira execução humana TalkBack (13/11/2026)
+
+- **Problema testado:** confirmar se a experiência do MUNDELO pode ser navegada e compreendida com leitor de tela nativo em dispositivo Android real, além das verificações automatizadas.
+- **Ambiente relatado:** Samsung Galaxy Tab S10 Ultra, Google Chrome para Android, TalkBack ativado; demonstração HTTPS acessada. Versões exatas, URL do deploy e evidência audiovisual não anexadas ao registro.
+- **Teste DR01-TB-01 — Navegação Início → Diário → Meu Mundo:** **PASS**, conforme relato do executor.
+- **Teste DR01-TB-02 — Nova Observação (título, campos, abas Fatos e Hipóteses):** **PASS**, conforme relato do executor.
+- **Teste DR01-TB-03 — Fechamento do formulário e retorno à navegação:** **PASS**, conforme relato do executor.
+- **Resultado:** 3/3 PASS dentre os cenários efetivamente relatados; nenhum defeito reportado nesses cenários. Trata-se de evidência humana inicial, **não** certificação WCAG nem aprovação dos demais critérios do roteiro.
+- **Status atualizado:** TalkBack e UX-REAL-01B **PARTIALLY_EXECUTED / CONDITIONAL**; NVDA, VoiceOver e SEC-23 físico **NOT_EXECUTED**.
+- **Próxima hipótese/ação:** aprofundar estados anunciados, ordem de leitura, mensagens `aria-live`, alternância para cuidador sem vínculo, títulos, orientação retrato/paisagem, retorno real do foco; registrar versões do navegador e TalkBack e evidências sintéticas no roteiro antes de reavaliar o gate.
