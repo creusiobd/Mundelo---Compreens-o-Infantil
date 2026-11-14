@@ -113,3 +113,24 @@
 - **Resultado:** 3/3 PASS dentre os cenários efetivamente relatados; nenhum defeito reportado nesses cenários. Trata-se de evidência humana inicial, **não** certificação WCAG nem aprovação dos demais critérios do roteiro.
 - **Status atualizado:** TalkBack e UX-REAL-01B **PARTIALLY_EXECUTED / CONDITIONAL**; NVDA, VoiceOver e SEC-23 físico **NOT_EXECUTED**.
 - **Próxima hipótese/ação:** aprofundar estados anunciados, ordem de leitura, mensagens `aria-live`, alternância para cuidador sem vínculo, títulos, orientação retrato/paisagem, retorno real do foco; registrar versões do navegador e TalkBack e evidências sintéticas no roteiro antes de reavaliar o gate.
+
+
+---
+
+## DEVICE-REAL-02 / DR02-TB-01B — Relato de gravação por Ana, correção defensiva (14/11/2026)
+
+**Problema / evidência humana:** em Galaxy Tab S10 Ultra com TalkBack, após selecionar Ana (sem vínculo), testador informou ter aberto `Nova Observação` pelo cabeçalho, recebido mensagem de sucesso e encontrado `TESTE-ANA-001` no Diário após alternar para Helena. **Classificação operacional P1 alto / potencial violação de autorização, em investigação:** a persistência foi relatada em dispositivo físico, mas não reproduzida de forma independente no baseline atual.
+
+**Inspeção do código em main:** `MOCK_CAREGIVERS` contém `cg-ana-unlinked` com `linkedChildIds: []`; `canCreateObservation` exige vínculo; o botão do Header tem `disabled={!canCreate}`; `addObservation` retorna `false` se negado. Esses controles entram em conflito com a execução relatada. Possíveis causas ainda não verificadas: identificação do cuidador ativo na sessão, deploy/versão diferente, caminhos alternativos ou discrepância de estados. Não afirmar causa raiz ou exploração comprovada a partir da inspeção.
+
+**Defeito confirmado por análise estática:** `ObservationModal.handleSubmit` fechava o modal sem examinar o resultado da gravação; `App.handleFormSubmit` descartava o booleano retornado pela camada de estado. Isso poderia dar aparência de sucesso em tentativa rejeitada.
+
+**Mitigação proposta na branch `fix/device-real-02-unauthorized-observation`:**
+1. Guardas de `canCreate` em todos os callbacks de abertura da observação no `App.tsx`, incluindo atalhos de descobertas; `canEdit` na abertura de edição.
+2. Propagação de `boolean` de `addObservation/updateObservation` até o modal.
+3. `ObservationModal` não fecha automaticamente quando escrita foi negada ou inválida; recusa envio se `isAllowedToProceed` é falso.
+4. E2E de regressão para papel sem vínculo e escrita válida por responsável vinculado.
+
+**Verificação:** testes CI do PR de correção ainda por executar; teste físico de reteste ainda `NOT_EXECUTED`. **Não declarar incidente resolvido nem implantar para dados reais.**
+
+**Próxima hipótese:** validar no HTTPS a versão/SHA servida; alternar para `Ana (Sem vínculo)`, confirmar estado e anúncio, tentar abrir via cabeçalho e outros caminhos; anotar mensagem e checar realmente se a observação foi escrita. Executar testes de domínio, TS, E2E, acessibilidade, publicar manualmente somente após CI verde, e retestar TalkBack. Manter o gate `BLOCKED` para expansão do uso real até evidência consistente.
