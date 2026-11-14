@@ -126,3 +126,41 @@ Conforme a diretriz de engenharia do MUNDELO v1.1:
 - [ ] Rotor Web (`VO + U`) lista corretamente Landmarks, Headings e Form Controls sem itens órfãos.
 - [ ] Diálogo modal (`aria-modal="true"`) restringe a navegação virtual do VoiceOver ao interior do modal enquanto aberto (no Safari 16+).
 - [ ] Anúncios educados (`aria-live="polite"`) são vocalizados ao alternar foco Fato/Hipótese e ao exibir notificações.
+
+
+---
+
+## DEVICE-REAL-02 — Teste 01: cuidador sem vínculo (13/11/2026)
+
+**Ambiente informado:** Galaxy Tab S10 Ultra, Chrome, TalkBack. Versões de SO, navegador e TalkBack não registradas. Fonte: execução humana declarada pelo responsável.
+
+| Verificação | Resultado | Evidência |
+| --- | --- | --- |
+| Selecionar Ana (Sem vínculo) e ouvir aviso de restrição | **PASS (relatado)** | “Sim, anunciado corretamente” |
+| Ação Nova Observação impedida para Ana | **FAIL (relatado; persistência não confirmada)** | “Sim, ação indevidamente permitida” |
+| Qualidade da leitura do TalkBack | **Relato positivo** | “sim, está funcionando e fazendo a leitura certa” |
+
+**Classificação:** DISCREPANCY / FAIL_REPORTADO, investigação aberta. A resposta positiva sobre leitura NÃO neutraliza a resposta de que a ação teria sido permitida. Nenhum dado infantil real foi informado ou solicitado.
+
+### Investigação estática no baseline da main
+
+- `src/security/authorization.ts`: `canCreateObservation` exige cuidador ACTIVE e criança em `linkedChildIds`; Ana (Sem vínculo) tem lista vazia em `src/data/mockData.ts`.
+- `src/components/Header.tsx`: botão principal `Nova Observação` possui `disabled={!canCreate}`. **Isso indica bloqueio esperado para essa via**, mas não prova todas as outras vias de abertura.
+- `src/context/AppContext.tsx`: `addObservation` rejeita criação sem vínculo com `false` e notificação de acesso negado; em uma aplicação puramente cliente, isso é controle demonstrativo, não autorização de servidor.
+- `src/components/ObservationModal.tsx`: `handleSubmit` chama `onSubmit(...)` e depois `onClose()`, **sem condicionar fechamento ao resultado do comando**.
+- `src/App.tsx`: `handleFormSubmit` chama `addObservation(data)`, mas não propaga o booleano. Hipótese: um formulário aberto por outro caminho pode fechar após uma tentativa negada, dando aparência enganosa de sucesso.
+
+**O que ainda NÃO foi demonstrado:** gravação efetiva de observação por Ana, aumento da contagem de observações, persistência após troca para cuidador autorizado, ou um vetor de bypass explorável. Não declarar violação de autorização confirmada até reprodução.
+
+### Reprodução humana solicitada (somente dados sintéticos)
+
+1. No tablet, selecione Ana (Sem vínculo) e confirme o aviso de restrição.
+2. Identifique exatamente qual botão ou tela permitiu prosseguir (Cabeçalho, Diário, Descobertas, outro).
+3. Tente salvar uma observação fictícia com texto identificável, sem dados reais.
+4. Observe a notificação exata (sucesso ou acesso negado) e se o modal fecha.
+5. Retorne para um cuidador vinculado (Helena), abra o Diário e verifique se a observação fictícia aparece. Anote a mudança de contagem.
+6. Registre vídeo/áudio se possível sem dados pessoais e versões do dispositivo. **Não criar conta real nem inserir dados reais.**
+
+**Critério de decisão:** se uma observação for realmente criada enquanto Ana está ativa, classificar como falha de autorização confirmada e bloquear ampliação de uso até correção. Se apenas o modal abrir/fechar sem escrita, classificar como defeito de coerência de UX/autorização, ainda sujeito a correção.
+
+**Estado do gate:** UX-REAL-01B e DEVICE-REAL-02 permanecem **CONDITIONAL / INVESTIGATION_OPEN**. As três aprovações anteriores do DEVICE-REAL-01 são preservadas no escopo executado; não anulam o FAIL reportado no novo cenário.

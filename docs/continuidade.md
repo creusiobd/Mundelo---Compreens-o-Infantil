@@ -113,3 +113,15 @@
 - **Resultado:** 3/3 PASS dentre os cenários efetivamente relatados; nenhum defeito reportado nesses cenários. Trata-se de evidência humana inicial, **não** certificação WCAG nem aprovação dos demais critérios do roteiro.
 - **Status atualizado:** TalkBack e UX-REAL-01B **PARTIALLY_EXECUTED / CONDITIONAL**; NVDA, VoiceOver e SEC-23 físico **NOT_EXECUTED**.
 - **Próxima hipótese/ação:** aprofundar estados anunciados, ordem de leitura, mensagens `aria-live`, alternância para cuidador sem vínculo, títulos, orientação retrato/paisagem, retorno real do foco; registrar versões do navegador e TalkBack e evidências sintéticas no roteiro antes de reavaliar o gate.
+
+
+---
+
+## DEVICE-REAL-02 / DR02-TB-01 — divergência no teste de cuidador sem vínculo (13/11/2026)
+
+- **Problema:** em teste físico TalkBack no Galaxy Tab S10 Ultra, aviso de restrição foi anunciado corretamente (PASS), mas o executor selecionou “Sim, ação indevidamente permitida” ao verificar Nova Observação para Ana (Sem vínculo). Comentário: “sim, está funcionando e fazendo a leitura certa”.
+- **Evidência:** relato direto do executor, sem reprodução instrumental ou vídeo; estado da persistência **não verificado**.
+- **Inspeção estática:** `canCreateObservation` nega acesso sem vínculo; `Header` desabilita botão quando `canCreate=false`; `AppContext.addObservation` rejeita com `false`; porém `App.handleFormSubmit` descarta retorno e `ObservationModal.handleSubmit` fecha incondicionalmente após `onSubmit`. Hipótese: abertura por uma via alternativa ou fechamento da tentativa negada aparentou sucesso.
+- **Resultado:** FAIL reportado para bloqueio, com **possível falha de autorização ainda NÃO confirmada**. Não declarar exposição de dados, nem contradizer o relato.
+- **Próxima hipótese:** reproduzir usando dados sintéticos e registrar via de abertura, notificação, alteração de contagem e presença da anotação após trocar para Helena. Se criado efetivamente por Ana, elevar como defeito confirmado de autorização; se não criado, corrigir percepção inconsistente e o fechamento do modal sem resultado.
+- **Status:** INVESTIGATION_OPEN / CONDITIONAL; não modificar código ou afirmar reparo até teste direcionado.
