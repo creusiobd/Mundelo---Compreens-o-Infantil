@@ -11,7 +11,8 @@ test.describe('DEVICE-REAL-02 | DR02-TB-01B authorization regression', () => {
     await expect(headerButton).toBeDisabled();
     await expect(page.locator('main').getByRole('button', { name: /Nova Observação/i }).first()).toBeDisabled();
 
-    await page.locator('main').getByRole('button', { name: /Diário de Observações|Ir para o Diário|Diário/i }).first().click();
+    await page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('button', { name: 'Diário', exact: true }).click();
+    await expect(page.locator('main').getByRole('button', { name: 'Nova Observação' }).first()).toBeDisabled();
     await expect(page.getByRole('dialog')).toHaveCount(0);
 
     // Observe the real result from an authorized caregiver to detect a cross-role write.
