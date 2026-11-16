@@ -33,7 +33,7 @@ interface ObservationModalProps {
       provenance?: ProvenanceType;
       reportedByLabel?: string;
     }
-  ) => void;
+  ) => boolean;
   initialData?: Observation | null;
   childName: string;
 }
@@ -149,6 +149,8 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Never treat a disabled UI control as an authorization boundary.
+    if (!isAllowedToProceed) return;
     if (!description.trim() || description.trim().length < 3) {
       setErrors({
         description:
@@ -160,7 +162,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
       return;
     }
 
-    onSubmit({
+    const accepted = onSubmit({
       occurredAt: occurredAt || new Date().toISOString().slice(0, 16),
       environment,
       observerRole,
@@ -179,7 +181,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
       positiveAspects: positiveAspects.trim() || 'Não observado',
       notes: notes.trim() || 'Registro sem hipóteses adicionais.',
     });
-    onClose();
+    if (accepted) onClose();
   };
 
   const setHelperValue = (setter: (val: string) => void, val: string) => {

@@ -39,6 +39,8 @@ const MainAppContent: React.FC = () => {
     currentScreen,
     activeProfile,
     activeCaregiver,
+    canCreate,
+    canEdit,
     addObservation,
     updateObservation,
     deleteObservation,
@@ -71,12 +73,14 @@ const MainAppContent: React.FC = () => {
 
   // Open New Observation
   const handleOpenNewObservation = () => {
+    if (!canCreate) return;
     setEditingObs(null);
     setIsObsModalOpen(true);
   };
 
   // Open Edit Observation
   const handleEditObservation = (obs: Observation) => {
+    if (!canEdit(obs)) return;
     setEditingObs(obs);
     setIsObsModalOpen(true);
     setIsDetailModalOpen(false);
@@ -104,6 +108,7 @@ const MainAppContent: React.FC = () => {
 
   // Handle Discovery Activity to Observation Form pre-fill
   const handleStartObservationFromDiscovery = (discovery: OfflineDiscovery) => {
+    if (!canCreate) return;
     const prefill: Observation = {
       id: '',
       childId: activeProfile.id,
@@ -135,12 +140,13 @@ const MainAppContent: React.FC = () => {
       provenance?: ProvenanceType;
       reportedByLabel?: string;
     }
-  ) => {
+  ): boolean => {
+    // Keep the modal open on a denied write or failed validation.
+    // The store is authoritative for whether the operation was accepted.
     if (editingObs && editingObs.id) {
-      updateObservation(editingObs.id, data);
-    } else {
-      addObservation(data);
+      return updateObservation(editingObs.id, data);
     }
+    return addObservation(data);
   };
 
   return (
