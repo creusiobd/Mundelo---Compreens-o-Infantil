@@ -3,6 +3,11 @@ name: MUNDELO | DEVICE-REAL-01 demo HTTPS
 # Deliberately manual: this deployment publishes a publicly accessible static demo.
 on:
   workflow_dispatch:
+    inputs:
+      confirm_publication:
+        description: 'Type PUBLIC_SYNTHETIC_ONLY to acknowledge this deploy may be publicly accessible'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -14,7 +19,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  publication-approval:
+    name: Explicit approval for public synthetic demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm manual opt-in and repository approval variable
+        env:
+          CONFIRMATION: ${{ inputs.confirm_publication }}
+          APPROVED: ${{ vars.MUNDELO_DEMO_PUBLICATION_APPROVED }}
+        run: |
+          if [ "$CONFIRMATION" != 'PUBLIC_SYNTHETIC_ONLY' ] || [ "$APPROVED" != 'true' ]; then
+            echo 'Public demo deployment blocked. Confirm synthetic-only publication and set repository variable MUNDELO_DEMO_PUBLICATION_APPROVED=true after security review.' >&2
+            exit 1
+          fi
+
   verify-and-build:
+    needs: publication-approval
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
