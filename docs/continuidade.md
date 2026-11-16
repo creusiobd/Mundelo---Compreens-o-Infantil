@@ -145,3 +145,15 @@
 - **Classificação da evidência:** `VALIDATED_BY_REPORTER` / `PASS_REPORTED` para o reteste solicitado. Esta confirmação é suficiente para registrar aprovação declarada pelo executor, mas NÃO fornece valores separados para bloqueio de Ana, criação por Helena, versão ou SHA da implantação e mensagem exata do leitor de tela.
 - **Limites:** não atribuir resultados granulares inexistentes; não declarar causa raiz da falha anterior demonstrada; não afirmar autorização robusta de servidor em um protótipo com controle no cliente.
 - **Próxima ação:** se for necessário encerrar formalmente o gate de autorização, anexar captura identificando versão/SHA e resultados individuais Ana (negado) / Helena (permitido) / ausência de TESTE-ANA-001 em novo cenário; manter NVDA, VoiceOver e SEC-23 pendentes. Sem dados reais até haver autenticação e autorização no servidor.
+
+
+---
+
+## Dossiê de Maturidade e Founder Story/GTM v0.1 (16/11/2026)
+
+- **Problema:** narrativa de fundação e abordagem comercial precisavam de documentação conectada a provas e limites, sem tratar hipótese de mercado como validação.
+- **Fontes revisadas:** README, manifesto v1.0, Principles Gate, relatório UX-REAL-02, roteiro UX-REAL-01B, documentação da demo e histórico DEVICE-REAL-01/02. Confirmado pelo histórico Git que PR #7 já foi integrado na `main` (commit `3d66952494376404f93f069d3dcf62fee1b6cff4`).
+- **Intervenção:** criado [Dossiê de Maturidade v0.1](mundelo-dossie-maturidade-v0-1.md) e [Founder Story + Pitch + GTM v0.1](mundelo-founder-story-gtm-v0-1.md), com evidências, fronteiras de segurança, roadmap por gates, pitch não clínico, slides propostos e pesquisa exploratória de 90 dias.
+- **Teste/resultado:** revisão documental e links internos; nenhuma nova rodada de entrevistas externas, certificação de acessibilidade, teste físico ou resultado comercial nesta entrega.
+- **Próxima hipótese:** a clareza dos problemas vividos por famílias e o êxito em tarefas sintéticas orientarão a primeira priorização de produto; elaborar entrevistas e medir antes de iniciar piloto real.
+- **Status:** DOCUMENTED / UNDER_REVIEW. O dossiê não desbloqueia produção infantil nem substitui o Principles Gate.
