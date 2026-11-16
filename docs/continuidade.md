@@ -134,3 +134,14 @@
 **Verificação:** testes CI do PR de correção ainda por executar; teste físico de reteste ainda `NOT_EXECUTED`. **Não declarar incidente resolvido nem implantar para dados reais.**
 
 **Próxima hipótese:** validar no HTTPS a versão/SHA servida; alternar para `Ana (Sem vínculo)`, confirmar estado e anúncio, tentar abrir via cabeçalho e outros caminhos; anotar mensagem e checar realmente se a observação foi escrita. Executar testes de domínio, TS, E2E, acessibilidade, publicar manualmente somente após CI verde, e retestar TalkBack. Manter o gate `BLOCKED` para expansão do uso real até evidência consistente.
+
+
+---
+
+## DEVICE-REAL-02 / DR02-TB-01B — confirmação de reteste pelo executor (15/11/2026)
+
+- **Contexto:** correção do PR #6 incorporada à `main`; testes automatizados do PR aprovados.
+- **Resultado humano informado:** após orientação para retestar na versão HTTPS com Galaxy Tab S10 Ultra, Chrome e TalkBack, o executor respondeu simplesmente **“validado”**.
+- **Classificação da evidência:** `VALIDATED_BY_REPORTER` / `PASS_REPORTED` para o reteste solicitado. Esta confirmação é suficiente para registrar aprovação declarada pelo executor, mas NÃO fornece valores separados para bloqueio de Ana, criação por Helena, versão ou SHA da implantação e mensagem exata do leitor de tela.
+- **Limites:** não atribuir resultados granulares inexistentes; não declarar causa raiz da falha anterior demonstrada; não afirmar autorização robusta de servidor em um protótipo com controle no cliente.
+- **Próxima ação:** se for necessário encerrar formalmente o gate de autorização, anexar captura identificando versão/SHA e resultados individuais Ana (negado) / Helena (permitido) / ausência de TESTE-ANA-001 em novo cenário; manter NVDA, VoiceOver e SEC-23 pendentes. Sem dados reais até haver autenticação e autorização no servidor.

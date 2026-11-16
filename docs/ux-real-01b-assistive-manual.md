@@ -126,3 +126,16 @@ Conforme a diretriz de engenharia do MUNDELO v1.1:
 - [ ] Rotor Web (`VO + U`) lista corretamente Landmarks, Headings e Form Controls sem itens órfãos.
 - [ ] Diálogo modal (`aria-modal="true"`) restringe a navegação virtual do VoiceOver ao interior do modal enquanto aberto (no Safari 16+).
 - [ ] Anúncios educados (`aria-live="polite"`) são vocalizados ao alternar foco Fato/Hipótese e ao exibir notificações.
+
+
+---
+
+## DEVICE-REAL-02 / DR02-TB-01B — confirmação do executor (15/11/2026)
+
+**Reteste após correções do PR #6:** o executor, em resposta à solicitação de validar novamente no dispositivo, informou **“validado”**.
+
+**Registro de status:** `PASS_REPORTED` / `VALIDATED_BY_REPORTER` para a bateria corretiva, sem evidência independente anexada. O registro é uma confirmação consolidada, não uma transcrição dos anúncios nem um checklist item a item.
+
+**Não comprovados individualmente pela resposta:** se o botão “Nova Observação” foi anunciado como desativado para Ana; se houve tentativa real de escrita rejeitada; se Helena conseguiu registrar novamente; qual SHA foi entregue por GitHub Pages; quais mensagens foram vocalizadas pelo TalkBack.
+
+**Estado:** o FAIL histórico permanece preservado como incidente anterior, com mitigação integrada e reteste humano reportado como aprovado. O gate geral permanece `PARTIALLY_EXECUTED` (NVDA, VoiceOver e demais verificações pendentes); uso com dados infantis reais não está autorizado por esta evidência.
