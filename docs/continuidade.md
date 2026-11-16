@@ -157,3 +157,16 @@
 - **Teste/resultado:** revisão documental e links internos; nenhuma nova rodada de entrevistas externas, certificação de acessibilidade, teste físico ou resultado comercial nesta entrega.
 - **Próxima hipótese:** a clareza dos problemas vividos por famílias e o êxito em tarefas sintéticas orientarão a primeira priorização de produto; elaborar entrevistas e medir antes de iniciar piloto real.
 - **Status:** DOCUMENTED / UNDER_REVIEW. O dossiê não desbloqueia produção infantil nem substitui o Principles Gate.
+
+
+---
+
+## Product Strategy Gate / Pesquisa de Cuidadores (16/11/2026)
+
+- **Problema:** era necessário transformar a decisão do fundador em especificação clara e instrumento prático de descoberta, sem transformar a experiência pessoal familiar em material público e sem apresentar continuidade familiar como funcionalidade já entregue.
+- **Decisão aprovada:** compreensão infantil é o núcleo da marca; “Continuidade e Consciência do Cuidado Familiar” será capacidade complementar futura, condicionada a evidências de necessidade, esforço e privacidade.
+- **Intervenções:** criado [Posicionamento v1](mundelo-posicionamento-evolucao-v1.md), recuperado [Protocolo de Pesquisa v0.1](mundelo-pesquisa-cuidadores-protocolo-v0-1.md) que estava apenas na branch antiga, criado [Kit de Entrevistas-Piloto v0.1](mundelo-kit-entrevistas-piloto-v0-1.md) com convite, consentimento verbal, roteiro, ficha de pesquisa e critérios de interpretação; README atualizado com links e limites.
+- **Privacidade:** a Founder Story íntima do fundador e seus relatos familiares não foram copiados para este repositório público. A versão anterior de Founder Story expandida continua fora desta integração por incluir narrativa que demanda revisão autoral e análise de privacidade.
+- **Teste realizado:** inspeção documental e integração de arquivos na branch, ainda sem entrevistas, dados reais, execução de CI ou validação externa.
+- **Resultado:** DOCUMENTED / PREPARED. Pesquisa humana NOT_EXECUTED.
+- **Próxima hipótese:** duas entrevistas-piloto com adultos poderão confirmar se roteiro é neutro e adequado; somente após revisão de notas anonimizadas iniciar ciclo de descoberta de problema. Não avançar a piloto de dados infantis reais sem autorização no servidor, governança, privacidade e revisão de riscos.
