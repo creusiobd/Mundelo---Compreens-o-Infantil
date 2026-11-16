@@ -157,3 +157,14 @@
 - **Teste/resultado:** revisão documental e links internos; nenhuma nova rodada de entrevistas externas, certificação de acessibilidade, teste físico ou resultado comercial nesta entrega.
 - **Próxima hipótese:** a clareza dos problemas vividos por famílias e o êxito em tarefas sintéticas orientarão a primeira priorização de produto; elaborar entrevistas e medir antes de iniciar piloto real.
 - **Status:** DOCUMENTED / UNDER_REVIEW. O dossiê não desbloqueia produção infantil nem substitui o Principles Gate.
+
+
+---
+
+## Expansão Founder Story v0.2 e Protocolo de Pesquisa de Cuidadores v0.1 (16/11/2026)
+
+- **Problema:** a narrativa inicial necessitava de capítulos desenvolvidos e a estratégia de descoberta precisava de instrumentos capazes de gerar evidências sem induzir respostas.
+- **Intervenção:** [Founder Story expandida v0.2](mundelo-founder-story-expandida-v0-2.md), com seis capítulos e apêndice de validação autoral; [Protocolo de pesquisa v0.1](mundelo-pesquisa-cuidadores-protocolo-v0-1.md), com hipóteses falsificáveis, recrutamento, consentimento, entrevista não indutiva, tarefas sintéticas, registros mínimos e limiares propostos antes de coletar resultados.
+- **Testes:** revisão de consistência documental com o dossiê e manifesto; nenhum participante entrevistado e nenhum teste externo adicional realizado.
+- **Resultado:** pacote metodológico/documental proposto para revisão no PR #8; **NOT_EXECUTED** para pesquisa humana, sem alegações de tração.
+- **Próxima hipótese:** duas entrevistas-piloto com responsáveis adultos, sem coletar dados de crianças, permitirão avaliar clareza do roteiro antes da rodada exploratória; episódios autobiográficos continuam sujeitos à aprovação explícita do fundador.
