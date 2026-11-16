@@ -38,6 +38,9 @@ jobs:
       - name: Install Playwright Chromium and OS dependencies
         run: npx playwright install --with-deps chromium
 
+      - name: Detect accidental committed credentials
+        run: node scripts/check-exposed-credentials.mjs
+
       - name: Domain and security regression
         run: npm test
 

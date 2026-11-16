@@ -170,3 +170,15 @@
 - **Teste realizado:** inspeção documental e integração de arquivos na branch, ainda sem entrevistas, dados reais, execução de CI ou validação externa.
 - **Resultado:** DOCUMENTED / PREPARED. Pesquisa humana NOT_EXECUTED.
 - **Próxima hipótese:** duas entrevistas-piloto com adultos poderão confirmar se roteiro é neutro e adequado; somente após revisão de notas anonimizadas iniciar ciclo de descoberta de problema. Não avançar a piloto de dados infantis reais sem autorização no servidor, governança, privacidade e revisão de riscos.
+
+
+---
+
+## SEC-EXPOSURE-01 | Proteção preventiva do repositório (16/11/2026)
+
+- **Problema:** repo GitHub confirmado como `public`, demonstração por GitHub Pages publicável e necessidade de revisar material autobiográfico em branches documentais.
+- **Teste/inspeção:** metadados GitHub, listagem de 105 arquivos na `main`, revisão da configuração de CI/Pages, `.gitignore`, `.env.example`, fluxos centrais e buscas focais de indicadores de segredos. Varredura **não exaustiva** do histórico; nenhuma credencial real confirmada na amostra.
+- **Implementação em branch:** `scripts/check-exposed-credentials.mjs`, passo de scan preventivo em `.github/workflows/ci.yml` e [runbook de exposição](security-exposure-response-v1.md).
+- **Resultado:** scanner e CI propostos; `Private` e estado do Pages ainda dependem de ação administrativa do proprietário; não afirmar exposição encerrada, nem segurança certificada.
+- **Próxima hipótese:** proprietário altera visibilidade, revalida e decide despublicação do Pages; então executar scan histórico completo, revisar material autobiográfico e fechar achados.
+- **Status:** MITIGATION_IN_PROGRESS / NOT_CLOSED. Nenhuma funcionalidade infantil alterada.
