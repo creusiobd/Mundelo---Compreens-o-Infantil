@@ -182,3 +182,15 @@
 - **Resultado:** scanner e CI propostos; `Private` e estado do Pages ainda dependem de ação administrativa do proprietário; não afirmar exposição encerrada, nem segurança certificada.
 - **Próxima hipótese:** proprietário altera visibilidade, revalida e decide despublicação do Pages; então executar scan histórico completo, revisar material autobiográfico e fechar achados.
 - **Status:** MITIGATION_IN_PROGRESS / NOT_CLOSED. Nenhuma funcionalidade infantil alterada.
+
+
+---
+
+## SEC-EXPOSURE-01 | Pós-privatização e gate preventivo Pages (16/11/2026)
+
+- **Problema:** confirmar proteção efetiva do repositório e delimitar exposições residuais de GitHub Pages, branches e commits.
+- **Testes:** GitHub `get_repo` confirmou `private`; leitura de branch privada preservada; 11 branches inventariadas; REST `branches/main` registrou `protected=false`; run Pages `43483130809` concluída com sucesso em 13/11/2026; buscas focais por credenciais não confirmaram segredos reais.
+- **Resultado:** visibilidade privada CONFIRMED; existência de publicação anterior CONFIRMED; acessibilidade externa atual da demo UNKNOWN; auditoria histórica completa NOT_EXECUTED. Não concluir incidente como CLOSED.
+- **Intervenção proposta:** novo job `publication-approval` no workflow Pages, exigindo opt-in manual e variável de aprovação `MUNDELO_DEMO_PUBLICATION_APPROVED=true`. Documento [Verificação pós-privatização](sec-exposure-01-verificacao-pos-privatizacao.md) registra matriz de evidências e próximos gates.
+- **Próxima hipótese:** conferir Pages e branch rules no painel GitHub; executar scanner histórico completo após `fetch --all` em ambiente seguro; tratar arquivos familiares em refs antigas sem publicar detalhes nem reescrever história destrutivamente.
+- **Status:** MITIGATED_PARTIALLY / OPEN. Branch de segurança ainda precisa de CI e revisão.
