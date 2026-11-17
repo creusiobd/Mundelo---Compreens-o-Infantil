@@ -221,3 +221,16 @@
 - **Escopo preservado:** nenhuma alteração funcional na aplicação; nenhum projeto Supabase criado; nenhuma credencial configurada; nenhuma migration criada/aplicada; nenhum dado infantil real autorizado.
 - **Próxima ação:** revisar esta documentação e, mediante autorização explícita, criar projeto Supabase de desenvolvimento, preparar CLI e migrations versionadas após revisão do schema mínimo.
 - **Status:** DECISION_RECORDED / IMPLEMENTATION_NOT_STARTED.
+
+
+---
+
+## Política de isolamento familiar e RLS v0.1 (17/11/2026)
+
+- **Problema:** antes de migrations, autenticação conectada ou persistência, definir como impedir que um adulto leia, altere ou assuma vínculo com espaço familiar de outra conta.
+- **Decisão proposta:** isolamento por `auth.uid()` e membership ativa; perfis e aceites isolados por titular; leitura de espaço somente para membership ativa; nenhuma escrita direta de memberships ou papéis pelo cliente; criação inicial do espaço e membership por RPC transacional restrita.
+- **Intervenção documental:** criado `docs/rls-family-isolation-policy-v0.1.md` com matriz CRUD por entidade, grants, constraints, cuidados com funções privilegiadas, contrato de RPC e testes negativos/positivos com identidades A/B/C/anônima.
+- **Limites:** proposta não implementada; nenhuma policy, função, grant ou migration criada/aplicada; nenhum projeto Supabase criado; nenhum dado infantil autorizado.
+- **Decisões pendentes:** campos mínimos, enums de papel/status, idempotência da RPC, owner restrito para função SECURITY DEFINER, retenção/exclusão de aceites e necessidade de preferences.
+- **Próxima ação:** revisão da política pelo responsável pelo produto; após aprovação, fechar contrato de dados e escrever migration versionada para Supabase local/de desenvolvimento.
+- **Status:** POLICY_PROPOSED / G2_BLOCKED.
