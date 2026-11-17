@@ -86,3 +86,42 @@ Este princípio não impede profissionais de oferecer avaliações ou orientaç�
 ## 8. Estado de implementação
 
 Este documento estabelece requisitos para decisões futuras. Não declara que o código atual já os atende. Antes de implementar colaboração profissional, registros compartilhados ou sínteses, realizar mapeamento do domínio, revisão de privacidade e segurança, desenho de autorização e testes específicos. Dados infantis reais permanecem bloqueados até aprovação dos gates correspondentes.
+
+## 9. Compreender para ampliar a interação da criança com o mundo
+
+A pluralidade das perspectivas não é um fim em si mesma, nem um convite a manter relatos isolados. O MUNDELO existe para aprofundar a compreensão de como a criança experimenta e participa do mundo: como se comunica, aprende, ensina, sente, explora, estabelece vínculos, expressa preferências e recusas e responde às condições ao seu redor.
+
+O propósito não é uniformizar a leitura dos adultos sobre esses aspectos. É criar condições para que experiências diferentes possam se iluminar mutuamente, sem perder sua origem, contexto ou particularidade. A compreensão construída deve ajudar adultos a fazer perguntas melhores, ajustar ambientes, descobrir formas de comunicação, reconhecer possibilidades e melhorar a qualidade das interações da criança com o mundo.
+
+### 9.1. Da experiência à interação mais consciente
+
+O ciclo de valor do MUNDELO deve apoiar, sem automatizar, este movimento:
+
+1. **Experimentar:** reconhecer que a criança vive situações em contextos concretos, com sentidos e respostas que não podem ser presumidos.
+2. **Perceber e comunicar:** acolher diferentes formas de expressão, inclusive gestos, movimentos, brincadeiras, aproximações, afastamentos, silêncios, escolhas e recusas.
+3. **Registrar e contextualizar:** preservar o que foi percebido, por quem, em qual relação, ambiente e momento, distinguindo observação de interpretação.
+4. **Aprender e ensinar:** permitir que adultos aprendam com a criança e entre si; reconhecer que ensinar também é ajustar a própria comunicação, o ambiente e a forma de oferecer oportunidades.
+5. **Refletir e experimentar possibilidades:** apoiar perguntas e pequenas mudanças responsáveis na interação, sem prescrever condutas clínicas nem tratar a criança como objeto de testes.
+6. **Revisitar:** observar como a interação aconteceu, o que pareceu acolhedor, o que não funcionou e o que continua desconhecido, sem converter um episódio em identidade permanente.
+
+Esse ciclo é uma orientação de produto, não um algoritmo para classificar, prever ou normalizar crianças.
+
+### 9.2. O que a compreensão deve produzir
+
+- Mais qualidade na comunicação e na escuta, não apenas mais registros.
+- Mais possibilidades de participação, exploração, aprendizagem e vínculo.
+- Ambientes e interações mais atentos às necessidades, interesses, limites e formas de expressão da criança.
+- Perguntas melhores e hipóteses mais cuidadosas, não conclusões precipitadas.
+- Continuidade de cuidado quando útil e autorizada, sem apagar a singularidade de cada relação.
+- Reconhecimento de que adultos também aprendem, revisam expectativas e podem mudar a própria maneira de interagir.
+
+### 9.3. Limites que protegem a missão
+
+- O MUNDELO não define uma forma ideal ou universal de comunicar, aprender, sentir ou interagir.
+- Não transforma diferenças de contexto em déficits, sintomas ou falhas da criança.
+- Não prescreve intervenções clínicas, não substitui profissionais e não promete resultados de desenvolvimento.
+- Não mede o valor da criança pela quantidade de habilidades, marcos, respostas ou comportamentos registrados.
+- Não confunde melhorar a interação com modificar a criança para torná-la mais conveniente aos adultos.
+- Não presume que toda experiência precisa ser registrada, compartilhada ou convertida em ação.
+
+**Critério de produto:** uma funcionalidade só fortalece a missão quando amplia a capacidade de compreender e melhorar a interação respeitando a criança, seu contexto, sua participação e a pluralidade das relações. Se apenas aumenta coleta, vigilância, classificação ou padronização, não está alinhada ao MUNDELO.
