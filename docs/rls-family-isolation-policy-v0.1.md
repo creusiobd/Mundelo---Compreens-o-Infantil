@@ -232,3 +232,80 @@ A política pode ser aprovada para implementação quando:
 - PostgreSQL Row Security Policies: https://www.postgresql.org/docs/current/ddl-rowsecurity.html
 - PostgreSQL Function Security: https://www.postgresql.org/docs/current/sql-createfunction.html
 - Supabase Database Migrations: https://supabase.com/docs/guides/deployment/database-migrations
+
+
+## 12. Extensão futura: profissionais de acompanhamento
+
+### 12.1 Perfis profissionais não são papéis familiares
+
+A visão futura do MUNDELO poderá contemplar profissionais que acompanham o desenvolvimento e o cuidado infantil, incluindo:
+
+- Fonoaudiólogos.
+- Psicólogos.
+- Terapeutas, com a disciplina/qualificação explicitamente identificada.
+- Pediatras.
+- Psiquiatras.
+
+A lista é uma taxonomia inicial de descoberta, não uma declaração de que toda categoria possui o mesmo regime de registro profissional. “Terapeuta” é uma designação ampla e não deve ser aceita como credencial suficiente sem identificar a formação, a atividade exercida e o registro profissional aplicável, quando houver.
+
+A identidade base continuará sendo `profiles`. Uma pessoa poderá ser responsável familiar e profissional ao mesmo tempo. Portanto:
+
+- Não transformar `role` de `family_memberships` em lista de profissões.
+- Não tornar a conta profissional mutuamente exclusiva da conta familiar.
+- Não conceder acesso a crianças apenas porque a pessoa declarou uma profissão.
+- Distinguir perfil autodeclarado, credencial submetida e credencial efetivamente verificada.
+- Não exibir selo “verificado” sem processo documentado de validação.
+
+### 12.2 Entidades candidatas para um gate futuro
+
+Quando o produto estiver pronto para tratar dados infantis, avaliar entidades separadas:
+
+- `professional_profiles`: apresentação profissional mínima, vinculada à identidade adulta.
+- `professional_credentials`: tipo de profissão, conselho/órgão, identificador profissional e estado de verificação. Documentos comprobatórios, se indispensáveis, exigem armazenamento privado, retenção definida e acesso administrativo restrito.
+- `care_relationships`: relação entre profissional, família e criança, com estado, finalidade, período de validade, autor da autorização e revogação.
+- `care_access_grants` ou mecanismo equivalente: permissões explícitas e granulares, vinculadas à relação e aos recursos que poderão ser acessados.
+- `audit_events`: trilha mínima de acessos e ações relevantes, com política de retenção e proteção contra alteração indevida.
+
+Esses nomes são candidatos de modelagem, não schema aprovado. Nenhuma dessas tabelas será criada nesta etapa. Em particular, não criar tabela infantil ou relação profissional-criança antes do gate específico.
+
+### 12.3 Autorização deverá ser contextual e granular
+
+A autorização futura não será “profissional vê a família inteira”. Deve ser vinculada a:
+
+1. Criança específica, não a todas as crianças do espaço familiar.
+2. Profissional específico e identidade autenticada.
+3. Finalidade explícita do acompanhamento.
+4. Categorias de informação estritamente necessárias.
+5. Prazo de validade e revisão periódica.
+6. Responsável que concedeu a autorização e evidência da autoridade para fazê-lo.
+7. Revogação acessível e com efeito imediato ou claramente delimitado.
+8. Registro auditável de concessões, consultas relevantes, alterações e revogações.
+
+O vínculo profissional não deve, por si só, autorizar exportação, compartilhamento, download ou acesso a todo o histórico. Cada capacidade deverá ser avaliada separadamente. A autorização da família não substitui a análise de base legal, melhor interesse da criança, deveres profissionais e demais requisitos aplicáveis.
+
+### 12.4 Regras de segurança para a futura extensão
+
+- Credencial profissional não equivale a autorização de acesso.
+- Nenhum profissional pode criar ou ampliar seu próprio vínculo com uma família.
+- A família não pode marcar uma credencial como verificada.
+- A verificação deve ser executada por processo confiável, com estados como `pending`, `verified`, `rejected` e `expired`, sem confiar em metadata editável pelo usuário.
+- Profissional com credencial pendente ou expirada não recebe acesso a dados infantis.
+- O vínculo deve ser revogável sem depender do profissional.
+- Acesso concedido a um profissional não é herdado por colegas, clínicas ou instituições.
+- Contas institucionais e equipes clínicas exigem modelo próprio de organização, delegação e responsabilidade; não presumir que um login individual represente toda uma clínica.
+- Dados de credenciais e documentos comprobatórios não devem ser públicos por padrão.
+- Toda leitura de dados infantis deverá ser submetida a autorização no servidor e coberta por testes cross-tenant e cross-role.
+
+### 12.5 Gate separado
+
+A capacidade profissional será um gate posterior e independente, depois da identidade adulta e do isolamento familiar. Exige, no mínimo:
+
+- pesquisa com famílias e profissionais para validar os fluxos e responsabilidades;
+- definição jurídica e de privacidade para dados de crianças e dados potencialmente sensíveis;
+- processo verificável de credenciais e tratamento de falsos positivos/negativos;
+- modelo de autorização por criança, finalidade, categoria de dado e prazo;
+- RLS e testes entre famílias, profissionais, vínculos ativos, expirados e revogados;
+- trilha de auditoria, retenção, exclusão, incidentes e resposta a abuso;
+- revisão de segurança e privacidade antes de qualquer piloto com dados reais.
+
+**Estado atual:** visão registrada para evolução futura. Perfis profissionais, credenciais, vínculos de cuidado e acesso a crianças não fazem parte do MVP de identidade adulta e espaço familiar. Nenhum dado infantil real está autorizado.
