@@ -273,3 +273,18 @@
 - **Limites:** documentação apenas; nenhuma funcionalidade, schema, migration ou comportamento de código foi alterado. A missão ampliada ainda precisa ser traduzida em requisitos e validada com pesquisa com adultos, profissionais e, de forma apropriada e ética, considerando a participação da criança.
 - **Próxima ação:** revisar a PR #16 como um todo e, após merge, realizar auditoria do domínio, fluxos e interface existentes contra os princípios XIII, XIV e PG-06.
 - **Status:** PRODUCT_DIRECTION_DOCUMENTED / IMPLEMENTATION_NOT_STARTED.
+
+
+---
+
+## Contrato de domínio: núcleo compartilhado de compreensão da criança v0.1 (17/11/2026)
+
+- **Problema:** formalizar como responsáveis legais e profissionais de saúde podem contribuir para a compreensão da criança sem confundir legitimidade, vínculo, autorização, permissão ou apagar a pluralidade das perspectivas.
+- **Diretriz central:** compartilhar compreensão não significa compartilhar indiscriminadamente todos os registros. O núcleo familiar e o acesso profissional são espaços distintos; o profissional recebe apenas escopo explicitamente autorizado.
+- **Regra de acesso profissional:** vínculo não concede acesso automático. A concessão é específica por criança, profissional, finalidade, categorias, operações e prazo. O acesso ao histórico anterior é uma escolha explícita por categoria; contribuições futuras permanecem limitadas ao escopo ativo.
+- **Modelo conceitual:** Child, ChildResponsibility, ProfessionalIdentity, ProfessionalRelationship, AccessGrant, AccessGrantScope, Contribution, ContributionVersion, InteractionExperience, ContributionRelation, DerivedSynthesis e AuditEvent. Identificadores são candidatos conceituais, não schema aprovado.
+- **Governança:** legitimidade e poderes dos responsáveis não serão reduzidos a uma regra universal de consentimento único ou unanimidade. Situações incertas, restrições ou conflitos bloqueiam novas concessões até verificação apropriada. Requer validação jurídica e de privacidade antes de dados reais.
+- **Intervenção documental:** criado `docs/contrato-dominio-mundelo-v0-1.md` na branch `docs/domain-contract-shared-child-understanding-v0.1`, com espaços de compartilhamento, categorias, operações, histórico, revogação, proveniência, divergência, sínteses, segurança, invariantes e critérios de aceitação.
+- **Limites:** proposta conceitual pendente de revisão. Nenhum código funcional, schema, migration, policy RLS, projeto Supabase, credencial ou dado infantil real foi criado/modificado.
+- **Próxima ação:** revisar o contrato e resolver pendências de legitimidade, governança, retenção e validação jurídica; somente após aprovação derivar modelo lógico, ADRs, RLS e testes.
+- **Status:** DOMAIN_CONTRACT_PROPOSED / IMPLEMENTATION_BLOCKED_PENDING_APPROVAL.
