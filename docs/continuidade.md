@@ -209,3 +209,15 @@
 - **Hospedagem:** ADIADA. Estratégia final de sessão (SPA com persistência no cliente versus camada server-side/cookies seguros), SMTP, domínio e limites/custos/região do Supabase continuam decisões pendentes.
 - **Status:** DOCUMENTATION PROPOSED / AWAITING REVIEW. A criação desta documentação não libera cadastro público nem cadastro infantil.
 - **Próxima ação:** revisar o PR documental; após aprovação, executar G0/G1 em ambiente de desenvolvimento com dados sintéticos, mantendo o gate infantil bloqueado.
+
+
+---
+
+## G0 — Decisão de sessão SPA com PKCE para desenvolvimento (17/11/2026)
+
+- **Decisão do responsável pelo produto:** seguir recomendação de Supabase Auth SDK com Authorization Code + PKCE para a SPA React/Vite no ambiente de desenvolvimento.
+- **Limite da decisão:** não equivale a aprovação da arquitetura de sessão para produção. Hospedagem permanece em aberto; produção exige revisão explícita de XSS, CSP, dependências, persistência/renovação de sessão, HTTPS, redirects e necessidade de camada server-side com cookies seguros.
+- **Intervenção documental nesta branch:** atualização do ADR-005 e criação de `docs/supabase-auth-spa-pkce-dev-v0.1.md`, com pré-requisitos, fluxos, variáveis ilustrativas, segurança e testes.
+- **Escopo preservado:** nenhuma alteração funcional na aplicação; nenhum projeto Supabase criado; nenhuma credencial configurada; nenhuma migration criada/aplicada; nenhum dado infantil real autorizado.
+- **Próxima ação:** revisar esta documentação e, mediante autorização explícita, criar projeto Supabase de desenvolvimento, preparar CLI e migrations versionadas após revisão do schema mínimo.
+- **Status:** DECISION_RECORDED / IMPLEMENTATION_NOT_STARTED.
