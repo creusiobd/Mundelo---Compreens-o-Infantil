@@ -1,6 +1,6 @@
 # MUNDELO | Princípio de Pluralidade das Perspectivas v0.1
 
-- **Status:** proposta normativa para revisão institucional
+- **Status:** princípio de produto aceito pelo fundador em 17/11/2026; aguardando revisão técnica e merge da PR #16
 - **Escopo:** produto, domínio, dados, APIs, autorização, interface, conteúdo, IA e colaboração profissional
 - **Regra:** nenhuma funcionalidade pode exigir, induzir ou fabricar uma interpretação única da criança a partir de perspectivas distintas.
 
