@@ -112,3 +112,16 @@ A aprovação deste documento como norma institucional não significa que o MUND
 **Bloqueio obrigatório:** não aprovar funcionalidades que sobrescrevam contribuições de uma relação por outra, classifiquem divergência como erro, produzam consenso automático ou apresentem síntese como identidade definitiva. A autoria, o contexto e o tipo de contribuição devem permanecer rastreáveis.
 
 Aplicar PG-06 a schema, migrations, APIs, RLS, componentes, relatórios, analytics, prompts e automações. A autorização controla acesso, não a validade ou superioridade de uma perspectiva. Consultar [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md) como especificação normativa.
+
+
+## Registro de auditoria PG-06 — 17/11/2026
+
+A auditoria estática do código atual foi registrada em [Auditoria de conformidade dos princípios XIII, XIV e PG-06 v0.1](auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md).
+
+**Resultado:** PG-06 NÃO ATENDE integralmente no estado atual. Observações individuais preservam parte da autoria e proveniência, mas perfil global, histórico de alterações, painel Compreender e relatórios ainda não preservam perspectivas de ponta a ponta.
+
+A auditoria foi estática. Nenhum teste foi executado nesta revisão. Não equivale a certificação, teste dinâmico ou revisão independente.
+
+**Bloqueios mantidos:** não habilitar dados infantis reais nem colaboração profissional com autorização apenas client-side; não apresentar textos fixos do painel como descobertas produzidas pelos registros; não tratar relatórios demonstrativos como avaliação ou síntese validada.
+
+Próxima etapa: aprovar o contrato conceitual de domínio e critérios de aceitação antes de qualquer migration ou alteração de persistência.
