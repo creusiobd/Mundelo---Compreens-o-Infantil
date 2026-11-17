@@ -194,3 +194,18 @@
 - **Intervenção proposta:** novo job `publication-approval` no workflow Pages, exigindo opt-in manual e variável de aprovação `MUNDELO_DEMO_PUBLICATION_APPROVED=true`. Documento [Verificação pós-privatização](sec-exposure-01-verificacao-pos-privatizacao.md) registra matriz de evidências e próximos gates.
 - **Próxima hipótese:** conferir Pages e branch rules no painel GitHub; executar scanner histórico completo após `fetch --all` em ambiente seguro; tratar arquivos familiares em refs antigas sem publicar detalhes nem reescrever história destrutivamente.
 - **Status:** MITIGATED_PARTIALLY / OPEN. Branch de segurança ainda precisa de CI e revisão.
+
+
+---
+
+## Identidade adulta e área familiar com Supabase (17/11/2026)
+
+- **Problema:** após demonstração do MUNDELO a um grupo de mães, surgiu demanda explícita por cadastro. A aplicação ainda era uma SPA com estado em memória, dados demonstrativos e sem identidade/persistência multiusuário.
+- **Decisão do responsável pelo produto:** Supabase para identidade e persistência; hospedagem web será decidida após fechar arquitetura. Cadastro público de adultos responsáveis, sem convite ou aprovação manual.
+- **Limite de privacidade:** primeira experiência autenticada será uma área familiar de boas-vindas. Cadastro infantil, observações, anexos e quaisquer dados reais de crianças permanecem BLOQUEADOS.
+- **Auditoria documental/técnica:** confirmado no repositório privado `creusiobd/Mundelo---Compreens-o-Infantil` que `AppContext` mantém dados demonstrativos em memória; `authorization.ts` é autorização client-side demonstrativa; o cofre local experimental não oferece identidade nem persistência remota multiusuário. O metadado GitHub consultado em 17/11/2026 informa visibilidade `private`.
+- **Intervenção documental nesta branch:** criado ADR-005 em `docs/adr/005-identidade-e-persistencia-supabase.md`; modelo de ameaças em `docs/threat-model-public-family-onboarding-v0.1.md`; plano técnico em `docs/public-family-onboarding-implementation-plan-v0.1.md`.
+- **Arquitetura escolhida:** Supabase Auth + PostgreSQL + RLS; migrations versionadas. Não foi criado projeto Supabase, não há credenciais configuradas, migrations aplicadas ou código de autenticação implementado.
+- **Hospedagem:** ADIADA. Estratégia final de sessão (SPA com persistência no cliente versus camada server-side/cookies seguros), SMTP, domínio e limites/custos/região do Supabase continuam decisões pendentes.
+- **Status:** DOCUMENTATION PROPOSED / AWAITING REVIEW. A criação desta documentação não libera cadastro público nem cadastro infantil.
+- **Próxima ação:** revisar o PR documental; após aprovação, executar G0/G1 em ambiente de desenvolvimento com dados sintéticos, mantendo o gate infantil bloqueado.
