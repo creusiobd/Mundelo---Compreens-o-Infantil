@@ -232,3 +232,57 @@ A política pode ser aprovada para implementação quando:
 - PostgreSQL Row Security Policies: https://www.postgresql.org/docs/current/ddl-rowsecurity.html
 - PostgreSQL Function Security: https://www.postgresql.org/docs/current/sql-createfunction.html
 - Supabase Database Migrations: https://supabase.com/docs/guides/deployment/database-migrations
+
+
+## 12. Extensão futura: profissionais de acompanhamento
+
+A visão futura poderá contemplar fonoaudiólogos, psicólogos, terapeutas, pediatras e psiquiatras. Esta taxonomia é inicial: “terapeuta” é uma designação ampla e exigirá identificação da disciplina, qualificação e registro aplicável, quando houver.
+
+### 12.1 Identidade não é autorização
+
+- A identidade base continua sendo `profiles`; uma pessoa poderá ser responsável familiar e profissional simultaneamente.
+- Não transformar o papel de `family_memberships` em profissão.
+- Não conceder acesso a crianças porque alguém declarou uma profissão.
+- Distinguir profissão autodeclarada, credencial submetida e credencial verificada.
+- Não exibir selo de verificação sem processo documentado.
+- Credencial pendente, rejeitada ou expirada não concede acesso a dados infantis.
+
+### 12.2 Entidades candidatas para gate futuro
+
+- `professional_profiles`: apresentação profissional mínima vinculada à identidade adulta.
+- `professional_credentials`: profissão, conselho/órgão, identificador e estado de verificação. Documentos comprobatórios, se indispensáveis, exigirão Storage privado, retenção definida e acesso administrativo restrito.
+- `care_relationships`: vínculo entre profissional, família e criança, finalidade, validade, responsável que autorizou e estado/revogação.
+- `care_access_grants`: concessões granulares por recurso/categoria de informação e período.
+- `audit_events`: trilha mínima de acessos e ações relevantes, com proteção e retenção definidas.
+
+São nomes candidatos, não schema aprovado. Nenhuma dessas tabelas será criada agora; não criar tabela infantil nem vínculo profissional-criança antes de gate específico.
+
+### 12.3 Autorização contextual e granular
+
+A autorização futura deverá ser vinculada a:
+1. Criança específica, nunca automaticamente a todas as crianças do espaço.
+2. Profissional autenticado e identificado.
+3. Finalidade explícita do acompanhamento.
+4. Categorias de informação estritamente necessárias.
+5. Prazo e revisão periódica.
+6. Responsável que concedeu a autorização e evidência de sua autoridade.
+7. Revogação acessível à família, com efeito definido.
+8. Registro auditável de concessões, consultas relevantes, alterações e revogações.
+
+O vínculo não autoriza automaticamente exportação, download, compartilhamento ou acesso ao histórico completo. Cada capacidade exige avaliação própria. Autorização familiar não substitui análise de base legal, melhor interesse da criança, deveres profissionais e demais requisitos aplicáveis.
+
+### 12.4 Regras de segurança futuras
+
+- Nenhum profissional cria ou amplia o próprio vínculo com uma família.
+- A família não pode marcar uma credencial como verificada.
+- Verificação ocorre por processo confiável, com estados como `pending`, `verified`, `rejected` e `expired`.
+- Acesso é específico por profissional; não é herdado por colegas, clínicas ou instituições.
+- Contas de clínicas/equipes exigem modelo próprio de organização, delegação e responsabilidade.
+- Documentos de credenciais não são públicos por padrão.
+- Toda leitura de dado infantil deve ser autorizada no servidor e testada entre famílias, profissionais, vínculos ativos, expirados e revogados.
+
+### 12.5 Gate independente
+
+Antes de qualquer piloto com dados reais, exigir pesquisa com famílias e profissionais, análise jurídica/privacidade, processo verificável de credenciais, autorização granular, RLS e testes cross-role, auditoria, retenção, exclusão, resposta a abuso e revisão independente proporcional ao risco.
+
+**Estado atual:** visão futura registrada. Perfis profissionais, credenciais, vínculos de cuidado e acesso a crianças não fazem parte do MVP de identidade adulta e espaço familiar. Nenhum dado infantil real está autorizado.
