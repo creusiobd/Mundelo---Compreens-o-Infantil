@@ -234,3 +234,17 @@
 - **Decisões pendentes:** campos mínimos, enums de papel/status, idempotência da RPC, owner restrito para função SECURITY DEFINER, retenção/exclusão de aceites e necessidade de preferences.
 - **Próxima ação:** revisão da política pelo responsável pelo produto; após aprovação, fechar contrato de dados e escrever migration versionada para Supabase local/de desenvolvimento.
 - **Status:** POLICY_PROPOSED / G2_BLOCKED.
+
+
+---
+
+## Extensão futura: perfis profissionais de acompanhamento (17/11/2026)
+
+- **Solicitação de produto:** contemplar fonoaudiólogos, psicólogos, terapeutas, pediatras e psiquiatras para colaboração no acompanhamento infantil.
+- **Diretriz arquitetural:** identidade profissional não equivale a papel familiar nem concede acesso automático. Uma pessoa poderá ter perfil de responsável e profissional simultaneamente.
+- **Modelo futuro candidato:** `professional_profiles`, `professional_credentials`, `care_relationships`, concessões granulares de acesso e trilha de auditoria. O acesso deverá ser específico por criança, finalidade, categorias de informação e prazo, com revogação pela família e validação de credencial quando aplicável.
+- **Cuidado de taxonomia:** “terapeuta” é amplo; exigir identificação da disciplina e da qualificação, sem presumir um conselho ou regime único.
+- **Limites preservados:** extensão registrada como visão futura; não criar tabelas, credenciais, vínculos profissionais ou permissões nesta fase. Nenhuma criança ou dado infantil pode ser cadastrado ou acessado.
+- **Intervenção documental:** ampliada a política de isolamento v0.1 com seção de arquitetura profissional futura e gate independente.
+- **Próxima ação:** revisar a extensão profissional e manter o PR #14 aberto até aprovação do conjunto de políticas; depois fechar contrato de dados do MVP adulto sem incluir tabelas infantis.
+- **Status:** FUTURE_CAPABILITY_DOCUMENTED / NOT_IMPLEMENTED.
