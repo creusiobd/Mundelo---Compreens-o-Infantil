@@ -83,3 +83,8 @@ O MUNDELO não fornece diagnóstico, tratamento ou triagem clínica validada, ne
 A aplicação verificável deste manifesto é descrita em [Principles Gate v1.0](principles-gate-v1.md). O roteiro de testes assistivos está em [UX-REAL-01B](ux-real-01b-assistive-manual.md).
 
 *Referência institucional de orientação. A conformidade de cada funcionalidade deverá ser comprovada por evidências próprias; os testes físicos e de usabilidade pendentes continuam declarados como não executados.*
+
+
+## XIII. A pluralidade das perspectivas não deve ser apagada
+
+O MUNDELO não deve tentar fazer com que todos os adultos enxerguem a criança da mesma maneira. Diferentes pessoas podem compreender aspectos diferentes dela, a partir de relações, contextos e responsabilidades distintas. A plataforma deve permitir que essas perspectivas coexistam e dialoguem sem exigir consenso, sem hierarquizá-las automaticamente e sem transformar divergência em erro. Nenhuma contribuição, familiar ou profissional, representa sozinha a totalidade da criança. A regra normativa e seus requisitos verificáveis estão em [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md).
