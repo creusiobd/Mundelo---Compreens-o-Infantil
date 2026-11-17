@@ -88,3 +88,12 @@ A aplicação verificável deste manifesto é descrita em [Principles Gate v1.0]
 ## XIII. A pluralidade das perspectivas não deve ser apagada
 
 O MUNDELO não deve tentar fazer com que todos os adultos enxerguem a criança da mesma maneira. Diferentes pessoas podem compreender aspectos diferentes dela, a partir de relações, contextos e responsabilidades distintas. A plataforma deve permitir que essas perspectivas coexistam e dialoguem sem exigir consenso, sem hierarquizá-las automaticamente e sem transformar divergência em erro. Nenhuma contribuição, familiar ou profissional, representa sozinha a totalidade da criança. A regra normativa e seus requisitos verificáveis estão em [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md).
+
+
+## XIV. Compreender é ampliar as possibilidades de interação
+
+O MUNDELO é um mergulho responsável em como experimentamos a comunicação, a aprendizagem, o ensino, os sentimentos e as relações da criança com o mundo. Não buscamos uma leitura uniforme desses aspectos. Buscamos compreender melhor como eles se manifestam em diferentes contextos e vínculos, preservando a particularidade de cada experiência.
+
+A compreensão deve abrir possibilidades: adultos aprendem a escutar, comunicar, ensinar e ajustar ambientes; crianças encontram mais espaço para participar, explorar, expressar-se, aprender e construir relações. A criança não existe para se adaptar à ferramenta ou às expectativas dos adultos. A ferramenta deve ajudar os adultos a rever suas próprias formas de interação.
+
+Compreender não é acumular registros. É transformar atenção em perguntas melhores, perguntas em possibilidades cuidadosas e possibilidades em interações mais respeitosas. Sem diagnóstico automático, promessa clínica, padronização de desenvolvimento ou obrigação de registrar tudo.
