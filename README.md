@@ -141,3 +141,10 @@ interface Observation {
    - Exportação em arquivos abertos JSON criptografados e PDF assinado digitalmente para transferência segura de prontuários.
 5. **Links Temporários com Expiração:**
    - Criação de links de leitura temporários (ex: válidos por 48 horas) para consulta do relatório por pediatras sem necessidade de login.
+
+
+## Princípio de produto: compreender para ampliar a interação
+
+O MUNDELO busca aprofundar a compreensão de como a criança experimenta e participa do mundo: como se comunica, aprende, ensina, sente, explora e constrói relações. Diferentes pessoas podem perceber aspectos diferentes em contextos diferentes. O produto conecta essas experiências sem exigir uma interpretação uniforme e sem apagar a autoria ou a particularidade de cada vínculo.
+
+A finalidade é apoiar interações mais conscientes e respeitosas, ajudando adultos a escutar, comunicar, aprender com a criança e ajustar contextos. Não é padronizar a criança, acumular registros por acumular, prescrever intervenções clínicas ou prometer resultados de desenvolvimento. Consulte o [Princípio de Pluralidade das Perspectivas v0.1](docs/principio-pluralidade-perspectivas-v0-1.md).

@@ -147,3 +147,10 @@ Nenhum gate documental equivale a auditoria externa ou certificação legal.
 ## 12. Registro de revisão
 
 A decisão tecnológica Supabase foi explicitamente confirmada pelo responsável pelo produto em 17/11/2026. Em seguida, foi aprovada a estratégia SPA com Supabase Auth SDK e PKCE **para desenvolvimento**, mantendo a hospedagem em aberto e a sessão de produção condicionada à revisão de segurança. Nenhum projeto Supabase foi criado por esta decisão. Nenhuma credencial foi configurada. A decisão deverá ser revisitada se requisitos de sessão, residência de dados, custos, disponibilidade ou controles regulatórios não puderem ser atendidos.
+
+
+## 13. Invariante arquitetural: pluralidade das perspectivas
+
+Toda evolução do domínio deverá respeitar o [Princípio de Pluralidade das Perspectivas v0.1](../principio-pluralidade-perspectivas-v0-1.md). Contribuições são registros independentes, com autor, contexto, tipo, data e proveniência. Observação familiar, interpretação, avaliação profissional e orientação não são intercambiáveis nem podem sobrescrever umas às outras. Divergências podem coexistir e não acionam consenso obrigatório, votação ou prevalência automática por profissão. Sínteses futuras serão derivadas, não canônicas, rastreáveis às fontes e incapazes de substituir os registros de origem. Autorização define acesso, nunca a verdade de uma contribuição. Qualquer componente, API, job ou automação que apague autoria/contexto ou imponha narrativa única viola este ADR e deve bloquear a entrega.
+
+Este requisito não autoriza criar tabelas infantis ou habilitar colaboração profissional no escopo atual. Deve ser considerado no desenho futuro, antes de qualquer migration que envolva contribuições sobre crianças.

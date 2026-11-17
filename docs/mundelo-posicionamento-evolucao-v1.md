@@ -81,3 +81,27 @@ Não realizar pesquisa comercial misturando os dois conceitos desde a primeira p
 - **NO-GO:** disponibilizar reflexões emocionais identificáveis para outros cuidadores por padrão, coletar dados infantis reais, diagnosticar, ou afirmar resultados psicológicos sem comprovação.
 
 **Referências:** [Dossiê de Maturidade](mundelo-dossie-maturidade-v0-1.md), [Protocolo de Pesquisa](mundelo-pesquisa-cuidadores-protocolo-v0-1.md), [Manifesto de Princípios](manifesto-principios-mundelo-v1.md), [Principles Gate](principles-gate-v1.md).
+
+
+## 10. Aprofundamento da missão: compreender a experiência e melhorar a interação
+
+A compreensão infantil no MUNDELO não se limita a reunir descrições sobre a criança. É uma investigação cuidadosa sobre como ela experimenta e participa do mundo: como se comunica, aprende, ensina, sente, explora, cria vínculos e responde aos diferentes ambientes.
+
+A plataforma deve ajudar a aproximar experiências sem uniformizá-las. Família, escola e profissionais podem perceber aspectos distintos porque ocupam relações, responsabilidades e contextos diferentes. O valor está em preservar essas diferenças e permitir que elas contribuam para perguntas melhores e interações mais conscientes.
+
+**Direção de impacto pretendida:** melhorar a qualidade das interações da criança com o mundo, apoiando adultos a escutar melhor, comunicar-se de outras formas, ajustar contextos e reconhecer possibilidades. Isso é uma intenção de produto a ser pesquisada e validada, não um resultado clínico ou de desenvolvimento já comprovado.
+
+### 10.1. Ciclo de compreensão e interação
+
+1. Experiência da criança em contexto.
+2. Percepção e comunicação, reconhecendo múltiplas formas de expressão.
+3. Registro contextualizado, com autoria e distinção entre observação e interpretação.
+4. Aprendizagem recíproca: adultos aprendem com a criança e revisam suas próprias práticas.
+5. Experimentação cuidadosa de possibilidades de interação, sem prescrição clínica.
+6. Revisão do que foi percebido, preservando incertezas e diferenças entre contextos.
+
+### 10.2. Pergunta orientadora de cada funcionalidade
+
+"Esta funcionalidade ajuda alguém a compreender melhor como esta criança experimenta o mundo e a melhorar a interação com ela, sem padronizá-la, rotulá-la ou apagar a particularidade de cada vínculo?"
+
+Se a resposta for não, a funcionalidade precisa ser revista, mesmo que aumente engajamento, volume de dados ou eficiência operacional.

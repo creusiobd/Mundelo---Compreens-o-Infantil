@@ -286,3 +286,12 @@ O vínculo não autoriza automaticamente exportação, download, compartilhament
 Antes de qualquer piloto com dados reais, exigir pesquisa com famílias e profissionais, análise jurídica/privacidade, processo verificável de credenciais, autorização granular, RLS e testes cross-role, auditoria, retenção, exclusão, resposta a abuso e revisão independente proporcional ao risco.
 
 **Estado atual:** visão futura registrada. Perfis profissionais, credenciais, vínculos de cuidado e acesso a crianças não fazem parte do MVP de identidade adulta e espaço familiar. Nenhum dado infantil real está autorizado.
+
+
+## 13. Invariante transversal: preservar perspectivas distintas
+
+Quando a colaboração profissional for desenhada, as políticas de autorização deverão proteger cada contribuição sem estabelecer hierarquia de verdade. RLS e grants decidem quem pode ler ou escrever cada recurso; não podem inferir que uma perspectiva é superior por ser profissional, majoritária ou mais recente.
+
+O futuro modelo deverá preservar autoria, contexto, tipo e proveniência das contribuições. Não permitir sobrescrita entre observações familiares, interpretações, avaliações profissionais e orientações. Divergências podem coexistir; não criar RPC, trigger, view, job ou função que consolide opiniões em consenso obrigatório ou perfil canônico da criança. Sínteses derivadas deverão manter referências às fontes e não substituir registros originais.
+
+Adicionar aos testes futuros: duas perspectivas divergentes permanecem acessíveis segundo permissões independentes; nenhuma sobrescreve a outra; revogação altera acesso sem adulterar autoria/histórico; sínteses não ocultam fontes. Aplicar PG-06 e o documento docs/principio-pluralidade-perspectivas-v0-1.md antes de qualquer implementação profissional.

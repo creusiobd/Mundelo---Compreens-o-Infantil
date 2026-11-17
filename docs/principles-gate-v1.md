@@ -101,3 +101,14 @@ Roteiro de referência: [UX-REAL-01B assistivo](ux-real-01b-assistive-manual.md)
 Não relaxar testes para forçar aprovação; não usar dados infantis reais; falhas críticas devem bloquear integração. Registrar em cada PR o identificador de revisão do Principles Gate, os nomes/funções de quem avaliou, decisões, evidências, data, versão e riscos aceitos. Atualizar `docs/continuidade.md` com problema, testes, resultados e próxima hipótese.
 
 A aprovação deste documento como norma institucional não significa que o MUNDELO inteiro esteja certificado ou que todos os gates estejam concluídos. O teste físico TalkBack, NVDA, VoiceOver e SEC-23 continuam pendentes até evidência real.
+
+
+## Gate adicional PG-06 — Pluralidade e integridade das perspectivas
+
+| ID | Pergunta | Evidência exigida |
+| --- | --- | --- |
+| PG-06 | A funcionalidade preserva perspectivas distintas sem impor consenso ou uma narrativa única da criança? | Modelo de domínio, proveniência, UI, testes de coexistência/divergência e revisão de linguagem |
+
+**Bloqueio obrigatório:** não aprovar funcionalidades que sobrescrevam contribuições de uma relação por outra, classifiquem divergência como erro, produzam consenso automático ou apresentem síntese como identidade definitiva. A autoria, o contexto e o tipo de contribuição devem permanecer rastreáveis.
+
+Aplicar PG-06 a schema, migrations, APIs, RLS, componentes, relatórios, analytics, prompts e automações. A autorização controla acesso, não a validade ou superioridade de uma perspectiva. Consultar [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md) como especificação normativa.
