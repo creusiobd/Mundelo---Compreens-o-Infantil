@@ -273,3 +273,11 @@
 - **Limites:** documentação apenas; nenhuma funcionalidade, schema, migration ou comportamento de código foi alterado. A missão ampliada ainda precisa ser traduzida em requisitos e validada com pesquisa com adultos, profissionais e, de forma apropriada e ética, considerando a participação da criança.
 - **Próxima ação:** revisar a PR #16 como um todo e, após merge, realizar auditoria do domínio, fluxos e interface existentes contra os princípios XIII, XIV e PG-06.
 - **Status:** PRODUCT_DIRECTION_DOCUMENTED / IMPLEMENTATION_NOT_STARTED.
+
+
+## Aceitação da direção de produto: compreensão e interação (17/11/2026)
+
+- **Decisão:** proposta aceita pelo fundador.
+- **Diretriz permanente:** avaliar cada funcionalidade perguntando se ajuda a compreender melhor como a criança experimenta o mundo e a melhorar a interação com ela, sem padronizá-la, rotulá-la ou apagar a particularidade de cada vínculo.
+- **Síntese institucional aceita:** o MUNDELO não existe para ensinar o mundo a enxergar todas as crianças da mesma maneira; existe para ajudar a compreender melhor cada criança e descobrir outras maneiras de encontrá-la no mundo.
+- **Estado:** direção de produto aceita; documentação incorporada à PR #16, ainda sujeita a revisão técnica e merge. Implementação de código não iniciada por esta decisão.
