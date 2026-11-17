@@ -260,3 +260,16 @@
 - **Limites:** alteração documental apenas. Nenhum código de aplicação, schema, migration, policy SQL ou dado infantil foi alterado/criado. A aderência do código atual ainda precisa ser avaliada antes de funcionalidades de colaboração ou registros compartilhados.
 - **Próxima ação:** revisão do PR; após aprovação, mapear modelos e componentes existentes contra PG-06 e criar testes de domínio antes de implementar colaboração profissional.
 - **Status:** PRINCIPLE_DOCUMENTED / CODE_CONFORMANCE_NOT_YET_ASSESSED.
+
+
+---
+
+## Aprofundamento da missão: compreensão, experiência e interação (17/11/2026)
+
+- **Contribuição do responsável pelo produto:** a missão não é buscar uma visão uniformizada dos aspectos da criança. É mergulhar em como experimentamos comunicação, aprendizagem, ensino, sentimentos e o que fazemos para melhorar a interação da criança com o mundo.
+- **Decisão de interpretação:** pluralidade não significa manter perspectivas isoladas. O MUNDELO deve conectá-las para gerar perguntas melhores e possibilidades de interação mais conscientes, preservando autoria, contexto e particularidade de cada vínculo.
+- **Intervenção documental na PR #16:** acrescentada a seção 9 à especificação normativa, princípio XIV ao Manifesto, aprofundamento de missão ao Posicionamento e referência no README.
+- **Critério de produto:** a criança não deve ser modificada para se adaptar às expectativas dos adultos; a ferramenta deve ajudar adultos a escutar, comunicar, ensinar e ajustar ambientes. Não prescrever intervenções clínicas nem prometer resultados não validados.
+- **Limites:** documentação apenas; nenhuma funcionalidade, schema, migration ou comportamento de código foi alterado. A missão ampliada ainda precisa ser traduzida em requisitos e validada com pesquisa com adultos, profissionais e, de forma apropriada e ética, considerando a participação da criança.
+- **Próxima ação:** revisar a PR #16 como um todo e, após merge, realizar auditoria do domínio, fluxos e interface existentes contra os princípios XIII, XIV e PG-06.
+- **Status:** PRODUCT_DIRECTION_DOCUMENTED / IMPLEMENTATION_NOT_STARTED.
