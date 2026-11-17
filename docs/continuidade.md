@@ -234,3 +234,17 @@
 - **Decisões pendentes:** campos mínimos, enums de papel/status, idempotência da RPC, owner restrito para função SECURITY DEFINER, retenção/exclusão de aceites e necessidade de preferences.
 - **Próxima ação:** revisão da política pelo responsável pelo produto; após aprovação, fechar contrato de dados e escrever migration versionada para Supabase local/de desenvolvimento.
 - **Status:** POLICY_PROPOSED / G2_BLOCKED.
+
+
+---
+
+## Extensão futura: colaboração com profissionais (17/11/2026)
+
+- **Solicitação de produto:** contemplar fonoaudiólogos, psicólogos, terapeutas, pediatras e psiquiatras no acompanhamento infantil.
+- **Diretriz:** identidade profissional não equivale a papel familiar nem concede acesso automático. Uma pessoa poderá ter perfil familiar e profissional simultaneamente.
+- **Modelo candidato:** perfis e credenciais profissionais, vínculos de cuidado, concessões granulares por criança/finalidade/categoria/prazo e trilha de auditoria.
+- **Taxonomia:** “terapeuta” exige identificação de disciplina, qualificação e registro aplicável, sem presumir regime único.
+- **Limites:** visão futura apenas. Não criar tabelas, credenciais, vínculos profissionais ou permissões nesta etapa. Nenhum dado infantil real autorizado.
+- **Intervenção:** adicionado adendo à política de isolamento e este registro de continuidade.
+- **Próxima ação:** revisar fronteiras da colaboração profissional; manter G2 limitado ao isolamento de contas adultas e espaços familiares até a aprovação do contrato de dados do MVP.
+- **Status:** FUTURE_CAPABILITY_DOCUMENTED / NOT_IMPLEMENTED.
