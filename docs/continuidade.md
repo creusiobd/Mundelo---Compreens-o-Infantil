@@ -273,3 +273,18 @@
 - **Limites:** documentação apenas; nenhuma funcionalidade, schema, migration ou comportamento de código foi alterado. A missão ampliada ainda precisa ser traduzida em requisitos e validada com pesquisa com adultos, profissionais e, de forma apropriada e ética, considerando a participação da criança.
 - **Próxima ação:** revisar a PR #16 como um todo e, após merge, realizar auditoria do domínio, fluxos e interface existentes contra os princípios XIII, XIV e PG-06.
 - **Status:** PRODUCT_DIRECTION_DOCUMENTED / IMPLEMENTATION_NOT_STARTED.
+
+
+---
+
+## Auditoria de conformidade dos princípios XIII, XIV e PG-06 (17/11/2026)
+
+- **Marco:** PR #16 mergeada na `main`, merge commit `93555223fcdf2f341774d8009e9d7829f718cbc7`.
+- **Problema investigado:** verificar se o código atual preserva perspectivas distintas sobre a criança e se a compreensão ajuda a ampliar possibilidades de interação sem criar uma narrativa totalizante.
+- **Intervenção documental:** criada `docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md`, em branch própria `audit/pg06-current-code-conformance-v0.1`.
+- **Achados principais:** perfil infantil contém atributos globais sem proveniência por item; métodos de Meu Mundo não aplicam autorização própria consistente; edição substitui o objeto e incrementa revisão sem histórico versionado nem autor da alteração; exclusão remove o item do estado de sessão; painel Compreender agrega contextos e contém textos fixos apresentados como padrões da amostra; relatório classifica genericamente notas como hipótese familiar e inclui atributos globais sem fonte; vocabulário “canônico” conflita com pluralidade.
+- **Segurança:** `src/security/authorization.ts` declara explicitamente que as regras são demonstrativas no cliente. Mantido bloqueio para dados infantis reais e colaboração profissional até autenticação, autorização server-side/RLS e testes reais.
+- **Status PG-06:** NÃO ATENDE integralmente para perfil global, painel, relatórios e histórico; PARCIAL para autoria/proveniência em observações individuais.
+- **Limites:** auditoria estática de código. Não foram executados testes, build, lint, E2E ou testes manuais nesta revisão. Nenhum código, schema, migration, RLS, credencial ou dado infantil real foi alterado/criado.
+- **Próxima hipótese:** desenhar e revisar o contrato conceitual de domínio para contribuições independentes, observações, interpretações, avaliações, orientações, experiências de interação e sínteses derivadas; definir correção, versionamento, exclusão e autorização antes de implementar.
+- **Status:** STATIC_AUDIT_RECORDED / PG06_NOT_COMPLIANT / DOMAIN_CONTRACT_PENDING.
