@@ -1,8 +1,9 @@
-# MUNDELO | Contrato de Domínio v0.1
+# MUNDELO | Contrato de Domínio v0.1 — revisão localizada de preservação e operações
 ## Núcleo compartilhado de compreensão da criança
 
 - **Status:** proposta conceitual para revisão e aprovação; não é especificação de implementação aprovada.
-- **Versão:** 0.1
+- **Versão:** 0.1-r1 (proposta de conciliação; não substitui aprovação pendente)
+- **Base documental:** arquivo v0.1 incorporado pela PR #18; esta revisão não equivale à consolidação integral dos princípios INF-ID ou à versão 0.2.
 - **Escopo:** responsáveis legais, vínculos profissionais de saúde, contribuições, compartilhamento, autorização, histórico e pluralidade de perspectivas.
 - **Dependências normativas:** Principles Gate v1.0 (PG-01 a PG-06) e Princípio de Pluralidade das Perspectivas v0.1.
 - **Persistência e infraestrutura:** nenhuma decisão de schema, migration, RLS, API ou hospedagem é aprovada por este documento.
@@ -129,12 +130,16 @@ A seleção deve permitir conceder apenas o necessário à finalidade. Categoria
 
 ### 5.3. Operações independentes
 
-Leitura não implica criação, edição, exclusão, exportação ou compartilhamento.
+Leitura não implica criação, edição, exclusão, exportação, compartilhamento ou utilização em sínteses/interpretações. Preservação, apresentação e utilização são operações independentes, sujeitas às condições próprias de finalidade, autorização, contexto e direitos aplicáveis.
+
+Registrar uma contribuição e preparar uma representação para compartilhamento não concedem acesso nem autorizam sua entrega. As condições devem ser verificadas na efetivação de cada operação; mudança de versão, escopo ou restrição exige reavaliação antes da disponibilização do resultado.
+
+A [matriz de critérios por operação](contrato-dominio-criterios-operacoes-v0-1.md) detalha condições, efeitos e cenários desta revisão. Seus rótulos adicionais são analíticos, não novos poderes, enums ou APIs aprovados.
 
 As operações devem ser concedidas separadamente:
 - **read:** consultar contribuições autorizadas;
 - **create:** registrar nova contribuição no escopo autorizado;
-- **edit_own:** corrigir ou complementar contribuições próprias, preservando histórico;
+- **edit_own:** corrigir ou complementar contribuições próprias, preservando o histórico legitimamente permitido;
 - **request_correction:** solicitar correção de contribuição alheia, sem alterá-la;
 - **export:** exportar categorias autorizadas, quando permitido;
 - **share:** conceder acesso a terceiros, somente se houver política e legitimidade explícitas.
@@ -191,7 +196,7 @@ Toda contribuição compartilhada deve preservar, conforme aplicável:
 - pessoa que vivenciou ou observou o evento, se diferente do autor;
 - relação com a criança;
 - tipo de contribuição;
-- conteúdo original;
+- conteúdo original e versões cuja preservação permaneça legítima, com acesso e utilização sujeitos às respectivas restrições;
 - contexto, ambiente e atividade;
 - data/hora do acontecimento, quando conhecida;
 - data/hora do registro;
@@ -199,6 +204,8 @@ Toda contribuição compartilhada deve preservar, conforme aplicável:
 - origem da informação: experiência direta, relato de terceiro, documento ou outra fonte;
 - grau de certeza declarado pelo autor, sem conversão automática em probabilidade clínica;
 - versão, correções, complementos e relações com outras contribuições.
+
+Proveniência, contexto e histórico também podem conter informações protegidas. Preservar um vínculo não autoriza expor seus detalhes a todo destinatário. Informação desconhecida, não observada, não informada e não aplicável deve permanecer distinguível, sem preenchimento inferencial ou bloqueio universal de registro legítimo. A falta de contexto pode limitar uma operação posterior específica.
 
 Tipos iniciais:
 - observação direta;
@@ -214,27 +221,33 @@ Uma avaliação profissional deve ser identificada como avaliação profissional
 
 ## 8. Correção, contestação e divergência
 
-- O autor pode corrigir sua contribuição, com histórico de versões e motivo opcional ou exigido conforme risco.
+- O autor pode corrigir sua contribuição, com autoria e temporalidade da correção e motivo opcional ou exigido conforme risco. Versões anteriores e seus conteúdos só permanecem preservados na extensão e pelo período legitimamente aplicáveis; corrigir não impõe retenção pessoal indefinida.
 - Outra pessoa pode acrescentar contexto, resposta ou contestação, sem editar o conteúdo original.
 - A divergência é representada como relação entre contribuições, não como erro automático.
-- Nenhuma contribuição legítima é apagada porque outra pessoa discorda.
+- A discordância, isoladamente, não autoriza apagar contribuição legítima de outra pessoa. Isso não impede restrição, eliminação ou anonimização cabíveis por procedimento próprio.
 - Correções administrativas devem registrar agente, fundamento, data e escopo.
 - Remoção, anonimização ou restrição por obrigação legal, segurança ou exercício de direitos deve seguir política específica, preservando apenas o histórico estritamente permitido.
 - Não existe mecanismo de consenso obrigatório, votação de verdade ou precedência automática por profissão.
+
+Correção, contestação, restrição, invalidação e eliminação têm efeitos distintos e não se substituem automaticamente. A alteração da origem ou das autorizações exige avaliar as derivações e utilizações conhecidas, identificando o evento, a versão, o escopo afetado e o tratamento realizado. Agendamento ou pedido recebido não comprovam execução concluída.
+
+A versão histórica registra o que foi declarado e quando; não garante que o conteúdo continue correto ou aplicável. Contexto corrigido e interpretação posterior devem ser distinguíveis, sem reescrita silenciosa do passado e observados os limites de preservação legítima.
 
 ## 9. Sínteses e compreensão derivada
 
 Uma síntese futura só poderá existir se:
 - for claramente identificada como derivada e não canônica;
 - declarar objetivo, método, período e categorias consideradas;
-- identificar as contribuições de origem acessíveis ao leitor;
+- identificar as contribuições e versões de origem legitimamente utilizadas, apresentando ao leitor apenas os elementos de proveniência que ele possa acessar;
 - indicar fontes ausentes, limites e incertezas relevantes;
 - preservar divergências sem forçar resolução;
-- permitir abrir as contribuições originais;
+- permitir abrir as contribuições originais no escopo de consulta autorizado; a indicação de linhagem não pode expor fontes ou metadados restritos;
 - não alterar nem substituir as fontes;
-- não inferir diagnóstico, identidade unificada ou hierarquia de credibilidade.
+- não inferir diagnóstico ou identidade unificada, nem impor superioridade narrativa automática por profissão, quantidade ou antiguidade; distinguir avaliação factual da evidência de autoridade sobre a experiência e a identidade da pessoa.
 
-A autorização do leitor também se aplica às fontes: uma síntese não pode revelar indiretamente informação que o leitor não poderia consultar diretamente. A síntese deve ser recalculada ou invalidada quando uma fonte for corrigida, restringida ou removida, de acordo com a política de ciclo de vida.
+A autorização do leitor também se aplica às fontes: uma síntese não pode revelar indiretamente informação que o leitor não poderia consultar diretamente. A permissão de consulta das fontes é necessária no escopo da apresentação, mas não concede, por si só, autorização para utilizá-las em uma síntese ou em outra finalidade.
+
+Quando uma fonte, versão, autorização ou restrição mudar, o sistema deve reavaliar as sínteses e unidades derivadas conhecidas quanto à validade, apresentação, utilização e retenção. O tratamento pode exigir sinalização, restrição, recálculo autorizado, invalidação ou eliminação, conforme a situação e a política aplicável. Recalcular não amplia permissões nem substitui um dever de eliminação. Um resultado antigo não pode continuar disponível indevidamente ou ser apresentado silenciosamente como atual.
 
 ## 10. Segurança, privacidade e ciclo de vida
 
@@ -249,6 +262,18 @@ Requisitos obrigatórios antes de persistir dados reais:
 - proteção de exportações, backups, logs, analytics e dados derivados;
 - processo de incidente e resposta a exposição;
 - avaliação jurídica e de privacidade adequada à jurisdição e ao público infantil.
+
+### 10.1. Preservação legítima, retenção e eliminação
+
+A integridade da origem, das versões e da linhagem se aplica ao conteúdo cuja preservação permaneça legítima. Nenhuma expressão de preservação deste contrato autoriza conservar indefinidamente conteúdo pessoal apenas para manter rastreabilidade.
+
+A política aplicável deve distinguir conteúdo pessoal, metadados, evidência da operação e derivados identificáveis, definindo finalidade, fundamento, categoria, período ou condição de revisão, acesso, utilização e destinação. Essa política deve tratar também cópias e backups sob a governança pertinente e não pode ser suprida por um prazo universal presumido neste documento.
+
+Solicitações de correção, restrição, eliminação ou anonimização devem receber avaliação e execução no escopo cabível, considerando os direitos de terceiros e as obrigações de retenção aplicáveis. Havendo retenção necessária, ela não libera apresentação ou utilização irrestrita. A evidência de execução deve ser minimizada e não pode reconstruir indevidamente o conteúdo eliminado. Anonimização não se confunde com remoção de nome ou substituição por código.
+
+A resposta deve distinguir solicitação recebida, medida pendente, restrição aplicada, execução parcial e conclusão verificada. Não se deve declarar eliminação integral por exclusão apenas da interface ou prometer controle de cópias externas.
+
+### 10.2. Condições da implementação
 
 A autorização client-side existente no protótipo é demonstrativa e não constitui controle de segurança de produção. Este contrato não aprova arquitetura física, provedor, schema, RLS ou mecanismo de autenticação.
 
@@ -282,14 +307,20 @@ A modelagem física deverá avaliar cardinalidade, integridade referencial, segr
 7. Revogação impede novas operações protegidas e não altera autoria ou conteúdo histórico por sobrescrita.
 8. Um profissional não pode conceder acesso a outro profissional por herança de equipe ou instituição.
 9. Responsabilidade legal, vínculo profissional, autorização e permissão são conceitos distintos e testados separadamente.
-10. Contribuições divergentes coexistem sem sobrescrita, apagamento ou classificação automática de erro.
-11. Correções preservam versão anterior e autoria.
+10. A divergência, isoladamente, não autoriza sobrescrita, apagamento ou classificação automática de erro; contribuições permanecem distintas, observados os procedimentos legítimos de correção, restrição e eliminação.
+11. Correções mantêm autoria, temporalidade e rastreabilidade; versões anteriores e conteúdo pessoal são preservados somente na extensão e pelo período legitimamente aplicáveis.
 12. Sínteses não revelam fontes fora do escopo de acesso do leitor.
 13. Registros profissionais reservados não são publicados automaticamente no núcleo familiar.
 14. A interface distingue observação, relato, interpretação, avaliação e orientação.
 15. Ausência de informação, silêncio ou falta de resposta não é interpretada como consentimento.
 16. Estados de conflito ou incerteza de legitimidade bloqueiam concessões novas até revisão.
 17. Nenhum teste de autorização depende exclusivamente de ocultar elementos na interface.
+18. Preservação não concede apresentação ou utilização; leitura não concede utilização em síntese, exportação ou compartilhamento.
+19. Registro legítimo admite lacunas explícitas; falta de contexto limita a operação que dele dependa, sem preenchimento inferencial.
+20. Preparação não concede acesso e não efetiva compartilhamento.
+21. Alterações de origem, versão, autorização ou restrição provocam reavaliação das dependências conhecidas antes de disponibilização indevida.
+22. Trilha de auditoria, metadados e versões não conservam nem expõem indevidamente conteúdo restrito ou eliminado.
+23. A conclusão de uma operação corresponde ao efeito verificado no escopo informado, não à mera recepção ou programação do pedido.
 
 ## 13. Critérios de aceitação do contrato
 
@@ -304,7 +335,10 @@ O contrato só estará pronto para orientar implementação quando a revisão co
 - [ ] limites de sínteses e dados derivados;
 - [ ] requisitos de segurança, privacidade, retenção e revogação;
 - [ ] validação jurídica e de privacidade antes de dados reais;
-- [ ] matriz de testes derivada dos invariantes.
+- [ ] matriz de testes derivada dos invariantes;
+- [ ] conciliação entre preservação de origem, correção, restrição, eliminação e retenção proporcional;
+- [ ] condições por operação, incluindo utilização em sínteses, definidas e verificáveis;
+- [ ] efeitos sobre derivados, versões, metadados, cópias e evidências de execução definidos.
 
 ## 14. Decisões deliberadamente não tomadas
 
@@ -313,7 +347,8 @@ Este contrato não decide:
 - provedor de hospedagem, arquitetura de deploy ou desenho final de sessões;
 - mecanismo e evidências exatas para verificação de identidade, responsabilidade legal ou credencial profissional;
 - regra jurídica universal de autorização entre múltiplos responsáveis;
-- política final de retenção, eliminação, exportação e resposta a requisições legais;
+- política final de retenção, eliminação, anonimização, exportação e resposta a requisições legais, incluindo fundamento, prazos, responsáveis e tratamento de cópias/backups;
+- procedimentos finais de contestação, revisão, proteção/urgência e comprovação de conclusão de cada operação;
 - quais categorias serão lançadas no primeiro MVP;
 - se haverá síntese automatizada e sob quais salvaguardas;
 - integração com prontuários, clínicas ou sistemas externos.
@@ -337,9 +372,18 @@ Essas decisões exigem ADRs e revisões específicas. Não devem ser inferidas d
 
 ## Registro de revisão
 
-- **Proposta:** Contrato de Domínio MUNDELO v0.1
+- **Proposta:** Contrato de Domínio MUNDELO v0.1-r1 — conciliação localizada de preservação e operações
 - **Decisão:** PENDENTE DE REVISÃO
 - **Aprovador:** pendente
 - **Revisores:** pendentes
 - **Data de aprovação:** pendente
 - **Riscos residuais aceitos:** nenhum registrado
+
+
+## Registro da conciliação localizada
+
+Esta revisão qualifica os deveres de preservação pela legitimidade da retenção e explicita as condições de operação. Mantém as demais decisões do contrato como base histórica, sem atestar a consolidação de todas as famílias de princípios ou a conclusão da v0.2.
+
+Rastreabilidade documental: DEC-DAT-004; AUD-GLOBAL-015; AUD-BIO-CROSS-005; DEC-HUM-004/005/007/008; REQ-BIO-013/016/017; DEC-INF-013; AUD-GLOBAL-016 e DOM-04/05, nos limites dos registros recuperados. AUD-DOM-002/004 são salvaguardas de revisão; não se presume aprovação de todas as propostas relacionadas. INF-ID-017/169/206/227/249 permanecem sujeitos às pendências da recuperação original.
+
+A incorporação de um documento ao repositório não equivale, por si só, à aprovação de todas as formulações nele contidas. Esta revisão e seus cenários por operação permanecem pendentes de revisão de redação e alcance. Nenhum prazo legal, novo poder de representação ou autorização para dados reais é estabelecido por esta alteração.
