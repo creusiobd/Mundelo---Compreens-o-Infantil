@@ -5,7 +5,7 @@
   "repository": "creusiobd/Mundelo---Compreens-o-Infantil",
   "commit": "512d95dd2c6f026e602a5a722fb6f03f08902321",
   "owner": "Creusio Kizua",
-  "method": "Inventário completo e inspeção estática dirigida; CI histórico consultado no mesmo commit; sem execução nova de testes funcionais ou cenários de retenção",
+  "method": "Inventário completo e inspeção estática dirigida; CI histórico consultado no mesmo commit; nenhuma execução local de testes; CI da PR reexecuta automaticamente a suíte preexistente; 16 cenários de retenção não executados por esta auditoria",
   "counts": {
     "repository_files": 120,
     "content_verified": 86,
@@ -1267,5 +1267,9 @@
       "docs/gestao/sprints.md"
     ],
     "application_tests_contract_unchanged": true
+  },
+  "pull_request_ci": {
+    "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/38/checks",
+    "mode": "Reexecução automática da suíte preexistente ao publicar a entrega; resultado nos checks da PR"
   }
 }
