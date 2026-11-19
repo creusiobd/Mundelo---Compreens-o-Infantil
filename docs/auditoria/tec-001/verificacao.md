@@ -6,7 +6,7 @@
 2. Obtidos 86 conteúdos por referência imutável. Recalculado o Git blob SHA-1 usando cabeçalho `blob <tamanho-em-bytes>\0` e UTF-8; todos coincidiram com os blobs da árvore. Isso verifica identidade do conteúdo, não segurança da aplicação.
 3. Lidos módulos de domínio/autorização, tipos/schemas, cofre/conflitos/concorrência e caminhos pertinentes de telas/componentes/testes. Inspeção dirigida; os 120 itens não são apresentados como 120 arquivos integralmente auditados.
 4. Vinculada cada uma das 14 operações à linha correspondente do critério, aos arquivos que realizam parte da operação e às lacunas relacionadas. Conferidas as referências de linhas, IDs e dependências do relatório.
-5. Consultados run e job de CI do mesmo commit. Nenhuma suíte funcional foi disparada novamente nesta tarefa; nenhuma reprodução em navegador foi realizada para os achados estáticos.
+5. Consultados run e job de CI do mesmo commit. Não houve execução local de testes nem reprodução em navegador para os achados estáticos. A publicação da PR #38 aciona automaticamente a suíte preexistente, sem acrescentar testes funcionais; o resultado dessa reexecução consta nos checks da PR.
 
 Após o levantamento, main avançou para `0e0f990d5e0ceb064a3148cf83d752fc9ddafa59` com a incorporação da PR #37. A comparação entre commits mostrou somente sete arquivos novos em `docs/gestao/`; aplicação, testes e contrato permaneceram idênticos. O inventário de 120 arquivos refere-se ao snapshot técnico acima; a base de publicação já inclui os sete documentos de gestão.
 
