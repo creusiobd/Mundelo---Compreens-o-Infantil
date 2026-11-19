@@ -40,7 +40,7 @@ O resultado não descarta os controles existentes. Há mecanismos locais codific
 
 ## O que já foi comprovado
 
-O GitHub registrou [execução bem-sucedida da suíte existente](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44543224727) neste mesmo commit em 19/11/2026. Os passos de domínio/segurança, TypeScript, build, E2E e acessibilidade terminaram com sucesso. Essa execução foi consultada, não disparada novamente por esta tarefa; não é prova de que os critérios novos ou os 16 cenários de retenção tenham sido executados.
+O GitHub registrou [execução bem-sucedida da suíte existente](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44543224727) neste mesmo commit em 19/11/2026. Os passos de domínio/segurança, TypeScript, build, E2E e acessibilidade terminaram com sucesso. Essa execução histórica foi consultada. A abertura da PR #38 também aciona automaticamente a suíte já existente; seu resultado fica nos checks da PR. Não houve execução local ou acréscimo de testes funcionais nesta auditoria, nem comprovação de execução dos 16 cenários de retenção.
 
 Exemplo concreto: [tests/foundation-v0.3.test.ts:118–140](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.3.test.ts#L118-L140) testa como permitido que um guardião edite contribuição de outro autor. O contrato atual exige correção própria ou procedimento administrativo legitimado. O teste passar confirma a regra antiga; não resolve a divergência G03.
 
