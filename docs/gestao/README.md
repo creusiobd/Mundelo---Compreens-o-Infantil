@@ -6,7 +6,9 @@ Atualizado em 19/11/2026. Responsável atual: **Creusio Kizua**, idealizador e d
 
 ## Ponto de retomada
 
-A base documental das PRs [19](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/19), [20](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/20) e [21](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/21) foi incorporada. A implantação da gestão está em andamento em [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22). A próxima tarefa técnica pronta é [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23): inventariar o código e confrontá-lo com o contrato e as 14 operações. Depois, conciliar as versões dos textos acessíveis em [INF-002 #24](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24).
+A base documental das PRs [19](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/19), [20](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/20) e [21](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/21) foi incorporada. A estrutura de gestão da [PR #37](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/37) foi incorporada no commit `0e0f990d5e0ceb064a3148cf83d752fc9ddafa59`; [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22) está concluída.
+
+[TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) tem o [mapa técnico entregue para revisão](../auditoria/tec-001/README.md): 14 operações confrontadas, 8 demonstrativas/parciais, 6 sem fluxo correspondente ao contrato e 11 lacunas. Após a revisão, o diagnóstico informa [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) e [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31), cuja dependência de GOV-002 permanece. [INF-002 #24](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24) continua pronta para conciliar os textos acessíveis.
 
 ## Organização
 
@@ -17,16 +19,17 @@ A base documental das PRs [19](https://github.com/creusiobd/Mundelo---Compreens-
 - [Processo e atualização](processo.md): estados, prontidão, conclusão e rotina de revisão.
 - [Plano estruturado](plano.json): índice para conferência e futuras atualizações.
 
-## Estado inicial
+## Estado de acompanhamento — 19/11/2026
 
 | Estado de planejamento | Quantidade |
 |---|---:|
-| Em andamento | 1 |
-| Pronto | 2 |
+| Concluído | 1 |
+| Em revisão | 1 |
+| Pronto | 1 |
 | Planejado | 5 |
 | Bloqueado | 7 |
 
-Os números são um retrato inicial, não acompanhamento automático. A issue e o campo Status do Project devem ser atualizados quando houver mudança. Prioridades e dependências detalhadas estão nas issues; a visualização do Project é um apoio ao acompanhamento.
+Os números refletem esta atualização documental, sem acompanhamento automático. A issue e o campo Status do Project devem ser atualizados quando houver mudança. Prioridades e dependências detalhadas estão nas issues; a visualização do Project é um apoio ao acompanhamento.
 
 ## Limites das evidências
 
