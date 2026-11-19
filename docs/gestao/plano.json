@@ -8,7 +8,7 @@
       "title": "Implantar a estrutura de gestão do MUNDELO",
       "milestone": "M01",
       "sprint": "SP01",
-      "status": "Em andamento",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [],
       "acceptance": [
@@ -20,14 +20,17 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22",
-      "issue_number": 22
+      "issue_number": 22,
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/37"
+      ]
     },
     {
       "id": "TEC-001",
       "title": "Mapear o código atual contra contrato e critérios por operação",
       "milestone": "M01",
       "sprint": "SP01",
-      "status": "Pronto",
+      "status": "Em revisão",
       "priority": "P0",
       "dependencies": [],
       "acceptance": [
@@ -39,7 +42,12 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23",
-      "issue_number": 23
+      "issue_number": 23,
+      "evidence": [
+        "../auditoria/tec-001/README.md"
+      ],
+      "mapping_executed": true,
+      "incorporation_pending": true
     },
     {
       "id": "INF-002",
@@ -222,9 +230,9 @@
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31",
       "blocker": {
         "id": "BL-03",
-        "cause": "Mapeamento técnico e exceções ainda não especificados",
+        "cause": "Inventário técnico entregue para revisão; exceções de GOV-002 ainda pendentes",
         "owner": "Creusio Kizua",
-        "unblock_action": "Concluir TEC-001 e GOV-002"
+        "unblock_action": "Conferir a entrega TEC-001 e concluir GOV-002"
       },
       "issue_number": 31
     },
@@ -438,5 +446,11 @@
       "objective": "Preparar/executar verificação disponível e revisar experiência.",
       "capacity": "Execução depende de implementação disponível e ambiente sintético apropriado."
     }
-  ]
+  ],
+  "latest_update": {
+    "date": "2026-11-19",
+    "task": "TEC-001",
+    "result": "Mapa entregue para revisão; 14 operações, 11 lacunas; código funcional inalterado",
+    "report": "../auditoria/tec-001/README.md"
+  }
 }
