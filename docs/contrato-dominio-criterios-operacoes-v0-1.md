@@ -79,3 +79,10 @@ Os cenários abaixo ainda não foram executados. O par positivo/negativo verific
 - Exportação e encerramento: DOM-04/05 e seções 5.4/5.5 do contrato v0.1. A formulação final de AUD-GLOBAL-017 não é presumida aprovada.
 
 A localização das mensagens e o estado de cada uma estão preservados no cruzamento documental local. Para o contrato e os documentos do repositório, estes critérios permanecem uma proposta de conciliação sujeita à revisão de alcance e redação.
+
+
+## Continuidade operacional — proposta de política
+
+A revisão localizada deste contrato e seus critérios foram validados pelo responsável pelo produto e incorporados pela PR #19. Essa validação documental não é reaberta pela continuação abaixo e não comprova execução dos cenários.
+
+A [política operacional de retenção, revisão e destinação](politica-operacional-retencao-destinacao-v0-1.md) e seus [cenários operacionais](politica-operacional-retencao-cenarios-v0-1.md) desenvolvem as pendências desta seção. São novas propostas para revisão: parâmetros por categoria, responsabilidades nomeadas e execução de cenários permanecem pendentes. Os documentos não estabelecem prazos legais nem autorizam dados reais.
