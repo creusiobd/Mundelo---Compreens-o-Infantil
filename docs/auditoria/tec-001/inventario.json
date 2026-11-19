@@ -1,0 +1,1208 @@
+{
+  "commit": "512d95dd2c6f026e602a5a722fb6f03f08902321",
+  "tree_truncated": false,
+  "total_files": 120,
+  "content_verified": 86,
+  "files": [
+    {
+      "path": ".env.example",
+      "blob_sha": "7a550fe79a56f6953f6afc76b0a10864d8956e25",
+      "size_bytes": 445,
+      "category": "Configuração / suporte",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/.env.example"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "blob_sha": "9ed83933536b60fae41461869df610b8217d9ffb",
+      "size_bytes": 1623,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/.github/workflows/ci.yml"
+    },
+    {
+      "path": ".github/workflows/device-real-01-pages.yml",
+      "blob_sha": "98c7fd84e8ef1326f45b7e403ca098bbc86ba509",
+      "size_bytes": 2796,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/.github/workflows/device-real-01-pages.yml"
+    },
+    {
+      "path": ".gitignore",
+      "blob_sha": "aec551ea65a85ad6151d3806c8e1246107ddb3c8",
+      "size_bytes": 118,
+      "category": "Configuração / suporte",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/.gitignore"
+    },
+    {
+      "path": "README.md",
+      "blob_sha": "f131a34c6a62f2f00f6954fe363424a9dc7c7e69",
+      "size_bytes": 12727,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/README.md"
+    },
+    {
+      "path": "bun.lock",
+      "blob_sha": "5bb46550ada730cde6d361ba16483bf4d3c7e53e",
+      "size_bytes": 70758,
+      "category": "Lockfile",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/bun.lock"
+    },
+    {
+      "path": "docs/accessibility-evidence.md",
+      "blob_sha": "e3f777bcb7e444fd485caf84a94448a6788fadd1",
+      "size_bytes": 5987,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/accessibility-evidence.md"
+    },
+    {
+      "path": "docs/adr/001-estrategia-criptografia.md",
+      "blob_sha": "cfbf05dda84e6d320bc8b7e633c1cd173002f297",
+      "size_bytes": 3901,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/001-estrategia-criptografia.md"
+    },
+    {
+      "path": "docs/adr/002-proveniencia-e-cuidadores.md",
+      "blob_sha": "acb6aabaf0472ac90bc5182854a7e1421b52fe04",
+      "size_bytes": 5019,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/002-proveniencia-e-cuidadores.md"
+    },
+    {
+      "path": "docs/adr/003-local-vault.md",
+      "blob_sha": "25f574e1fea460b6f81fb470e3fb9d6b10dc92a4",
+      "size_bytes": 7543,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/003-local-vault.md"
+    },
+    {
+      "path": "docs/adr/004-conflict-resolution.md",
+      "blob_sha": "de7076110fa4a57262b72a5ccd3afd0881078503",
+      "size_bytes": 4970,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/004-conflict-resolution.md"
+    },
+    {
+      "path": "docs/adr/005-identidade-e-persistencia-supabase.md",
+      "blob_sha": "91a8d90ea8755e0522c43281034b1f1c1deea90a",
+      "size_bytes": 11019,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/005-identidade-e-persistencia-supabase.md"
+    },
+    {
+      "path": "docs/android-benchmark-protocol.md",
+      "blob_sha": "31000332d77ff752d5ed076786ecbe10b1190e6f",
+      "size_bytes": 5221,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/android-benchmark-protocol.md"
+    },
+    {
+      "path": "docs/auditoria-v0.2.md",
+      "blob_sha": "a024fd27e654f9cfd5ecc45ca49b91f6863b837f",
+      "size_bytes": 6974,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/auditoria-v0.2.md"
+    },
+    {
+      "path": "docs/authorization-model-v0.3.md",
+      "blob_sha": "c5c9fc683147a0b1bbdfaa6474297e0f6901c5a9",
+      "size_bytes": 5099,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/authorization-model-v0.3.md"
+    },
+    {
+      "path": "docs/concurrency-model-v0.4a1.md",
+      "blob_sha": "cda06f5e5d4fd2e50091a0534793489daf26abae",
+      "size_bytes": 3163,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/concurrency-model-v0.4a1.md"
+    },
+    {
+      "path": "docs/continuidade.md",
+      "blob_sha": "9911f9cb6caeaef408eecf2af29c8ecaadf348e1",
+      "size_bytes": 35488,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/continuidade.md"
+    },
+    {
+      "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+      "blob_sha": "7d4c679f0eb1ba5fc8358b9bce7e74bfb78eb5c6",
+      "size_bytes": 15346,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md"
+    },
+    {
+      "path": "docs/contrato-dominio-mundelo-v0-1.md",
+      "blob_sha": "6692ba4a7701674b62c49b0797cb3cd5696abca5",
+      "size_bytes": 29791,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-mundelo-v0-1.md"
+    },
+    {
+      "path": "docs/data-contracts.md",
+      "blob_sha": "f2d7fec9be0cb22e0f7722b9aa5eac948bc5a199",
+      "size_bytes": 4017,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/data-contracts.md"
+    },
+    {
+      "path": "docs/design-system-v1.md",
+      "blob_sha": "76000050303adf3be39d651ee9fe7d1865d18c9a",
+      "size_bytes": 5460,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/design-system-v1.md"
+    },
+    {
+      "path": "docs/device-real-01-talkback-staging.md",
+      "blob_sha": "d00b8c5fcb4a04c383f771b5166edbd6be656f65",
+      "size_bytes": 5091,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/device-real-01-talkback-staging.md"
+    },
+    {
+      "path": "docs/home-redesign-v1.md",
+      "blob_sha": "0cfd8e40ec84ad8301fb71479abb064c9de7b7b7",
+      "size_bytes": 4563,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/home-redesign-v1.md"
+    },
+    {
+      "path": "docs/manifesto-principios-mundelo-v1.md",
+      "blob_sha": "d9e4257a483dbc495513b5c09838f5e67dcbf6c1",
+      "size_bytes": 9148,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/manifesto-principios-mundelo-v1.md"
+    },
+    {
+      "path": "docs/migration-v0.2-v0.3.md",
+      "blob_sha": "69da61fdff1b2aea8b2f0dcc1d4c3e7bd30d92e5",
+      "size_bytes": 4528,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/migration-v0.2-v0.3.md"
+    },
+    {
+      "path": "docs/mundelo-dossie-maturidade-v0-1.md",
+      "blob_sha": "237d15ded6920b00ce3328a72c464533352cb515",
+      "size_bytes": 14760,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/mundelo-dossie-maturidade-v0-1.md"
+    },
+    {
+      "path": "docs/mundelo-founder-story-gtm-v0-1.md",
+      "blob_sha": "bfac636751bdacc8d3815436cb2bf8781ff8c18b",
+      "size_bytes": 12355,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/mundelo-founder-story-gtm-v0-1.md"
+    },
+    {
+      "path": "docs/mundelo-kit-entrevistas-piloto-v0-1.md",
+      "blob_sha": "90c5f4a9c24ec79e4c3e32c2b5ba0fac0d30e2a1",
+      "size_bytes": 5533,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/mundelo-kit-entrevistas-piloto-v0-1.md"
+    },
+    {
+      "path": "docs/mundelo-pesquisa-cuidadores-protocolo-v0-1.md",
+      "blob_sha": "9774350f7f7bf111e5ffb3c52a2fdaee9b251e35",
+      "size_bytes": 11697,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/mundelo-pesquisa-cuidadores-protocolo-v0-1.md"
+    },
+    {
+      "path": "docs/mundelo-posicionamento-evolucao-v1.md",
+      "blob_sha": "697270a40580c9600fd2ceb05788c998f61a92cf",
+      "size_bytes": 8852,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/mundelo-posicionamento-evolucao-v1.md"
+    },
+    {
+      "path": "docs/parametros-retencao-categorias-v0-1.json",
+      "blob_sha": "056eacc66f92a59f06778ae464369eca274f46b9",
+      "size_bytes": 24191,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/parametros-retencao-categorias-v0-1.json"
+    },
+    {
+      "path": "docs/parametros-retencao-categorias-v0-1.md",
+      "blob_sha": "a80d5080bbf4a59899345d9eac61f43a868ef7d2",
+      "size_bytes": 28057,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/parametros-retencao-categorias-v0-1.md"
+    },
+    {
+      "path": "docs/politica-operacional-retencao-cenarios-v0-1.md",
+      "blob_sha": "db2fd1df468015b91ecbfd25020cf59a097a6160",
+      "size_bytes": 6073,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/politica-operacional-retencao-cenarios-v0-1.md"
+    },
+    {
+      "path": "docs/politica-operacional-retencao-destinacao-v0-1.md",
+      "blob_sha": "7afaa6f9e0813f1c3e09f109a5d2289b713e8d61",
+      "size_bytes": 18377,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/politica-operacional-retencao-destinacao-v0-1.md"
+    },
+    {
+      "path": "docs/principio-pluralidade-perspectivas-v0-1.md",
+      "blob_sha": "333027b47f44564b0792c0b36a0fdfd511d1a1ad",
+      "size_bytes": 11424,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/principio-pluralidade-perspectivas-v0-1.md"
+    },
+    {
+      "path": "docs/principles-gate-v1.md",
+      "blob_sha": "5651b52d58233cb2ce262588dc86203e21aceb6f",
+      "size_bytes": 7909,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/principles-gate-v1.md"
+    },
+    {
+      "path": "docs/public-family-onboarding-implementation-plan-v0.1.md",
+      "blob_sha": "951f3539d08cf67895600dd90702e6237fbdb2f0",
+      "size_bytes": 10587,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/public-family-onboarding-implementation-plan-v0.1.md"
+    },
+    {
+      "path": "docs/rls-family-isolation-policy-v0.1.md",
+      "blob_sha": "f844056ecabafc476df96ed616902fd1fd7224ae",
+      "size_bytes": 19358,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/rls-family-isolation-policy-v0.1.md"
+    },
+    {
+      "path": "docs/sec-exposure-01-verificacao-pos-privatizacao.md",
+      "blob_sha": "263950110e4e53ff905f996c463ee7a1930fb6af",
+      "size_bytes": 5262,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/sec-exposure-01-verificacao-pos-privatizacao.md"
+    },
+    {
+      "path": "docs/security-exposure-response-v1.md",
+      "blob_sha": "6af5c4255e0221a6c5fb8fdd7f755de52e215a5f",
+      "size_bytes": 6317,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/security-exposure-response-v1.md"
+    },
+    {
+      "path": "docs/security-gate-v0.4a.md",
+      "blob_sha": "43038e1e0caead5d376548eba44e41cd8a5513cf",
+      "size_bytes": 7323,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/security-gate-v0.4a.md"
+    },
+    {
+      "path": "docs/supabase-auth-spa-pkce-dev-v0.1.md",
+      "blob_sha": "1b585928cd4c767e9181e0a8c45441c874c82966",
+      "size_bytes": 7238,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/supabase-auth-spa-pkce-dev-v0.1.md"
+    },
+    {
+      "path": "docs/test-evidence-adversarial-v0.4a.md",
+      "blob_sha": "bcb4e8f8390097f007f8b6d8330a8eea9b8db55d",
+      "size_bytes": 5134,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/test-evidence-adversarial-v0.4a.md"
+    },
+    {
+      "path": "docs/test-evidence-v0.2.md",
+      "blob_sha": "8272ef800371ccd589e45188d3b6d7003a958ed0",
+      "size_bytes": 7650,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/test-evidence-v0.2.md"
+    },
+    {
+      "path": "docs/test-evidence-v0.3.md",
+      "blob_sha": "fed87019e7c36d2f5562918c7029dbd86159b3df",
+      "size_bytes": 8119,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/test-evidence-v0.3.md"
+    },
+    {
+      "path": "docs/test-evidence-v0.4a.md",
+      "blob_sha": "9f2ca184a597164912faaae1385f5e4470715bf5",
+      "size_bytes": 6153,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/test-evidence-v0.4a.md"
+    },
+    {
+      "path": "docs/test-evidence-v0.4a1.md",
+      "blob_sha": "403b3521ff7bf62cf95997b2b10a8d9dadb7d946",
+      "size_bytes": 3980,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/test-evidence-v0.4a1.md"
+    },
+    {
+      "path": "docs/threat-model-public-family-onboarding-v0.1.md",
+      "blob_sha": "065190067acc0aa51473824b0ec66f6a529da715",
+      "size_bytes": 10670,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/threat-model-public-family-onboarding-v0.1.md"
+    },
+    {
+      "path": "docs/threat-model-v0.4a.md",
+      "blob_sha": "e3a1f42379e7d7298be1dcc918c27d31de407880",
+      "size_bytes": 5693,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/threat-model-v0.4a.md"
+    },
+    {
+      "path": "docs/threat-model.md",
+      "blob_sha": "4e7375164c943a1a7ad2ce9b1a4d026711394936",
+      "size_bytes": 6369,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/threat-model.md"
+    },
+    {
+      "path": "docs/ui-responsive-evidence.md",
+      "blob_sha": "082e9cd93a062c323e2c3fe33514a49fe838549d",
+      "size_bytes": 6427,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ui-responsive-evidence.md"
+    },
+    {
+      "path": "docs/ui-ux-audit-home.md",
+      "blob_sha": "76bbcefc63d8dbdd66777de9b393a33be131bdb5",
+      "size_bytes": 6885,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ui-ux-audit-home.md"
+    },
+    {
+      "path": "docs/ux-cognitive-audit-v1.md",
+      "blob_sha": "b0485f223d222429da04daeed13493030790f112",
+      "size_bytes": 7665,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ux-cognitive-audit-v1.md"
+    },
+    {
+      "path": "docs/ux-real-01-report.md",
+      "blob_sha": "c7e1c47b3a8bc78a6d7b83644e983d0fbcfc8fba",
+      "size_bytes": 11356,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ux-real-01-report.md"
+    },
+    {
+      "path": "docs/ux-real-01b-assistive-manual.md",
+      "blob_sha": "67b7b330ef3e389b0368df9974f3150b6da4cfbc",
+      "size_bytes": 13201,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ux-real-01b-assistive-manual.md"
+    },
+    {
+      "path": "docs/ux-real-01b-report.md",
+      "blob_sha": "2674bbae3b0a99fedae63f0b5339fc03b17e3a00",
+      "size_bytes": 6696,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ux-real-01b-report.md"
+    },
+    {
+      "path": "docs/ux-real-02-report.md",
+      "blob_sha": "242526350baccb9f4021aa1aab204a84fd2ad664",
+      "size_bytes": 6811,
+      "category": "Documentação",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/ux-real-02-report.md"
+    },
+    {
+      "path": "docs/vault-format-v1.md",
+      "blob_sha": "bddc2ffdb1d539af3e9616ed6e80ec92cda2545b",
+      "size_bytes": 5427,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/vault-format-v1.md"
+    },
+    {
+      "path": "docs/vault-residual-risks.md",
+      "blob_sha": "66216122935cf66a94e6230e96f70d83a1c3f433",
+      "size_bytes": 3635,
+      "category": "Documentação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/vault-residual-risks.md"
+    },
+    {
+      "path": "index.html",
+      "blob_sha": "2f392eb88738c15ef09f6d10014cd3ba6b1cfa44",
+      "size_bytes": 1339,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/index.html"
+    },
+    {
+      "path": "metadata.json",
+      "blob_sha": "61064944ba45eb641b8b7e0518de591a3633c6d3",
+      "size_bytes": 296,
+      "category": "Configuração / suporte",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/metadata.json"
+    },
+    {
+      "path": "package-lock.json",
+      "blob_sha": "b113854cf9bb6697a441bfef566bd691651d6298",
+      "size_bytes": 135368,
+      "category": "Lockfile",
+      "content_fetched": false,
+      "content_git_blob_verified": false,
+      "review_mode": "Metadados da árvore; conteúdo não inspecionado nesta tarefa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/package-lock.json"
+    },
+    {
+      "path": "package.json",
+      "blob_sha": "5d598b17dfa01b4bc43aa11fb06338d78cc8d3b8",
+      "size_bytes": 1259,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/package.json"
+    },
+    {
+      "path": "playwright.config.ts",
+      "blob_sha": "c6f7c6b0a7ab8eadd9bcf6dc78c7cff4b78e54d9",
+      "size_bytes": 1158,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/playwright.config.ts"
+    },
+    {
+      "path": "scripts/check-exposed-credentials.mjs",
+      "blob_sha": "3a2489104cdb1f60ce0fda93326d2b67a04be083",
+      "size_bytes": 3150,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/scripts/check-exposed-credentials.mjs"
+    },
+    {
+      "path": "src/App.tsx",
+      "blob_sha": "3f20929d171921f78bccd37fc41a82a73f91f173",
+      "size_bytes": 10270,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/App.tsx"
+    },
+    {
+      "path": "src/components/BottomNav.tsx",
+      "blob_sha": "023883ffa13e5581bccbb713c6010212cbe5194b",
+      "size_bytes": 2452,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/BottomNav.tsx"
+    },
+    {
+      "path": "src/components/BrandLogo.tsx",
+      "blob_sha": "b611db61cafa8487883ae5946d34d283ba776022",
+      "size_bytes": 5990,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/BrandLogo.tsx"
+    },
+    {
+      "path": "src/components/DeleteConfirmModal.tsx",
+      "blob_sha": "1eed49e9cb799192c352e4f22fce0933e0b425e8",
+      "size_bytes": 2106,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/DeleteConfirmModal.tsx"
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "blob_sha": "51a09dd573c53c0d62e9aeef2cfbd470c7c6c5e7",
+      "size_bytes": 21707,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/Header.tsx"
+    },
+    {
+      "path": "src/components/NotificationToast.tsx",
+      "blob_sha": "99dd7d956b924bae81a20ef1b67cfee35025514a",
+      "size_bytes": 1712,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/NotificationToast.tsx"
+    },
+    {
+      "path": "src/components/ObservationDetailModal.tsx",
+      "blob_sha": "92b453c27630a1e466b084b45d1faa1be76087ee",
+      "size_bytes": 14435,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/ObservationDetailModal.tsx"
+    },
+    {
+      "path": "src/components/ObservationModal.tsx",
+      "blob_sha": "b53759e384fe0871025dbe29de6c9cfa0de2f0ea",
+      "size_bytes": 47128,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/ObservationModal.tsx"
+    },
+    {
+      "path": "src/components/VaultExportModal.tsx",
+      "blob_sha": "20d08d12252162ad49ffd629edb63a6ce8b48838",
+      "size_bytes": 11801,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/VaultExportModal.tsx"
+    },
+    {
+      "path": "src/components/VaultImportModal.tsx",
+      "blob_sha": "d455ab19c054c06d895eb6e5d899f47afa27faa6",
+      "size_bytes": 28252,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/VaultImportModal.tsx"
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "blob_sha": "6f3145c26d7306179fd2f88e8dee364508a8c75f",
+      "size_bytes": 29615,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx"
+    },
+    {
+      "path": "src/crypto/benchmark.ts",
+      "blob_sha": "07264661162ca300bef5978ff220f9511d7234eb",
+      "size_bytes": 15099,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/benchmark.ts"
+    },
+    {
+      "path": "src/crypto/schemas.ts",
+      "blob_sha": "83f4a463c04c691539148ba4a63ce1e3dd47e7ef",
+      "size_bytes": 3218,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/schemas.ts"
+    },
+    {
+      "path": "src/crypto/types.ts",
+      "blob_sha": "3263f9219526d6f472a0817d08ee16260619bb12",
+      "size_bytes": 1785,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/types.ts"
+    },
+    {
+      "path": "src/crypto/vault.ts",
+      "blob_sha": "00cabc93e28239af2a9d70404786d17089abef48",
+      "size_bytes": 10177,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/vault.ts"
+    },
+    {
+      "path": "src/data/mockData.ts",
+      "blob_sha": "39f789617a20fc97cb2c962b91cab2c87db3b18a",
+      "size_bytes": 22622,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/data/mockData.ts"
+    },
+    {
+      "path": "src/index.css",
+      "blob_sha": "52368ca2637ea6f1906659773c604357a52bf14d",
+      "size_bytes": 2726,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/index.css"
+    },
+    {
+      "path": "src/main.tsx",
+      "blob_sha": "c1d9f920661cb84283eeabccd6ac72fe4233460c",
+      "size_bytes": 159,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/main.tsx"
+    },
+    {
+      "path": "src/screens/DiscoveriesScreen.tsx",
+      "blob_sha": "aa71b115f467d0665ebded966d7e23c97d24ae5f",
+      "size_bytes": 9225,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/DiscoveriesScreen.tsx"
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "blob_sha": "6cc747e1f44082c69a9cd15d83e26fb3112b448e",
+      "size_bytes": 25665,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/HomeScreen.tsx"
+    },
+    {
+      "path": "src/screens/JournalScreen.tsx",
+      "blob_sha": "5bd4606083033a065ca58b0f354f2838d942ff85",
+      "size_bytes": 24197,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/JournalScreen.tsx"
+    },
+    {
+      "path": "src/screens/MyWorldScreen.tsx",
+      "blob_sha": "50ebf56839164a4e5a0e9fb04bfda47b2cd85241",
+      "size_bytes": 28275,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/MyWorldScreen.tsx"
+    },
+    {
+      "path": "src/screens/OnboardingScreen.tsx",
+      "blob_sha": "25b0662c35485b14f28adaab8e4c2167216d9b9c",
+      "size_bytes": 16304,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/OnboardingScreen.tsx"
+    },
+    {
+      "path": "src/screens/PrivacyScreen.tsx",
+      "blob_sha": "c9555da3ab27ae7da90491e2dd146340f1b6393b",
+      "size_bytes": 12040,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/PrivacyScreen.tsx"
+    },
+    {
+      "path": "src/screens/ReportScreen.tsx",
+      "blob_sha": "67b2919b0b84533e66cf52db5af30a6f0aca395a",
+      "size_bytes": 17840,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx"
+    },
+    {
+      "path": "src/screens/SecurityLabScreen.tsx",
+      "blob_sha": "ffa72fe482df951fb6ccf833af231c6c317a3c9c",
+      "size_bytes": 20223,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/SecurityLabScreen.tsx"
+    },
+    {
+      "path": "src/screens/UnderstandScreen.tsx",
+      "blob_sha": "7510a4cc40eeb8d49e40034abfab3a974ae250b4",
+      "size_bytes": 11592,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/UnderstandScreen.tsx"
+    },
+    {
+      "path": "src/screens/WelcomeScreen.tsx",
+      "blob_sha": "d73554d5ff1e2ca831cad3d7fe54a317ef2794db",
+      "size_bytes": 11180,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/WelcomeScreen.tsx"
+    },
+    {
+      "path": "src/security/authorization.ts",
+      "blob_sha": "d476d73a44ab07b8ce2e37ddc100f901764d1318",
+      "size_bytes": 4422,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts"
+    },
+    {
+      "path": "src/security/conflictResolver.ts",
+      "blob_sha": "e1dd7d7492a89a6cb6e593343ca2caf801eff335",
+      "size_bytes": 10776,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/conflictResolver.ts"
+    },
+    {
+      "path": "src/security/domainLock.ts",
+      "blob_sha": "20fc0a6c22309ae9a46ad60b20102ef97d890ffc",
+      "size_bytes": 5822,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/domainLock.ts"
+    },
+    {
+      "path": "src/types/index.ts",
+      "blob_sha": "196802ada34c85e9e634dc560347edfa8efbbbd8",
+      "size_bytes": 4508,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts"
+    },
+    {
+      "path": "src/validation/migration.ts",
+      "blob_sha": "0fddcc7b776ee685e1110394101b228cbaf5f39c",
+      "size_bytes": 2662,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/migration.ts"
+    },
+    {
+      "path": "src/validation/schemas.ts",
+      "blob_sha": "bd9707a546502cdfe93b57ffc936f15731d315ff",
+      "size_bytes": 5410,
+      "category": "Aplicação",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/schemas.ts"
+    },
+    {
+      "path": "tests/e2e/device-real-02-authorization.spec.ts",
+      "blob_sha": "5771f2d596beacb13147d5a9f0e0b5a3c4a4f596",
+      "size_bytes": 2544,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/device-real-02-authorization.spec.ts"
+    },
+    {
+      "path": "tests/e2e/fixtures/synthetic-data.ts",
+      "blob_sha": "ca2d59b12cd7a2bd0980214103819e1c4d4b3f4d",
+      "size_bytes": 3439,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/fixtures/synthetic-data.ts"
+    },
+    {
+      "path": "tests/e2e/fixtures/test-session.ts",
+      "blob_sha": "aba4c68d636b6805b742157dd34112c79626f83e",
+      "size_bytes": 2665,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/fixtures/test-session.ts"
+    },
+    {
+      "path": "tests/e2e/helpers/accessibility.ts",
+      "blob_sha": "14f2cc0cb04816085753b7b05135812e65e3f8c1",
+      "size_bytes": 1723,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/helpers/accessibility.ts"
+    },
+    {
+      "path": "tests/e2e/helpers/navigation.ts",
+      "blob_sha": "172f9c6db2d7460e3a5f1398057fc1727b279c95",
+      "size_bytes": 2011,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/helpers/navigation.ts"
+    },
+    {
+      "path": "tests/e2e/helpers/responsive.ts",
+      "blob_sha": "84655cc1cd8c1e90ba08ffbc443459a589c51e6b",
+      "size_bytes": 2438,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/helpers/responsive.ts"
+    },
+    {
+      "path": "tests/e2e/home-accessibility.spec.ts",
+      "blob_sha": "18f50b6c4c331280e4866d830b93aa738c8fdfc8",
+      "size_bytes": 6903,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/home-accessibility.spec.ts"
+    },
+    {
+      "path": "tests/e2e/home-assistive-readiness.spec.ts",
+      "blob_sha": "64f3b2f9af5222cf809fd2448350e92ba4f248ff",
+      "size_bytes": 7446,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/home-assistive-readiness.spec.ts"
+    },
+    {
+      "path": "tests/e2e/home-navigation.spec.ts",
+      "blob_sha": "1c9da9918bcccdab904f340f21420f5214da65e8",
+      "size_bytes": 6393,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/home-navigation.spec.ts"
+    },
+    {
+      "path": "tests/e2e/home-responsive.spec.ts",
+      "blob_sha": "a36ba8ff06e357b1b839fe769cc9c3d8af7c207f",
+      "size_bytes": 10962,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/home-responsive.spec.ts"
+    },
+    {
+      "path": "tests/e2e/internal-accessibility.spec.ts",
+      "blob_sha": "24bee0a2929a02465968e1df982d15d981b1f05a",
+      "size_bytes": 3673,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/internal-accessibility.spec.ts"
+    },
+    {
+      "path": "tests/e2e/internal-navigation.spec.ts",
+      "blob_sha": "394da6a968864d0883533c5a40c264c11a596757",
+      "size_bytes": 5998,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/internal-navigation.spec.ts"
+    },
+    {
+      "path": "tests/e2e/internal-permissions.spec.ts",
+      "blob_sha": "003fd7edf8c54612984cff912c4b48b87f52d124",
+      "size_bytes": 3575,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/internal-permissions.spec.ts"
+    },
+    {
+      "path": "tests/e2e/internal-responsive.spec.ts",
+      "blob_sha": "d2dbec470378092d530330f8660c63ea77694501",
+      "size_bytes": 2506,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/internal-responsive.spec.ts"
+    },
+    {
+      "path": "tests/foundation-v0.2.test.ts",
+      "blob_sha": "45d7a3cb646133904de57473cc05cea83c05fe73",
+      "size_bytes": 15101,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.2.test.ts"
+    },
+    {
+      "path": "tests/foundation-v0.3.test.ts",
+      "blob_sha": "6c78dc0c36fcb3bdfc49a19172cffc67c04411ca",
+      "size_bytes": 15300,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.3.test.ts"
+    },
+    {
+      "path": "tests/foundation-v0.4a.test.ts",
+      "blob_sha": "3bd0e44373d13ce429cdc699d90e7d532ee360c2",
+      "size_bytes": 10681,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.4a.test.ts"
+    },
+    {
+      "path": "tests/foundation-v0.4a1.test.ts",
+      "blob_sha": "2657474bb4fe9109369ac5dc6a72f533a9b8bfcf",
+      "size_bytes": 17881,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.4a1.test.ts"
+    },
+    {
+      "path": "tests/vault-adversarial-v0.4a.test.ts",
+      "blob_sha": "96d6ad65cc3906adc18134ee8af78f39314318c9",
+      "size_bytes": 23156,
+      "category": "Testes",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/vault-adversarial-v0.4a.test.ts"
+    },
+    {
+      "path": "tsconfig.json",
+      "blob_sha": "33f1710772ba00e224dca0d8dcad5db09894623c",
+      "size_bytes": 569,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tsconfig.json"
+    },
+    {
+      "path": "vite.config.ts",
+      "blob_sha": "8b7ea25cc0fe07cf3d2c0856eb8b0542b3232b5a",
+      "size_bytes": 1370,
+      "category": "Configuração / suporte",
+      "content_fetched": true,
+      "content_git_blob_verified": true,
+      "review_mode": "Conteúdo obtido e conferido; inspeção dirigida conforme relevância ao mapa",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/vite.config.ts"
+    }
+  ]
+}

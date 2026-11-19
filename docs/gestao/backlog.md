@@ -1,11 +1,11 @@
 # Backlog do MUNDELO
 
-Retrato inicial: 19/11/2026. Responsável por todas as tarefas: Creusio Kizua (@creusiobd). P0 = caminho crítico; P1 = relevante para completar a base e a experiência. Seleção de sprint é planejamento sujeito à capacidade e às dependências.
+Atualização de acompanhamento: 19/11/2026. Responsável por todas as tarefas: Creusio Kizua (@creusiobd). P0 = caminho crítico; P1 = relevante para completar a base e a experiência. Seleção de sprint é planejamento sujeito à capacidade e às dependências.
 
-| Tarefa | Estado inicial | Prioridade | Sprint | Marco | Dependências |
+| Tarefa | Estado | Prioridade | Sprint | Marco | Dependências |
 |---|---|---|---|---|---|
-| [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22) — Implantar a estrutura de gestão do MUNDELO | Em andamento | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
-| [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) — Mapear o código atual contra contrato e critérios por operação | Pronto | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
+| [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22) — Implantar a estrutura de gestão do MUNDELO | Concluído | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
+| [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) — Mapear o código atual contra contrato e critérios por operação | Em revisão | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-002 #24](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24) — Conciliar versões e aprovação dos 73 INF-ID documentados | Pronto | P1 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) — Disponibilizar a exportação integral das conversas do MUNDELO | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-003 #26](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/26) — Recuperar os 219 identificadores sem texto transcrito | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) |
@@ -24,25 +24,29 @@ Retrato inicial: 19/11/2026. Responsável por todas as tarefas: Creusio Kizua (@
 
 Entrega: Estrutura de gestão e ponto de retomada operacional.
 
-- [ ] Quadro privado vinculado ao repositório com estados, sprint e referências
-- [ ] Backlog com issues, aceite, dependências, marcos e bloqueios
-- [ ] Manual e painel de andamento versionados
+- [x] Quadro privado vinculado ao repositório com estados, sprint e referências
+- [x] Backlog com issues, aceite, dependências, marcos e bloqueios
+- [x] Manual e painel de andamento versionados
 
 
 
 Registro de execução: [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22).
 
+Entrega incorporada: [PR #37](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/37).
+
 ## TEC-001 — Mapear o código atual contra contrato e critérios por operação
 
 Entrega: Mapa de aderência técnica atual; não implementação.
 
-- [ ] Inventário por arquivo/versão do código e dos controles existentes
-- [ ] Distinguir demonstrativo, implementado, não verificado e ausente para 14 operações
-- [ ] Lista de gaps ligada ao contrato e a evidências
+- [x] Inventário por arquivo/versão do código e dos controles existentes
+- [x] Distinguir demonstrativo, implementado, não verificado e ausente para 14 operações
+- [x] Lista de gaps ligada ao contrato e a evidências
 
 
 
 Registro de execução: [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23).
+
+Diagnóstico: [matriz, inventário e lacunas](../auditoria/tec-001/README.md). Mapeamento executado; incorporação em revisão. Cenários funcionais novos não executados.
 
 ## INF-002 — Conciliar versões e aprovação dos 73 INF-ID documentados
 
