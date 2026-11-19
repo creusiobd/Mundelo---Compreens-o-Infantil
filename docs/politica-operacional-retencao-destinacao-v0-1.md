@@ -121,3 +121,12 @@ Fontes conceituais: DEC-DAT-004; DEC-HUM-004/005/008; AUD-GLOBAL-015/016; REQ-BI
 Os [cenários operacionais](politica-operacional-retencao-cenarios-v0-1.md) permitem avaliar esta proposta. Sua aprovação futura não se confunde com execução de teste, definição de prazo legal, validação de anonimização ou autorização de implementação.
 
 **Revisão desta política:** pendente. **Parâmetros por categoria:** pendentes. **Responsáveis nomeados:** pendentes. **Execução de cenários:** não realizada nesta entrega.
+
+
+## Parâmetros preenchidos — proposta para revisão
+
+A política operacional e seus cenários foram validados pelo responsável pelo produto e incorporados pela PR #20. A [matriz de parâmetros por categoria](parametros-retencao-categorias-v0-1.md), também disponível em [formato estruturado](parametros-retencao-categorias-v0-1.json), preenche finalidade, fundamento operacional, enquadramento jurídico candidato, duração proposta, gatilhos, destinação e responsabilidades.
+
+Creusio Kizua informou ser atualmente responsável por produto, governança e execução técnica do projeto. Essa nomeação interna não presume designação formal de encarregado, definição jurídica do controlador ou verificação humana independente.
+
+Os limites numéricos novos são propostas de produto; não são exigências legais, prazos já configurados ou aprovação antecipada para dados reais. O enquadramento específico, as exceções e a capacidade técnica precisam de validação antes da habilitação aplicável. A aprovação anterior da PR #20 não é reaberta por esta complementação.
