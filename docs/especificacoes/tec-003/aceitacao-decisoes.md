@@ -200,7 +200,7 @@ Todos os casos abaixo estão **NÃO EXECUTADOS**. A futura execução deve regis
 - Dado: Falta revisão indispensável na fase exigida pela política aplicável.
 - Quando: Solicitar medida protegida.
 - Esperado: Permanecer pendente e encaminhar; conter apenas mínimo já legitimado.
-- Verificação negativa: Proposta GOV-003 não incorporada, CI ou segunda conta do executor não satisfazem revisão humana requerida.
+- Verificação negativa: Aprovação da GOV-003, CI ou segunda conta do executor não satisfazem a revisão humana requerida no caso concreto.
 - Rastreabilidade: REQ-02, REQ-14; OP-10, OP-11; retenção R02, R11.
 - Estado: **NAO_EXECUTADO**.
 
@@ -270,11 +270,11 @@ Definir método/provedor/configuração e prova proporcionais, inclusive cobertu
 
 Responsabilidade de encaminhamento: GOV-001/TEC-002/QA-001. Estado: Aberta.
 
-### D07 — Modelo de verificação adicional da PR #40
+### D07 — Aplicação da verificação adicional incorporada
 
-PR #40 estava aberta na base desta especificação. Exigência geral de V2 antes de irreversibilidade real e demais escolhas de GOV-003 permanecem propostas, não regras incorporadas. Representar checkpoint aplicável e não permitir efeito cuja revisão/fundamento não estiver demonstrado.
+GOV-003/PR #40 foi incorporada no commit 65f369b53b182b6094b00658b7a741a0f2e877ad durante a preparação. Representar seus checkpoints e fases, incluindo V2 antes de eliminação/anonimização irreversível de dados reais. Designação da pessoa competente, disponibilidade e evidência por caso continuam pendentes; não permitir efeito cuja revisão exigida não estiver demonstrada.
 
-Responsabilidade de encaminhamento: Revisão de GOV-003/PR #40; sem pessoa presumida. Estado: PR #40 em revisão na conferência inicial.
+Responsabilidade de encaminhamento: Creusio Kizua; pessoa independente a designar. Estado: Governança incorporada; aplicação e designação pendentes.
 
 ### D08 — Fatiamento da implementação e preparação dos testes
 
