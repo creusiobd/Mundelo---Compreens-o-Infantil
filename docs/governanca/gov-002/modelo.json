@@ -480,5 +480,12 @@
     "QA_001": 32,
     "QA_002": 33
   },
-  "real_data_authorized": false
+  "real_data_authorized": false,
+  "effectuation_gates": [
+    "Autoridade por operação e escopo verificada",
+    "Fundamentação aplicável ao caso, distinta de hipótese candidata",
+    "Versão e condições revalidadas antes do efeito",
+    "Quando uma verificação adicional for indispensável à própria decisão ou efetivação, a operação protegida permanece pendente até satisfazê-la; só pode prosseguir contenção mínima já legitimada. Registrar em que fase a verificação é exigida, sem confundir prova pós-efeito com autorização prévia.",
+    "Limite, revisão, destinação e responsáveis definidos"
+  ]
 }
