@@ -24,6 +24,8 @@ Este procedimento define decisões e evidências; não executa retenção, exclu
 
 A concentração de funções foi informada pelo usuário e registrada na PR #21. Funções distintas não simulam pessoas diferentes. Se a verificação adicional necessária estiver indisponível, registrar e encaminhar a pendência; não declarar conclusão com o mesmo ato de decidir/disparar. Capacidade insuficiente não cria autorização para conservação indefinida ou suspensão automática de prazo exigível. Atos vinculantes devem ser encaminhados pelo meio competente, com alcance e prazo pertinentes.
 
+Quando uma verificação adicional for indispensável à própria decisão ou efetivação, a operação protegida permanece pendente até satisfazê-la; só pode prosseguir contenção mínima já legitimada. Registrar em que fase a verificação é exigida, sem confundir prova pós-efeito com autorização prévia.
+
 ## 2. Admissão da exceção
 
 Antes da operação protegida, identificar: objetos/versões, categorias, finalidade, solicitante/autoridade, motivo classificado, fonte e aplicação concreta, operações/destinatários, limite por data ou evento verificável, próxima revisão, destinação, dependências/cópias, executor/verificador e prova mínima.
