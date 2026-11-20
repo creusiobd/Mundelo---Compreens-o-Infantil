@@ -1,0 +1,276 @@
+{
+  "version": "0.1",
+  "synthetic": true,
+  "importable_into_product": false,
+  "description": "Modelo lógico de ensaio, não payload de API/cofre nem migration. Marcadores deliberadamente artificiais, sem pessoas reais.",
+  "clock": {
+    "initial": "2030-01-01T00:00:00Z",
+    "unit": "tick de laboratório",
+    "residual_backup_limit_ticks": 2,
+    "legal_or_production_duration": false
+  },
+  "actors": [
+    {
+      "id": "ACT-A",
+      "role": "autor sintético",
+      "authority": "Somente escopo S-A em regra de laboratório"
+    },
+    {
+      "id": "ACT-PEND",
+      "role": "solicitante sintético",
+      "authority": null
+    },
+    {
+      "id": "ACT-B",
+      "role": "terceiro sintético",
+      "authority": "Somente S-B"
+    },
+    {
+      "id": "REC-EXT",
+      "role": "destinatário externo simulado",
+      "authority": "Apenas pacote explicitamente autorizado"
+    }
+  ],
+  "records": [
+    {
+      "id": "OBS-1",
+      "category": "C01",
+      "version": "v1",
+      "marker": "QA_RETENCAO_V1",
+      "author": "ACT-A",
+      "scope": "S-A"
+    },
+    {
+      "id": "OBS-1",
+      "category": "C01",
+      "version": "v2",
+      "marker": "QA_RETENCAO_V2",
+      "author": "ACT-A",
+      "scope": "S-A",
+      "supersedes": "v1"
+    },
+    {
+      "id": "SYN-1",
+      "category": "C04",
+      "version": "v1",
+      "sources": [
+        "OBS-1/v1"
+      ]
+    },
+    {
+      "id": "UNIT-1",
+      "category": "C04",
+      "version": "v1",
+      "sources": [
+        "OBS-1/v1"
+      ]
+    },
+    {
+      "id": "OBS-MIX",
+      "category": "C01",
+      "scopes": [
+        "S-A",
+        "S-B"
+      ],
+      "markers": [
+        "QA_SCOPE_A",
+        "QA_SCOPE_B"
+      ]
+    },
+    {
+      "id": "GRANT-1",
+      "category": "C05",
+      "revision": 1,
+      "synthetic_policy": "P-LAB-VALIDA"
+    },
+    {
+      "id": "CASE-1",
+      "category": "C06",
+      "scope": [
+        "S-A",
+        "S-B"
+      ]
+    },
+    {
+      "id": "PKG-1",
+      "category": "C07",
+      "state": "preparação privada"
+    },
+    {
+      "id": "COPY-1",
+      "category": "C01",
+      "governed": true
+    },
+    {
+      "id": "COPY-2",
+      "category": "C01",
+      "governed": true,
+      "fault_variant": "falha de tarefa apenas em laboratório"
+    },
+    {
+      "id": "BAK-1",
+      "category": "C08",
+      "source": "OBS-1/v1",
+      "grant_revision": 1,
+      "governed": true
+    },
+    {
+      "id": "EXT-1",
+      "category": "C07",
+      "governed": false,
+      "recipient": "REC-EXT",
+      "simulated_only": true
+    },
+    {
+      "id": "LOG-1",
+      "category": "C09",
+      "marker": "QA_RETENCAO_V1"
+    },
+    {
+      "id": "EVID-1",
+      "category": "C06",
+      "marker": "QA_RETENCAO_V1"
+    },
+    {
+      "id": "SET-1",
+      "category": "C04",
+      "pseudonym": "CODE-1",
+      "linkable": true
+    },
+    {
+      "id": "LOOKUP-1",
+      "category": "C03",
+      "maps": {
+        "CODE-1": "S-A"
+      }
+    },
+    {
+      "id": "INC-1",
+      "category": "C06",
+      "synthetic": true
+    },
+    {
+      "id": "FIX-1",
+      "category": "C06",
+      "synthetic": true
+    },
+    {
+      "id": "METHOD-1",
+      "category": "C10",
+      "text": "Procedimento sintético de revisão, sem narrativa pessoal."
+    },
+    {
+      "id": "RAW-1",
+      "category": "C01",
+      "marker": "QA_PERSONAL_SIMULADO"
+    }
+  ],
+  "intent": {
+    "id": "INT-1",
+    "key": "KEY-1",
+    "scope": [
+      "COPY-1",
+      "COPY-2"
+    ],
+    "immutable": true
+  },
+  "policies": [
+    {
+      "id": "P01_SEM_REGRA",
+      "category": "C01",
+      "duration": null,
+      "review_rule": null,
+      "destination": null
+    },
+    {
+      "id": "P-LAB-VALIDA",
+      "category": "C01",
+      "purpose": "Somente ensaio sintético isolado",
+      "review_rule": "Ao finalizar cada caso",
+      "destination": "Eliminar cópias de laboratório após registrar prova mínima sintética",
+      "production_approved": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "P01_SEM_REGRA",
+      "case": "R01",
+      "instructions": "Política sintética sem duração e sem gatilho/destinação verificáveis; em controle positivo, regra de laboratório explícita."
+    },
+    {
+      "id": "PEDIDO_AUTORIDADE_PENDENTE",
+      "case": "R02",
+      "instructions": "Ator ACT-PEND não tem prova de autoridade; ACT-A tem autoridade sintética explícita em controle separado."
+    },
+    {
+      "id": "ORIGEM_COM_DERIVADOS",
+      "case": "R03",
+      "instructions": "OBS-1/v1 gera SYN-1/v1 e unidade compartilhada UNIT-1; ACT-A é autor; caso administrativo alheio é variante separada."
+    },
+    {
+      "id": "ELIMINACAO_VERSAO_ANTIGA",
+      "case": "R04",
+      "instructions": "OBS-1/v1 contém marcador QA_RETENCAO_V1; v2 corrigida; decisão sintética admite eliminar o conteúdo antigo e limita prova remanescente."
+    },
+    {
+      "id": "CONTRIBUICAO_MISTA",
+      "case": "R05",
+      "instructions": "OBS-MIX contém escopos S-A e S-B de sujeitos sintéticos distintos; ACT-A não pode conceder por S-B; destinatário REC-EXT não tem permissão para S-B."
+    },
+    {
+      "id": "REVOGACAO_EM_PREPARACAO",
+      "case": "R06",
+      "instructions": "Concessão GRANT-1 vigente permite preparação de síntese/pacote PKG-1; barreira de laboratório controlável antes da liberação final."
+    },
+    {
+      "id": "FALHA_COPIA_CONTROLADA",
+      "case": "R07",
+      "instructions": "Manifesto inclui cópia primária COPY-1 e cópia governada COPY-2; falha determinística só em COPY-2."
+    },
+    {
+      "id": "BACKUP_RESIDUAL",
+      "case": "R08",
+      "instructions": "Backup BAK-1 possui residual de laboratório de 2 ticks, acesso restrito e expurgo ao fim; prazo é apenas variável de ensaio, não política real."
+    },
+    {
+      "id": "RESTAURACAO_ANTERIOR",
+      "case": "R09",
+      "instructions": "BAK-1 precede eliminação de OBS-1 e revogação de GRANT-1; registro mínimo legitimado dessas medidas fora da cópia antiga."
+    },
+    {
+      "id": "RETRY_IDEMPOTENTE",
+      "case": "R10",
+      "instructions": "Intenção INT-1 executou COPY-1 e deixou COPY-2 pendente; chave KEY-1 vinculada ao escopo e ator."
+    },
+    {
+      "id": "DECISAO_PARCIAL",
+      "case": "R11",
+      "instructions": "Pedido CASE-1 contém dois escopos; decisão de laboratório admite um e mantém outro pendente/negado com fundamento sintético identificado."
+    },
+    {
+      "id": "DERIVADO_RECALCULADO_RESTRITO",
+      "case": "R12",
+      "instructions": "SYN-1 é recalculável a partir de OBS-1/v2, mas finalidade F-USO está restrita na concessão."
+    },
+    {
+      "id": "COPIA_EXTERNA",
+      "case": "R13",
+      "instructions": "PKG-1 foi entregue legitimamente a REC-EXT antes da revogação; cópia EXT-1 está fora da governança técnica do sistema."
+    },
+    {
+      "id": "LOG_COM_CONTEUDO",
+      "case": "R14",
+      "instructions": "LOG-1 e EVID-1 contêm marcador sintético QA_RETENCAO_V1 indevidamente copiado; política admite prova mínima sem o teor."
+    },
+    {
+      "id": "PSEUDONIMO_VINCULAVEL",
+      "case": "R15",
+      "instructions": "SET-1 substitui nome por CODE-1, mas LOOKUP-1 e contexto permitem vínculo sintético."
+    },
+    {
+      "id": "APRENDIZAGEM_SEPARADA",
+      "case": "R16",
+      "instructions": "INC-1 possui medida técnica FIX-1, nota metodológica METHOD-1 sem teor pessoal e material pessoal sintético RAW-1 com política separada."
+    }
+  ]
+}

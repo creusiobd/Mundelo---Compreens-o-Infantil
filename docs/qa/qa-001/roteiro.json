@@ -1,0 +1,1000 @@
+{
+  "version": "0.1",
+  "task": "QA-001",
+  "issue": 32,
+  "base_commit": "59efcd56b006768540863fbc1e2fcbb144ae3007",
+  "owner": "Creusio Kizua",
+  "scope": "Preparação do roteiro; sem execução de R01–R16 ou implementação dos controles",
+  "real_data_authorized": false,
+  "cases_executed": 0,
+  "cases": [
+    {
+      "id": "R01",
+      "source_condition": "Categoria não possui período nem regra verificável de revisão/destino",
+      "source_expected": "Categoria não é considerada habilitada para retenção pessoal real; pendência e custódia da política identificadas",
+      "categories": [
+        "C01",
+        "C02"
+      ],
+      "gaps": [
+        "G09"
+      ],
+      "open_decisions": [
+        "D03",
+        "D06"
+      ],
+      "review_triggers": [
+        "V01"
+      ],
+      "dataset_variant": "P01_SEM_REGRA",
+      "preconditions": "Política sintética sem duração e sem gatilho/destinação verificáveis; em controle positivo, regra de laboratório explícita.",
+      "steps": [
+        "Validar habilitação da categoria e tentar preservar objeto sintético sob ambas as políticas."
+      ],
+      "expected": "Gate fica pendente no caso incompleto; regra de laboratório permite somente o ensaio sintético delimitado, sem habilitar retenção pessoal real.",
+      "independent_observation": "Verificar decisão e persistência/impedimento na fronteira efetiva; a política não pode ganhar prazo por default.",
+      "evidence_required": "Comparação das duas políticas, motivo do gate e escopo observado.",
+      "governance_decision": "Definir e aprovar fundamento, prazo/gatilho e destino da categoria antes de uso real.",
+      "acceptance_links": [
+        "A02",
+        "A03",
+        "A25"
+      ],
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-10",
+        "REQ-07",
+        "REQ-13",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-02",
+        "OP-01",
+        "OP-08"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G09 e decisões D03, D06",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R02",
+      "source_condition": "Pedido recebido de pessoa cuja autoridade ainda precisa ser verificada",
+      "source_expected": "Pedido é protocolado/acompanhado sem executar operação protegida ou conceder acesso adicional",
+      "categories": [
+        "C05",
+        "C06"
+      ],
+      "gaps": [
+        "G01",
+        "G07",
+        "G08"
+      ],
+      "open_decisions": [
+        "D01",
+        "D03",
+        "D07"
+      ],
+      "review_triggers": [
+        "V02"
+      ],
+      "dataset_variant": "PEDIDO_AUTORIDADE_PENDENTE",
+      "preconditions": "Ator ACT-PEND não tem prova de autoridade; ACT-A tem autoridade sintética explícita em controle separado.",
+      "steps": [
+        "Protocolar pedido",
+        "tentar leitura, correção e eliminação com ACT-PEND",
+        "depois conferir decisão com ACT-A no seu escopo."
+      ],
+      "expected": "Protocolo minimizado e acompanhamento acessível; nenhuma permissão adicional por protocolar. Controle autorizado não herda autoridade sobre outro objeto.",
+      "independent_observation": "Consultar registro de pedido e tentativas protegidas por caminho distinto; conferir resposta sem conteúdo ou existência restritos.",
+      "evidence_required": "Protocolo, versões da autoridade, decisões e comunicação minimizada.",
+      "governance_decision": "Autoridade disputada exige encaminhamento competente; papel familiar/importado não resolve disputa.",
+      "acceptance_links": [
+        "A01",
+        "A02",
+        "A10",
+        "A13",
+        "A20",
+        "A22",
+        "A25"
+      ],
+      "requirements": [
+        "REQ-01",
+        "REQ-02",
+        "REQ-03",
+        "REQ-10",
+        "REQ-11",
+        "REQ-13",
+        "REQ-14",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-02",
+        "OP-04",
+        "OP-09",
+        "OP-06",
+        "OP-12",
+        "OP-08",
+        "OP-10",
+        "OP-11"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G01, G07, G08 e decisões D01, D03, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R03",
+      "source_condition": "Autor corrige contribuição com unidade compartilhada e síntese",
+      "source_expected": "Versão e temporalidade distinguíveis; derivados conhecidos reavaliados; versão antiga não aparece indevidamente como atual",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "gaps": [
+        "G03",
+        "G04",
+        "G10"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05",
+        "D07"
+      ],
+      "review_triggers": [
+        "V04",
+        "V09"
+      ],
+      "dataset_variant": "ORIGEM_COM_DERIVADOS",
+      "preconditions": "OBS-1/v1 gera SYN-1/v1 e unidade compartilhada UNIT-1; ACT-A é autor; caso administrativo alheio é variante separada.",
+      "steps": [
+        "Corrigir para OBS-1/v2",
+        "observar origem e derivados",
+        "tentar exibir v1 como atual e repetir correção com versão obsoleta."
+      ],
+      "expected": "Versões/autoria distinguíveis; derivados conhecidos reavaliados nas quatro dimensões; conflito obsoleto não sobrescreve v2; correção não declara automaticamente falsidade.",
+      "independent_observation": "Inspecionar versão persistida, índice de dependências e apresentação; rerender do relatório não basta.",
+      "evidence_required": "Identidades de versão, relação de origem, estado por dependência e limites de cobertura.",
+      "governance_decision": "Definir cobertura e legitimidade da correção administrativa; revisão V04 se aplicável antes da decisão.",
+      "acceptance_links": [
+        "A09",
+        "A15",
+        "A20",
+        "A25"
+      ],
+      "requirements": [
+        "REQ-04",
+        "REQ-11",
+        "REQ-13",
+        "REQ-05",
+        "REQ-06",
+        "REQ-10",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-08",
+        "OP-05",
+        "OP-14",
+        "OP-12",
+        "OP-02"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G03, G04, G10 e decisões D02, D05, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R04",
+      "source_condition": "Eliminação cabível alcança conteúdo de versão anterior",
+      "source_expected": "Histórico da correção não mantém cópia indevida do conteúdo; somente evidência permitida permanece",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C06",
+        "C09"
+      ],
+      "gaps": [
+        "G04",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V01",
+        "V08"
+      ],
+      "dataset_variant": "ELIMINACAO_VERSAO_ANTIGA",
+      "preconditions": "OBS-1/v1 contém marcador QA_RETENCAO_V1; v2 corrigida; decisão sintética admite eliminar o conteúdo antigo e limita prova remanescente.",
+      "steps": [
+        "Executar eliminação delimitada",
+        "buscar marcador nos repositórios de versões, histórico, logs e derivados cobertos",
+        "conferir v2 preservada quando cabível."
+      ],
+      "expected": "Conteúdo eliminável não sobrevive como histórico/prova; referência mínima só permanece se legitimada por sua própria política.",
+      "independent_observation": "Leitura independente de todas as superfícies declaradas; coberturas desconhecidas impedem conclusão integral.",
+      "evidence_required": "Inventário antes/depois, resultado de buscas por escopo, restrições e política da evidência.",
+      "governance_decision": "V2 antes de irreversibilidade em dados reais; simulação sintética V1 não satisfaz esse requisito real.",
+      "acceptance_links": [
+        "A09",
+        "A12"
+      ],
+      "requirements": [
+        "REQ-04",
+        "REQ-11",
+        "REQ-13",
+        "REQ-06",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "operations": [
+        "OP-08",
+        "OP-11"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G04, G08, G09 e decisões D05, D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R05",
+      "source_condition": "Medida atinge dados próprios e de terceiros numa contribuição",
+      "source_expected": "Decisão separa os escopos, protege os envolvidos e não produz recorte enganoso para compartilhamento",
+      "categories": [
+        "C01",
+        "C03",
+        "C04",
+        "C05",
+        "C07"
+      ],
+      "gaps": [
+        "G02",
+        "G06",
+        "G07",
+        "G08"
+      ],
+      "open_decisions": [
+        "D03",
+        "D04",
+        "D07"
+      ],
+      "review_triggers": [
+        "V05"
+      ],
+      "dataset_variant": "CONTRIBUICAO_MISTA",
+      "preconditions": "OBS-MIX contém escopos S-A e S-B de sujeitos sintéticos distintos; ACT-A não pode conceder por S-B; destinatário REC-EXT não tem permissão para S-B.",
+      "steps": [
+        "Solicitar restrição/compartilhamento de S-A",
+        "preparar representação",
+        "conferir perfil, detalhe, relatório, metadados e exportação."
+      ],
+      "expected": "Decisão separa escopos; não amplia autoridade nem entrega S-B; se recorte deturpa contexto, entrega fica pendente ou usa alternativa legitimada.",
+      "independent_observation": "Inspecionar payload/cabeçalho e apresentação com destinatário sem escopo; não confiar só em botão oculto.",
+      "evidence_required": "Matriz de escopos, decisão sobre unidade íntegra e ausência de marcadores restritos.",
+      "governance_decision": "Unidade interpretativa/apresentação incerta aciona V05 antes da entrega.",
+      "acceptance_links": [
+        "A05",
+        "A07",
+        "A13",
+        "A21"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-12",
+        "REQ-11",
+        "REQ-01"
+      ],
+      "operations": [
+        "OP-04",
+        "OP-06",
+        "OP-12",
+        "OP-07"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G02, G06, G07, G08 e decisões D03, D04, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R06",
+      "source_condition": "Concessão é revogada durante preparação de síntese/exportação",
+      "source_expected": "Condições reavaliadas na efetivação; preparação não contorna a revogação",
+      "categories": [
+        "C04",
+        "C05",
+        "C07"
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G05",
+        "G06",
+        "G07"
+      ],
+      "open_decisions": [
+        "D02",
+        "D04"
+      ],
+      "review_triggers": [
+        "V09"
+      ],
+      "dataset_variant": "REVOGACAO_EM_PREPARACAO",
+      "preconditions": "Concessão GRANT-1 vigente permite preparação de síntese/pacote PKG-1; barreira de laboratório controlável antes da liberação final.",
+      "steps": [
+        "Pausar após preparação e antes do efeito, revogar concessão, aguardar confirmação da revogação e liberar barreira. Repetir com mudança de origem e controle de entrega anterior à revogação."
+      ],
+      "expected": "Revogação ordenada antes da entrega impede novo efeito com contexto antigo; mudança de origem exige avaliação nova. Bytes entregues antes não são declarados recolhidos.",
+      "independent_observation": "Observar eventos/versões e fronteira de download/resultado, inclusive nova tentativa de obter pacote e detalhe já aberto. Teste de classe isolada não basta.",
+      "evidence_required": "Ordem comprovada, versões e presença/ausência da entrega, sem exportar conteúdo real.",
+      "governance_decision": "Definir mecanismo atômico e política de transmissão longa; pausa não pode substituir autorização por um mock.",
+      "acceptance_links": [
+        "A04",
+        "A05",
+        "A08",
+        "A14",
+        "A16"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-05",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-03",
+        "OP-04",
+        "OP-07",
+        "OP-13",
+        "OP-10",
+        "OP-08",
+        "OP-12"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G01, G02, G05, G06, G07 e decisões D02, D04",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R07",
+      "source_condition": "Pedido exige eliminação de cópias e uma tarefa falha",
+      "source_expected": "Estado parcial/falha permanece visível ao acompanhamento; pedido não é declarado integralmente executado",
+      "categories": [
+        "C01",
+        "C02",
+        "C04",
+        "C06",
+        "C08",
+        "C09"
+      ],
+      "gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V01",
+        "V08"
+      ],
+      "dataset_variant": "FALHA_COPIA_CONTROLADA",
+      "preconditions": "Manifesto inclui cópia primária COPY-1 e cópia governada COPY-2; falha determinística só em COPY-2.",
+      "steps": [
+        "Executar decisão sintética de eliminação",
+        "injetar falha no adaptador da cópia",
+        "consultar acompanhamento por caminho distinto",
+        "retomar apenas pendência."
+      ],
+      "expected": "Estado parcial/falha com escopo/ação/responsável explícitos; não declarar eliminação integral nem repetir indevidamente efeito já aplicado.",
+      "independent_observation": "Inspecionar ambas as cópias, estado da tarefa e comunicação; desligar injeção e verificar recuperação idempotente.",
+      "evidence_required": "Resultados por cópia, falha controlada, estado e nova ação.",
+      "governance_decision": "Capacidade e cobertura de cópias precisam ser demonstradas; prova insuficiente aciona V08 antes de concluir.",
+      "acceptance_links": [
+        "A12",
+        "A17",
+        "A23"
+      ],
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08",
+        "REQ-04",
+        "REQ-09",
+        "REQ-02",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-11",
+        "OP-14",
+        "OP-09"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G08, G09 e decisões D05, D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R08",
+      "source_condition": "Backup tem retenção residual admitida, com limite e acesso definidos",
+      "source_expected": "Retenção é explicitamente delimitada; resposta não afirma eliminação integral; expurgo/revisão acompanhados",
+      "categories": [
+        "C06",
+        "C08"
+      ],
+      "gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06"
+      ],
+      "review_triggers": [
+        "V08"
+      ],
+      "dataset_variant": "BACKUP_RESIDUAL",
+      "preconditions": "Backup BAK-1 possui residual de laboratório de 2 ticks, acesso restrito e expurgo ao fim; prazo é apenas variável de ensaio, não política real.",
+      "steps": [
+        "Eliminar fonte",
+        "consultar estado e tentar acesso não autorizado ao backup",
+        "avançar relógio de laboratório até limite e conferir expurgo/revisão."
+      ],
+      "expected": "Residual delimitado e comunicado; não afirma eliminação integral enquanto existe; limite vencido gera ação comprovada, não renovação tácita.",
+      "independent_observation": "Ler metadados/limite e acesso; verificar ausência ou pendência explícita no fim, inclusive falha de expurgo.",
+      "evidence_required": "Regra residual de ensaio, origem do relógio, controles de acesso e efeito ao limite.",
+      "governance_decision": "Prazo real, base e capacidade do provedor dependem de aprovação/evidência; não derivar prazo dos ticks.",
+      "acceptance_links": [
+        "A03",
+        "A12",
+        "A19"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-07",
+        "REQ-06",
+        "REQ-08",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-01",
+        "OP-11",
+        "OP-14"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G08, G09 e decisões D05, D06",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R09",
+      "source_condition": "Backup anterior a uma eliminação é restaurado",
+      "source_expected": "Reconciliação ocorre antes de disponibilizar dados; conteúdo eliminado/restrito não retorna automaticamente ao uso",
+      "categories": [
+        "C01",
+        "C04",
+        "C05",
+        "C08"
+      ],
+      "gaps": [
+        "G04",
+        "G07",
+        "G09"
+      ],
+      "open_decisions": [
+        "D01",
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V06"
+      ],
+      "dataset_variant": "RESTAURACAO_ANTERIOR",
+      "preconditions": "BAK-1 precede eliminação de OBS-1 e revogação de GRANT-1; registro mínimo legitimado dessas medidas fora da cópia antiga.",
+      "steps": [
+        "Restaurar em área isolada",
+        "tentar acesso antes da reconciliação",
+        "reaplicar medidas e só então avaliar reabertura. Repetir com reconciliação falhando."
+      ],
+      "expected": "Conteúdo eliminado/permissão revogada não voltam; área fica isolada se falhar; relógio não reinicia pela restauração.",
+      "independent_observation": "Consultar armazenamento restaurado e fronteira de apresentação com atores distintos; restauração visual de exemplos não equivale a backup governado.",
+      "evidence_required": "Estado de isolamento, medidas reaplicadas e comparação de acesso/relógio.",
+      "governance_decision": "Revisão V06 antes de reabrir quando cobertura/resultado não demonstrados; marcadores também têm política própria.",
+      "acceptance_links": [
+        "A19"
+      ],
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-11",
+        "OP-14"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G04, G07, G09 e decisões D01, D05, D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R10",
+      "source_condition": "Nova tentativa repete uma operação já executada parcialmente",
+      "source_expected": "Estado e condições atuais são reavaliados; não há efeito duplicado indevido nem falsa conclusão",
+      "categories": [
+        "C05",
+        "C06",
+        "C08"
+      ],
+      "gaps": [
+        "G05",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05"
+      ],
+      "review_triggers": [
+        "V09"
+      ],
+      "dataset_variant": "RETRY_IDEMPOTENTE",
+      "preconditions": "Intenção INT-1 executou COPY-1 e deixou COPY-2 pendente; chave KEY-1 vinculada ao escopo e ator.",
+      "steps": [
+        "Repetir KEY-1",
+        "tentar mesma chave com escopo alterado",
+        "revogar autoridade antes de recuperar resultado",
+        "entregar evento antigo fora de ordem."
+      ],
+      "expected": "Sem duplicação indevida; chave para outra intenção produz conflito; obter resultado exige autorização atual; evento antigo não ressuscita estado nem reinicia prazo.",
+      "independent_observation": "Comparar efeitos por destino e versões atuais; observar fronteira de resultado e relógio original.",
+      "evidence_required": "Chave opaca, referências da intenção, contagem de efeitos e decisões atualizadas.",
+      "governance_decision": "Escolher mecanismo de idempotência/ordenação, sem tratar token de sessão como concessão atual.",
+      "acceptance_links": [
+        "A16",
+        "A17",
+        "A18",
+        "A23"
+      ],
+      "requirements": [
+        "REQ-04",
+        "REQ-08",
+        "REQ-09",
+        "REQ-06",
+        "REQ-02",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-08",
+        "OP-12",
+        "OP-13",
+        "OP-14",
+        "OP-09",
+        "OP-11"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G05, G08, G09 e decisões D02, D05",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R11",
+      "source_condition": "Pedido não pode ser integralmente atendido por decisão fundamentada",
+      "source_expected": "Medida cabível, retenção/negativa e revisão são comunicadas sem revelar informação restrita",
+      "categories": [
+        "C05",
+        "C06"
+      ],
+      "gaps": [
+        "G01",
+        "G06",
+        "G08"
+      ],
+      "open_decisions": [
+        "D03",
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V02",
+        "V03",
+        "V08"
+      ],
+      "dataset_variant": "DECISAO_PARCIAL",
+      "preconditions": "Pedido CASE-1 contém dois escopos; decisão de laboratório admite um e mantém outro pendente/negado com fundamento sintético identificado.",
+      "steps": [
+        "Registrar decisão por escopo",
+        "comunicar ao solicitante",
+        "tentar recuperar detalhes restritos e solicitar revisão."
+      ],
+      "expected": "Medida cabível e limites comunicados; nenhuma informação restrita; negativa não impede acompanhamento/revisão apropriados; fundamento não é inventado.",
+      "independent_observation": "Conferir ficha de decisão e comunicação com solicitante sem acesso ao segundo escopo.",
+      "evidence_required": "Referências minimizadas do fundamento, estado por medida e encaminhamento de revisão.",
+      "governance_decision": "Fundamento/competência real e conflito de interesse exigem revisão aplicável; ensaio não valida juridicamente a decisão.",
+      "acceptance_links": [
+        "A07",
+        "A10",
+        "A22",
+        "A23"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-11",
+        "REQ-12",
+        "REQ-02",
+        "REQ-10",
+        "REQ-14",
+        "REQ-08",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-06",
+        "OP-09",
+        "OP-10",
+        "OP-11",
+        "OP-14"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G01, G06, G08 e decisões D03, D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R12",
+      "source_condition": "Derivado foi recalculado após alteração de origem, mas uso não está autorizado",
+      "source_expected": "Recalcular não libera apresentação/utilização; restrição aplicável permanece",
+      "categories": [
+        "C04",
+        "C05"
+      ],
+      "gaps": [
+        "G02",
+        "G04",
+        "G07"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05"
+      ],
+      "review_triggers": [
+        "V09"
+      ],
+      "dataset_variant": "DERIVADO_RECALCULADO_RESTRITO",
+      "preconditions": "SYN-1 é recalculável a partir de OBS-1/v2, mas finalidade F-USO está restrita na concessão.",
+      "steps": [
+        "Recalcular em contexto autorizado de manutenção",
+        "tentar exibir, usar em nova síntese, compartilhar e exportar com finalidade restrita."
+      ],
+      "expected": "Recalcular não libera apresentação/uso; as quatro dimensões ficam distintas e cada caminho aplica restrição vigente.",
+      "independent_observation": "Verificar versão derivada e tentar caminhos de consumo com ator restrito, inclusive cache e relatório.",
+      "evidence_required": "Estado por dimensão, finalidade e decisões nas fronteiras.",
+      "governance_decision": "Finalidade/permissão de manutenção precisa ser explícita; recomputação não cria base independente.",
+      "acceptance_links": [
+        "A06",
+        "A11",
+        "A15",
+        "A18"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-05",
+        "REQ-06",
+        "REQ-14",
+        "REQ-04",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-05",
+        "OP-10",
+        "OP-08",
+        "OP-14"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G02, G04, G07 e decisões D02, D05",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R13",
+      "source_condition": "Cópia foi entregue a destinatário externo",
+      "source_expected": "Registra-se o alcance real da entrega/medidas cabíveis, sem alegar apagamento fora da governança",
+      "categories": [
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "gaps": [
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D04",
+        "D06"
+      ],
+      "review_triggers": [
+        "V05"
+      ],
+      "dataset_variant": "COPIA_EXTERNA",
+      "preconditions": "PKG-1 foi entregue legitimamente a REC-EXT antes da revogação; cópia EXT-1 está fora da governança técnica do sistema.",
+      "steps": [
+        "Revogar futuras entregas e solicitar medidas cabíveis à cópia externa pelo procedimento de laboratório",
+        "consultar resposta ao pedido."
+      ],
+      "expected": "Registra alcance/destino e medidas/limites; não afirma apagar remotamente cópia fora de controle; novas entregas exigem autorização atual.",
+      "independent_observation": "Conferir registro de entrega anterior, negativa posterior e comunicação de limite; não usar simulação de confirmação como prova externa.",
+      "evidence_required": "Ordem/escopo da entrega, natureza externa da cópia e próxima medida.",
+      "governance_decision": "Definir medidas cabíveis e destinatário legítimo, sem envio real nesta tarefa.",
+      "acceptance_links": [
+        "A07",
+        "A14"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-11",
+        "REQ-12",
+        "REQ-04"
+      ],
+      "operations": [
+        "OP-06",
+        "OP-04",
+        "OP-07",
+        "OP-10",
+        "OP-13"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G07, G08, G09 e decisões D04, D06",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R14",
+      "source_condition": "Conteúdo pessoal eliminável aparece em log ou evidência de execução",
+      "source_expected": "Cópia é tratada conforme política; prova minimizada não reconstitui conteúdo eliminado",
+      "categories": [
+        "C02",
+        "C06",
+        "C09"
+      ],
+      "gaps": [
+        "G06",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V01",
+        "V08"
+      ],
+      "dataset_variant": "LOG_COM_CONTEUDO",
+      "preconditions": "LOG-1 e EVID-1 contêm marcador sintético QA_RETENCAO_V1 indevidamente copiado; política admite prova mínima sem o teor.",
+      "steps": [
+        "Executar tratamento delimitado",
+        "inspecionar logs, erros, anexos e evidência resultante",
+        "provocar falha de gravação da prova após efeito."
+      ],
+      "expected": "Prova não reconstitui conteúdo eliminado; se efeito ocorreu e comprovação falhou, manter sob verificação sem restaurar dados por conveniência.",
+      "independent_observation": "Busca independente nos campos e destinos declarados; conferir política própria da prova e reconciliação.",
+      "evidence_required": "Inventário de campos, buscas negativas e estado do efeito/comprovação.",
+      "governance_decision": "Regime de registro de incidente é condicional em GOV-002; não aplica conservação genérica a qualquer log.",
+      "acceptance_links": [
+        "A12",
+        "A21",
+        "A23"
+      ],
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08",
+        "REQ-03",
+        "REQ-12",
+        "REQ-02",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-11",
+        "OP-04",
+        "OP-07",
+        "OP-09",
+        "OP-14"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G06, G08, G09 e decisões D05, D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R15",
+      "source_condition": "Nome é substituído por código e alguém solicita marcar o conjunto como anônimo",
+      "source_expected": "Anonimização não é declarada sem verificação técnica apropriada; informação vinculável continua protegida",
+      "categories": [
+        "C01",
+        "C03",
+        "C04",
+        "C09",
+        "C10"
+      ],
+      "gaps": [
+        "G06",
+        "G09"
+      ],
+      "open_decisions": [
+        "D06",
+        "D07"
+      ],
+      "review_triggers": [
+        "V01",
+        "V08"
+      ],
+      "dataset_variant": "PSEUDONIMO_VINCULAVEL",
+      "preconditions": "SET-1 substitui nome por CODE-1, mas LOOKUP-1 e contexto permitem vínculo sintético.",
+      "steps": [
+        "Solicitar classificação como anônimo",
+        "verificar vínculo pela tabela/contexto",
+        "testar apresentação/exportação sem autoridade enquanto avaliação está pendente."
+      ],
+      "expected": "Conjunto continua protegido e não é declarado anônimo só por trocar nome por código. Método futuro exige avaliação competente de seu escopo/limitações.",
+      "independent_observation": "Reidentificação apenas no conjunto sintético por verificação distinta; conferir classificação e fronteira de acesso.",
+      "evidence_required": "Método e limitações, resultado de vínculo e estado da avaliação, sem tabela real.",
+      "governance_decision": "Definir método competente; ensaio não certifica anonimização de conjunto real nem dispensa V2 antes da irreversibilidade.",
+      "acceptance_links": [
+        "A06",
+        "A21",
+        "A24"
+      ],
+      "requirements": [
+        "REQ-03",
+        "REQ-05",
+        "REQ-12",
+        "REQ-06",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "operations": [
+        "OP-05",
+        "OP-04",
+        "OP-07",
+        "OP-01",
+        "OP-11"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G06, G09 e decisões D06, D07",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    },
+    {
+      "id": "R16",
+      "source_condition": "Instituição corrige falha e conserva material de aprendizagem",
+      "source_expected": "Correção não é apresentada como prova de aprendizagem ou eliminação da causa; conteúdo pessoal tem política própria",
+      "categories": [
+        "C01",
+        "C06",
+        "C09",
+        "C10"
+      ],
+      "gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D06"
+      ],
+      "review_triggers": [
+        "V08"
+      ],
+      "dataset_variant": "APRENDIZAGEM_SEPARADA",
+      "preconditions": "INC-1 possui medida técnica FIX-1, nota metodológica METHOD-1 sem teor pessoal e material pessoal sintético RAW-1 com política separada.",
+      "steps": [
+        "Registrar correção e nota",
+        "tentar concluir eliminação da causa só pela correção",
+        "tentar conservar RAW-1 por chamar de aprendizado",
+        "avaliar destinação própria."
+      ],
+      "expected": "Medida técnica não prova aprendizagem/eliminação da causa; método e dados separados; RAW-1 não ganha retenção indefinida.",
+      "independent_observation": "Conferir campos da nota, evidência da medida e política/destino do material pessoal; ausência de teste causal permanece limite.",
+      "evidence_required": "Referências da medida, nota metodológica, avaliação pendente e destinação dos dados.",
+      "governance_decision": "Evidência de aprendizagem/causa e base de conservação são avaliações distintas; não inventar novos princípios.",
+      "acceptance_links": [
+        "A24"
+      ],
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "operations": [
+        "OP-01",
+        "OP-05",
+        "OP-11"
+      ],
+      "current_readiness": "BLOQUEADO_PARA_ACEITACAO_INTEGRAL",
+      "result": "NAO_EXECUTADO",
+      "observed": null,
+      "evidence_refs": [],
+      "blocker": "Confirmar/implementar fronteira e capacidades necessárias; gaps G08, G09 e decisões D06",
+      "executor": "Creusio Kizua",
+      "independent_reviewer": null
+    }
+  ],
+  "environment": {
+    "available": "Preview local demonstrativo",
+    "url": "http://127.0.0.1:4173",
+    "config": "playwright.config.ts",
+    "mode": "VITE_APP_ENV=test",
+    "backend_capabilities": "Não demonstradas para aceitação integral; confirmar por execução futura",
+    "remote_services_allowed": false
+  },
+  "states": [
+    "NAO_EXECUTADO",
+    "BLOQUEADO",
+    "EM_EXECUCAO",
+    "PASS",
+    "FAIL",
+    "INCONCLUSIVO"
+  ],
+  "source_documents": [
+    "docs/politica-operacional-retencao-cenarios-v0-1.md",
+    "docs/especificacoes/tec-003/modelo.json",
+    "docs/governanca/gov-002/modelo.json",
+    "docs/governanca/gov-003/modelo.json",
+    "docs/parametros-retencao-categorias-v0-1.json"
+  ]
+}
