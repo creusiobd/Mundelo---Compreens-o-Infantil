@@ -6,7 +6,7 @@ Data: 20/11/2026 · Responsável atual: Creusio Kizua · [Tarefa #31](https://gi
 
 ## Base e limites
 
-Base de código/documentos: `f1ffbc13dae489651d145f1d916b38a09bab31d8`. [TEC-001](../../auditoria/tec-001/README.md) identifica os controles demonstrativos e as lacunas; [GOV-002](../../governanca/gov-002/README.md) foi incorporada pela PR #39. A [PR #40 / GOV-003](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40), conferida no início como aberta, permanece proposta em revisão nesta entrega. Sua revisão adicional antes de atos irreversíveis não é tratada como decisão incorporada. Ver D07.
+Base de código/documentos: `f1ffbc13dae489651d145f1d916b38a09bab31d8`. [TEC-001](../../auditoria/tec-001/README.md) identifica os controles demonstrativos e as lacunas; [GOV-002](../../governanca/gov-002/README.md) foi incorporada pela PR #39. A [PR #40 / GOV-003](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40), aberta na conferência inicial, foi incorporada durante a preparação no commit `65f369b53b182b6094b00658b7a741a0f2e877ad`. Seus checkpoints passam a integrar esta especificação, incluindo V2 antes de eliminação/anonimização irreversível de dados reais. A aplicação por caso e a designação do revisor continuam pendentes (D07).
 
 Preserva-se a [ADR-005](../../adr/005-identidade-e-persistencia-supabase.md): Supabase para identidade adulta e implementação controlada do espaço inicial; PKCE no desenvolvimento. Esta especificação não autoriza tabelas ou dados reais infantis. Não reabre a escolha de provedor. Categorias C01–C10, bases e durações continuam nos [parâmetros existentes](../../parametros-retencao-categorias-v0-1.json); não são criados novos prazos.
 
@@ -138,7 +138,7 @@ Lacunas TEC-001: G03, G07, G10.
 
 ### REQ-14 — Revisão e gates como condições
 
-Representar revisões exigidas pelo procedimento vigente, fase, competência e escopo; GOV-003/PR #40 segue proposta, sem suprimento por aprovação documental.
+Representar revisões exigidas por GOV-002/GOV-003 incorporadas, fase, competência e escopo; aprovação documental não comprova execução nem designa revisor.
 
 Lacunas TEC-001: G03, G08.
 
