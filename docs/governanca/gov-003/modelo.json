@@ -69,7 +69,7 @@
     },
     {
       "id": "V03",
-      "trigger": "Conflito de interesse ou participação material do decisor/executor",
+      "trigger": "Conflito de interesse relevante ou participação como parte no objeto contestado",
       "phase": "ANTES_DA_DECISAO",
       "controls": [
         "V2"
