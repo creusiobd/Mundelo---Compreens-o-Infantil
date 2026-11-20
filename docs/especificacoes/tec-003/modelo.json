@@ -1,0 +1,1214 @@
+{
+  "version": "0.1",
+  "task": "TEC-003",
+  "issue": 31,
+  "date": "2026-11-20",
+  "base_commit": "f1ffbc13dae489651d145f1d916b38a09bab31d8",
+  "owner": "Creusio Kizua",
+  "status": "Especificação lógica proposta para revisão; sem migrations ou implementação",
+  "governance_inputs": {
+    "GOV_002": {
+      "pr": 39,
+      "status": "Incorporada",
+      "commit": "f1ffbc13dae489651d145f1d916b38a09bab31d8"
+    },
+    "GOV_003": {
+      "pr": 40,
+      "status": "Em revisão na conferência inicial",
+      "head": "3f232e33da2d87bfe03e668cc8246e13dc93e745",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40"
+    }
+  },
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "title": "Identidade e autoridade na fronteira efetiva",
+      "rule": "Ator autenticado e autoridade pertinente ao ato vêm de fonte confiável; estado React, rótulo de papel e parâmetros do cliente não são prova.",
+      "gaps": [
+        "G01",
+        "G02"
+      ]
+    },
+    {
+      "id": "REQ-02",
+      "title": "Decisão e conclusão separadas",
+      "rule": "Negado, pendente e permitido não são resultado executado; falha/parcialidade e motivo comunicável preservam o escopo real.",
+      "gaps": [
+        "G08",
+        "G11"
+      ]
+    },
+    {
+      "id": "REQ-03",
+      "title": "Operações independentes e escopo mínimo",
+      "rule": "Avaliar separadamente conservar, apresentar, utilizar, compartilhar e exportar, incluindo metadados, perfil, destinatário e intervalo histórico.",
+      "gaps": [
+        "G02",
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "REQ-04",
+      "title": "Concorrência e revalidação no efeito",
+      "rule": "Comparar versão de objeto, política, concessão e restrição na efetivação, com ordenação verificável frente à mudança; não usar só relógio ou decisão antiga.",
+      "gaps": [
+        "G04",
+        "G05",
+        "G07"
+      ]
+    },
+    {
+      "id": "REQ-05",
+      "title": "Versões e linhagem proporcionais",
+      "rule": "Identificar origem/versão e derivações conhecidas; contador revision não substitui o acervo legítimo de versões e relações.",
+      "gaps": [
+        "G04"
+      ]
+    },
+    {
+      "id": "REQ-06",
+      "title": "Propagação e quatro dimensões",
+      "rule": "Origem/autorização/restrição/destinação alteradas reavaliam validade, apresentação, utilização e retenção; não inferir falsa narrativa ou apagar todo derivado automaticamente.",
+      "gaps": [
+        "G04",
+        "G08",
+        "G09"
+      ]
+    },
+    {
+      "id": "REQ-07",
+      "title": "Ciclo de vida sem prorrogação tácita",
+      "rule": "Aplicar políticas C01–C10 e exceções concretas GOV-002; recálculo, réplica, nova tentativa ou reabertura não reiniciam duração por si.",
+      "gaps": [
+        "G09"
+      ]
+    },
+    {
+      "id": "REQ-08",
+      "title": "Evidência minimizada e estado observado",
+      "rule": "Prova protege identificadores, distingue tentativa/efeito/verificação e tem política própria, inclusive regime especial aplicável de incidente.",
+      "gaps": [
+        "G08",
+        "G09"
+      ]
+    },
+    {
+      "id": "REQ-09",
+      "title": "Trabalhos idempotentes e atuais",
+      "rule": "Tarefa possui intento e versão identificáveis; repetição/reordenação não duplica efeito nem contorna restrição atual.",
+      "gaps": [
+        "G05",
+        "G08",
+        "G09"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "title": "Lacunas e temporalidades explícitas",
+      "rule": "Desconhecido, não informado, não observado e não aplicável não são preenchidos como fatos/autoria/identidade na migração ou síntese.",
+      "gaps": [
+        "G10"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "title": "Correção, representação e concessão próprias",
+      "rule": "Vínculo não é autoridade irrestrita; revisão administrativa e contestação autônoma são distintas de correção própria.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G08"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "title": "Todos os caminhos e apresentações",
+      "rule": "Aplicar regra a consulta, detalhe aberto, perfil, relatório, cópia/impressão, pacote/cabeçalho, resgate, job, metadados e restauração.",
+      "gaps": [
+        "G02",
+        "G05",
+        "G06"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "title": "Importação é entrada não confiável",
+      "rule": "Cifra válida/schema/versão maior não conferem identidade, autoridade para corrigir outro autor ou ativar papel/concessão.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G10"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "title": "Revisão e gates como condições",
+      "rule": "Representar revisões exigidas pelo procedimento vigente, fase, competência e escopo; GOV-003/PR #40 segue proposta, sem suprimento por aprovação documental.",
+      "gaps": [
+        "G03",
+        "G08"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "title": "Aceitação vinculada ao fluxo real",
+      "rule": "Casos testáveis apontam requisito, caminho e evidência; checks/documentos não são execução de cenários da política.",
+      "gaps": [
+        "G11"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "OP-01",
+      "operation": "Preservar",
+      "actor": "Agente de custódia autorizado",
+      "object": "Conteúdo, versão, metadado ou prova de categoria identificada",
+      "purpose": "Finalidade de conservação demonstrada e política aplicável",
+      "conditions": "Condições de categoria/fundamento/limite e exceção concretamente verificados",
+      "effect": "Conservar apenas escopo legítimo, com apresentação/uso independentes",
+      "propagation": "Fim de finalidade, revisão, ordem, pedido ou origem alterada reabre destinação",
+      "governance": "C01–C10, EX01/EX02/EX06/EX09/EX10",
+      "requirements": [
+        "REQ-03",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "tests": [
+        "A03",
+        "A12",
+        "A24"
+      ],
+      "gaps": [
+        "G01",
+        "G09"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L27"
+    },
+    {
+      "id": "OP-02",
+      "operation": "Registrar (create)",
+      "actor": "Participante com identidade/autoridade verificadas para criação",
+      "object": "Nova contribuição e contexto da criança/recurso legitimado",
+      "purpose": "Finalidade de registro admitida no contexto",
+      "conditions": "Autoria/natureza conhecidas identificadas, lacunas explícitas e permissão de criar própria",
+      "effect": "Criar versão inicial sem publicar, selecionar para relatório, conceder ou sintetizar automaticamente",
+      "propagation": "Criação não amplia permissões; futuras correções geram evento de versão",
+      "governance": "EX03/EX04/EX10",
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-10"
+      ],
+      "tests": [
+        "A02",
+        "A25"
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G10"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L28"
+    },
+    {
+      "id": "OP-03",
+      "operation": "Preparar para compartilhamento",
+      "actor": "Participante autorizado a preparar e utilizar as fontes",
+      "object": "Representação provisória ligada às versões de origem",
+      "purpose": "Preparação para destinatário/finalidade declarados",
+      "conditions": "Fonte e contexto legitimamente utilizáveis; não tratar leitura como autorização de uso",
+      "effect": "Produzir preparação privada e provisória, sem ativar concessão ou entregar",
+      "propagation": "Mudança de fonte/destinatário/permissão invalida preparação no escopo",
+      "governance": "EX05/EX07",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-05"
+      ],
+      "tests": [
+        "A04",
+        "A08"
+      ],
+      "gaps": [
+        "G02",
+        "G04"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L29"
+    },
+    {
+      "id": "OP-04",
+      "operation": "Consultar (read)",
+      "actor": "Destinatário identificado",
+      "object": "Contribuição/perfil/versão e cada metadado apresentado",
+      "purpose": "Consulta no escopo de política/concessão vigente",
+      "conditions": "Verificar conteúdo, metadados, intervalo histórico, restrições e contexto do destinatário",
+      "effect": "Apresentar somente escopo permitido; negar exposição indireta por perfil, erro, cabeçalho ou linhagem",
+      "propagation": "Perda de acesso impede próximas apresentações; tela/caches recebem tratamento, sem prometer apagar bytes já entregues",
+      "governance": "EX03/EX05/EX07",
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-12"
+      ],
+      "tests": [
+        "A05",
+        "A14",
+        "A21"
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G06"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L30"
+    },
+    {
+      "id": "OP-05",
+      "operation": "Utilizar em síntese/interpretação",
+      "actor": "Pessoa ou agente automatizado com autoridade própria para a finalidade",
+      "object": "Fontes e versões específicas, unidade derivada e audiência",
+      "purpose": "Síntese/interpretação admitida e explícita",
+      "conditions": "Usar apenas fontes/terceiros/contexto autorizados; não inferir dado restrito ou inexistente",
+      "effect": "Resultado derivado, com lacunas/divergências e proveniência apresentável ao destinatário",
+      "propagation": "Fonte ou escopo mudou: quatro dimensões de reavaliação; recálculo não libera uso",
+      "governance": "EX04/EX05/EX09",
+      "requirements": [
+        "REQ-03",
+        "REQ-05",
+        "REQ-06",
+        "REQ-10"
+      ],
+      "tests": [
+        "A06",
+        "A15",
+        "A24"
+      ],
+      "gaps": [
+        "G02",
+        "G04",
+        "G07"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L31"
+    },
+    {
+      "id": "OP-06",
+      "operation": "Compartilhar (share)",
+      "actor": "Agente com autoridade específica para conceder/disponibilizar",
+      "object": "Unidade, contexto indispensável, destinatário e operações",
+      "purpose": "Finalidade de compartilhamento validada no caso",
+      "conditions": "Verificar destinatário, categorias, operações, vigência e histórico; não distorcer contexto",
+      "effect": "Conceder/disponibilizar apenas o escopo explícito com prova minimizada",
+      "propagation": "Revalidar na disponibilização e a cada nova operação protegida; cópia externa tem alcance declarado",
+      "governance": "EX03/EX05/EX07",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-11",
+        "REQ-12"
+      ],
+      "tests": [
+        "A07",
+        "A13",
+        "A14"
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G07"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L32"
+    },
+    {
+      "id": "OP-07",
+      "operation": "Exportar (export)",
+      "actor": "Solicitante identificado com permissão independente de exportar",
+      "object": "Pacote, fontes/versões, metadados exportáveis e destino",
+      "purpose": "Portabilidade/entrega de escopo legitimado",
+      "conditions": "Política de exportação, destino e proteção de terceiros; ticket de preparação não é autorização de resgate",
+      "effect": "Disponibilizar no escopo atual com limite C07; distinguir geração/liberação de recebimento externo",
+      "propagation": "Revalidar após cifra e antes da liberação/resgate; revogação anterior impede entrega; expirar/expurgar conforme limite próprio",
+      "governance": "EX05/EX06/EX07",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-07",
+        "REQ-12"
+      ],
+      "tests": [
+        "A08",
+        "A14",
+        "A21"
+      ],
+      "gaps": [
+        "G02",
+        "G05",
+        "G06",
+        "G07"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L33"
+    },
+    {
+      "id": "OP-08",
+      "operation": "Corrigir (edit_own / revisão administrativa)",
+      "actor": "Autor no escopo próprio ou agente de revisão administrativa legitimada",
+      "object": "Versão alvo identificada, contribuição própria/alheia e dependências",
+      "purpose": "Correção delimitada, com agente e fundamento pertinentes",
+      "conditions": "Condição de versão esperada e autoridade por contribuição; papel/arquivo importado não autorizam sobrescrita alheia",
+      "effect": "Nova versão/relação de correção rastreável, com temporalidades distintas; preservar anterior só se legítimo",
+      "propagation": "Publicar evento da alteração e impedir disponibilização indevida de derivados; tratamento de versões conforme decisão",
+      "governance": "EX03/EX04",
+      "requirements": [
+        "REQ-04",
+        "REQ-05",
+        "REQ-06",
+        "REQ-11",
+        "REQ-13"
+      ],
+      "tests": [
+        "A09",
+        "A15",
+        "A20"
+      ],
+      "gaps": [
+        "G03",
+        "G04",
+        "G11"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L34"
+    },
+    {
+      "id": "OP-09",
+      "operation": "Contestar / solicitar correção",
+      "actor": "Participante legitimado para manifestação/pedido",
+      "object": "Pedido autônomo e referência ao objeto/decisão quando possível",
+      "purpose": "Contestar/solicitar revisão, sem exigir concordância com narrativa",
+      "conditions": "Recepção acessível e verificação proporcional; não confirmar conteúdo restrito a não autorizado",
+      "effect": "Registro com autoria própria e estado do pedido; sem invalidar/apagar automaticamente a contribuição contestada",
+      "propagation": "Nova evidência reabre análise mantendo início original dos prazos e histórico mínimo cabível",
+      "governance": "EX03/EX04/EX10",
+      "requirements": [
+        "REQ-02",
+        "REQ-08",
+        "REQ-10",
+        "REQ-11"
+      ],
+      "tests": [
+        "A10",
+        "A23"
+      ],
+      "gaps": [
+        "G08"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L35"
+    },
+    {
+      "id": "OP-10",
+      "operation": "Restringir",
+      "actor": "Agente competente segundo procedimento aplicável",
+      "object": "Operações/objetos/destinatários e vigência da restrição",
+      "purpose": "Proteção e medida delimitada e legitimada",
+      "conditions": "Fundamento, autoridade e escopo atual; revisão adicional quando indispensável à fase",
+      "effect": "Impedir só operações abrangidas; leitura, uso, retenção e eliminação são distintos",
+      "propagation": "Efetivar restrição e cerca de autorização antes de liberar novo resultado; propagar a usos/derivados",
+      "governance": "EX03/EX07/EX10",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-06",
+        "REQ-14"
+      ],
+      "tests": [
+        "A11",
+        "A14",
+        "A22"
+      ],
+      "gaps": [
+        "G02",
+        "G07",
+        "G08"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L36"
+    },
+    {
+      "id": "OP-11",
+      "operation": "Eliminar / anonimizar",
+      "actor": "Executor de pedido/dever validado e autorizado",
+      "object": "Conteúdo, versões, derivados/cópias conhecidos e prova permitida",
+      "purpose": "Destinação cabível com política e verificação próprias",
+      "conditions": "Verificar fundamento, retenção, terceiros, capacidade e revisões indispensáveis; método de anonimização não se resume a pseudônimo",
+      "effect": "Executar medida delimitada e registrar resultado por escopo; residual não vira eliminação integral",
+      "propagation": "Evento de destinação e reconciliação antes de restaurar; marcadores mínimos têm política própria",
+      "governance": "EX01/EX02/EX06/EX09/EX10",
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08",
+        "REQ-14"
+      ],
+      "tests": [
+        "A12",
+        "A19",
+        "A22",
+        "A24"
+      ],
+      "gaps": [
+        "G03",
+        "G08",
+        "G09"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L37"
+    },
+    {
+      "id": "OP-12",
+      "operation": "Conceder / ampliar acesso",
+      "actor": "Pessoa legitimada para conceder, separada do mero vínculo/credencial",
+      "object": "Concessão para destinatário, categorias, operações e período histórico",
+      "purpose": "Finalidade e necessidade da nova concessão demonstradas",
+      "conditions": "Identidade/autoridade verificadas; intervalo histórico explícito, vigência e revisão; incerteza permanece pendente",
+      "effect": "Nova revisão de concessão com escopo explícito; importação de cuidador não cria concessão",
+      "propagation": "Mudar concessão avança revisão de autorização e invalida avaliações anteriores no escopo",
+      "governance": "EX03/EX05",
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-04",
+        "REQ-11",
+        "REQ-13"
+      ],
+      "tests": [
+        "A13",
+        "A16",
+        "A20"
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G07"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L38"
+    },
+    {
+      "id": "OP-13",
+      "operation": "Revogar / expirar / suspender concessão",
+      "actor": "Autoridade legitimada ou evento de vigência/procedimento competente",
+      "object": "Concessão e escopo revogado/expirado/suspenso",
+      "purpose": "Encerrar ou limitar operações segundo evento verificado",
+      "conditions": "Distinguir revogação/expiração/suspensão; não depender de validade de sessão para reconhecer o evento",
+      "effect": "Bloquear novas operações protegidas no escopo, sem apagar conteúdo automaticamente",
+      "propagation": "Avançar revisão/cerca de autorização, tratar preparações/caches/derivados; não prometer apagar cópia externa",
+      "governance": "EX03/EX07",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-06",
+        "REQ-09"
+      ],
+      "tests": [
+        "A08",
+        "A14",
+        "A16"
+      ],
+      "gaps": [
+        "G02",
+        "G05",
+        "G07"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L39"
+    },
+    {
+      "id": "OP-14",
+      "operation": "Reavaliar derivados",
+      "actor": "Agente responsável pela reavaliação, com autoridade para cada medida",
+      "object": "Dependências conhecidas vinculadas a fontes/versões e usos",
+      "purpose": "Tratar evento de origem, autorização, restrição ou destinação",
+      "conditions": "Cobertura e limites da busca explícitos; trabalhador não herda autorização permanente do emissor",
+      "effect": "Decisão separada sobre validade, apresentação, utilização e retenção por dependência",
+      "propagation": "Tarefas idempotentes/versionadas; evento antigo não ressuscita conteúdo ou sobrepõe estado mais restrito vigente",
+      "governance": "EX04/EX06/EX09/EX10",
+      "requirements": [
+        "REQ-04",
+        "REQ-05",
+        "REQ-06",
+        "REQ-09",
+        "REQ-15"
+      ],
+      "tests": [
+        "A15",
+        "A17",
+        "A18",
+        "A19"
+      ],
+      "gaps": [
+        "G04",
+        "G08",
+        "G09"
+      ],
+      "criterion": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L40"
+    }
+  ],
+  "acceptance_cases": [
+    {
+      "id": "A01",
+      "requirements": [
+        "REQ-01",
+        "REQ-02"
+      ],
+      "operations": [
+        "OP-02",
+        "OP-04"
+      ],
+      "given": "Identidade/condição ainda não demonstrada, ou restrição conhecida",
+      "when": "Solicitar operação protegida",
+      "expected": "Pendente quando falta prova; negado quando impedimento conhecido; nenhum efeito protegido em ambos",
+      "negative": "Não confirmar existência/conteúdo restrito na resposta",
+      "retention_cases": [
+        "R02"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A02",
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-10"
+      ],
+      "operations": [
+        "OP-02"
+      ],
+      "given": "Autoridade de criar e contexto legitimados, com lacunas explícitas",
+      "when": "Registrar contribuição",
+      "expected": "Criar versão inicial com autoria real e lacunas; sem selecionar para relatório/sintetizar automaticamente",
+      "negative": "Sem permissão de criar, não registrar em contexto alheio",
+      "retention_cases": [
+        "R01",
+        "R02"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A03",
+      "requirements": [
+        "REQ-03",
+        "REQ-07"
+      ],
+      "operations": [
+        "OP-01"
+      ],
+      "given": "Finalidade/categoria/período verificados",
+      "when": "Conservar contribuição",
+      "expected": "Manter somente escopo legitimado com apresentação/uso separados",
+      "negative": "Sem fundamento aplicável, revisão vencida não cria conservação indefinida nem eliminação cega",
+      "retention_cases": [
+        "R01",
+        "R08"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A04",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-05"
+      ],
+      "operations": [
+        "OP-03"
+      ],
+      "given": "Fontes e uso autorizados para preparação",
+      "when": "Preparar uma unidade",
+      "expected": "Gerar representação provisória com fontes/versões, sem conceder/entregar",
+      "negative": "Mudar destinatário/escopo exige nova avaliação antes de disponibilizar",
+      "retention_cases": [
+        "R06"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A05",
+      "requirements": [
+        "REQ-03",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-04"
+      ],
+      "given": "Usuário consulta objeto/perfil/detalhe e depois perde acesso",
+      "when": "Apresentar novamente a informação",
+      "expected": "Novas apresentações não expõem conteúdo, metadados ou perfil fora do escopo",
+      "negative": "Listagem vazia e botão oculto não bastam se o detalhe/perfil continuam expondo dados",
+      "retention_cases": [
+        "R05",
+        "R06"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A06",
+      "requirements": [
+        "REQ-03",
+        "REQ-05"
+      ],
+      "operations": [
+        "OP-05"
+      ],
+      "given": "Leitura permitida, mas uso em síntese não autorizado",
+      "when": "Gerar/apresentar síntese",
+      "expected": "Impedir uso indevido; permitir somente se finalidade/fontes/audiência forem legitimadas",
+      "negative": "Visibilidade da fonte ou texto anonimizado apenas por código não supre autorização",
+      "retention_cases": [
+        "R12",
+        "R15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A07",
+      "requirements": [
+        "REQ-03",
+        "REQ-11",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-06"
+      ],
+      "given": "Compartilhamento tem terceiros e contexto indispensável",
+      "when": "Disponibilizar unidade ao destinatário",
+      "expected": "Entregar só escopo explícito com contexto íntegro e permitido",
+      "negative": "Se o recorte permitido distorce a unidade, não entregar como completa; decisão parcial/alternativa cabível",
+      "retention_cases": [
+        "R05",
+        "R11",
+        "R13"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A08",
+      "requirements": [
+        "REQ-04",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-07",
+        "OP-13"
+      ],
+      "given": "Pacote é preparado/cifrado e concessão é revogada antes da liberação",
+      "when": "Tentar resgate/download",
+      "expected": "Se revogação efetiva precede a fronteira de liberação, negar o novo efeito e tratar pacote C07",
+      "negative": "Trava encerrada antes da cifra, link estático ou avaliação anterior não contornam o evento",
+      "retention_cases": [
+        "R06"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A09",
+      "requirements": [
+        "REQ-04",
+        "REQ-11",
+        "REQ-13"
+      ],
+      "operations": [
+        "OP-08"
+      ],
+      "given": "Autor corrige versão própria, ou outro ator pede alteração de contribuição alheia",
+      "when": "Efetivar correção",
+      "expected": "Nova versão/rastreabilidade para ato legitimado; autoridade administrativa específica quando aplicável",
+      "negative": "Papel LEGAL_GUARDIAN ou contador maior não autorizam sobrescrita alheia",
+      "retention_cases": [
+        "R03",
+        "R04"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A10",
+      "requirements": [
+        "REQ-02",
+        "REQ-10",
+        "REQ-11"
+      ],
+      "operations": [
+        "OP-09"
+      ],
+      "given": "Pessoa apresenta contestação acessível",
+      "when": "Protocolar e encaminhar revisão",
+      "expected": "Pedido com autoria própria e estado explícito; sem invalidar a narrativa anterior automaticamente",
+      "negative": "Não exigir concordância/explicação verbal universal nem confirmar conteúdo a não autorizado",
+      "retention_cases": [
+        "R02",
+        "R11"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A11",
+      "requirements": [
+        "REQ-03",
+        "REQ-06",
+        "REQ-14"
+      ],
+      "operations": [
+        "OP-10"
+      ],
+      "given": "Restrição legítima alcança só utilização em síntese",
+      "when": "Efetivar restrição",
+      "expected": "Bloquear o uso abrangido e reavaliar dependências sem chamar isso eliminação",
+      "negative": "Não ampliar acesso de quem analisa nem restringir indiscriminadamente operações fora do escopo",
+      "retention_cases": [
+        "R12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A12",
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "operations": [
+        "OP-11"
+      ],
+      "given": "Eliminação cabível alcança versões/derivados e cópia residual admissível",
+      "when": "Executar e verificar medidas",
+      "expected": "Resultados por escopo, pendências e conservação residual explícitos",
+      "negative": "Não declarar eliminação integral por remover a tela ou se cópia sob governança aguarda medida exigida",
+      "retention_cases": [
+        "R04",
+        "R07",
+        "R08",
+        "R14"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A13",
+      "requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-11"
+      ],
+      "operations": [
+        "OP-06",
+        "OP-12"
+      ],
+      "given": "Concessão autoriza só categorias/operações futuras",
+      "when": "Consultar histórico/ampliar escopo",
+      "expected": "Negar histórico não incluído; nova concessão depende de autoridade e escopo próprios",
+      "negative": "Vínculo, profissão ou concessão de colega/instituição não herdam permissão",
+      "retention_cases": [
+        "R02",
+        "R05"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A14",
+      "requirements": [
+        "REQ-03",
+        "REQ-04",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-04",
+        "OP-07",
+        "OP-10",
+        "OP-13"
+      ],
+      "given": "Sessão/cache/resultado preparado existe quando a autorização expira ou muda",
+      "when": "Solicitar novo efeito protegido",
+      "expected": "Reavaliar estado vigente; negar o escopo afetado sem promessa de apagar bytes/cópia já entregues",
+      "negative": "Token ainda válido ou cache existente não bastam como autorização",
+      "retention_cases": [
+        "R06",
+        "R13"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A15",
+      "requirements": [
+        "REQ-04",
+        "REQ-05",
+        "REQ-06"
+      ],
+      "operations": [
+        "OP-05",
+        "OP-08",
+        "OP-14"
+      ],
+      "given": "Origem é corrigida/restrita e há síntese de versão anterior",
+      "when": "Reavaliar derivados conhecidos",
+      "expected": "Tratar validade/apresentação/uso/retenção separadamente, com estado/versão e cobertura",
+      "negative": "Re-renderização/recalcular não supre registro do tratamento nem libera fonte restrita",
+      "retention_cases": [
+        "R03",
+        "R12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A16",
+      "requirements": [
+        "REQ-04"
+      ],
+      "operations": [
+        "OP-08",
+        "OP-12",
+        "OP-13"
+      ],
+      "given": "Duas operações observam a mesma versão/escopo, que depois muda",
+      "when": "Tentar efetivar com condição antiga",
+      "expected": "Conflito ou nova avaliação antes de efeito; ordem das efetivações verificável",
+      "negative": "Timestamp do cliente ou last-write-wins não resolvem disputa de versão/autoridade",
+      "retention_cases": [
+        "R06",
+        "R10"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A17",
+      "requirements": [
+        "REQ-04",
+        "REQ-08",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-14"
+      ],
+      "given": "Trabalho já causou efeito parcial e a mesma tentativa é repetida",
+      "when": "Executar nova tentativa com o mesmo intento",
+      "expected": "Reconhecer efeitos já feitos, revalidar contexto e tratar só restante cabível",
+      "negative": "Mesma chave com outro intento é conflito; deduplicação não libera conteúdo sem acesso atual",
+      "retention_cases": [
+        "R07",
+        "R10"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A18",
+      "requirements": [
+        "REQ-04",
+        "REQ-06",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-14"
+      ],
+      "given": "Eventos de restrição/correção chegam fora de ordem",
+      "when": "Aplicar evento antigo a derivado",
+      "expected": "Comparar estado vigente, não ressuscitar acesso/conteúdo ou sobrepor medida atual",
+      "negative": "A ordem de chegada da fila não decide autoridade ou versão mais recente",
+      "retention_cases": [
+        "R10",
+        "R12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A19",
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-09"
+      ],
+      "operations": [
+        "OP-11",
+        "OP-14"
+      ],
+      "given": "Backup anterior a medidas é restaurado",
+      "when": "Tentar reabrir dados restaurados",
+      "expected": "Conciliar medidas atuais antes da disponibilidade; falha mantém operações não legitimadas pendentes",
+      "negative": "Réplica/restore não reinicia prazo nem torna conteúdo autorizado",
+      "retention_cases": [
+        "R08",
+        "R09"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A20",
+      "requirements": [
+        "REQ-11",
+        "REQ-13"
+      ],
+      "operations": [
+        "OP-08",
+        "OP-12"
+      ],
+      "given": "Cofre cifrado válido inclui cuidador novo/papel ou revisão alheia maior",
+      "when": "Importar/merge/replace",
+      "expected": "Validar cada intenção protegida; referências podem ser recebidas sem virar identidade/concessão",
+      "negative": "Arquivo e senha não constituem autoridade para ativar cuidador ou corrigir narrativa alheia",
+      "retention_cases": [
+        "R02",
+        "R03"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A21",
+      "requirements": [
+        "REQ-03",
+        "REQ-12"
+      ],
+      "operations": [
+        "OP-04",
+        "OP-07"
+      ],
+      "given": "Cabeçalho, erro, linhagem ou perfil contém identificadores restritos",
+      "when": "Montar resposta/pacote",
+      "expected": "Apresentar/exportar só metadados legitimados; projeto do formato permanece decisão D04",
+      "negative": "Cifrar ciphertext não protege campos públicos; não inferir anonimização",
+      "retention_cases": [
+        "R05",
+        "R14",
+        "R15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A22",
+      "requirements": [
+        "REQ-02",
+        "REQ-14"
+      ],
+      "operations": [
+        "OP-10",
+        "OP-11"
+      ],
+      "given": "Falta revisão indispensável na fase exigida pela política aplicável",
+      "when": "Solicitar medida protegida",
+      "expected": "Permanecer pendente e encaminhar; conter apenas mínimo já legitimado",
+      "negative": "Proposta GOV-003 não incorporada, CI ou segunda conta do executor não satisfazem revisão humana requerida",
+      "retention_cases": [
+        "R02",
+        "R11"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A23",
+      "requirements": [
+        "REQ-02",
+        "REQ-08",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-09",
+        "OP-11",
+        "OP-14"
+      ],
+      "given": "Comando foi enviado ou efeito ocorreu, mas prova exigida falhou",
+      "when": "Concluir pedido",
+      "expected": "Manter estado real de tentativa/efeito e pendência de verificação, com prova minimizada a recompor legitimamente",
+      "negative": "Não declarar concluído, recriar conteúdo eliminado ou expor dados em log para corrigir a prova",
+      "retention_cases": [
+        "R07",
+        "R10",
+        "R11",
+        "R14"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A24",
+      "requirements": [
+        "REQ-06",
+        "REQ-07",
+        "REQ-08"
+      ],
+      "operations": [
+        "OP-01",
+        "OP-05",
+        "OP-11"
+      ],
+      "given": "Falha foi corrigida e instituição pretende conservar aprendizado",
+      "when": "Separar método de fontes pessoais",
+      "expected": "Rever C10 e identificabilidade; fontes pessoais seguem seus limites e exceções concretas",
+      "negative": "Correção não prova eliminação da causa, aprendizagem ou licença de reter todo o material",
+      "retention_cases": [
+        "R15",
+        "R16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    },
+    {
+      "id": "A25",
+      "requirements": [
+        "REQ-10",
+        "REQ-13",
+        "REQ-15"
+      ],
+      "operations": [
+        "OP-02",
+        "OP-08"
+      ],
+      "given": "Legado não informa autoria/criança/proveniência/tempo",
+      "when": "Migrar/interpretar campos ausentes",
+      "expected": "Preservar lacunas explícitas e encaminhar o que não puder ser legitimado; não inventar fatos",
+      "negative": "Fallback para cuidador padrão, criança padrão, DIRECT, data atual ou fato por conveniência não vira evidência",
+      "retention_cases": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "Versão/ambiente, atores autorizados, esperado/observado, escopo, fonte da decisão e prova minimizada; não copiar conteúdo pessoal"
+    }
+  ],
+  "open_decisions": [
+    {
+      "id": "D01",
+      "title": "Fronteira física e integração com a arquitetura aceita",
+      "decision": "ADR-005 preserva Supabase para identidade/persistência adulta e PKCE em desenvolvimento. Schema/RLS e eventual orquestração para operações futuras exigem desenho e revisão próprios; não há autorização para tabelas infantis.",
+      "owner": "TEC-003/implementação futura; GOV-001/TEC-002 quando aplicável",
+      "status": "Aberta; arquitetura de identidade já aceita não é reaberta"
+    },
+    {
+      "id": "D02",
+      "title": "Mecanismo de versão e efetivação concorrente",
+      "decision": "Definir representação e comparação atômica das revisões de objeto/política/concessão/restrição e forma de registrar ordenação. ETag/If-Match é apenas candidato HTTP para conteúdo, não prova de autorização.",
+      "owner": "Implementação futura e testes de concorrência",
+      "status": "Aberta"
+    },
+    {
+      "id": "D03",
+      "title": "Identidade, autoridade e taxonomia operacional",
+      "decision": "Confirmar quem decide o tratamento, representação/competência e categorias/finalidades concretas; papéis e vínculos do protótipo não viram poderes por migração.",
+      "owner": "GOV-001 e procedimentos de autoridade",
+      "status": "Aberta; condiciona operação concreta"
+    },
+    {
+      "id": "D04",
+      "title": "Liberação de pacotes, streams e metadados",
+      "decision": "Escolher resgate com verificação vigente e proteção do cabeçalho; definir cancelamento/limite de stream e fronteira observável. Sem decisão e prova, não habilitar caminho de entrega longa que contorne revogação.",
+      "owner": "Especificação complementar/implementação/QA",
+      "status": "Aberta; não altera formato de cofre nesta entrega"
+    },
+    {
+      "id": "D05",
+      "title": "Índice de dependências, cobertura e prova contra restauração",
+      "decision": "Definir armazenamento/busca, tratamento de relações ausentes/cíclicas, cobertura limitada e marcadores minimizados com política própria. Não perpetuar dados para manter o índice.",
+      "owner": "Implementação, TEC-002 e QA-001",
+      "status": "Aberta"
+    },
+    {
+      "id": "D06",
+      "title": "Evidência, anonimização e capacidade de ciclo de vida",
+      "decision": "Definir método/provedor/configuração e prova proporcionais, inclusive cobertura de cópias, regime especial de incidente e anonimização; sem números de retenção novos.",
+      "owner": "GOV-001/TEC-002/QA-001",
+      "status": "Aberta"
+    },
+    {
+      "id": "D07",
+      "title": "Modelo de verificação adicional da PR #40",
+      "decision": "PR #40 estava aberta na base desta especificação. Exigência geral de V2 antes de irreversibilidade real e demais escolhas de GOV-003 permanecem propostas, não regras incorporadas. Representar checkpoint aplicável e não permitir efeito cuja revisão/fundamento não estiver demonstrado.",
+      "owner": "Revisão de GOV-003/PR #40; sem pessoa presumida",
+      "status": "PR #40 em revisão na conferência inicial"
+    },
+    {
+      "id": "D08",
+      "title": "Fatiamento da implementação e preparação dos testes",
+      "decision": "Definir entregas técnicas separadas e pré-requisitos de cada caso. QA-001 pode usar a matriz para roteiro, mas controles não existentes não são simulados como implementação aprovada; dados reais continuam bloqueados.",
+      "owner": "Planejamento técnico/QA-001/QA-002/REL-001",
+      "status": "Aberta"
+    }
+  ],
+  "logical_records": [
+    "Ator e identidade verificada",
+    "Referência de autoridade/escopo",
+    "Revisão de concessão",
+    "Objeto e versão",
+    "Unidade derivada e relação de fonte/versão",
+    "Pedido/decisão por escopo",
+    "Intenção de operação e contexto observado",
+    "Evento de mudança e tarefa de tratamento",
+    "Evidência minimizada de efeito/verificação"
+  ],
+  "context_fields": [
+    "actor_identity_ref",
+    "authority_scope_revision",
+    "object_id",
+    "expected_object_version",
+    "purpose",
+    "operation",
+    "recipient_or_destination",
+    "historical_interval",
+    "category_scope",
+    "policy_revision",
+    "grant_revision",
+    "restriction_revision",
+    "origin_version_refs",
+    "review_checkpoint_ref",
+    "evaluation_time_and_effect_order"
+  ],
+  "decision_results": [
+    "Permitido no escopo avaliado",
+    "Negado por condição conhecida",
+    "Pendente de verificação"
+  ],
+  "effect_results": [
+    "Preparado sem liberação",
+    "Efeito aplicado no escopo",
+    "Em verificação",
+    "Concluído no escopo verificado",
+    "Concluído parcialmente em pedido composto",
+    "Falha/pendente de execução ou prova"
+  ],
+  "derivative_dimensions": [
+    "validade",
+    "apresentacao",
+    "utilizacao",
+    "retencao"
+  ],
+  "real_data_authorized": false,
+  "physical_schema_approved": false,
+  "migrations_created": false,
+  "functional_code_changed": false,
+  "proposed_cases_executed": 0,
+  "technical_references": [
+    {
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "role": "Referência de negar por padrão e verificar cada requisição na fronteira correta; não é certificação",
+      "checked": "2026-11-20"
+    },
+    {
+      "title": "RFC 9110, seção 13.1.1",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-13.1.1",
+      "role": "Referência de pré-condições de representação; não resolve por si autorização, linhagem ou atomicidade entre recursos",
+      "checked": "2026-11-20"
+    }
+  ]
+}
