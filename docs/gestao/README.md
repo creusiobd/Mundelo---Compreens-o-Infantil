@@ -1,6 +1,6 @@
 # MUNDELO — Gestão e Entregas
 
-Atualizado em 19/11/2026. Responsável atual: **Creusio Kizua**, idealizador e desenvolvedor, responsável por produto, governança e execução técnica conforme sua declaração.
+Atualizado em 20/11/2026. Responsável atual: **Creusio Kizua**, idealizador e desenvolvedor, responsável por produto, governança e execução técnica conforme sua declaração.
 
 **[Abrir o GitHub Project](https://github.com/users/creusiobd/projects/4)** · [Tarefas](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues) · [Marcos](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestones)
 
@@ -8,7 +8,9 @@ Atualizado em 19/11/2026. Responsável atual: **Creusio Kizua**, idealizador e d
 
 PM-001/#22 está concluída pela PR #37. TEC-001/#23 está concluída pela [PR #38](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/38), incorporada no commit `1b491b198df651d9e32b67c6328ceae384948f3e`, com verificações automáticas aprovadas. Seu [diagnóstico](../auditoria/tec-001/README.md) é a base técnica, sem promessa de aderência integral.
 
-GOV-002/#28 tem [procedimento entregue para revisão](../governanca/gov-002/README.md): dez exceções, responsáveis atuais, revisão, prova mínima e ressalvas por categoria. Sua incorporação ainda está pendente nesta atualização. GOV-003/#30 e TEC-003/#31 recebem o procedimento como insumo, sem perder suas próprias dependências/validações. INF-002/#24 permanece pronta para conciliação das fontes acessíveis.
+GOV-002/#28 está concluída pela [PR #39](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/39), incorporada no commit `f1ffbc13dae489651d145f1d916b38a09bab31d8`. GOV-003/#30 tem [modelo de verificação adicional entregue para revisão](../governanca/gov-003/README.md): conferência técnica, gatilhos/fases para outra pessoa competente e tratamento da indisponibilidade. Nenhum revisor adicional foi nomeado.
+
+TEC-003/#31 está pronta para especificar autorização, versões e propagação, usando TEC-001 e GOV-002 incorporadas e as decisões em revisão de GOV-003 explicitamente como propostas. INF-002/#24 permanece pronta para conciliação das fontes acessíveis. Implementação, validação jurídica/capacidade e dados reais continuam com seus próprios gates.
 
 ## Organização
 
@@ -19,15 +21,15 @@ GOV-002/#28 tem [procedimento entregue para revisão](../governanca/gov-002/READ
 - [Processo e atualização](processo.md): estados, prontidão, conclusão e rotina de revisão.
 - [Plano estruturado](plano.json): índice para conferência e futuras atualizações.
 
-## Estado de acompanhamento — 19/11/2026
+## Estado de acompanhamento — 20/11/2026
 
 | Estado de planejamento | Quantidade |
 |---|---:|
-| Concluído | 2 |
+| Concluído | 3 |
 | Em revisão | 1 |
-| Pronto | 1 |
-| Planejado | 4 |
-| Bloqueado | 7 |
+| Pronto | 2 |
+| Planejado | 3 |
+| Bloqueado | 6 |
 
 Os números refletem esta atualização documental, sem acompanhamento automático. A issue e o campo Status do Project devem ser atualizados quando houver mudança. Prioridades e dependências detalhadas estão nas issues; a visualização do Project é um apoio ao acompanhamento.
 
