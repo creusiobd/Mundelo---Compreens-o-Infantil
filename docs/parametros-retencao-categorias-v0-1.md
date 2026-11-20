@@ -281,3 +281,14 @@ O responsável já está identificado; independência, validação jurídica, pa
 Matriz preenchida a partir da política e dos cenários da PR #20, da conciliação da PR #19 e da declaração do usuário nomeando Creusio Kizua como responsável atual. Novos números são propostas explícitas desta rodada; não foram atribuídos às conversas históricas nem aos princípios INF-ID. Fontes legais oficiais foram consultadas em 19/11/2026; o enquadramento final continua dependente da operação real.
 
 A versão estruturada da matriz está em [JSON](parametros-retencao-categorias-v0-1.json). Esta entrega não muda código, configuração de retenção, infraestrutura ou conteúdo existente. **Revisão da proposta preenchida:** pendente. **Cenários executados nesta rodada:** nenhum.
+
+
+## Complementação GOV-002 — exceções e guarda específica
+
+O [procedimento GOV-002](governanca/gov-002/README.md) distingue proposta interna, hipótese candidata e regra conferida na fonte, sempre com aplicação ao caso separada. Os campos de exceção de C06 e C09 no JSON correspondente recebem a mesma ressalva abaixo. Durações-base das demais categorias permanecem preservadas.
+
+**C06 — registro especial de incidente:** quando aplicável a Resolução CD/ANPD nº 15/2024, art. 10, o registro de incidente tem guarda mínima de cinco anos contados da data de seu registro, observadas exceções e deveres adicionais. A janela candidata geral de 24 meses não governa automaticamente esse registro. Isso não autoriza conservar integralmente os dados afetados, documentos brutos ou anexos desnecessários. Enquadramento, início e escopo precisam de verificação.
+
+**C09 — separação dos logs:** registro de incidente tem política própria; sua guarda não estende automaticamente as janelas de diagnóstico/segurança a todos os eventos. Preservação pontual de prova continua dependente de necessidade, fundamento, escopo e revisão.
+
+Fonte oficial: [Resolução CD/ANPD nº 15/2024, arts. 4–6, 9 e 10](https://bibliotecadigital.mj.gov.br/bitstream/1/12879/2/RES_ANPD_2024_15.html), consultada em 19/11/2026. Esta complementação é proposta documental, sem validação jurídica concreta ou execução. Os limites de P01–P04 não criam nova janela de retenção nem substituem prazos legais/ordens verificados.
