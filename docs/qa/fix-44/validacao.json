@@ -1,0 +1,94 @@
+{
+  "issue": 44,
+  "baseline": "f7d95cf827b8d6e71737a7ae30227b76ba0c6de7",
+  "scope": "Correção da liberação de cofre no protótipo local sintético",
+  "product_changes": [
+    "Trava mantida durante preparação, cifra e entrega síncrona",
+    "Revalidação de contexto/geração/snapshot após await e antes do download",
+    "Invalidação síncrona de preparações em mudanças de perfis, observações e cuidadores",
+    "Expiração conferida em validateCommit",
+    "Limpeza de senhas e recursos em sucesso/falha/cancelamento"
+  ],
+  "environment": {
+    "os": "Windows 11",
+    "node": "22.23.5",
+    "playwright": "1.65.0",
+    "data": "Exemplos sintéticos do aplicativo; requisições externas abortadas"
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-11-20T14:35:26.425Z",
+      "duration": 38426.198,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "title": "CTRL-01: exportação autorizada do exemplo usa cifra real",
+        "status": "passed",
+        "duration_ms": 4046
+      },
+      {
+        "title": "P02: perda de acesso antes da liberação impede download preparado",
+        "status": "passed",
+        "duration_ms": 2022
+      },
+      {
+        "title": "exporta normalmente se o contexto e os dados continuam vigentes",
+        "status": "passed",
+        "duration_ms": 3857
+      },
+      {
+        "title": "cancela após troca para cuidador sem vínculo durante a cifra",
+        "status": "passed",
+        "duration_ms": 2897
+      },
+      {
+        "title": "cancela também quando outro cuidador autorizado assume o contexto",
+        "status": "passed",
+        "duration_ms": 2645
+      },
+      {
+        "title": "cancela após troca do perfil ativo durante a cifra",
+        "status": "passed",
+        "duration_ms": 2630
+      },
+      {
+        "title": "trocar de cuidador e voltar não revalida a preparação antiga",
+        "status": "passed",
+        "duration_ms": 2576
+      },
+      {
+        "title": "mudança dos registros invalida o pacote mesmo mantendo perfil e cuidador",
+        "status": "passed",
+        "duration_ms": 3439
+      },
+      {
+        "title": "uma preparação expirada não pode liberar o arquivo",
+        "status": "passed",
+        "duration_ms": 3041
+      },
+      {
+        "title": "falha na cifra limpa as senhas e libera a trava para nova tentativa",
+        "status": "passed",
+        "duration_ms": 5124
+      }
+    ]
+  },
+  "domain_suite": {
+    "tests": 94,
+    "pass": 94,
+    "fail": 0,
+    "exit_code": 0,
+    "includes_two_new_expiration_tests": true
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "original_probe_P02": "PASS - antes FAIL na QA-002",
+  "control_CTRL01": "PASS",
+  "full_R01_R16_accepted": false,
+  "other_issues_resolved": [],
+  "real_data_authorized": false
+}

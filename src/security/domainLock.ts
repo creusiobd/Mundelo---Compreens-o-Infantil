@@ -121,7 +121,7 @@ export class DomainConcurrencyManager {
     currentCaregiverStatus: string,
     isCaregiverLinkedToChild: boolean
   ): CommitValidationResult {
-    if (!this.activeLock) {
+    if (!this.isLocked() || !this.activeLock) {
       return {
         canCommit: false,
         reason: 'Nenhuma trava ativa encontrada no domínio para autorizar o commit.',

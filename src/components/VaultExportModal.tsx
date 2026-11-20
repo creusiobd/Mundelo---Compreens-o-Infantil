@@ -32,7 +32,7 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
     activeProfile,
     activeCaregiver,
     activeChildObservations,
-    exportVaultData,
+    exportVault,
     showNotification,
   } = useApp();
 
@@ -65,40 +65,36 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
     setIsProcessing(true);
 
     try {
-      // 1. Gera o payload canônico em memória
-      const payload = exportVaultData(activeProfile.id);
-
-      // 2. Cifra o cofre usando a Web Crypto API (AES-GCM-256 + PBKDF2 600.000 iterações)
-      // Executa de forma assíncrona dando tempo ao render do spinner
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      const envelope = await encryptVault(payload, password, 600000);
-
-      // 3. Serializa em JSON formatado e cria download seguro em memória
-      const jsonString = JSON.stringify(envelope, null, 2);
-      const blob = new Blob([jsonString], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-
-      const timestamp = new Date().toISOString().slice(0, 10);
-      const safeChildName = activeProfile.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
-      const filename = `mundelo-${safeChildName}-${timestamp}.mundelo-vault`;
-
-      const downloadLink = document.createElement('a');
-      downloadLink.href = url;
-      downloadLink.download = filename;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-      URL.revokeObjectURL(url);
-
-      // 4. Limpeza estrita de senhas da memória do componente
-      setPassword('');
-      setConfirmPassword('');
-      showNotification(`Cofre criptografado de ${activeProfile.name} baixado com sucesso!`, 'success');
-      onClose();
+      await exportVault(
+        async (payload) => {
+          await new Promise((resolve) => setTimeout(resolve, 50));
+          return encryptVault(payload, password, 600000);
+        },
+        (envelope, payload) => {
+          const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const downloadLink = document.createElement('a');
+          try {
+            const timestamp = new Date().toISOString().slice(0, 10);
+            const safeChildName = payload.childProfile.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            downloadLink.href = url;
+            downloadLink.download = `mundelo-${safeChildName}-${timestamp}.mundelo-vault`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+          } finally {
+            downloadLink.remove();
+            URL.revokeObjectURL(url);
+          }
+          showNotification(`Cofre criptografado de ${payload.childProfile.name} baixado com sucesso!`, 'success');
+          onClose();
+        }
+      );
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Falha ao cifrar o cofre.';
       setError(msg);
     } finally {
+      setPassword('');
+      setConfirmPassword('');
       setIsProcessing(false);
     }
   };
