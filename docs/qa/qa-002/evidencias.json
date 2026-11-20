@@ -1,0 +1,357 @@
+{
+  "base_commit": "50e68136dd8ce8a0a5c282c5b6a85f6092b5bbb2",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "node": "v22.23.5",
+  "versions": {
+    "vite": "8.3.8",
+    "playwright": "1.65.0",
+    "@playwright/test": "1.65.0",
+    "react": "19.3.1",
+    "typescript": "7.0.2"
+  },
+  "started_at": "2026-11-20T14:18:40.408Z",
+  "duration_ms": 27494.030000000002,
+  "diagnostic_only": true,
+  "app_sources_unchanged": true,
+  "verified_source_count": 64,
+  "exit_code": 1,
+  "probe_counts": {
+    "PASS": 1,
+    "FAIL": 4
+  },
+  "probes": [
+    {
+      "title": "CTRL-01: exporta��o autorizada do exemplo usa cifra real",
+      "line": 23,
+      "status": "passed",
+      "duration_ms": 4387,
+      "observations": [
+        {
+          "format": "MUNDELO_VAULT",
+          "hasCiphertext": true,
+          "algorithm": "AES-GCM",
+          "recordCount": 5,
+          "syntheticExampleOnly": true
+        }
+      ],
+      "assertion": ""
+    },
+    {
+      "title": "P01: detalhe aberto deixa de revelar observa��o ap�s perda de acesso demonstrativa",
+      "line": 38,
+      "status": "failed",
+      "duration_ms": 1255,
+      "observations": [
+        {
+          "caregiver": "cg-ana-unlinked",
+          "listCount": 0,
+          "detailStillVisible": true,
+          "sameDetailContent": true
+        }
+      ],
+      "assertion": "Error: A lista foi restringida, mas o conte�do do detalhe n�o pode permanecer vis�vel\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true"
+    },
+    {
+      "title": "P02: perda de acesso antes da libera��o impede download preparado",
+      "line": 51,
+      "status": "failed",
+      "duration_ms": 2658,
+      "observations": [
+        {
+          "preparationReachedRealCrypto": true,
+          "actorChangedBeforeRelease": true,
+          "denialVisibleBeforeRelease": true,
+          "downloadsAfterRelease": 1
+        }
+      ],
+      "assertion": "Error: Contexto sem acesso antes da libera��o n�o pode baixar pacote anterior\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 1"
+    },
+    {
+      "title": "P03: envelope acess�vel sem senha n�o exp�e nome/id do perfil",
+      "line": 78,
+      "status": "failed",
+      "duration_ms": 3297,
+      "observations": [
+        {
+          "plaintextChildName": true,
+          "plaintextChildId": true,
+          "plaintextRecordCount": true,
+          "parsedWithoutPassword": true
+        }
+      ],
+      "assertion": "Error: A cifra do payload n�o protege estes campos p�blicos do envelope\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true"
+    },
+    {
+      "title": "P04: perfil n�o aparece no relat�rio ap�s perda de acesso demonstrativa",
+      "line": 91,
+      "status": "failed",
+      "duration_ms": 1287,
+      "observations": [
+        {
+          "caregiver": "cg-ana-unlinked",
+          "profileComfortMarkerVisible": true,
+          "syntheticMarkerOnly": true
+        }
+      ],
+      "assertion": "Error: Restringir observa��es n�o pode deixar o perfil acess�vel no relat�rio\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true"
+    }
+  ],
+  "source_integrity": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "9ed83933536b60fae41461869df610b8217d9ffb"
+    },
+    {
+      "path": ".github/workflows/device-real-01-pages.yml",
+      "sha": "98c7fd84e8ef1326f45b7e403ca098bbc86ba509"
+    },
+    {
+      "path": "README.md",
+      "sha": "f131a34c6a62f2f00f6954fe363424a9dc7c7e69"
+    },
+    {
+      "path": "index.html",
+      "sha": "2f392eb88738c15ef09f6d10014cd3ba6b1cfa44"
+    },
+    {
+      "path": "metadata.json",
+      "sha": "61064944ba45eb641b8b7e0518de591a3633c6d3"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "b113854cf9bb6697a441bfef566bd691651d6298"
+    },
+    {
+      "path": "package.json",
+      "sha": "5d598b17dfa01b4bc43aa11fb06338d78cc8d3b8"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha": "c6f7c6b0a7ab8eadd9bcf6dc78c7cff4b78e54d9"
+    },
+    {
+      "path": "scripts/check-exposed-credentials.mjs",
+      "sha": "3a2489104cdb1f60ce0fda93326d2b67a04be083"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha": "3f20929d171921f78bccd37fc41a82a73f91f173"
+    },
+    {
+      "path": "src/components/BottomNav.tsx",
+      "sha": "023883ffa13e5581bccbb713c6010212cbe5194b"
+    },
+    {
+      "path": "src/components/BrandLogo.tsx",
+      "sha": "b611db61cafa8487883ae5946d34d283ba776022"
+    },
+    {
+      "path": "src/components/DeleteConfirmModal.tsx",
+      "sha": "1eed49e9cb799192c352e4f22fce0933e0b425e8"
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "sha": "51a09dd573c53c0d62e9aeef2cfbd470c7c6c5e7"
+    },
+    {
+      "path": "src/components/NotificationToast.tsx",
+      "sha": "99dd7d956b924bae81a20ef1b67cfee35025514a"
+    },
+    {
+      "path": "src/components/ObservationDetailModal.tsx",
+      "sha": "92b453c27630a1e466b084b45d1faa1be76087ee"
+    },
+    {
+      "path": "src/components/ObservationModal.tsx",
+      "sha": "b53759e384fe0871025dbe29de6c9cfa0de2f0ea"
+    },
+    {
+      "path": "src/components/VaultExportModal.tsx",
+      "sha": "20d08d12252162ad49ffd629edb63a6ce8b48838"
+    },
+    {
+      "path": "src/components/VaultImportModal.tsx",
+      "sha": "d455ab19c054c06d895eb6e5d899f47afa27faa6"
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "sha": "6f3145c26d7306179fd2f88e8dee364508a8c75f"
+    },
+    {
+      "path": "src/crypto/benchmark.ts",
+      "sha": "07264661162ca300bef5978ff220f9511d7234eb"
+    },
+    {
+      "path": "src/crypto/schemas.ts",
+      "sha": "83f4a463c04c691539148ba4a63ce1e3dd47e7ef"
+    },
+    {
+      "path": "src/crypto/types.ts",
+      "sha": "3263f9219526d6f472a0817d08ee16260619bb12"
+    },
+    {
+      "path": "src/crypto/vault.ts",
+      "sha": "00cabc93e28239af2a9d70404786d17089abef48"
+    },
+    {
+      "path": "src/data/mockData.ts",
+      "sha": "39f789617a20fc97cb2c962b91cab2c87db3b18a"
+    },
+    {
+      "path": "src/index.css",
+      "sha": "52368ca2637ea6f1906659773c604357a52bf14d"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha": "c1d9f920661cb84283eeabccd6ac72fe4233460c"
+    },
+    {
+      "path": "src/screens/DiscoveriesScreen.tsx",
+      "sha": "aa71b115f467d0665ebded966d7e23c97d24ae5f"
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "sha": "6cc747e1f44082c69a9cd15d83e26fb3112b448e"
+    },
+    {
+      "path": "src/screens/JournalScreen.tsx",
+      "sha": "5bd4606083033a065ca58b0f354f2838d942ff85"
+    },
+    {
+      "path": "src/screens/MyWorldScreen.tsx",
+      "sha": "50ebf56839164a4e5a0e9fb04bfda47b2cd85241"
+    },
+    {
+      "path": "src/screens/OnboardingScreen.tsx",
+      "sha": "25b0662c35485b14f28adaab8e4c2167216d9b9c"
+    },
+    {
+      "path": "src/screens/PrivacyScreen.tsx",
+      "sha": "c9555da3ab27ae7da90491e2dd146340f1b6393b"
+    },
+    {
+      "path": "src/screens/ReportScreen.tsx",
+      "sha": "67b2919b0b84533e66cf52db5af30a6f0aca395a"
+    },
+    {
+      "path": "src/screens/SecurityLabScreen.tsx",
+      "sha": "ffa72fe482df951fb6ccf833af231c6c317a3c9c"
+    },
+    {
+      "path": "src/screens/UnderstandScreen.tsx",
+      "sha": "7510a4cc40eeb8d49e40034abfab3a974ae250b4"
+    },
+    {
+      "path": "src/screens/WelcomeScreen.tsx",
+      "sha": "d73554d5ff1e2ca831cad3d7fe54a317ef2794db"
+    },
+    {
+      "path": "src/security/authorization.ts",
+      "sha": "d476d73a44ab07b8ce2e37ddc100f901764d1318"
+    },
+    {
+      "path": "src/security/conflictResolver.ts",
+      "sha": "e1dd7d7492a89a6cb6e593343ca2caf801eff335"
+    },
+    {
+      "path": "src/security/domainLock.ts",
+      "sha": "20fc0a6c22309ae9a46ad60b20102ef97d890ffc"
+    },
+    {
+      "path": "src/types/index.ts",
+      "sha": "196802ada34c85e9e634dc560347edfa8efbbbd8"
+    },
+    {
+      "path": "src/validation/migration.ts",
+      "sha": "0fddcc7b776ee685e1110394101b228cbaf5f39c"
+    },
+    {
+      "path": "src/validation/schemas.ts",
+      "sha": "bd9707a546502cdfe93b57ffc936f15731d315ff"
+    },
+    {
+      "path": "tests/e2e/device-real-02-authorization.spec.ts",
+      "sha": "5771f2d596beacb13147d5a9f0e0b5a3c4a4f596"
+    },
+    {
+      "path": "tests/e2e/fixtures/synthetic-data.ts",
+      "sha": "ca2d59b12cd7a2bd0980214103819e1c4d4b3f4d"
+    },
+    {
+      "path": "tests/e2e/fixtures/test-session.ts",
+      "sha": "aba4c68d636b6805b742157dd34112c79626f83e"
+    },
+    {
+      "path": "tests/e2e/helpers/accessibility.ts",
+      "sha": "14f2cc0cb04816085753b7b05135812e65e3f8c1"
+    },
+    {
+      "path": "tests/e2e/helpers/navigation.ts",
+      "sha": "172f9c6db2d7460e3a5f1398057fc1727b279c95"
+    },
+    {
+      "path": "tests/e2e/helpers/responsive.ts",
+      "sha": "84655cc1cd8c1e90ba08ffbc443459a589c51e6b"
+    },
+    {
+      "path": "tests/e2e/home-accessibility.spec.ts",
+      "sha": "18f50b6c4c331280e4866d830b93aa738c8fdfc8"
+    },
+    {
+      "path": "tests/e2e/home-assistive-readiness.spec.ts",
+      "sha": "64f3b2f9af5222cf809fd2448350e92ba4f248ff"
+    },
+    {
+      "path": "tests/e2e/home-navigation.spec.ts",
+      "sha": "1c9da9918bcccdab904f340f21420f5214da65e8"
+    },
+    {
+      "path": "tests/e2e/home-responsive.spec.ts",
+      "sha": "a36ba8ff06e357b1b839fe769cc9c3d8af7c207f"
+    },
+    {
+      "path": "tests/e2e/internal-accessibility.spec.ts",
+      "sha": "24bee0a2929a02465968e1df982d15d981b1f05a"
+    },
+    {
+      "path": "tests/e2e/internal-navigation.spec.ts",
+      "sha": "394da6a968864d0883533c5a40c264c11a596757"
+    },
+    {
+      "path": "tests/e2e/internal-permissions.spec.ts",
+      "sha": "003fd7edf8c54612984cff912c4b48b87f52d124"
+    },
+    {
+      "path": "tests/e2e/internal-responsive.spec.ts",
+      "sha": "d2dbec470378092d530330f8660c63ea77694501"
+    },
+    {
+      "path": "tests/foundation-v0.2.test.ts",
+      "sha": "45d7a3cb646133904de57473cc05cea83c05fe73"
+    },
+    {
+      "path": "tests/foundation-v0.3.test.ts",
+      "sha": "6c78dc0c36fcb3bdfc49a19172cffc67c04411ca"
+    },
+    {
+      "path": "tests/foundation-v0.4a.test.ts",
+      "sha": "3bd0e44373d13ce429cdc699d90e7d532ee360c2"
+    },
+    {
+      "path": "tests/foundation-v0.4a1.test.ts",
+      "sha": "2657474bb4fe9109369ac5dc6a72f533a9b8bfcf"
+    },
+    {
+      "path": "tests/vault-adversarial-v0.4a.test.ts",
+      "sha": "96d6ad65cc3906adc18134ee8af78f39314318c9"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "33f1710772ba00e224dca0d8dcad5db09894623c"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha": "8b7ea25cc0fe07cf3d2c0856eb8b0542b3232b5a"
+    }
+  ]
+}

@@ -48,3 +48,8 @@ Consultar o [registro de andamento TEC-003](andamentos/2026-11-20-tec-003.md) e 
 ## Atualização — QA-001 / 20/11/2026
 
 TEC-003/#31 incorporada pela PR #41 (`59efcd56b006768540863fbc1e2fcbb144ae3007`). [QA-001/#32](andamentos/2026-11-20-qa-001.md) entrega para revisão o [roteiro dos 16 cenários](../qa/qa-001/README.md), com preparação sintética e fichas de execução. Ambiente demonstrativo identificado; capacidades ausentes bloqueiam a aceitação específica, sem impedir esta preparação. Nenhum cenário de retenção foi executado por esta entrega. GOV-003/PR #40 já incorporada; aplicação/revisor continuam pendentes. Sem sincronização automática do Project.
+
+
+## Atualização — QA-002 / 20/11/2026
+
+QA-001/#32 incorporada pela PR #42. [QA-002/#33](andamentos/2026-11-20-qa-002.md) entrega [execução sintética e relatório](../qa/qa-002/README.md): um controle positivo PASS e quatro diagnósticos FAIL, com #43–#46 abertas. R01–R16 integrais permanecem BLOCKED por pré-condições não demonstradas; não há liberação do produto. CI histórica e diagnóstico são resultados separados. Sem sincronização automática dos campos do Project.

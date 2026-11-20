@@ -1,0 +1,471 @@
+{
+  "task": "QA-002",
+  "issue": 33,
+  "base_commit": "50e68136dd8ce8a0a5c282c5b6a85f6092b5bbb2",
+  "owner": "Creusio Kizua",
+  "scope": "Execução sintética aplicável e avaliação de prontidão; não implementação nem liberação",
+  "case_counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 16,
+    "NOT_EXECUTED": 0,
+    "INCONCLUSIVE": 0
+  },
+  "full_case_executions": 0,
+  "diagnostic_probe_counts": {
+    "PASS": 1,
+    "FAIL": 4
+  },
+  "case_status_explanation": "BLOCKED é disposição final de prontidão; execution_started=false indica que aceitação integral não iniciou. Os cinco testes de navegador parciais têm resultados separados, sem aprovação de qualquer Rxx.",
+  "cases": [
+    {
+      "id": "R01",
+      "condition": "Categoria não possui período nem regra verificável de revisão/destino",
+      "expected": "Categoria não é considerada habilitada para retenção pessoal real; pendência e custódia da política identificadas",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há mecanismo de habilitação de política por categoria/destinação demonstrado no aplicativo.",
+      "blocker_gaps": [
+        "G09"
+      ],
+      "open_decisions": [
+        "D03",
+        "D06"
+      ],
+      "governance": "Definir e aprovar fundamento, prazo/gatilho e destino da categoria antes de uso real.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R02",
+      "condition": "Pedido recebido de pessoa cuja autoridade ainda precisa ser verificada",
+      "expected": "Pedido é protocolado/acompanhado sem executar operação protegida ou conceder acesso adicional",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há protocolo persistente de pedidos, decisão de autoridade e acompanhamento implementado.",
+      "blocker_gaps": [
+        "G01",
+        "G07",
+        "G08"
+      ],
+      "open_decisions": [
+        "D01",
+        "D03",
+        "D07"
+      ],
+      "governance": "Autoridade disputada exige encaminhamento competente; papel familiar/importado não resolve disputa.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R03",
+      "condition": "Autor corrige contribuição com unidade compartilhada e síntese",
+      "expected": "Versão e temporalidade distinguíveis; derivados conhecidos reavaliados; versão antiga não aparece indevidamente como atual",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Correção altera objeto em memória; não há repositório de versões/índice de dependências que permita a conferência integral.",
+      "blocker_gaps": [
+        "G03",
+        "G04",
+        "G10"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05",
+        "D07"
+      ],
+      "governance": "Definir cobertura e legitimidade da correção administrativa; revisão V04 se aplicável antes da decisão.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R04",
+      "condition": "Eliminação cabível alcança conteúdo de versão anterior",
+      "expected": "Histórico da correção não mantém cópia indevida do conteúdo; somente evidência permitida permanece",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há eliminação governada de versões/logs/derivados e evidência própria; exclusão demonstrativa não demonstra destinação.",
+      "blocker_gaps": [
+        "G04",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "governance": "V2 antes de irreversibilidade em dados reais; simulação sintética V1 não satisfaz esse requisito real.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R05",
+      "condition": "Medida atinge dados próprios e de terceiros numa contribuição",
+      "expected": "Decisão separa os escopos, protege os envolvidos e não produz recorte enganoso para compartilhamento",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há decisão por escopos de terceiros nem representação contextual governada; P01/P03/P04 verificam superfícies parciais.",
+      "blocker_gaps": [
+        "G02",
+        "G06",
+        "G07",
+        "G08"
+      ],
+      "open_decisions": [
+        "D03",
+        "D04",
+        "D07"
+      ],
+      "governance": "Unidade interpretativa/apresentação incerta aciona V05 antes da entrega.",
+      "partial_diagnostics": [
+        "P01",
+        "P03",
+        "P04"
+      ],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity",
+        "evidencias.json#P01",
+        "evidencias.json#P03",
+        "evidencias.json#P04"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R06",
+      "condition": "Concessão é revogada durante preparação de síntese/exportação",
+      "expected": "Condições reavaliadas na efetivação; preparação não contorna a revogação",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há concessão persistente revogável ou barreira atômica de efetivação. P02 falhou na variante de perda de acesso demonstrativa, sem executar a revogação formal de R06.",
+      "blocker_gaps": [
+        "G01",
+        "G02",
+        "G05",
+        "G06",
+        "G07"
+      ],
+      "open_decisions": [
+        "D02",
+        "D04"
+      ],
+      "governance": "Definir mecanismo atômico e política de transmissão longa; pausa não pode substituir autorização por um mock.",
+      "partial_diagnostics": [
+        "P01",
+        "P02",
+        "P04"
+      ],
+      "next_action": "Corrigir #44 e implementar/conferir concessão revogável e guarda de efetivação antes de R06 integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity",
+        "evidencias.json#P01",
+        "evidencias.json#P02",
+        "evidencias.json#P04"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R07",
+      "condition": "Pedido exige eliminação de cópias e uma tarefa falha",
+      "expected": "Estado parcial/falha permanece visível ao acompanhamento; pedido não é declarado integralmente executado",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há fila/cópias governadas com estado por tarefa e mecanismo de injeção de falha demonstrados.",
+      "blocker_gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "governance": "Capacidade e cobertura de cópias precisam ser demonstradas; prova insuficiente aciona V08 antes de concluir.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R08",
+      "condition": "Backup tem retenção residual admitida, com limite e acesso definidos",
+      "expected": "Retenção é explicitamente delimitada; resposta não afirma eliminação integral; expurgo/revisão acompanhados",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há serviço de backup/residual/expurgo/acesso comprovado no repositório; infraestrutura externa não foi examinada.",
+      "blocker_gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06"
+      ],
+      "governance": "Prazo real, base e capacidade do provedor dependem de aprovação/evidência; não derivar prazo dos ticks.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R09",
+      "condition": "Backup anterior a uma eliminação é restaurado",
+      "expected": "Reconciliação ocorre antes de disponibilizar dados; conteúdo eliminado/restrito não retorna automaticamente ao uso",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há restauração isolada de backup com reconciliação de eliminações/concessões demonstrada; restaurar exemplos não satisfaz R09.",
+      "blocker_gaps": [
+        "G04",
+        "G07",
+        "G09"
+      ],
+      "open_decisions": [
+        "D01",
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "governance": "Revisão V06 antes de reabrir quando cobertura/resultado não demonstrados; marcadores também têm política própria.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R10",
+      "condition": "Nova tentativa repete uma operação já executada parcialmente",
+      "expected": "Estado e condições atuais são reavaliados; não há efeito duplicado indevido nem falsa conclusão",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há intenção persistente/chave idempotente e execução parcial por destino comprovadas.",
+      "blocker_gaps": [
+        "G05",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05"
+      ],
+      "governance": "Escolher mecanismo de idempotência/ordenação, sem tratar token de sessão como concessão atual.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R11",
+      "condition": "Pedido não pode ser integralmente atendido por decisão fundamentada",
+      "expected": "Medida cabível, retenção/negativa e revisão são comunicadas sem revelar informação restrita",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há ficha de decisão/negativa/revisão e comunicação de pedido implementadas.",
+      "blocker_gaps": [
+        "G01",
+        "G06",
+        "G08"
+      ],
+      "open_decisions": [
+        "D03",
+        "D06",
+        "D07"
+      ],
+      "governance": "Fundamento/competência real e conflito de interesse exigem revisão aplicável; ensaio não valida juridicamente a decisão.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R12",
+      "condition": "Derivado foi recalculado após alteração de origem, mas uso não está autorizado",
+      "expected": "Recalcular não libera apresentação/utilização; restrição aplicável permanece",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há concessão por finalidade e unidade derivada versionada com quatro estados independentes.",
+      "blocker_gaps": [
+        "G02",
+        "G04",
+        "G07"
+      ],
+      "open_decisions": [
+        "D02",
+        "D05"
+      ],
+      "governance": "Finalidade/permissão de manutenção precisa ser explícita; recomputação não cria base independente.",
+      "partial_diagnostics": [
+        "P04"
+      ],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity",
+        "evidencias.json#P04"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R13",
+      "condition": "Cópia foi entregue a destinatário externo",
+      "expected": "Registra-se o alcance real da entrega/medidas cabíveis, sem alegar apagamento fora da governança",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há entrega externa governada/registro de destinatário/medidas cabíveis implementados; não foi enviado material a pessoa real.",
+      "blocker_gaps": [
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D04",
+        "D06"
+      ],
+      "governance": "Definir medidas cabíveis e destinatário legítimo, sem envio real nesta tarefa.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R14",
+      "condition": "Conteúdo pessoal eliminável aparece em log ou evidência de execução",
+      "expected": "Cópia é tratada conforme política; prova minimizada não reconstitui conteúdo eliminado",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há política/expurgo governado de logs e prova por caso; P03 mostra campos do envelope, não executa eliminação de logs.",
+      "blocker_gaps": [
+        "G06",
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D05",
+        "D06",
+        "D07"
+      ],
+      "governance": "Regime de registro de incidente é condicional em GOV-002; não aplica conservação genérica a qualquer log.",
+      "partial_diagnostics": [
+        "P03"
+      ],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity",
+        "evidencias.json#P03"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R15",
+      "condition": "Nome é substituído por código e alguém solicita marcar o conjunto como anônimo",
+      "expected": "Anonimização não é declarada sem verificação técnica apropriada; informação vinculável continua protegida",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há método de avaliação de anonimização implementado ou especialista designado; a cifra local não comprova anonimização.",
+      "blocker_gaps": [
+        "G06",
+        "G09"
+      ],
+      "open_decisions": [
+        "D06",
+        "D07"
+      ],
+      "governance": "Definir método competente; ensaio não certifica anonimização de conjunto real nem dispensa V2 antes da irreversibilidade.",
+      "partial_diagnostics": [
+        "P03"
+      ],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity",
+        "evidencias.json#P03"
+      ],
+      "real_data_used": false
+    },
+    {
+      "id": "R16",
+      "condition": "Instituição corrige falha e conserva material de aprendizagem",
+      "expected": "Correção não é apresentada como prova de aprendizagem ou eliminação da causa; conteúdo pessoal tem política própria",
+      "status": "BLOCKED",
+      "execution_started": false,
+      "observed": "Não há registro institucional que separe comprovação causal/aprendizagem e ciclo de vida do material pessoal.",
+      "blocker_gaps": [
+        "G08",
+        "G09"
+      ],
+      "open_decisions": [
+        "D06"
+      ],
+      "governance": "Evidência de aprendizagem/causa e base de conservação são avaliações distintas; não inventar novos princípios.",
+      "partial_diagnostics": [],
+      "next_action": "Comprovar pré-condições de QA-001 e capacidades vinculadas aos gaps; depois executar ficha integral.",
+      "evidence_refs": [
+        "evidencias.json#source_integrity"
+      ],
+      "real_data_used": false
+    }
+  ],
+  "defects": [
+    {
+      "id": "P01",
+      "issue": 43,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/43",
+      "title": "[QA-F01] Revalidar leitura de detalhe já aberto ao perder acesso",
+      "expected": "O detalhe deve fechar ou suprimir conteúdo/metadata quando o contexto perde acesso.",
+      "observed": "Lista ficou vazia, mas região detalhada permaneceu visível com conteúdo idêntico."
+    },
+    {
+      "id": "P02",
+      "issue": 44,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/44",
+      "title": "[QA-F02] Revalidar contexto após criptografia e antes de baixar cofre",
+      "expected": "Alteração para contexto sem acesso antes da liberação impede o download preparado.",
+      "observed": "Após cifra real pausada, troca para cg-ana-unlinked e mensagem de acesso negado, a liberação produziu um download."
+    },
+    {
+      "id": "P03",
+      "issue": 45,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/45",
+      "title": "[QA-F03] Minimizar e proteger identificadores públicos do envelope do cofre",
+      "expected": "Definir representação mínima e proteção aplicável de metadados, impedindo exposição indevida de nome/ID a quem só possui o arquivo.",
+      "observed": "Envelope lido sem senha contém childName, childId e recordCount em claro; a cifra do payload não protege esses campos."
+    },
+    {
+      "id": "P04",
+      "issue": 46,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/46",
+      "title": "[QA-F04] Aplicar restrição de acesso ao perfil usado no relatório",
+      "expected": "Acesso negado às observações não deve manter atributos de perfil acessíveis no relatório ao mesmo contexto sem vínculo.",
+      "observed": "Depois de selecionar cg-ana-unlinked, o relatório ainda exibe o marcador sintético de fonte de conforto do perfil."
+    }
+  ],
+  "real_data_authorized": false,
+  "independent_reviewer_assigned": false,
+  "product_code_changed": false
+}
