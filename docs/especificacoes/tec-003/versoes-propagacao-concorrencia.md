@@ -62,7 +62,7 @@ Quando a prova é pré-condição do efeito, preparar seu registro mínimo antes
 
 Restauração permanece isolada de apresentação/uso até reconciliar correções, concessões atuais, revogações, restrições e eliminações. Réplica, importação ou reabertura não reinicia relógio de retenção. Marcadores mínimos para evitar reintrodução também exigem fundamento, proteção e destinação; D05/D06 não autorizam conservação indefinida. Falha de reconciliação mantém o escopo afetado pendente.
 
-Checkpoints de revisão vêm da governança aplicável e da fase do ato, sem substituição por aprovação genérica de PR ou CI. A proposta V2 antes de eliminação/anonimização irreversível da PR #40 continua pendente de incorporação em D07; especificá-la como possível checkpoint não a aprova nem inventa pessoa independente. Ausência de prova de requisito efetivamente aplicável impede o efeito protegido, sem interromper contenção mínima legítima ou deveres temporais.
+Checkpoints de revisão vêm da governança aplicável e da fase do ato, sem substituição por aprovação genérica de PR ou CI. GOV-003/PR #40 foi incorporada durante a preparação: V2 antecede eliminação/anonimização irreversível de dados reais. D07 mantém pendentes designação, disponibilidade e comprovação por caso; incorporar o documento não inventa pessoa independente. Ausência de prova de requisito efetivamente aplicável impede o efeito protegido, sem interromper contenção mínima legítima ou deveres temporais.
 
 ## Referências técnicas e limite de aplicação
 
