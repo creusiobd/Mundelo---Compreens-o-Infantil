@@ -136,7 +136,7 @@
       ],
       "destinacao": "Eliminar anexos e detalhes desnecessários; conservar prova mínima no período justificado. Reabertura mantém temporalidade e não reinicia automaticamente o prazo de todas as evidências antigas.",
       "racional_do_prazo": "Janela proposta para verificar e revisar atendimento; não é prazo legal universal nem justificativa para preservar conteúdo eliminado.",
-      "excecoes": "Controvérsia/ordem concreta demanda conservação delimitada, registrada e revisada no máximo a cada 90 dias; os 90 dias são frequência de revisão, não expiração da obrigação.",
+      "excecoes": "Controvérsia/ordem concreta demanda conservação delimitada, registrada e revisada no máximo a cada 90 dias; os 90 dias são frequência de revisão, não expiração da obrigação. Ressalva GOV-002/EX07: quando aplicável a Resolução CD/ANPD nº 15/2024, art. 10, o registro de incidente tem guarda mínima de cinco anos da data do registro, observadas exceções/deveres adicionais; não aplicar a janela geral de 24 meses a esse registro nem guardar todo o conteúdo afetado. Enquadramento concreto continua sujeito à validação.",
       "status": "PROPOSTA_PREENCHIDA_PENDENTE_DE_VALIDACAO",
       "responsavel_produto": "Creusio Kizua",
       "responsavel_governanca_decisao": "Creusio Kizua — responsabilidade interna; não presume designação formal de encarregado ou definição da pessoa jurídica controladora",
@@ -205,7 +205,7 @@
       ],
       "destinacao": "Expurgar eventos ao atingir janela; separar registros sujeitos à conservação específica, com escopo e acesso próprios. Não incluir conteúdo de contribuições, anexos ou documentos brutos em logs por padrão.",
       "racional_do_prazo": "7/30 dias são propostas operacionais, distintos dos 6 meses legais condicionais. Uma investigação não justifica conservar todos os eventos indefinidamente.",
-      "excecoes": "Incidente ou preservação legal deve individualizar eventos/períodos e revisão, sem ampliar o conjunto por mera possibilidade de litígio.",
+      "excecoes": "Incidente ou preservação legal deve individualizar eventos/períodos e revisão, sem ampliar o conjunto por mera possibilidade de litígio. Registro especial de incidente é separado dos logs brutos e tratado pela ressalva C06/EX07; a guarda desse registro não estende automaticamente o prazo de todos os eventos ou anexos.",
       "status": "PROPOSTA_PREENCHIDA_PENDENTE_DE_VALIDACAO",
       "responsavel_produto": "Creusio Kizua",
       "responsavel_governanca_decisao": "Creusio Kizua — responsabilidade interna; não presume designação formal de encarregado ou definição da pessoa jurídica controladora",
@@ -236,5 +236,12 @@
       "verificacao": "Creusio Kizua com evidência técnica adicional por caminho distinto; em medida irreversível/disputada sem verificação adicional suficiente, revisor competente a designar antes de declarar conclusão",
       "validacao_juridica": "Necessária para o enquadramento real antes da habilitação; bases candidatas não são decisões jurídicas finais"
     }
-  ]
+  ],
+  "complemento_gov002": {
+    "data": "2026-11-19",
+    "status": "PROPOSTA_DE_COMPLEMENTO_PARA_REVISAO",
+    "procedimento": "governanca/gov-002/README.md",
+    "fonte_registro_incidente": "https://bibliotecadigital.mj.gov.br/bitstream/1/12879/2/RES_ANPD_2024_15.html",
+    "limite": "Nenhum prazo-base das demais categorias foi ampliado; regra conferida na fonte não certifica aplicação ao caso."
+  }
 }
