@@ -1,0 +1,72 @@
+{
+  "type": "MODELO_DOCUMENTAL_EM_BRANCO_NAO_EXECUTAVEL",
+  "procedure": "GOV-003 v0.1",
+  "case_reference": null,
+  "governance_case_reference": null,
+  "environment_version": null,
+  "data_classification": "A_VERIFICAR",
+  "real_data_authorized": false,
+  "operation": null,
+  "object_version_references": [],
+  "purpose_policy_scope": null,
+  "authority_verified": false,
+  "trigger_ids": [],
+  "required_controls": [],
+  "classification_status": "PENDENTE",
+  "phase_required": null,
+  "decision_actor": "Creusio Kizua",
+  "executor": "Creusio Kizua",
+  "technical_verifier": "Creusio Kizua",
+  "additional_reviewer": null,
+  "specialized_competence": null,
+  "reviewer_eligibility": {
+    "different_person_verified": false,
+    "competence_verified": false,
+    "conflict_assessed": false,
+    "access_separately_authorized": false
+  },
+  "input_scope": {
+    "allowed_references": [],
+    "recipients": null,
+    "access_limit": null,
+    "channel": null
+  },
+  "review": {
+    "status": "NAO_REALIZADA",
+    "scope_version": null,
+    "phase": null,
+    "reviewed_at": null,
+    "findings_minimized": null,
+    "limits": null,
+    "conditions": null
+  },
+  "method_separation_verified": false,
+  "technical_checks": [],
+  "effectuation_authorized": false,
+  "effectuation": {
+    "state": "NAO_EXECUTADA",
+    "last_revalidation_at": null,
+    "current_version_authority_verified": false
+  },
+  "result_verification": {
+    "state": "NAO_EXECUTADO",
+    "method_distinct_from_dispatch": null,
+    "observed_result": null,
+    "evidence_reference": null,
+    "coverage": null,
+    "residuals": []
+  },
+  "personal_independence_proven": false,
+  "unavailable_reviewer": {
+    "pending_phase": null,
+    "owner": "Creusio Kizua",
+    "next_action": null,
+    "original_deadline_source": null,
+    "next_review": null,
+    "already_authorized_minimum_containment": null
+  },
+  "change_invalidates_previous_review": true,
+  "communication_status": "NAO_REALIZADA",
+  "evidence_retention_policy": null,
+  "closure_status": "PENDENTE"
+}

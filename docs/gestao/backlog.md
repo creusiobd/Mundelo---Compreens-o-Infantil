@@ -1,6 +1,6 @@
 # Backlog do MUNDELO
 
-Atualização de acompanhamento: 19/11/2026. Responsável por todas as tarefas: Creusio Kizua (@creusiobd). P0 = caminho crítico; P1 = relevante para completar a base e a experiência. Seleção de sprint é planejamento sujeito à capacidade e às dependências.
+Atualização de acompanhamento: 20/11/2026. Responsável por todas as tarefas: Creusio Kizua (@creusiobd). P0 = caminho crítico; P1 = relevante para completar a base e a experiência. Seleção de sprint é planejamento sujeito à capacidade e às dependências.
 
 | Tarefa | Estado | Prioridade | Sprint | Marco | Dependências |
 |---|---|---|---|---|---|
@@ -10,10 +10,10 @@ Atualização de acompanhamento: 19/11/2026. Responsável por todas as tarefas: 
 | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) — Disponibilizar a exportação integral das conversas do MUNDELO | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-003 #26](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/26) — Recuperar os 219 identificadores sem texto transcrito | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) |
 | [GOV-001 #27](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/27) — Validar os enquadramentos jurídicos por categoria e operação | Bloqueado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | — |
-| [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) — Detalhar exceções de retenção, contestação e medidas urgentes | Em revisão | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
+| [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) — Detalhar exceções de retenção, contestação e medidas urgentes | Concluído | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
 | [TEC-002 #29](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/29) — Comprovar capacidade do ambiente para retenção e backups | Planejado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
-| [GOV-003 #30](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30) — Definir verificação adicional para medidas destrutivas ou disputadas | Planejado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
-| [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) — Especificar autorização, versões e propagação aos derivados | Bloqueado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23), [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
+| [GOV-003 #30](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30) — Definir verificação adicional para medidas destrutivas ou disputadas | Em revisão | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
+| [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) — Especificar autorização, versões e propagação aos derivados | Pronto | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23), [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
 | [QA-001 #32](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32) — Preparar roteiro executável dos 16 cenários de retenção | Bloqueado | P1 | SP03 | [M03](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/4) | [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) |
 | [QA-002 #33](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33) — Executar cenários aplicáveis com dados sintéticos e registrar resultados | Bloqueado | P0 | SP03 | [M03](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/4) | [QA-001 #32](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32), [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) |
 | [UX-001 #34](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34) — Revisar a experiência de pedidos, restrições e acompanhamento | Planejado | P1 | Backlog | [M03](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/4) | [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28), [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) |
@@ -108,7 +108,7 @@ Entrega: Procedimento de exceções ligado aos critérios existentes.
 
 Registro de execução: [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28).
 
-Entrega documental: [procedimento GOV-002](../governanca/gov-002/README.md), em revisão. Não constitui operação real ou validação jurídica final.
+Entrega documental: [procedimento GOV-002](../governanca/gov-002/README.md), incorporada pela PR #39. Não constitui operação real ou validação jurídica final.
 
 ## TEC-002 — Comprovar capacidade do ambiente para retenção e backups
 
@@ -126,13 +126,15 @@ Registro de execução: [TEC-002 #29](https://github.com/creusiobd/Mundelo---Com
 
 Entrega: Modelo de verificação e responsabilidades.
 
-- [ ] Descrever controle adicional compatível com a equipe atual de uma pessoa
-- [ ] Definir quando será necessário revisor competente a designar
-- [ ] Não chamar conferência do próprio executor de revisão humana independente
+- [x] Descrever controle adicional compatível com a equipe atual de uma pessoa
+- [x] Definir quando será necessário revisor competente a designar
+- [x] Não chamar conferência do próprio executor de revisão humana independente
 
 
 
 Registro de execução: [GOV-003 #30](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30).
+
+Entrega: [modelo de verificação adicional](../governanca/gov-003/README.md), em revisão. Controle/documento proposto; sem execução ou revisor adicional nomeado.
 
 ## TEC-003 — Especificar autorização, versões e propagação aos derivados
 
@@ -142,7 +144,7 @@ Entrega: Especificação lógica revisável sem migrations.
 - [ ] Regras de concorrência/reavaliação para revogação e mudança da origem
 - [ ] Vincular requisitos a critérios testáveis e registrar decisões abertas
 
-Bloqueio: [BL-03](bloqueios.md).
+Dependências documentais TEC-001/GOV-002 resolvidas; tarefa pronta. BL-03 continua em QA-001, que aguarda esta especificação e controles disponíveis.
 
 Registro de execução: [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31).
 

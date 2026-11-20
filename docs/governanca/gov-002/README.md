@@ -135,3 +135,8 @@ Conclusão exige decisão/alcance claros, efeito verificado, residuais declarado
 - QA-001/#32 e QA-002/#33: roteiro executável e execução contra controles realmente disponíveis.
 
 A entrega documental pode ser concluída sem resolver essas tarefas. Aprovação não prova implementação ou cenário executado. Os 16 cenários R01–R16 permanecem intactos; a matriz detalha seus pontos de decisão. Recuperação INF-ID não é alterada.
+
+
+## Continuidade — incorporação e verificação adicional
+
+GOV-002 foi incorporada pela [PR #39](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/39), commit `f1ffbc13dae489651d145f1d916b38a09bab31d8`; tarefa #28 concluída documentalmente. Isso não executa os casos ou habilita dados reais. O [modelo GOV-003](../gov-003/README.md), em proposta para revisão, detalha V1/V2/V3, gatilhos, fase e indisponibilidade da verificação. A designação de outro revisor e os controles reais não são presumidos.
