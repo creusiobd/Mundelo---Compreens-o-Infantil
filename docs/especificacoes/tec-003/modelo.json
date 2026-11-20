@@ -14,9 +14,10 @@
     },
     "GOV_003": {
       "pr": 40,
-      "status": "Em revisão na conferência inicial",
+      "status": "Incorporada durante a preparação da PR #41",
       "head": "3f232e33da2d87bfe03e668cc8246e13dc93e745",
-      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40"
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40",
+      "merge_commit": "65f369b53b182b6094b00658b7a741a0f2e877ad"
     }
   },
   "requirements": [
@@ -144,7 +145,7 @@
     {
       "id": "REQ-14",
       "title": "Revisão e gates como condições",
-      "rule": "Representar revisões exigidas pelo procedimento vigente, fase, competência e escopo; GOV-003/PR #40 segue proposta, sem suprimento por aprovação documental.",
+      "rule": "Representar revisões exigidas por GOV-002/GOV-003 incorporadas, fase, competência e escopo; aprovação documental não comprova execução nem designa revisor.",
       "gaps": [
         "G03",
         "G08"
@@ -1007,7 +1008,7 @@
       "given": "Falta revisão indispensável na fase exigida pela política aplicável",
       "when": "Solicitar medida protegida",
       "expected": "Permanecer pendente e encaminhar; conter apenas mínimo já legitimado",
-      "negative": "Proposta GOV-003 não incorporada, CI ou segunda conta do executor não satisfazem revisão humana requerida",
+      "negative": "Aprovação da GOV-003, CI ou segunda conta do executor não satisfazem a revisão humana requerida no caso concreto",
       "retention_cases": [
         "R02",
         "R11"
@@ -1132,10 +1133,10 @@
     },
     {
       "id": "D07",
-      "title": "Modelo de verificação adicional da PR #40",
-      "decision": "PR #40 estava aberta na base desta especificação. Exigência geral de V2 antes de irreversibilidade real e demais escolhas de GOV-003 permanecem propostas, não regras incorporadas. Representar checkpoint aplicável e não permitir efeito cuja revisão/fundamento não estiver demonstrado.",
-      "owner": "Revisão de GOV-003/PR #40; sem pessoa presumida",
-      "status": "PR #40 em revisão na conferência inicial"
+      "title": "Aplicação da verificação adicional incorporada",
+      "decision": "GOV-003/PR #40 foi incorporada no commit 65f369b53b182b6094b00658b7a741a0f2e877ad durante a preparação. Representar seus checkpoints e fases, incluindo V2 antes de eliminação/anonimização irreversível de dados reais. Designação da pessoa competente, disponibilidade e evidência por caso continuam pendentes; não permitir efeito cuja revisão exigida não estiver demonstrada.",
+      "owner": "Creusio Kizua; pessoa independente a designar",
+      "status": "Governança incorporada; aplicação e designação pendentes"
     },
     {
       "id": "D08",
