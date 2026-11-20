@@ -150,7 +150,7 @@
       "title": "Detalhar exceções de retenção, contestação e medidas urgentes",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Em revisão",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [
         "TEC-001"
@@ -166,10 +166,10 @@
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28",
       "issue_number": 28,
       "evidence": [
-        "../governanca/gov-002/README.md"
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/39"
       ],
       "document_delivered": true,
-      "incorporation_pending": true
+      "incorporation_pending": false
     },
     {
       "id": "TEC-002",
@@ -197,7 +197,7 @@
       "title": "Definir verificação adicional para medidas destrutivas ou disputadas",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Planejado",
+      "status": "Em revisão",
       "priority": "P0",
       "dependencies": [
         "GOV-002"
@@ -211,14 +211,19 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30",
-      "issue_number": 30
+      "issue_number": 30,
+      "document_delivered": true,
+      "incorporation_pending": true,
+      "evidence": [
+        "../governanca/gov-003/README.md"
+      ]
     },
     {
       "id": "TEC-003",
       "title": "Especificar autorização, versões e propagação aos derivados",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Bloqueado",
+      "status": "Pronto",
       "priority": "P0",
       "dependencies": [
         "TEC-001",
@@ -233,13 +238,16 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31",
-      "blocker": {
+      "issue_number": 31,
+      "resolved_blocker": {
         "id": "BL-03",
         "cause": "TEC-001 incorporada; GOV-002 entregue para revisão; especificação lógica própria ainda não concluída",
         "owner": "Creusio Kizua",
-        "unblock_action": "Conferir/incorporar GOV-002 e executar a especificação TEC-003, com decisões abertas explícitas"
-      },
-      "issue_number": 31
+        "unblock_action": "Conferir/incorporar GOV-002 e executar a especificação TEC-003, com decisões abertas explícitas",
+        "resolved_on": "2026-11-20",
+        "evidence": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/39",
+        "note": "Dependência documental resolvida; especificação não executada."
+      }
     },
     {
       "id": "QA-001",
@@ -453,9 +461,9 @@
     }
   ],
   "latest_update": {
-    "date": "2026-11-19",
-    "task": "GOV-002",
-    "result": "Procedimento documental entregue para revisão; TEC-001 incorporada; sem implementação ou operação real",
-    "report": "../governanca/gov-002/README.md"
+    "date": "2026-11-20",
+    "task": "GOV-003",
+    "result": "Modelo entregue para revisão; GOV-002 incorporada; TEC-003 disponível para especificação",
+    "report": "../governanca/gov-003/README.md"
   }
 }
