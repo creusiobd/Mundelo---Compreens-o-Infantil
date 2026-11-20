@@ -38,3 +38,8 @@ Os números refletem esta atualização documental, sem acompanhamento automáti
 Há 73 identificadores INF-ID com algum texto normativo documentado e 219 sem transcrição; isso não significa 73 princípios canônicos integralmente conferidos. A exportação integral ainda é uma dependência. Os 16 cenários de retenção foram descritos, sem execução comprovada. Aprovação de documentos não comprova implementação, validação jurídica ou liberação de dados reais de crianças.
 
 Nenhum princípio novo deve ser acrescentado durante a recuperação. Fontes sincronizadas em `sources/` são somente leitura.
+
+
+## Atualização — TEC-003 / 20/11/2026
+
+Consultar o [registro de andamento TEC-003](andamentos/2026-11-20-tec-003.md) e sua [especificação lógica](../especificacoes/tec-003/README.md). Este registro sucede os retratos anteriores para esta frente: GOV-002 já foi incorporada pela PR #39; GOV-003/PR #40 foi incorporada durante a preparação no commit `65f369b53b182b6094b00658b7a741a0f2e877ad`, com aplicação e revisor independente ainda pendentes. TEC-003 é entregue para revisão, sem implementação ou execução dos cenários propostos. Os campos do Project não foram sincronizados automaticamente.
