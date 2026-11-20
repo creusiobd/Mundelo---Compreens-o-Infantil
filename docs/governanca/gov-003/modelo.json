@@ -1,0 +1,345 @@
+{
+  "version": "0.1",
+  "task": "GOV-003",
+  "issue": 30,
+  "date": "2026-11-20",
+  "base_commit": "f1ffbc13dae489651d145f1d916b38a09bab31d8",
+  "status": "Proposta de controle documental; sem execução ou revisor adicional designado",
+  "owner": "Creusio Kizua",
+  "current_roles": {
+    "product": "Creusio Kizua",
+    "decision": "Creusio Kizua",
+    "executor": "Creusio Kizua",
+    "initial_verifier": "Creusio Kizua",
+    "additional_reviewer": null,
+    "legal_specialist": null
+  },
+  "controls": [
+    {
+      "id": "V1",
+      "name": "Conferência técnica distinta do disparo",
+      "actor": "Creusio Kizua",
+      "personally_independent": false,
+      "scope": "Pré-condições, revalidação e comprovação por caminho distinto, com cobertura e limites explícitos",
+      "substitutes_V2": false
+    },
+    {
+      "id": "V2",
+      "name": "Revisão humana por pessoa distinta e competente",
+      "actor": null,
+      "personally_independent": "A comprovar por caso",
+      "scope": "Objeto/fase/competência/ausência de conflito/acesso mínimo definidos; não significa auditoria externa ou certificação",
+      "substitutes_V1": false
+    },
+    {
+      "id": "V3",
+      "name": "Competência especializada adicional",
+      "actor": null,
+      "personally_independent": "A verificar se exigida",
+      "scope": "Dimensão jurídica, técnica ou profissional pertinente; cumulativa quando o caso exigir",
+      "substitutes_V1": false,
+      "substitutes_V2": false
+    }
+  ],
+  "triggers": [
+    {
+      "id": "V01",
+      "trigger": "Eliminação irreversível/anonimização de dados pessoais reais",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Revisar legitimidade, escopo, cobertura e suficiência da prova antes do efeito irreversível; V1 continua obrigatório depois.",
+      "limits": "Demonstração integralmente sintética pode seguir V1, identificada como tal; não libera dados reais.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V02",
+      "trigger": "Autoridade, representação ou alcance jurídico disputados/incertos",
+      "phase": "ANTES_DA_DECISAO",
+      "controls": [
+        "V2",
+        "V3"
+      ],
+      "required": "Competência pertinente revisa a dimensão em disputa; não arbitrar pelo papel familiar/profissional ou pela opinião do executor.",
+      "limits": "Protocolo e contenção mínima já legitimada não dependem da decisão integral do conflito.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V03",
+      "trigger": "Conflito de interesse ou participação material do decisor/executor",
+      "phase": "ANTES_DA_DECISAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Pessoa distinta e sem o conflito identificado revisa a decisão afetada; declarar e registrar impedimentos.",
+      "limits": "A declaração de ausência de conflito é conferida; autodeclaração ou outra conta do mesmo executor não demonstram independência.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V04",
+      "trigger": "Correção administrativa de contribuição alheia, inclusive importação",
+      "phase": "ANTES_DA_DECISAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Conferir autoridade específica e respeito à autoria/versões; necessidade jurídica/especializada acrescenta V3.",
+      "limits": "Importar revisão maior, cargo ou vínculo não dispensa revisão; correção própria legítima continua separada.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V05",
+      "trigger": "Terceiros, metadados ou contexto com decisão de apresentação incerta",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Revisar unidade/destinatário e mínimo necessário antes da entrega; V3 se depender de competência especializada.",
+      "limits": "Preparar representação alternativa não amplia permissão nem permite recorte enganoso.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V06",
+      "trigger": "Restauração ou propagação com cobertura/resultado não demonstrados",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Especialista técnico competente confere reconciliação e limites antes de reabrir acesso; V1 registra efeito posterior.",
+      "limits": "Sem cobertura, manter pendência das operações afetadas, sem afirmar eliminação integral.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V07",
+      "trigger": "Uso/divulgação excepcional em situação urgente com fundamento incerto",
+      "phase": "ANTES_DA_DECISAO",
+      "controls": [
+        "V2",
+        "V3"
+      ],
+      "required": "Encaminhar a competência pertinente e registrar necessidade/escopo; separar da contenção reversível já autorizada.",
+      "limits": "A revisão não adia automaticamente dever exigível nem substitui resposta emergencial competente; ausência de capacidade não cria base de retenção.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V08",
+      "trigger": "Prova técnica insuficiente ou resultado contestado depois da execução",
+      "phase": "ANTES_DA_CONCLUSAO",
+      "controls": [
+        "V2"
+      ],
+      "required": "Revisor técnico distinto examina evidência, limitações e próxima ação; resultado fica parcial/falha/pendente até prova suficiente.",
+      "limits": "Se a insuficiência for conhecida antes de efeito irreversível, aplicar V01 antes do efeito, sem deslocar a revisão para depois.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    },
+    {
+      "id": "V09",
+      "trigger": "Mudança relevante após uma revisão ou autorização",
+      "phase": "REABRIR_FASE_AFETADA",
+      "controls": [
+        "V1"
+      ],
+      "required": "Invalidar uso da avaliação anterior no escopo modificado e refazer a classificação; os gatilhos V01–V08 continuam cumulativos.",
+      "limits": "Não repetir efeito indevidamente, reiniciar prazo ou reutilizar aprovação para versão/destinatário diferentes.",
+      "proposal": true,
+      "additional_reviewer_assigned": false
+    }
+  ],
+  "operation_matrix": [
+    {
+      "id": "OP-01",
+      "operation": "Preservar",
+      "baseline": "V1; V2/V3 se exceção/autoridade disputada",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Política e limite próprios; revisão não prolonga retenção."
+    },
+    {
+      "id": "OP-02",
+      "operation": "Registrar",
+      "baseline": "V1; V2/V3 se ato protegido depender de autoridade disputada",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Protocolar manifestação/pedido não exige concluir toda a disputa nem concede acesso."
+    },
+    {
+      "id": "OP-03",
+      "operation": "Preparar para compartilhamento",
+      "baseline": "V1; V2 se contexto/terceiros forem incertos",
+      "trigger": "V05",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "limit": "Preparação não é entrega; reclassificar antes de disponibilizar."
+    },
+    {
+      "id": "OP-04",
+      "operation": "Consultar",
+      "baseline": "V1; V2/V3 para exceção/autoridade incertas",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Verificar também tela aberta, perfil e metadados no escopo afetado."
+    },
+    {
+      "id": "OP-05",
+      "operation": "Utilizar em síntese",
+      "baseline": "V1; V2 se contexto ou origem estiverem em disputa",
+      "trigger": "V05",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "limit": "Leitura não concede utilização; referências e permissões atuais."
+    },
+    {
+      "id": "OP-06",
+      "operation": "Compartilhar",
+      "baseline": "V1; V2/V3 se autoridade, terceiro ou escopo excepcional forem incertos",
+      "trigger": "V05",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "limit": "Reavaliar antes da entrega ao destinatário legítimo."
+    },
+    {
+      "id": "OP-07",
+      "operation": "Exportar",
+      "baseline": "V1; V2 conforme autoridade/terceiros/exceção",
+      "trigger": "V05",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "limit": "A revisão abrange a liberação final, não só a preparação do pacote."
+    },
+    {
+      "id": "OP-08",
+      "operation": "Corrigir",
+      "baseline": "V1 para correção própria legítima; V2 para revisão administrativa alheia",
+      "trigger": "V04",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Mudança destrutiva real acrescenta V01; autoria e dependências permanecem distinguíveis."
+    },
+    {
+      "id": "OP-09",
+      "operation": "Contestar/solicitar correção",
+      "baseline": "V1 na recepção; V2/V3 na decisão disputada",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Pedido autônomo não é prova de falsidade nem autorização para sobrescrita."
+    },
+    {
+      "id": "OP-10",
+      "operation": "Restringir",
+      "baseline": "V1 para contenção reversível legitimada; V2 na decisão disputada ou levantamento incerto",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Não reabrir acesso automaticamente por prazo de revisão vencido."
+    },
+    {
+      "id": "OP-11",
+      "operation": "Eliminar/anonimizar",
+      "baseline": "V1 + V2 antes de efeito irreversível em dados pessoais reais",
+      "trigger": "V01",
+      "phase": "ANTES_DA_EFETIVACAO",
+      "limit": "Dados sintéticos identificados podem usar V1; pseudonimização não é anonimização comprovada."
+    },
+    {
+      "id": "OP-12",
+      "operation": "Conceder/ampliar",
+      "baseline": "V1; V2/V3 se autoridade/escopo excepcional forem incertos",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Nomeação de revisor não concede acesso; destinatário/operacões explícitos."
+    },
+    {
+      "id": "OP-13",
+      "operation": "Revogar/expirar/suspender",
+      "baseline": "V1 em escopo legitimado; V2/V3 na controvérsia decisória",
+      "trigger": "V02",
+      "phase": "ANTES_DA_DECISAO",
+      "limit": "Bloquear operações futuras no escopo; revogar não significa eliminar."
+    },
+    {
+      "id": "OP-14",
+      "operation": "Reavaliar derivados",
+      "baseline": "V1 e controles herdados do efeito concreto",
+      "trigger": "V09",
+      "phase": "REABRIR_FASE_AFETADA",
+      "limit": "Recálculo não elimina exigências de autoridade, apresentação ou medida irreversível."
+    }
+  ],
+  "technical_checks": [
+    {
+      "id": "K01",
+      "rule": "Autoridade, finalidade, política e limites vigentes conferidos antes da decisão protegida"
+    },
+    {
+      "id": "K02",
+      "rule": "Plano/manifesto de objetos e versões, operações e dependências conhecidos, com referências protegidas e sem cópia adicional do teor pessoal"
+    },
+    {
+      "id": "K03",
+      "rule": "Método de execução e de verificação distintos, com capacidade e limites previamente demonstrados; simulação sintética identificada"
+    },
+    {
+      "id": "K04",
+      "rule": "Conferência adicional exigida concluída na fase correta; revisor elegível e sem conflito verificado"
+    },
+    {
+      "id": "K05",
+      "rule": "Revalidar autoridade, versão, destinatário e restrições imediatamente antes do efeito; mudança reabre fase afetada"
+    },
+    {
+      "id": "K06",
+      "rule": "Observar resultado real por leitura/teste da fronteira efetiva autorizada, não apenas toast, comando ou código de retorno"
+    },
+    {
+      "id": "K07",
+      "rule": "Verificar dependências/cópias e reaplicação antes de restauração; cobertura desconhecida impede conclusão integral"
+    },
+    {
+      "id": "K08",
+      "rule": "Prova minimizada com política própria, sem senhas/tokens ou reconstrução do conteúdo eliminado"
+    },
+    {
+      "id": "K09",
+      "rule": "Falha/atraso mantém escopo real, responsável e próximo encaminhamento; não reinicia automaticamente prazo exigível"
+    },
+    {
+      "id": "K10",
+      "rule": "Conclusão e comunicação cabíveis identificadas; reabertura preserva início e histórico mínimo legitimamente aplicável"
+    }
+  ],
+  "reviewer_eligibility": [
+    "Pessoa efetivamente distinta do executor quando V2 exigida",
+    "Competência demonstrável para a dimensão analisada",
+    "Conflito de interesse avaliado e afastado ou encaminhado",
+    "Autoridade e necessidade de acesso separadamente verificadas",
+    "Escopo, versão, fase, limites e validade da revisão registrados",
+    "Acesso mínimo por canal apropriado, prazo e retirada/restrição ao terminar",
+    "Parecer com resultado e limites; aprovação não é poder de executar ou conceder acesso"
+  ],
+  "unavailability_rule": "Operação protegida aguarda a revisão indispensável à fase; contenção mínima já legitimada é separada. Encaminhar competência e capacidade preservando prazos e respondendo limitações; não criar conservação indefinida, dispensa fictícia ou suspensão automática de dever exigível.",
+  "synthetic_only_current_work": true,
+  "real_data_authorized": false,
+  "new_implementation": false,
+  "sources": [
+    {
+      "title": "Base interna incorporada — GOV-002",
+      "path": "../gov-002/README.md",
+      "role": "Requisito de controle e limites já documentados"
+    },
+    {
+      "title": "NIST SP 800-53 Rev.5 — AC-5/AC-6",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "control_text": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+      "role": "Referência técnica de separação de funções e menor privilégio; não impõe automaticamente estas escolhas ao MUNDELO nem comprova certificação",
+      "checked": "2026-11-20"
+    },
+    {
+      "title": "ANPD — Guia de segurança da informação para agentes de pequeno porte",
+      "url": "https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-vf.pdf/@@download/file",
+      "role": "Orientação de controle de acesso e medidas de segurança; não presume enquadramento como pequeno porte",
+      "checked": "2026-11-20"
+    }
+  ]
+}
