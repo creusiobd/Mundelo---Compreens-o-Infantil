@@ -43,3 +43,8 @@ Nenhum princípio novo deve ser acrescentado durante a recuperação. Fontes sin
 ## Atualização — TEC-003 / 20/11/2026
 
 Consultar o [registro de andamento TEC-003](andamentos/2026-11-20-tec-003.md) e sua [especificação lógica](../especificacoes/tec-003/README.md). Este registro sucede os retratos anteriores para esta frente: GOV-002 já foi incorporada pela PR #39; GOV-003/PR #40 foi incorporada durante a preparação no commit `65f369b53b182b6094b00658b7a741a0f2e877ad`, com aplicação e revisor independente ainda pendentes. TEC-003 é entregue para revisão, sem implementação ou execução dos cenários propostos. Os campos do Project não foram sincronizados automaticamente.
+
+
+## Atualização — QA-001 / 20/11/2026
+
+TEC-003/#31 incorporada pela PR #41 (`59efcd56b006768540863fbc1e2fcbb144ae3007`). [QA-001/#32](andamentos/2026-11-20-qa-001.md) entrega para revisão o [roteiro dos 16 cenários](../qa/qa-001/README.md), com preparação sintética e fichas de execução. Ambiente demonstrativo identificado; capacidades ausentes bloqueiam a aceitação específica, sem impedir esta preparação. Nenhum cenário de retenção foi executado por esta entrega. GOV-003/PR #40 já incorporada; aplicação/revisor continuam pendentes. Sem sincronização automática do Project.
