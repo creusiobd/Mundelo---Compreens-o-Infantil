@@ -26,13 +26,15 @@ Todas as condições pertinentes se acumulam. Não escolher só o gatilho mais c
 |---|---|---|---|
 | V01 | Eliminação irreversível/anonimização de dados pessoais reais | V2 — ANTES_DA_EFETIVACAO | Demonstração integralmente sintética pode seguir V1, identificada como tal; não libera dados reais. |
 | V02 | Autoridade, representação ou alcance jurídico disputados/incertos | V2 + V3 — ANTES_DA_DECISAO | Protocolo e contenção mínima já legitimada não dependem da decisão integral do conflito. |
-| V03 | Conflito de interesse ou participação material do decisor/executor | V2 — ANTES_DA_DECISAO | A declaração de ausência de conflito é conferida; autodeclaração ou outra conta do mesmo executor não demonstram independência. |
+| V03 | Conflito de interesse relevante ou participação como parte no objeto contestado | V2 — ANTES_DA_DECISAO | A declaração de ausência de conflito é conferida; autodeclaração ou outra conta do mesmo executor não demonstram independência. |
 | V04 | Correção administrativa de contribuição alheia, inclusive importação | V2 — ANTES_DA_DECISAO | Importar revisão maior, cargo ou vínculo não dispensa revisão; correção própria legítima continua separada. |
 | V05 | Terceiros, metadados ou contexto com decisão de apresentação incerta | V2 — ANTES_DA_EFETIVACAO | Preparar representação alternativa não amplia permissão nem permite recorte enganoso. |
 | V06 | Restauração ou propagação com cobertura/resultado não demonstrados | V2 — ANTES_DA_EFETIVACAO | Sem cobertura, manter pendência das operações afetadas, sem afirmar eliminação integral. |
 | V07 | Uso/divulgação excepcional em situação urgente com fundamento incerto | V2 + V3 — ANTES_DA_DECISAO | A revisão não adia automaticamente dever exigível nem substitui resposta emergencial competente; ausência de capacidade não cria base de retenção. |
 | V08 | Prova técnica insuficiente ou resultado contestado depois da execução | V2 — ANTES_DA_CONCLUSAO | Se a insuficiência for conhecida antes de efeito irreversível, aplicar V01 antes do efeito, sem deslocar a revisão para depois. |
 | V09 | Mudança relevante após uma revisão ou autorização | V1 — REABRIR_FASE_AFETADA | Não repetir efeito indevidamente, reiniciar prazo ou reutilizar aprovação para versão/destinatário diferentes. |
+
+V03 trata de interesse concreto no resultado ou participação como parte na narrativa/ato contestado, como avaliar queixa sobre a própria alteração. A responsabilidade operacional ordinária de executar e conferir V1 não aciona V03 por si só e também não comprova independência pessoal. Registrar a avaliação do conflito, sem dispensá-la por conveniência.
 
 **Escolha proposta para irreversibilidade:** eliminação irreversível de dado pessoal real ou anonimização que impeça recomposição exige V2 antes da efetivação e V1 para comprovar o resultado. Uma política aprovada, classificação de rotina, revisão maior, retorno de API ou operação agendada não dispensam essa exigência. Caso se pretenda outro modelo para futuras rotinas automatizadas, ele precisa de revisão explícita antes da habilitação; não existe dispensa tácita neste documento. A regra não se aplica como liberação de dados reais: esse gate permanece fechado até os requisitos próprios.
 
