@@ -10,7 +10,9 @@ Tratar correção, restrição, eliminação, anonimização, alteração de aut
 
 O escopo inclui conteúdo, versões, contexto, metadados, relações de linhagem, sínteses, autorizações, evidências de operação, exportações temporárias, cópias técnicas e backups sob governança aplicável. Cópias externas são tratadas conforme a responsabilidade efetiva, sem promessa de controle que o MUNDELO não possui.
 
-## 2. Responsabilidades a designar
+## 2. Responsabilidades funcionais
+
+**Atualização nominal:** Creusio Kizua responde atualmente por produto, recepção, acompanhamento, revisão interna, decisão e execução, conforme sua declaração registrada na PR #21. A conferência técnica inicial pelo próprio executor não é revisão humana independente. O [procedimento GOV-002](governanca/gov-002/README.md) detalha funções, exceções e encaminhamentos.
 
 | Responsabilidade | Entrega esperada | Limite |
 |---|---|---|
@@ -22,7 +24,7 @@ O escopo inclui conteúdo, versões, contexto, metadados, relações de linhagem
 | Verificação de resultado | Conferência de efeito, dependências, falhas e evidências minimizadas | Conclusão não pode se apoiar somente na declaração de quem disparou a tarefa |
 | Segurança e tratamento de falhas | Contenção de acesso indevido, investigação e coordenação de correções | Contenção não encerra automaticamente o pedido nem autoriza retenção irrestrita |
 
-Em cada caso deve existir um responsável pelo acompanhamento e outro pela decisão, identificados conforme o modelo de governança que vier a ser aprovado. A independência da verificação será definida proporcionalmente ao risco; em operações destrutivas ou disputadas, a mesma ação não pode representar, sem verificação adicional, decisão, execução e prova de conclusão. Essas são propostas de controle para revisão, não designações já efetivadas.
+Em cada caso, identificar as funções de acompanhamento, decisão, execução e verificação. A concentração atual em Creusio Kizua não simula pessoas diferentes nem demonstra segregação já implantada. Em medida irreversível/disputada sem verificação adicional suficiente, registrar a necessidade de competência a designar e o encaminhamento em GOV-003; não declarar conclusão pelo simples disparo. Indisponibilidade de verificador não cria fundamento de retenção indefinida nem suspende prazo exigível.
 
 ## 3. Registro obrigatório da política por categoria
 
@@ -130,3 +132,10 @@ A política operacional e seus cenários foram validados pelo responsável pelo 
 Creusio Kizua informou ser atualmente responsável por produto, governança e execução técnica do projeto. Essa nomeação interna não presume designação formal de encarregado, definição jurídica do controlador ou verificação humana independente.
 
 Os limites numéricos novos são propostas de produto; não são exigências legais, prazos já configurados ou aprovação antecipada para dados reais. O enquadramento específico, as exceções e a capacidade técnica precisam de validação antes da habilitação aplicável. A aprovação anterior da PR #20 não é reaberta por esta complementação.
+
+
+## Complementação GOV-002 — proposta de exceções
+
+O [procedimento de exceções, contestação e medidas urgentes](governanca/gov-002/README.md) detalha dez casos, autoridade por escopo, responsáveis, revisão e comprovação. É complementação documental para revisão, sem reabrir as aprovações das PRs #19–#21 ou executar operações reais. A indicação histórica de pendências neste documento deve ser lida com a matriz preenchida da PR #21 e seus limites de validação.
+
+As metas P01–P03 não são prazos legais nem autorizam retenção adicional. A referência normativa conferida não prova sua aplicação ao agente/caso. Registro de incidente sob o regime aplicável exige política própria, distinta da janela candidata geral de C06 e de logs C09; ver L03/EX07 no procedimento.

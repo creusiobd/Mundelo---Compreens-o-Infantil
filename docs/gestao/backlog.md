@@ -5,12 +5,12 @@ Atualização de acompanhamento: 19/11/2026. Responsável por todas as tarefas: 
 | Tarefa | Estado | Prioridade | Sprint | Marco | Dependências |
 |---|---|---|---|---|---|
 | [PM-001 #22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22) — Implantar a estrutura de gestão do MUNDELO | Concluído | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
-| [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) — Mapear o código atual contra contrato e critérios por operação | Em revisão | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
+| [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) — Mapear o código atual contra contrato e critérios por operação | Concluído | P0 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-002 #24](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24) — Conciliar versões e aprovação dos 73 INF-ID documentados | Pronto | P1 | SP01 | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) — Disponibilizar a exportação integral das conversas do MUNDELO | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | — |
 | [INF-003 #26](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/26) — Recuperar os 219 identificadores sem texto transcrito | Bloqueado | P1 | Backlog | [M01](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2) | [INF-001 #25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) |
 | [GOV-001 #27](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/27) — Validar os enquadramentos jurídicos por categoria e operação | Bloqueado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | — |
-| [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) — Detalhar exceções de retenção, contestação e medidas urgentes | Planejado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
+| [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) — Detalhar exceções de retenção, contestação e medidas urgentes | Em revisão | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
 | [TEC-002 #29](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/29) — Comprovar capacidade do ambiente para retenção e backups | Planejado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) |
 | [GOV-003 #30](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30) — Definir verificação adicional para medidas destrutivas ou disputadas | Planejado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
 | [TEC-003 #31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) — Especificar autorização, versões e propagação aos derivados | Bloqueado | P0 | SP02 | [M02](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3) | [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23), [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) |
@@ -46,7 +46,7 @@ Entrega: Mapa de aderência técnica atual; não implementação.
 
 Registro de execução: [TEC-001 #23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23).
 
-Diagnóstico: [matriz, inventário e lacunas](../auditoria/tec-001/README.md). Mapeamento executado; incorporação em revisão. Cenários funcionais novos não executados.
+Diagnóstico: [matriz, inventário e lacunas](../auditoria/tec-001/README.md). Mapeamento incorporado pela PR #38; tarefa #23 concluída. Cenários funcionais novos não executados.
 
 ## INF-002 — Conciliar versões e aprovação dos 73 INF-ID documentados
 
@@ -100,13 +100,15 @@ Registro de execução: [GOV-001 #27](https://github.com/creusiobd/Mundelo---Com
 
 Entrega: Procedimento de exceções ligado aos critérios existentes.
 
-- [ ] Definir quem recebe, decide, executa e verifica cada exceção
-- [ ] Especificar escopo, prazo/evento, revisão e prova minimizada
-- [ ] Distinguir proposta interna de obrigação legal confirmada
+- [x] Definir quem recebe, decide, executa e verifica cada exceção
+- [x] Especificar escopo, prazo/evento, revisão e prova minimizada
+- [x] Distinguir proposta interna de obrigação legal confirmada
 
 
 
 Registro de execução: [GOV-002 #28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28).
+
+Entrega documental: [procedimento GOV-002](../governanca/gov-002/README.md), em revisão. Não constitui operação real ou validação jurídica final.
 
 ## TEC-002 — Comprovar capacidade do ambiente para retenção e backups
 

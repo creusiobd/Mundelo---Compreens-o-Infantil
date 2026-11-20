@@ -1,0 +1,94 @@
+{
+  "tipo": "MODELO_DOCUMENTAL_EM_BRANCO_NAO_EXECUTAVEL",
+  "procedimento": "GOV-002 v0.1",
+  "dados_reais_autorizados": false,
+  "protocolo": null,
+  "recebido_em": null,
+  "fuso": "America/Sao_Paulo",
+  "canal_retorno_protegido": null,
+  "tipo_pedido_evento": null,
+  "excecoes": [],
+  "categorias": [],
+  "solicitante_referencia_restrita": null,
+  "manifestacao_propria_referencia_restrita": null,
+  "autoridade": {
+    "estado": "PENDENTE",
+    "operacao_escopo": null,
+    "fonte_referencia_restrita": null,
+    "verificador": null
+  },
+  "objetos_versoes_referencias": [],
+  "fundamentacao": {
+    "classe": null,
+    "fonte_oficial_ou_ordem": null,
+    "regra_na_fonte_conferida": false,
+    "aplicacao_ao_caso": "PENDENTE",
+    "competencia_validacao": null,
+    "justificativa_minimizada": null
+  },
+  "politica_categoria_versao": null,
+  "decisao_por_escopo": [],
+  "operacoes_destinatarios_permitidos": [],
+  "limites": {
+    "marco_decisao": null,
+    "fonte_do_prazo": null,
+    "inicio_original": null,
+    "termino_data_ou_evento": null,
+    "proxima_revisao": null,
+    "calendario_aplicavel": null
+  },
+  "responsaveis": {
+    "recepcao": "Creusio Kizua",
+    "decisao": "Creusio Kizua",
+    "execucao": "Creusio Kizua",
+    "conferencia_inicial": "Creusio Kizua",
+    "revisor_adicional": null,
+    "revisor_necessario_a_verificar": true
+  },
+  "estado_pedido": "RECEBIDO",
+  "efetivacao_autorizada": false,
+  "revalidacao_antes_efeito": {
+    "instante": null,
+    "autoridade_versao_vigentes": false
+  },
+  "tentativas": [],
+  "dependencias_copias": {
+    "cobertura": null,
+    "referencias": [],
+    "limites_da_busca": null,
+    "externas_sob_controle_confirmado": false
+  },
+  "verificacao": {
+    "estado": "NAO_EXECUTADO",
+    "metodo_distinto_do_disparo": null,
+    "resultado_observado": null,
+    "evidencia_minimizada": null,
+    "excecoes_residuais": [],
+    "verificacao_adicional": null
+  },
+  "comunicacao": {
+    "estado": "NAO_REALIZADA",
+    "instante": null,
+    "canal_seguro": null,
+    "escopo_comunicavel": null,
+    "revisao_acessivel": null
+  },
+  "incidente": {
+    "ha_indicio": null,
+    "confirmado": null,
+    "registro_especial_referencia": null,
+    "conhecimento_de_afetacao_dados_em": null,
+    "criterio_comunicacao_avaliado": false,
+    "prazo_aplicavel_validado": null,
+    "inicio_guarda_registro": null,
+    "termino_minimo_guarda_registro": null
+  },
+  "destinacao_evidencia": {
+    "categoria": "C06",
+    "regime_especial_aplicavel": "A_VERIFICAR",
+    "acesso": null,
+    "limite_ou_evento": null,
+    "destino": null
+  },
+  "proxima_acao": null
+}

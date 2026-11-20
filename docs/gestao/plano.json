@@ -30,7 +30,7 @@
       "title": "Mapear o código atual contra contrato e critérios por operação",
       "milestone": "M01",
       "sprint": "SP01",
-      "status": "Em revisão",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [],
       "acceptance": [
@@ -44,10 +44,10 @@
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23",
       "issue_number": 23,
       "evidence": [
-        "../auditoria/tec-001/README.md"
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/38"
       ],
       "mapping_executed": true,
-      "incorporation_pending": true
+      "incorporation_pending": false
     },
     {
       "id": "INF-002",
@@ -150,7 +150,7 @@
       "title": "Detalhar exceções de retenção, contestação e medidas urgentes",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Planejado",
+      "status": "Em revisão",
       "priority": "P0",
       "dependencies": [
         "TEC-001"
@@ -164,7 +164,12 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28",
-      "issue_number": 28
+      "issue_number": 28,
+      "evidence": [
+        "../governanca/gov-002/README.md"
+      ],
+      "document_delivered": true,
+      "incorporation_pending": true
     },
     {
       "id": "TEC-002",
@@ -230,9 +235,9 @@
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31",
       "blocker": {
         "id": "BL-03",
-        "cause": "Inventário técnico entregue para revisão; exceções de GOV-002 ainda pendentes",
+        "cause": "TEC-001 incorporada; GOV-002 entregue para revisão; especificação lógica própria ainda não concluída",
         "owner": "Creusio Kizua",
-        "unblock_action": "Conferir a entrega TEC-001 e concluir GOV-002"
+        "unblock_action": "Conferir/incorporar GOV-002 e executar a especificação TEC-003, com decisões abertas explícitas"
       },
       "issue_number": 31
     },
@@ -449,8 +454,8 @@
   ],
   "latest_update": {
     "date": "2026-11-19",
-    "task": "TEC-001",
-    "result": "Mapa entregue para revisão; 14 operações, 11 lacunas; código funcional inalterado",
-    "report": "../auditoria/tec-001/README.md"
+    "task": "GOV-002",
+    "result": "Procedimento documental entregue para revisão; TEC-001 incorporada; sem implementação ou operação real",
+    "report": "../governanca/gov-002/README.md"
   }
 }
