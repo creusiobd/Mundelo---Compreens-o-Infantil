@@ -40,4 +40,4 @@ Nenhum princípio novo deve ser acrescentado durante a recuperação. Fontes sin
 
 ## Atualização — TEC-003 / 20/11/2026
 
-Consultar o [registro de andamento TEC-003](andamentos/2026-11-20-tec-003.md) e sua [especificação lógica](../especificacoes/tec-003/README.md). Este registro sucede os retratos anteriores para esta frente: GOV-002 já foi incorporada pela PR #39; GOV-003/PR #40 permanece em revisão na conferência inicial. TEC-003 é entregue para revisão, sem implementação ou execução dos cenários propostos. Os campos do Project não foram sincronizados automaticamente.
+Consultar o [registro de andamento TEC-003](andamentos/2026-11-20-tec-003.md) e sua [especificação lógica](../especificacoes/tec-003/README.md). Este registro sucede os retratos anteriores para esta frente: GOV-002 já foi incorporada pela PR #39; GOV-003/PR #40 foi incorporada durante a preparação no commit `65f369b53b182b6094b00658b7a741a0f2e877ad`, com aplicação e revisor independente ainda pendentes. TEC-003 é entregue para revisão, sem implementação ou execução dos cenários propostos. Os campos do Project não foram sincronizados automaticamente.
