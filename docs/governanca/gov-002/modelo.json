@@ -1,0 +1,484 @@
+{
+  "version": "0.1",
+  "task": "GOV-002",
+  "issue": 28,
+  "date": "2026-11-19",
+  "base_commit": "1b491b198df651d9e32b67c6328ceae384948f3e",
+  "owner": "Creusio Kizua",
+  "status": "Proposta documental para revisão; sem implementação ou medida real",
+  "exceptions": [
+    {
+      "id": "EX01",
+      "name": "Obrigação de conservação ou ordem específica",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "trigger": "Norma/ordem autêntica, autoridade competente, destinatário obrigado e objetos alcançados verificados. Citação genérica ou alegação não basta.",
+      "basis_class": "REGRA_NA_FONTE_APLICACAO_A_CONFIRMAR",
+      "source_rule_status": "Referência normativa conferida; aplicação ao caso pendente",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Conservar somente objetos/campos/período exigidos, com acesso e uso limitados ao fundamento; tratar o restante do pedido separadamente.",
+      "duration_review": "Data/evento da obrigação verificada, sem renovação automática; revisão P03 e em alteração/revogação da ordem.",
+      "disposition": "Eliminar/restringir/destinar o residual conforme decisão cabível quando cessa a obrigação; registrar exceção por objeto e comunicar resultado real.",
+      "evidence": "Identificador restrito da fonte, escopo, validade, competência verificadora e prova de bloqueio/destinação; sem anexar o processo inteiro.",
+      "limits": "Fonte inválida, sigilo, competência ou prazo duvidosos retornam à validação; não ampliar acesso nem presumir retenção integral.",
+      "gaps": [
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R04",
+        "R11",
+        "R14"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX02",
+      "name": "Necessidade de prova em disputa concreta",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C06",
+        "C09"
+      ],
+      "trigger": "Disputa específica e necessidade demonstrada; enquadramento e compatibilidade com término do tratamento validados por competência apropriada.",
+      "basis_class": "HIPOTESE_CANDIDATA",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Avaliar evidência minimizada e preservação restrita somente se legitimada; nunca reter o acervo inteiro por risco abstrato de litígio.",
+      "duration_review": "Limite definido no caso validado, evento de encerramento e P03; reavaliar quando a disputa/finalidade mudar.",
+      "disposition": "Encerrar exceção e destinar evidência/conteúdo conforme sua política própria, sem prolongar fontes pessoais por conveniência.",
+      "evidence": "Referência da disputa, finalidade probatória, itens necessários, alternativa menos invasiva e próximo evento de revisão.",
+      "limits": "Hipótese candidata não aciona bloqueio de expurgo nem suspensão de direito por si só; demanda validação e encaminhamento urgente quando houver prazo.",
+      "gaps": [
+        "G03",
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R04",
+        "R11",
+        "R14"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX03",
+      "name": "Autoridade incerta ou conflito de representação",
+      "categories": [
+        "C01",
+        "C03",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "trigger": "Pedido recebido com autoridade, representação ou conflito ainda não esclarecidos; verificar proporcionalmente sem confirmar conteúdo a não autorizado.",
+      "basis_class": "PROPOSTA_OPERACIONAL",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Protocolar e conter apenas a operação cuja legitimidade está incerta; preservar manifestação própria da criança, pedido e decisão representativa como registros distintos.",
+      "duration_review": "Triagem P01, marco decisório datado e P03 enquanto pendente; falta de prova não cria prazo de retenção novo.",
+      "disposition": "Decidir por operação/objeto ao esclarecer autoridade; manter revisão acessível e tratar pendência/negativa sem apagar a narrativa anterior.",
+      "evidence": "Resultado e referência mínima da verificação, conflito relevante, operação afetada e encaminhamento; documento bruto só pelo tempo necessário.",
+      "limits": "Vínculo familiar, papel técnico ou credencial profissional não decide sozinho; divergência relevante exige competência adequada, sem regra universal de maioria ou prevalência.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G08"
+      ],
+      "scenarios": [
+        "R02",
+        "R05",
+        "R11"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX04",
+      "name": "Contestação ou correção de contribuição alheia",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C06"
+      ],
+      "trigger": "Manifestação/pedido autônomo identificado e objeto referenciado quando possível; corrigir registro próprio é diferente de alterar o de outro autor.",
+      "basis_class": "PROPOSTA_OPERACIONAL",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Registrar contestação com autoria própria; encaminhar revisão. Medida administrativa exige agente, fundamento e escopo próprios; mera contestação não invalida, elimina ou suspende todo o acervo.",
+      "duration_review": "Triagem P01 e marco decisório por caso; revisão em nova evidência, mudança da origem e P03 se houver exceção ativa.",
+      "disposition": "Corrigir de forma rastreável, anexar divergência ou decidir medida cabível; reavaliar derivados conhecidos por validade, apresentação, uso e retenção.",
+      "evidence": "Pedido, versão alvo, autoridade decisora, efeito por derivado, comunicação e motivo acessível sem copiar conteúdo indevido.",
+      "limits": "Papel LEGAL_GUARDIAN, revisão maior ou arquivo importado não autorizam sobrescrita alheia; se a operação exigida ainda não existe, registrar bloqueio técnico.",
+      "gaps": [
+        "G03",
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R03",
+        "R04",
+        "R12"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX05",
+      "name": "Terceiros e contexto inseparável",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C06",
+        "C07"
+      ],
+      "trigger": "Pedido alcança informação de terceiro ou contexto cuja retirada pode distorcer a representação.",
+      "basis_class": "PROPOSTA_OPERACIONAL",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Separar escopos; preparar alternativa somente se semanticamente adequada e legitimamente utilizável; não compartilhar/exportar recorte enganoso nem conceder acesso ao revisor sem fundamento.",
+      "duration_review": "Antes de cada entrega e quando escopo/destinatário mudar; P01 para triagem e marco de decisão datado.",
+      "disposition": "Comunicar parte atendida e limite legítimo; não negar automaticamente tudo nem prometer entrega integral.",
+      "evidence": "Decisão por campo/unidade, análise do contexto mínimo e teste de apresentação autorizado, sem reproduzir dados restritos na resposta.",
+      "limits": "Conflito não resolvido fica pendente para a operação afetada, com encaminhamento e prazo controlado; não vira autorização geral de retenção.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G08"
+      ],
+      "scenarios": [
+        "R05",
+        "R11",
+        "R13"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX06",
+      "name": "Cópia técnica residual e restauração",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "trigger": "Capacidade real e cópias sob governança inventariadas; retenção residual precisa ser admissível, não apenas tecnicamente conveniente.",
+      "basis_class": "PROPOSTA_OPERACIONAL_CONDICIONADA",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Restringir cópia residual, impedir reapresentação e agendar expurgo legitimado; manter reconciliação minimizada antes de restaurar; tratar falha/tentativa por escopo.",
+      "duration_review": "Limite validado da categoria/obrigação, captura original sem reinício por réplica; revisão P03 e antes de toda restauração. Sem prova técnica, estado pendente.",
+      "disposition": "Expurgar e verificar cópias/derivados conhecidos; cópia externa recebe medida cabível e alcance declarado, sem promessa de apagamento fora do controle.",
+      "evidence": "Mapa de cobertura, identificadores protegidos, tarefa de expurgo, resultado e reconciliação; nunca fazer novo backup pessoal para provar a exclusão.",
+      "limits": "Impossibilidade técnica não legitima conservação indefinida; falha de reconciliação mantém operações afetadas indisponíveis e exige escalonamento.",
+      "gaps": [
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R13"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX07",
+      "name": "Incidente ou exposição indevida",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "trigger": "Indício consistente exige triagem; incidente confirmado e critérios legais de comunicação são avaliados separadamente pelo responsável competente.",
+      "basis_class": "REGRA_NA_FONTE_APLICACAO_A_CONFIRMAR",
+      "source_rule_status": "Referência normativa conferida; aplicação ao caso pendente",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Conter exposição no menor escopo possível; bloquear usos/entregas indevidos, preservar prova necessária minimizada e abrir registro de incidente separado do pedido de direitos.",
+      "duration_review": "Contenção prioritária e P02; prazo regulatório e guarda de registro próprios quando aplicáveis, conforme L03. P03 para exceções ativas.",
+      "disposition": "Restabelecer somente operação legitimada após verificação; atender pedidos em paralelo e comunicar incidente pelos canais competentes quando exigido.",
+      "evidence": "Instante do conhecimento, avaliação de risco, medidas, comunicações e justificativas; registro do incidente distinto de logs brutos e conteúdo afetado.",
+      "limits": "Urgência não amplia acesso nem libera arquivo em preparação; controlador/representação e regime de prazo precisam ser conferidos, sem presumir condição de pequeno porte.",
+      "gaps": [
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R06",
+        "R07",
+        "R10",
+        "R14"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX08",
+      "name": "Urgência relacionada à vida ou integridade",
+      "categories": [
+        "C01",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "trigger": "Situação concreta que requer encaminhamento prioritário; não inferir risco ou diagnóstico apenas de narrativa divergente ou interpretação automatizada.",
+      "basis_class": "HIPOTESE_CANDIDATA",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Separar contenção reversível já autorizada de eventual acesso/divulgação excepcional. Esta última exige decisão por agente competente, necessidade, fundamento e destinatário pertinentes, registrados com proporcionalidade.",
+      "duration_review": "Atendimento prioritário compatível com risco real; P02 para revisão da contenção. A hipótese não cria janela livre de acesso ou retenção.",
+      "disposition": "Encerrar/restringir o uso excepcional quando cessar sua condição, reavaliar efeitos e informar o escopo cabível preservando sigilo e segurança.",
+      "evidence": "Motivo factual minimizado, autoridade, dados estritamente necessários, operação, destinatário e instante; sem diagnóstico ou relato integral em log.",
+      "limits": "Procedimento não substitui resposta profissional/emergencial competente nem resolve representação por si só; ausência de revisor não suspende obrigação exigível nem legitima retenção indevida.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G08"
+      ],
+      "scenarios": [
+        "R02",
+        "R05",
+        "R11"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX09",
+      "name": "Prova de execução e aprendizagem institucional",
+      "categories": [
+        "C02",
+        "C03",
+        "C06",
+        "C09",
+        "C10"
+      ],
+      "trigger": "Necessidade de demonstrar medida ou preservar método sem conservar desnecessariamente dados de origem.",
+      "basis_class": "PROPOSTA_OPERACIONAL",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Separar prova mínima, registro especial de incidente quando aplicável e conhecimento não pessoal. Código/hash identificável não é anonimização; avaliar identificabilidade antes de assim declarar.",
+      "duration_review": "Política própria da evidência/conhecimento, com exceção legal específica registrada; P03 se exceção ativa e gatilhos de correção/identificabilidade.",
+      "disposition": "Minimizar ou eliminar fontes pessoais conforme decisão; preservar método apenas no alcance autorizado, sem refazer cópia da origem eliminada.",
+      "evidence": "Tipo de prova, resultado observado, método/escopo de verificação e política própria de acesso/retencão; sem senha, token ou teor integral.",
+      "limits": "Corrigir falha não prova eliminação de causas nem aprendizagem; sem método de anonimização validado, classificar como identificável/restrito ou pendente.",
+      "gaps": [
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R04",
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    },
+    {
+      "id": "EX10",
+      "name": "Política insuficiente, revisão vencida ou capacidade indisponível",
+      "categories": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "trigger": "Falta de parâmetro/fundamento aplicável, autoridade, verificador ou controle técnico; falha de atendimento ou de verificação.",
+      "basis_class": "PROPOSTA_OPERACIONAL",
+      "source_rule_status": "Escolha de procedimento ou hipótese; sem força legal presumida",
+      "case_applicability": "A verificar antes da operação protegida",
+      "action": "Registrar pendência e encaminhar; restringir apenas novos usos não legitimados, sem eliminar cegamente ou manter para sempre. Pedido e tentativas ficam acompanhados.",
+      "duration_review": "Triagem P01; marco de solução por caso e P03, sem renovar automaticamente categoria, exceção ou prazo legal.",
+      "disposition": "Executar medida cabível ao resolver a causa; declarar parcial/falha/negativa fundamentada conforme efeito real e manter revisão acessível.",
+      "evidence": "Lacuna, responsável, prazo aplicável, medida de contenção, ação corretiva e prova posterior; não tratar ticket criado como execução concluída.",
+      "limits": "Capacidade insuficiente não suspende automaticamente direitos/prazos. Acionar GOV-001, TEC-002 ou GOV-003 conforme causa, sem habilitar dados reais por aprovação documental.",
+      "gaps": [
+        "G03",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "scenarios": [
+        "R01",
+        "R02",
+        "R07",
+        "R10",
+        "R11"
+      ],
+      "receive": "Creusio Kizua",
+      "decide": "Creusio Kizua",
+      "execute": "Creusio Kizua",
+      "verify": "Creusio Kizua — conferência técnica distinta do disparo; não independente",
+      "additional_verifier": "Competência a designar se disputa, conflito de interesse ou prova de medida irreversível insuficiente; detalhamento em GOV-003",
+      "status": "Proposta documental; nenhuma medida executada"
+    }
+  ],
+  "deadlines": [
+    {
+      "id": "P01",
+      "type": "PROPOSTA_INTERNA",
+      "rule": "Triagem inicial em até 1 dia útil contado do recebimento; protocolo ao receber. Registrar fuso, calendário e instante; prazo legal/ordem ou parâmetro mais curto prevalece.",
+      "effect": "Meta de acompanhamento; não é prazo universal para decidir, concluir ou conservar dados."
+    },
+    {
+      "id": "P02",
+      "type": "PROPOSTA_INTERNA",
+      "rule": "Contenção urgente priorizada ao identificar risco; reavaliar necessidade/alcance em até 24 horas corridas após a aplicação e antes de liberar novamente a operação.",
+      "effect": "Não esperar a revisão para conter exposição quando houver autoridade e capacidade; vencimento exige escalonamento, não prorrogação tácita ou reabertura automática."
+    },
+    {
+      "id": "P03",
+      "type": "PROPOSTA_INTERNA",
+      "rule": "Revisar exceção ativa no máximo a cada 7 dias corridos, além de eventos de mudança e do limite próprio mais curto.",
+      "effect": "Frequência de acompanhamento, nunca prazo adicional de retenção. Encerrar ao cessar o fundamento/evento, mesmo antes da revisão."
+    },
+    {
+      "id": "P04",
+      "type": "CONDICIONAL_A_VERIFICAR",
+      "rule": "Definir marco de decisão e limite de cada medida no caso, com fonte: norma aplicável, ordem verificada ou meta interna expressa. Conservar início original e histórico de alterações.",
+      "effect": "Pedido de documento, reabertura ou nova tentativa não reinicia prazo legal automaticamente; impossibilidade/atraso exigem resposta e encaminhamento."
+    }
+  ],
+  "official_sources": [
+    {
+      "id": "L01",
+      "title": "LGPD — texto atualizado da Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+      "clauses": "Arts. 6, 7, 11, 14–19, 21, 46 e 48",
+      "summary": "Término/conservação, direitos e resposta, hipóteses de tratamento, proteção e melhor interesse. Confirmação/acesso têm regra específica do art. 19; não converter quinze dias em prazo geral de todos os pedidos.",
+      "application": "Jurisdição e enquadramentos concretos em GOV-001; regra identificada não equivale a hipótese aplicável.",
+      "checked_on": "2026-11-19",
+      "status": "Fonte oficial consultada; aplicação ao caso não certificada"
+    },
+    {
+      "id": "L02",
+      "title": "ANPD — enunciado sobre dados de crianças e adolescentes",
+      "url": "https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-divulga-enunciado-sobre-o-tratamento-de-dados-pessoais-de-criancas-e-adolescentes",
+      "clauses": "Enunciado CD/ANPD nº 1/2023, interpretação do art. 14",
+      "summary": "Melhor interesse deve orientar a avaliação concreta; não presumir consentimento como única base nem que vínculo familiar legitime toda operação.",
+      "application": "Verificar dado, finalidade e hipótese pertinente, inclusive sensibilidade; não libera dados reais.",
+      "checked_on": "2026-11-19",
+      "status": "Fonte oficial consultada; aplicação ao caso não certificada"
+    },
+    {
+      "id": "L03",
+      "title": "Resolução CD/ANPD nº 15/2024 — texto oficial no Ministério da Justiça",
+      "url": "https://bibliotecadigital.mj.gov.br/bitstream/1/12879/2/RES_ANPD_2024_15.html",
+      "clauses": "Arts. 4–6, 9 e 10 do anexo",
+      "summary": "Comunicação de incidente relevante: regra de três dias úteis nos arts. 6 e 9, contados do conhecimento pelo controlador de afetação de dados pessoais; verificar regras específicas e regime diferenciado, sem assumir pequeno porte. Registro de incidente, inclusive não comunicado: mínimo de cinco anos da data do registro no art. 10, observadas suas exceções.",
+      "application": "Registro especial de incidente não segue automaticamente 24 meses de C06; distinguir registro de logs brutos/conteúdo pessoal. Classificar caso e validar agente, prazo e escopo.",
+      "checked_on": "2026-11-19",
+      "status": "Fonte oficial consultada; aplicação ao caso não certificada"
+    },
+    {
+      "id": "L04",
+      "title": "ANPD — canal e orientações de comunicação de incidente",
+      "url": "https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis",
+      "clauses": "Orientação de comunicação e comprovação de representação",
+      "summary": "Comunicação formal pelo controlador via representante competente; definição de responsabilidade e poderes não decorre do cadastro de usuário do produto.",
+      "application": "Nenhuma comunicação externa é efetuada por este procedimento documental.",
+      "checked_on": "2026-11-19",
+      "status": "Fonte oficial consultada; aplicação ao caso não certificada"
+    },
+    {
+      "id": "L05",
+      "title": "Lei nº 15.211/2025 — Estatuto Digital da Criança e do Adolescente",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15211-17-setembro-2025-797997-normaatualizada-pl.html",
+      "clauses": "Arts. 1 e 41-A",
+      "summary": "Abrange produtos/serviços direcionados a crianças/adolescentes ou de acesso provável por eles; texto atualizado indica vigência em 17/03/2026.",
+      "application": "GOV-001 deve registrar análise de incidência no produto e regulamentação pertinente. Público adulto declarado não resolve sozinho o acesso provável; não é avaliação integral desta lei.",
+      "checked_on": "2026-11-19",
+      "status": "Fonte oficial consultada; aplicação ao caso não certificada"
+    }
+  ],
+  "implementation_dependencies": {
+    "GOV_001": 27,
+    "TEC_002": 29,
+    "GOV_003": 30,
+    "TEC_003": 31,
+    "QA_001": 32,
+    "QA_002": 33
+  },
+  "real_data_authorized": false
+}
