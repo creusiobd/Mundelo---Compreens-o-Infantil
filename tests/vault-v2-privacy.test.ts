@@ -23,7 +23,7 @@ describe('QA-F03: envelope v2 mínimo e compatibilidade v1', () => {
 
   for (const key of ['childName', 'childId', 'recordCount']) {
     it(`rejeita adulteração do cabeçalho legado: ${key}`, async () => {
-      const forged = {...legacy, [key]: key === 'recordCount' ? 999 : key === 'exportedAt' ? '2026-11-22T00:00:00.000Z' : 'other'};
+      const forged = {...legacy, [key]: key === 'recordCount' ? 999 : 'other'};
       await assert.rejects(() => decryptVault(forged, password), /AAD|integridade|isolamento/);
     });
   }
