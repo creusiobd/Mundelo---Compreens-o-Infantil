@@ -299,3 +299,16 @@
 - **Validação:** 102 testes de unidade/domínio/segurança, tipos, build, scan e diff aprovados. Navegador local BLOCKED pelo ambiente; [CI 44945589494](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44945589494) PASS: 65 testes de navegador e 17 na etapa dedicada a11y (subconjunto da suíte), incluindo CTRL-01 e P01–P04 originais. [Evidência](qa/fix-43-45-46/validacao.json).
 - **Decisão/limites:** [D04 e compatibilidade](qa/fix-43-45-46/README.md). Arquivos v1 existentes não são reescritos; leitor anterior não abre v2. Autorização continua demonstrativa no cliente. R01–R16 e gates jurídicos/técnicos conservados. Nenhuma implantação ou dado real autorizado.
 - **Próxima ação:** revisar/incorporar PR #49. PR #50 entrega diagnóstico #29, proposta de experiência #34 e parecer técnico #35; comprovação externa, validação competente e fontes para #24–#26 continuam pendentes. Nenhuma issue é encerrada automaticamente antes da incorporação.
+
+
+---
+
+## Integração aprovada das PRs #49 e #50 — 21/11/2026
+
+- **Confirmação do responsável:** as duas PRs foram validadas e aprovadas; integração conferida no GitHub.
+- **PR #50:** incorporada em `6552f784d8fa369d3b95f36b6378cf81f9585be4`, entrega documental de UX-001/#34, diagnóstico parcial TEC-002/#29 e parecer técnico REL-001/#35.
+- **PR #49:** incorporada em `da66b9a4961233c43c6f16da0bded58fd636f6bf`, correções #43/#45/#46 e evidências de validação. A main inclui ambas; [CI da integração](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44946599881) concluído com sucesso.
+- **Tarefas encerradas nesta integração:** #34, #43, #45 e #46. São 12 encerradas e sete abertas entre as 19 issues de execução acompanhadas, sem incluir PRs antigas ou cartões avulsos não consultados.
+- **Pendências:** #24 precisa localizar o acervo dos 73 IDs; #25/#26 dependem de fontes integrais; #27 aguarda validação competente; #29 aguarda configuração/inventário/provas do ambiente externo; #35 depende dos gates para deliberar avanço; #36 permanece como acompanhamento recorrente.
+- **Próxima frente técnica:** TEC-002/#29, comprovar ambiente de desenvolvimento escolhido e capacidades de retenção, cópias, expurgo e restauração com dados sintéticos. Não criar infraestrutura por essa tarefa nem presumir projeto Supabase configurado.
+- **Limites mantidos:** aprovação e merge não habilitam dados infantis reais, não comprovam R01–R16 integrais nem substituem revisão humana/jurídica aplicável. Campos do Project não foram sincronizados nesta sessão.

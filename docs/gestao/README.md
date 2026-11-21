@@ -62,3 +62,10 @@ QA-001/#32 incorporada pela PR #42. [QA-002/#33](andamentos/2026-11-20-qa-002.md
 ## Retomada — 21/11/2026
 
 O [checkpoint atual](andamentos/2026-11-21-retomada.md) sucede os retratos anteriores para acompanhamento. PR #48/#44 incorporada; 11 issues abertas, com prioridade imediata para #43/#45/#46. [Correções preparadas e limites de validação](../qa/fix-43-45-46/README.md). Campos privados do Project não foram sincronizados; as fontes consultadas foram as issues vinculadas e a main. #24, #29 e #34 seguem como trabalho disponível; #25/#26/#27/#35 conservam seus impedimentos. Sem liberação de dados infantis reais.
+
+
+## Integração confirmada — 21/11/2026
+
+PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e [#50](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/50) aprovadas pelo responsável e incorporadas à main, respectivamente em `da66b9a4961233c43c6f16da0bded58fd636f6bf` e `6552f784d8fa369d3b95f36b6378cf81f9585be4`. [CI da integração](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44946599881) aprovado. Este registro sucede as indicações anteriores de revisão pendente dessas duas PRs.
+
+#34/#43/#45/#46 encerradas: **12 issues concluídas e sete abertas** entre as 19 acompanhadas. Restam #24/#25/#26 (fontes), #27 (validação competente), #29 (capacidade externa), #35 (deliberação por gates) e #36 (rotina recorrente). Próxima frente técnica: [TEC-002/#29](../auditoria/tec-002/README.md). Cadastro/dados infantis reais e cenários integrais continuam bloqueados conforme suas pré-condições. Sem sincronização dos campos privados do Project.
