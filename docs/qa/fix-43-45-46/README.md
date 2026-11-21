@@ -46,3 +46,12 @@ O nome baixado é `mundelo-<UUID aleatório>.mundelo-vault`. Não reutilizar nom
 - Cinco probes originais de QA-002 entram na suíte normal por `tests/e2e/qa-retention-probes.spec.ts`. O relatório/evidência histórica QA-002 não foi reescrito.
 
 As 16 verificações integrais R01–R16 continuam sujeitas às pré-condições anteriores. Não se substituem por estes 12 testes. Acesso no servidor, concessões persistentes, retenção/backups reais, validação jurídica, acessibilidade humana e Android físico continuam com seus gates próprios. Não houve implantação nem merge nesta entrega.
+
+
+## Validação final observada — 21/11/2026
+
+[CI 44945589494](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44945589494) concluído com sucesso no código `1fd517db64c23d049f28b2d84f2d1b1c8f1a7e21`: **102 testes de domínio/segurança, 65 testes de navegador e 17 verificações na etapa dedicada de acessibilidade PASS**. As 17 também pertencem à suíte de navegador; não representam cobertura adicional independente. CTRL-01 e P01–P04 originais passaram, incluindo as três probes afetadas por esta entrega. O bloqueio do navegador local permanece documentado e não impediu esta validação no runner do GitHub.
+
+A primeira execução detectou a atribuição da senha pública sintética como possível credencial; o teste agora usa nome explícito da fixture, sem alterar o scanner. A rodada seguinte revelou três expectativas de teste a ajustar: título do relatório negado e comparação entre innerText/textContent. Foram corrigidas mantendo asserções de acesso e comparação exata do conteúdo autorizado. Nenhum teste foi pulado ou marcado como falha esperada.
+
+[Evidência estruturada](validacao.json). [PR #49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) para revisão; issues permanecem abertas até incorporação. [PR #50](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/50) complementa capacidades, experiência e parecer de prontidão. Os gates e limites acima continuam, mesmo com CI aprovado.
