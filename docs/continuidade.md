@@ -323,3 +323,10 @@
 - **Resultado da localização:** o acervo não foi localizado nas branches de gestão/contrato conferidas nem nas buscas de fontes acessíveis. A tarefa #24 permanece bloqueada até receber os textos/matriz ou sua localização concreta. Não declarar 73 textos auditados nem transformar lembranças/resumos em fontes originais.
 - **Insumo para retomar #24:** arquivo ou pasta com os textos existentes e referências de origem/aprovação, preservando versões e lacunas. A exportação integral de #25 e os 219 IDs sem transcrição de #26 mantêm escopos próprios.
 - **Estado de segurança:** dados infantis reais e R01–R16 integrais continuam sujeitos aos gates anteriores. A pausa não altera sua disposição.
+
+
+## 21/11/2026 — Correção #51: contagens sem conclusões fixas
+
+Removidos os três padrões fixos de Compreender. A tela apresenta apenas contagens da amostra autorizada, com universo, limites e perguntas gerais explicitamente separadas. Amostra vazia não recebe percentuais fictícios. Quatro cenários E2E adicionados; expectativas de navegação atualizadas. Evidência e limites em [fix-51](qa/fix-51/README.md); execução de CI acompanhada na PR vinculada à issue #51.
+
+TypeScript e 102 testes de domínio/segurança PASS local; navegador local bloqueado antes das asserções. Não tratar a tentativa como teste de comportamento concluído. #52–#54 continuam pendentes; PG-06 integral e dados infantis reais seguem bloqueados. #29 permanece pausada por acesso ao Supabase.

@@ -91,8 +91,8 @@ test.describe('Gate UX-REAL-02 (Fase 2.3): Matriz Funcional das 6 Telas Internas
         name: /Painel Demonstrativo Simulado — Sem IA Ativa e Sem Fins Diagnósticos/i,
       })
     ).toBeVisible();
-    await expect(page.getByText('Ambientes mais Observados')).toBeVisible();
-    await expect(page.getByText('Distribuição por Foco do Registro')).toBeVisible();
+    await expect(page.getByText('Registros por Ambiente')).toBeVisible();
+    await expect(page.getByText('Registros por Foco')).toBeVisible();
     await expect(
       page.getByText('Perguntas para Refletir em Família ou Levar à Consulta')
     ).toBeVisible();
