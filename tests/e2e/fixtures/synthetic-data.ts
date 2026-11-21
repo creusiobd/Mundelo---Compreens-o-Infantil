@@ -42,7 +42,7 @@ export const INTERNAL_SCREENS: readonly InternalScreenDescriptor[] = [
     id: 'understand',
     navLabel: 'Compreender',
     inBottomNav: true,
-    expectedHeadingRegex: /Compreender\s*(Tomás|Lia):\s*Padrões & Hipóteses/i,
+    expectedHeadingRegex: /Compreender\s*(Tomás|Lia):\s*Registros & Contextos/i,
   },
   {
     id: 'report',
