@@ -48,6 +48,8 @@ interface AppContextType {
   switchCaregiver: (caregiverId: string) => void;
   // Permissions & access indicators
   isLinkedToActiveChild: boolean;
+  canReadProfile: boolean;
+  canRead: (obs: Observation) => boolean;
   canCreate: boolean;
   canEdit: (obs: Observation) => boolean;
   canDelete: (obs: Observation) => boolean;
@@ -183,6 +185,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     return observations.filter((o) => o.childId === activeProfileId);
   }, [observations, activeProfileId, activeCaregiver]);
+
+  const canReadProfile = canReadObservation(activeCaregiver, activeProfileId);
+  const canRead = (obs: Observation) =>
+    canReadObservation(activeCaregiver, activeProfileId, obs);
 
   const canCreate = useMemo(() => {
     return canCreateObservation(activeCaregiver, activeProfileId);
@@ -819,6 +825,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         activeCaregiver,
         switchCaregiver,
         isLinkedToActiveChild,
+        canReadProfile,
+        canRead,
         canCreate,
         canEdit,
         canDelete,

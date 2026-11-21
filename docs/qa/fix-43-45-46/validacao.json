@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-21",
+  "scope": "Synthetic data only; QA-F01/QA-F03/QA-F04 in client demonstration",
+  "base_commit": "b6921b3b5100ace9c6bee46c8445b4e00c34dbb8",
+  "validated_code_commit": "1fd517db64c23d049f28b2d84f2d1b1c8f1a7e21",
+  "ci": {
+    "run_id": 44945589494,
+    "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44945589494",
+    "conclusion": "success",
+    "node": "22.23.5",
+    "unit_security": {
+      "passed": 102,
+      "failed": 0
+    },
+    "browser": {
+      "passed": 65,
+      "failed": 0
+    },
+    "accessibility_dedicated": {
+      "passed": 17,
+      "failed": 0,
+      "note": "Subset also included in browser suite; not independent coverage"
+    },
+    "probes": {
+      "CTRL_01": "PASS",
+      "P01": "PASS",
+      "P02": "PASS",
+      "P03": "PASS",
+      "P04": "PASS"
+    }
+  },
+  "local": {
+    "unit_security_passed": 102,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "browser": "BLOCKED: Chromium socket EPERM; no local browser assertion result"
+  },
+  "limits": [
+    "R01–R16 integral scenarios remain BLOCKED",
+    "No production deployment or merge",
+    "No real child data enabled",
+    "No server authorization or persistent grants implemented",
+    "Legacy v1 files keep original public metadata",
+    "Old clients cannot import new v2 exports"
+  ],
+  "documentation_followup": "Any later evidence-only commit does not change the validated application code"
+}

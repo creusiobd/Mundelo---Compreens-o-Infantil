@@ -288,3 +288,14 @@
 - **Limites:** proposta conceitual pendente de revisão. Nenhum código funcional, schema, migration, policy RLS, projeto Supabase, credencial ou dado infantil real foi criado/modificado.
 - **Próxima ação:** revisar o contrato e resolver pendências de legitimidade, governança, retenção e validação jurídica; somente após aprovação derivar modelo lógico, ADRs, RLS e testes.
 - **Status:** DOMAIN_CONTRACT_PROPOSED / IMPLEMENTATION_BLOCKED_PENDING_APPROVAL.
+
+---
+
+## Retomada e correções de privacidade — 21/11/2026
+
+- **Problema:** conexão direta do Codex/Git indisponível; recuperar estado atual e executar pendências do Project.
+- **Fonte:** integração autorizada GitHub; main `b6921b3b5100ace9c6bee46c8445b4e00c34dbb8`, issues vinculadas ao Project 4. Quadro visual privado não acessível nesta sessão; sem sincronização de seus campos.
+- **Resultado:** [checkpoint de 11 tarefas abertas](gestao/andamentos/2026-11-21-retomada.md); #44 já incorporada pela PR #48. Preparadas correções #43 (detalhe), #46 (relatório) e #45 (envelope v2 mínimo com importação v1).
+- **Validação:** 102 testes de unidade/domínio/segurança, tipos, build, scan e diff aprovados. Navegador local BLOCKED pelo ambiente; [CI 44945589494](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44945589494) PASS: 65 testes de navegador e 17 na etapa dedicada a11y (subconjunto da suíte), incluindo CTRL-01 e P01–P04 originais. [Evidência](qa/fix-43-45-46/validacao.json).
+- **Decisão/limites:** [D04 e compatibilidade](qa/fix-43-45-46/README.md). Arquivos v1 existentes não são reescritos; leitor anterior não abre v2. Autorização continua demonstrativa no cliente. R01–R16 e gates jurídicos/técnicos conservados. Nenhuma implantação ou dado real autorizado.
+- **Próxima ação:** revisar/incorporar PR #49. PR #50 entrega diagnóstico #29, proposta de experiência #34 e parecer técnico #35; comprovação externa, validação competente e fontes para #24–#26 continuam pendentes. Nenhuma issue é encerrada automaticamente antes da incorporação.

@@ -43,7 +43,7 @@ test('exporta normalmente se o contexto e os dados continuam vigentes', async ({
   const pending = page.waitForEvent('download');
   await fillAndSubmit(page);
   const download = await pending;
-  expect(download.suggestedFilename()).toMatch(/^mundelo-tom-s-.*\.mundelo-vault$/);
+  expect(download.suggestedFilename()).toMatch(/^mundelo-[0-9a-f-]{36}\.mundelo-vault$/);
   await expect(page.getByRole('dialog', { name: 'Exportar Cofre Criptografado' })).toHaveCount(0);
   await download.delete();
 });

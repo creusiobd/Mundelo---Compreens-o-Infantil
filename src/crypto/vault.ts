@@ -4,7 +4,8 @@
  */
 
 import {
-  MundeloVaultEnvelopeV1,
+  MundeloVaultEnvelope,
+  MundeloVaultEnvelopeV2,
   VaultPayload,
   VAULT_FORMAT_IDENTIFIER,
   VAULT_CURRENT_VERSION,
@@ -64,10 +65,12 @@ export function getCryptoSubtle(): SubtleCrypto {
  */
 export function buildCanonicalAAD(
   formatVersion: number,
-  childId: string,
+  childId: string = '',
   format: string = VAULT_FORMAT_IDENTIFIER
 ): string {
-  return `${format}:${formatVersion}:${childId}`;
+  // v1 needs its public identity for legacy authentication. v2 binds format/version;
+  // child identity and all relational checks live inside the authenticated payload.
+  return formatVersion === 1 ? `${format}:${formatVersion}:${childId}` : `${format}:${formatVersion}`;
 }
 
 /**
@@ -118,13 +121,13 @@ export async function deriveKeyFromPassword(
 }
 
 /**
- * Cifra um payload de dados infantis sintéticos em um envelope versionado v1
+ * Cifra um payload de dados infantis sintéticos em um envelope mínimo versionado v2
  */
 export async function encryptVault(
   payload: VaultPayload,
   password: string,
   iterations: number = VAULT_DEFAULT_PBKDF2_ITERATIONS
-): Promise<MundeloVaultEnvelopeV1> {
+): Promise<MundeloVaultEnvelopeV2> {
   // 1. Validação estrita do payload antes da cifra
   const validatedPayload = VaultPayloadSchema.parse(payload);
 
@@ -137,7 +140,7 @@ export async function encryptVault(
   globalThis.crypto.getRandomValues(salt);
   globalThis.crypto.getRandomValues(iv);
 
-  // 3. Construção do AAD canônico (amarrando formato, versão e criança)
+  // 3. AAD v2 vincula formato/versão sem identificadores públicos.
   const canonicalAAD = buildCanonicalAAD(
     VAULT_CURRENT_VERSION,
     validatedPayload.childProfile.id
@@ -162,14 +165,9 @@ export async function encryptVault(
   const ciphertextArray = new Uint8Array(ciphertextBuffer);
 
   // 6. Montagem do envelope público versionado
-  const envelope: MundeloVaultEnvelopeV1 = {
+  const envelope: MundeloVaultEnvelopeV2 = {
     format: VAULT_FORMAT_IDENTIFIER,
-    formatVersion: 1,
-    appVersion: 'v0.4A',
-    exportedAt: new Date().toISOString(),
-    childId: validatedPayload.childProfile.id,
-    childName: validatedPayload.childProfile.name,
-    recordCount: validatedPayload.observations.length,
+    formatVersion: VAULT_CURRENT_VERSION,
     crypto: {
       algorithm: 'AES-GCM',
       keyLength: 256,
@@ -184,11 +182,11 @@ export async function encryptVault(
   };
 
   // 7. Auto-validação do envelope gerado antes da liberação
-  return VaultEnvelopeSchema.parse(envelope) as MundeloVaultEnvelopeV1;
+  return VaultEnvelopeSchema.parse(envelope) as MundeloVaultEnvelopeV2;
 }
 
 /**
- * Autentica e decifra um envelope v1, validando schema e integridade relacional
+ * Autentica e decifra um envelope v1 ou v2, validando schema e integridade relacional
  */
 export async function decryptVault(
   envelopeData: unknown,
@@ -199,7 +197,7 @@ export async function decryptVault(
   }
 
   // 1. Validação estrita do schema do envelope
-  const envelope = VaultEnvelopeSchema.parse(envelopeData) as MundeloVaultEnvelopeV1;
+  const envelope = VaultEnvelopeSchema.parse(envelopeData) as MundeloVaultEnvelope;
 
   // 2. Extração e validação do IV e Salt
   const iv = base64ToUint8Array(envelope.crypto.iv);
@@ -218,7 +216,7 @@ export async function decryptVault(
   const enc = new TextEncoder();
   const expectedCanonicalAAD = buildCanonicalAAD(
     envelope.formatVersion,
-    envelope.childId,
+    envelope.formatVersion === 1 ? envelope.childId : '',
     envelope.format
   );
   const declaredAAD = new TextDecoder().decode(base64ToUint8Array(envelope.crypto.aad));
@@ -268,26 +266,28 @@ export async function decryptVault(
   const validatedPayload = VaultPayloadSchema.parse(rawParsed) as VaultPayload;
 
   // 7. Validação de isolamento e integridade relacional entre criança e observações
-  if (validatedPayload.childProfile.id !== envelope.childId) {
-    throw new Error(
-      `Inconsistência de isolamento: perfil interno (${validatedPayload.childProfile.id}) difere do cabeçalho (${envelope.childId}).`
-    );
-  }
+  if (envelope.formatVersion === 1) {
+    if (validatedPayload.childProfile.id !== envelope.childId) {
+      throw new Error(
+        `Inconsistência de isolamento: perfil interno (${validatedPayload.childProfile.id}) difere do cabeçalho (${envelope.childId}).`
+      );
+    }
 
-  if (validatedPayload.childProfile.name !== envelope.childName) {
-    throw new Error(
-      `Inconsistência de integridade: nome no cabeçalho (${envelope.childName}) difere do perfil descriptografado (${validatedPayload.childProfile.name}).`
-    );
-  }
+    if (validatedPayload.childProfile.name !== envelope.childName) {
+      throw new Error(
+        `Inconsistência de integridade: nome no cabeçalho (${envelope.childName}) difere do perfil descriptografado (${validatedPayload.childProfile.name}).`
+      );
+    }
 
-  if (validatedPayload.observations.length !== envelope.recordCount) {
-    throw new Error(
-      `Inconsistência de integridade: a contagem de registros do cabeçalho (${envelope.recordCount}) difere do total descriptografado (${validatedPayload.observations.length}).`
-    );
+    if (validatedPayload.observations.length !== envelope.recordCount) {
+      throw new Error(
+        `Inconsistência de integridade: a contagem de registros do cabeçalho (${envelope.recordCount}) difere do total descriptografado (${validatedPayload.observations.length}).`
+      );
+    }
   }
 
   for (const obs of validatedPayload.observations) {
-    if (obs.childId !== envelope.childId) {
+    if (obs.childId !== validatedPayload.childProfile.id) {
       throw new Error(
         `Vazamento detectado: observação ${obs.id} pertence a outra criança (${obs.childId}) e foi rejeitada.`
       );

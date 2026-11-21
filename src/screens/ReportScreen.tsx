@@ -22,6 +22,8 @@ import {
 export const ReportScreen: React.FC = () => {
   const {
     activeProfile,
+    canReadProfile,
+    canIncludeInReport,
     activeChildObservations,
     selectedObservationIds,
     toggleSelectObservation,
@@ -36,7 +38,7 @@ export const ReportScreen: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
   const selectedObservations = activeChildObservations.filter((o) =>
-    selectedObservationIds.includes(o.id)
+    selectedObservationIds.includes(o.id) && canIncludeInReport(o)
   );
 
   const recipientLabels: Record<string, string> = {
@@ -57,6 +59,7 @@ export const ReportScreen: React.FC = () => {
   };
 
   const handleCopyReportText = () => {
+    if (!canReadProfile) return;
     const textLines = [
       `MUNDELO - SÍNTESE CONTEXTUAL DE OBSERVAÇÃO INFANTIL`,
       `"Compreender é o primeiro cuidado"`,
@@ -106,8 +109,18 @@ export const ReportScreen: React.FC = () => {
   };
 
   const handleTriggerPrint = () => {
+    if (!canReadProfile) return;
     window.print();
   };
+
+  if (!canReadProfile) {
+    return (
+      <div className="max-w-5xl mx-auto px-4 py-6" role="status">
+        <h1 className="text-2xl font-bold">Relatório indisponível</h1>
+        <p>O cuidador ativo precisa de vínculo e status ativo para acessar este relatório.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8 animate-in fade-in duration-150">

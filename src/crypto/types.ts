@@ -6,7 +6,7 @@
 import { ChildProfile, Observation, Caregiver } from '../types';
 
 export const VAULT_FORMAT_IDENTIFIER = 'MUNDELO_VAULT';
-export const VAULT_CURRENT_VERSION = 1;
+export const VAULT_CURRENT_VERSION = 2;
 export const VAULT_DEFAULT_PBKDF2_ITERATIONS = 600000;
 export const VAULT_MIN_PBKDF2_ITERATIONS = 100000;
 export const VAULT_MAX_PBKDF2_ITERATIONS = 1000000;
@@ -37,6 +37,16 @@ export interface MundeloVaultEnvelopeV1 {
   crypto: VaultCryptoHeader;
   ciphertext: string; // Base64 (AES-GCM ciphertext + 16 bytes auth tag)
 }
+
+/** Public v2 metadata contains no child identity, timestamp or record count. */
+export interface MundeloVaultEnvelopeV2 {
+  format: typeof VAULT_FORMAT_IDENTIFIER;
+  formatVersion: 2;
+  crypto: VaultCryptoHeader;
+  ciphertext: string;
+}
+
+export type MundeloVaultEnvelope = MundeloVaultEnvelopeV1 | MundeloVaultEnvelopeV2;
 
 /**
  * Payload descriptografado contendo os dados infantis sintéticos

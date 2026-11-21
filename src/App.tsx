@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Observation, OfflineDiscovery, ProvenanceType } from './types';
 import { Header } from './components/Header';
@@ -39,6 +39,9 @@ const MainAppContent: React.FC = () => {
     currentScreen,
     activeProfile,
     activeCaregiver,
+    activeChildObservations,
+    canRead,
+    canReadProfile,
     canCreate,
     canEdit,
     addObservation,
@@ -61,11 +64,18 @@ const MainAppContent: React.FC = () => {
   const [isObsModalOpen, setIsObsModalOpen] = useState(false);
   const [editingObs, setEditingObs] = useState<Observation | null>(null);
 
-  const [detailObs, setDetailObs] = useState<Observation | null>(null);
+  const [detailId, setDetailId] = useState<string | null>(null);
+  // Resolve the current, authorized record; never keep a detached content snapshot.
+  const detailObs = activeChildObservations.find((obs) => obs.id === detailId) ?? null;
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  useEffect(() => {
+    setDetailId(null);
+    setIsDetailModalOpen(false);
+  }, [activeProfile.id, activeCaregiver.id, activeCaregiver.status, canReadProfile]);
 
   // Vault Modals (Foundation v0.4A Web Crypto)
   const [isExportVaultOpen, setIsExportVaultOpen] = useState(false);
@@ -88,7 +98,8 @@ const MainAppContent: React.FC = () => {
 
   // Open Details Modal
   const handleSelectObservation = (obs: Observation) => {
-    setDetailObs(obs);
+    if (!canRead(obs)) return;
+    setDetailId(obs.id);
     setIsDetailModalOpen(true);
   };
 

@@ -48,12 +48,12 @@ export const VaultCryptoHeaderSchema = z.object({
   aad: z.string().min(1, 'Dados autenticados associados (AAD) são obrigatórios.').max(512),
 });
 
-export const VaultEnvelopeSchema = z.object({
+const VaultEnvelopeV1Schema = z.object({
   format: z.literal(VAULT_FORMAT_IDENTIFIER, {
     message: 'Formato de arquivo inválido. Deve ser um cofre MUNDELO_VAULT.',
   }),
   formatVersion: z.literal(1, {
-    message: 'Versão de formato não suportada. Esta versão do Mundelo aceita apenas o formato v1.',
+    message: 'Versão de formato não suportada. Formato legado v1 inválido.',
   }),
   appVersion: z.string().min(1).max(64),
   exportedAt: z.string().min(10, 'Data de exportação inválida.').max(64),
@@ -67,6 +67,17 @@ export const VaultEnvelopeSchema = z.object({
     .max(10 * 1024 * 1024)
     .regex(/^[A-Za-z0-9+/]+={0,2}$/, 'Ciphertext deve conter apenas caracteres Base64 válidos.'),
 });
+
+const VaultEnvelopeV2Schema = z.object({
+  format: z.literal(VAULT_FORMAT_IDENTIFIER),
+  formatVersion: z.literal(2),
+  crypto: VaultCryptoHeaderSchema.strict(),
+  ciphertext: VaultEnvelopeV1Schema.shape.ciphertext,
+}).strict();
+
+export const VaultEnvelopeSchema = z.discriminatedUnion('formatVersion', [
+  VaultEnvelopeV1Schema, VaultEnvelopeV2Schema,
+], { error: 'Versão de formato não suportada.' });
 
 export const VaultPayloadSchema = z.object({
   version: z.literal(1),

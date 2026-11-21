@@ -8,7 +8,8 @@ import { INTERNAL_SCREENS, InternalScreenId } from '../fixtures/synthetic-data';
  */
 export async function navigateToInternalScreen(
   page: Page,
-  screenId: InternalScreenId
+  screenId: InternalScreenId,
+  expectedHeadingRegex?: RegExp
 ): Promise<void> {
   const descriptor = INTERNAL_SCREENS.find((s) => s.id === screenId);
   if (!descriptor) {
@@ -40,5 +41,5 @@ export async function navigateToInternalScreen(
 
   const h1 = page.locator('main#main-content h1').first();
   await expect(h1).toBeVisible();
-  await expect(h1).toHaveText(descriptor.expectedHeadingRegex);
+  await expect(h1).toHaveText(expectedHeadingRegex ?? descriptor.expectedHeadingRegex);
 }

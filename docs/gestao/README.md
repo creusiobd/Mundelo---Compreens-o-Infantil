@@ -58,3 +58,7 @@ QA-001/#32 incorporada pela PR #42. [QA-002/#33](andamentos/2026-11-20-qa-002.md
 ## Atualização — Correção #44 / 20/11/2026
 
 [Correção de liberação do cofre](andamentos/2026-11-20-fix-44.md) entregue para revisão: contexto/estado conferidos depois da cifra e antes do download. Dez verificações de navegador aprovadas, incluindo P02 original; domínio 94 PASS. #43/#45/#46 e as pré-condições dos cenários integrais permanecem pendentes. A evidência histórica da QA-002 foi preservada; esta entrega registra o novo resultado de P02.
+
+## Retomada — 21/11/2026
+
+O [checkpoint atual](andamentos/2026-11-21-retomada.md) sucede os retratos anteriores para acompanhamento. PR #48/#44 incorporada; 11 issues abertas, com prioridade imediata para #43/#45/#46. [Correções preparadas e limites de validação](../qa/fix-43-45-46/README.md). Campos privados do Project não foram sincronizados; as fontes consultadas foram as issues vinculadas e a main. #24, #29 e #34 seguem como trabalho disponível; #25/#26/#27/#35 conservam seus impedimentos. Sem liberação de dados infantis reais.
