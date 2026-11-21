@@ -312,3 +312,14 @@
 - **Pendências:** #24 precisa localizar o acervo dos 73 IDs; #25/#26 dependem de fontes integrais; #27 aguarda validação competente; #29 aguarda configuração/inventário/provas do ambiente externo; #35 depende dos gates para deliberar avanço; #36 permanece como acompanhamento recorrente.
 - **Próxima frente técnica:** TEC-002/#29, comprovar ambiente de desenvolvimento escolhido e capacidades de retenção, cópias, expurgo e restauração com dados sintéticos. Não criar infraestrutura por essa tarefa nem presumir projeto Supabase configurado.
 - **Limites mantidos:** aprovação e merge não habilitam dados infantis reais, não comprovam R01–R16 integrais nem substituem revisão humana/jurídica aplicável. Campos do Project não foram sincronizados nesta sessão.
+
+
+---
+
+## Replanejamento solicitado — pausa TEC-002 e fontes INF-002 / 21/11/2026
+
+- **Decisão do responsável:** manter #29 pendente diante das limitações de conexão ao Supabase e seguir à próxima frente. Tentativas de autenticação interrompidas; nenhum teste de backup, restauração ou expurgo externo executado. Retomada condicionada ao acesso e evidências do ambiente de desenvolvimento.
+- **Próxima frente selecionada:** INF-002/#24, conciliar versões/aprovações dos 73 identificadores anteriormente documentados.
+- **Resultado da localização:** o acervo não foi localizado nas branches de gestão/contrato conferidas nem nas buscas de fontes acessíveis. A tarefa #24 permanece bloqueada até receber os textos/matriz ou sua localização concreta. Não declarar 73 textos auditados nem transformar lembranças/resumos em fontes originais.
+- **Insumo para retomar #24:** arquivo ou pasta com os textos existentes e referências de origem/aprovação, preservando versões e lacunas. A exportação integral de #25 e os 219 IDs sem transcrição de #26 mantêm escopos próprios.
+- **Estado de segurança:** dados infantis reais e R01–R16 integrais continuam sujeitos aos gates anteriores. A pausa não altera sua disposição.
