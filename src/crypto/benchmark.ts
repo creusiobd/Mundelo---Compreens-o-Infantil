@@ -12,7 +12,7 @@ import {
 } from './vault';
 import {
   VaultPayload,
-  MundeloVaultEnvelopeV1,
+  MundeloVaultEnvelopeV2,
   VAULT_FORMAT_IDENTIFIER,
   VAULT_CURRENT_VERSION,
   VAULT_DEFAULT_PBKDF2_ITERATIONS,
@@ -295,14 +295,9 @@ export async function runSingleBenchmarkSample(
     const aesGcmEncryptMs = performance.now() - tEncStart;
 
     const cipherBytes = new Uint8Array(cipherBuffer);
-    const envelope: MundeloVaultEnvelopeV1 = {
+    const envelope: MundeloVaultEnvelopeV2 = {
       format: VAULT_FORMAT_IDENTIFIER,
-      formatVersion: 1,
-      appVersion: 'v0.4A.1-bench',
-      exportedAt: new Date().toISOString(),
-      childId: validatedOut.childProfile.id,
-      childName: validatedOut.childProfile.name,
-      recordCount: validatedOut.observations.length,
+      formatVersion: VAULT_CURRENT_VERSION,
       crypto: {
         algorithm: 'AES-GCM',
         keyLength: 256,

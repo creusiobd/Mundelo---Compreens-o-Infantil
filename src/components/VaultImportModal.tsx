@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import {
   parseVaultFileString,
   decryptVault,
 } from '../crypto/vault';
 import {
-  MundeloVaultEnvelopeV1,
+  MundeloVaultEnvelope,
   VaultPayload,
   VAULT_MAX_FILE_BYTES,
 } from '../crypto/types';
@@ -50,7 +50,7 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
 
   const [step, setStep] = useState<ImportStep>('SELECT_FILE');
   const [selectedFileName, setSelectedFileName] = useState<string>('');
-  const [rawEnvelope, setRawEnvelope] = useState<MundeloVaultEnvelopeV1 | null>(null);
+  const [rawEnvelope, setRawEnvelope] = useState<MundeloVaultEnvelope | null>(null);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -64,6 +64,11 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
     activeProfileId: string;
   } | null>(null);
   const [importMode, setImportMode] = useState<'merge' | 'replace'>('merge');
+
+  const importContextRef = useRef({ caregiver: activeCaregiver, profileId: activeProfile.id });
+  useLayoutEffect(() => {
+    importContextRef.current = { caregiver: activeCaregiver, profileId: activeProfile.id };
+  }, [activeCaregiver, activeProfile.id]);
 
   if (!isOpen) return null;
 
@@ -108,7 +113,7 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
         const text = event.target?.result as string;
         const parsed = parseVaultFileString(text);
         // Validação imediata do schema do envelope
-        const envelope = VaultEnvelopeSchema.parse(parsed) as MundeloVaultEnvelopeV1;
+        const envelope = VaultEnvelopeSchema.parse(parsed) as MundeloVaultEnvelope;
         setRawEnvelope(envelope);
         setStep('ENTER_PASSWORD');
       } catch (err: unknown) {
@@ -144,6 +149,12 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
       // Pequeno atraso para o spinner renderizar
       await new Promise((resolve) => setTimeout(resolve, 50));
       const payload = await decryptVault(rawEnvelope, password);
+      const current = importContextRef.current;
+      if (current.caregiver.id !== startCaregiverId || current.profileId !== startProfileId ||
+          current.caregiver.status !== 'ACTIVE' ||
+          !current.caregiver.linkedChildIds.includes(payload.childProfile.id)) {
+        throw new Error('Acesso negado ou contexto alterado. Reinicie a importação com um cuidador autorizado.');
+      }
       setDecryptedPayload(payload);
       setPreviewSnapshot({
         caregiverId: startCaregiverId,
@@ -278,6 +289,11 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
             </div>
           )}
 
+          {step === 'PREVIEW_CONFIRM' && decryptedPayload &&
+            (hasContextShifted || activeCaregiver.status !== 'ACTIVE' || !activeCaregiver.linkedChildIds.includes(decryptedPayload.childProfile.id)) && (
+              <p role="alert">Acesso ao conteúdo indisponível neste contexto. Feche e reinicie a importação.</p>
+            )}
+
           {/* Step 2: Enter Password */}
           {step === 'ENTER_PASSWORD' && rawEnvelope && (
             <form onSubmit={handleDecrypt} className="space-y-4">
@@ -287,47 +303,9 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
                   <span className="font-semibold">Arquivo Carregado:</span>
                   <span className="font-mono truncate max-w-[220px]">{selectedFileName}</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold">Criança no Cofre:</span>
-                  <strong className="font-display">{rawEnvelope.childName} (ID: {rawEnvelope.childId})</strong>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold">Observações Declaradas:</span>
-                  <span><strong>{rawEnvelope.recordCount}</strong> registros</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-[#133E43]/70 pt-1 border-t border-[#133E43]/10">
-                  <span>Proteção Autenticada:</span>
-                  <span className="font-mono">AES-GCM-256 (AAD verificado)</span>
-                </div>
+                <p>Identidade e quantidade de registros serão apresentadas após desbloqueio e verificação de acesso.</p>
+                <p>Formato v{rawEnvelope.formatVersion} · AES-GCM-256 · Conteúdo ainda não autenticado</p>
               </div>
-
-              {/* Authorization check */}
-              {activeCaregiver.status !== 'ACTIVE' || !activeCaregiver.linkedChildIds.includes(rawEnvelope.childId) ? (
-                <div className="p-3.5 bg-red-50 border border-red-300 rounded-2xl text-xs text-red-800 flex items-start gap-2.5">
-                  <ShieldAlert className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <strong className="font-bold text-red-900 block">
-                      Acesso Negado: Cuidador Sem Vínculo com a Criança do Cofre
-                    </strong>
-                    <p>
-                      O cuidador ativo simulado é <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que não possui vínculo ativo com {rawEnvelope.childName}. A operação está bloqueada pelo modelo de autorização.
-                    </p>
-                  </div>
-                </div>
-              ) : null}
-
-              {/* Cross-child notice */}
-              {rawEnvelope.childId !== activeProfile.id && (
-                <div className="p-3 bg-amber-50 border border-amber-300 rounded-xl text-xs text-amber-950 flex items-start gap-2">
-                  <AlertTriangle className="w-4 h-4 shrink-0 text-amber-700 mt-0.5" />
-                  <div className="space-y-0.5">
-                    <strong>Importação Entre Perfis:</strong>
-                    <p>
-                      O arquivo selecionado pertence a <strong>{rawEnvelope.childName}</strong>, enquanto a sessão atual está visualizando <strong>{activeProfile.name}</strong>. Ao confirmar, o contexto ativo será alternado para {rawEnvelope.childName}.
-                    </p>
-                  </div>
-                </div>
-              )}
 
               {/* Password prompt */}
               <div className="space-y-1.5">
@@ -383,13 +361,13 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
                     isProcessing ||
                     !password ||
                     activeCaregiver.status !== 'ACTIVE' ||
-                    !activeCaregiver.linkedChildIds.includes(rawEnvelope.childId)
+                    activeCaregiver.linkedChildIds.length === 0
                   }
                   className={`w-full sm:w-auto px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-xl shadow-xs transition-all min-h-[44px] flex items-center justify-center gap-2 ${
                     isProcessing ||
                     !password ||
                     activeCaregiver.status !== 'ACTIVE' ||
-                    !activeCaregiver.linkedChildIds.includes(rawEnvelope.childId)
+                    activeCaregiver.linkedChildIds.length === 0
                       ? 'bg-[#133E43]/40 text-white/70 cursor-not-allowed'
                       : 'bg-[#133E43] hover:bg-[#133E43]/90 text-white active:scale-[0.98]'
                   }`}
@@ -411,7 +389,7 @@ export const VaultImportModal: React.FC<VaultImportModalProps> = ({
           )}
 
           {/* Step 3: Preview & Confirm (Transactional Gate) */}
-          {step === 'PREVIEW_CONFIRM' && decryptedPayload && batchPreview && (
+          {step === 'PREVIEW_CONFIRM' && decryptedPayload && batchPreview && !hasContextShifted && activeCaregiver.status === 'ACTIVE' && activeCaregiver.linkedChildIds.includes(decryptedPayload.childProfile.id) && (
             <div className="space-y-4">
               <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-2xl text-xs text-emerald-950 flex items-center gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />

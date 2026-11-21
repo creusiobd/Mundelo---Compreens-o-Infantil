@@ -12,7 +12,7 @@ import {
   uint8ArrayToBase64,
   base64ToUint8Array,
 } from '../src/crypto/vault';
-import { VaultPayload, MundeloVaultEnvelopeV1 } from '../src/crypto/types';
+import { VaultPayload, MundeloVaultEnvelopeV2 } from '../src/crypto/types';
 import {
   MOCK_PROFILE_TOMAS,
   MOCK_OBSERVATIONS,
@@ -46,9 +46,9 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.4A (Cofre Crip
       const envelope = await encryptVault(samplePayload, testPassword, 100000);
 
       assert.equal(envelope.format, 'MUNDELO_VAULT');
-      assert.equal(envelope.formatVersion, 1);
-      assert.equal(envelope.childId, 'tomas');
-      assert.equal(envelope.recordCount, tomasObservations.length);
+      assert.equal(envelope.formatVersion, 2);
+      assert.equal('childId' in envelope, false);
+      assert.equal('recordCount' in envelope, false);
       assert.ok(envelope.ciphertext.length > 50);
 
       const decrypted = await decryptVault(envelope, testPassword);
@@ -131,7 +131,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.4A (Cofre Crip
       const tamperedCiphertext =
         envelope.ciphertext.slice(0, -2) + (envelope.ciphertext.endsWith('A') ? 'B' : 'A');
 
-      const corruptedEnvelope: MundeloVaultEnvelopeV1 = {
+      const corruptedEnvelope: MundeloVaultEnvelopeV2 = {
         ...envelope,
         ciphertext: tamperedCiphertext,
       };
@@ -153,7 +153,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.4A (Cofre Crip
       originalIvBytes[0] ^= 0xff; // Inverte bits do primeiro byte
       const tamperedIv = uint8ArrayToBase64(originalIvBytes);
 
-      const corruptedEnvelope: MundeloVaultEnvelopeV1 = {
+      const corruptedEnvelope: MundeloVaultEnvelopeV2 = {
         ...envelope,
         crypto: {
           ...envelope.crypto,
@@ -187,7 +187,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.4A (Cofre Crip
           await decryptVault(tamperedEnvelope, testPassword);
         },
         (err: Error) => {
-          assert.match(err.message, /inconsistência de AAD detectada|adulterados/i);
+          assert.match(err.message, /Unrecognized keys|inconsistência de AAD detectada|adulterados/i);
           return true;
         }
       );
@@ -259,33 +259,12 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.4A (Cofre Crip
 
   // 5. Integridade Relacional e Isolamento entre Crianças
   describe('5. Integridade Relacional e Isolamento na Decifragem', () => {
-    it('deve rejeitar cofre cujo conteúdo interno declare criança diferente do cabeçalho', async () => {
-      // Cria payload forjando perfil de Lia mas com childId 'tomas'
+    it('deve rejeitar payload com observações de outra criança mesmo sem identidade pública', async () => {
       const mismatchedPayload: VaultPayload = {
-        ...samplePayload,
-        childProfile: {
-          ...MOCK_PROFILE_TOMAS,
-          id: 'lia', // Divergente
-        },
+        ...samplePayload, childProfile: {...MOCK_PROFILE_TOMAS, id: 'lia'},
       };
-
-      // Cifra diretamente
       const envelope = await encryptVault(mismatchedPayload, testPassword, 100000);
-      // Força childId de volta no envelope para simular discrepância interna
-      const forcedEnvelope = {
-        ...envelope,
-        childId: 'tomas',
-      };
-
-      await assert.rejects(
-        async () => {
-          await decryptVault(forcedEnvelope, testPassword);
-        },
-        (err: Error) => {
-          assert.match(err.message, /inconsistência de AAD|inconsistência de isolamento/i);
-          return true;
-        }
-      );
+      await assert.rejects(() => decryptVault(envelope, testPassword), /Vazamento detectado/);
     });
   });
 

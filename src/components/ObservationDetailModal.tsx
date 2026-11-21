@@ -44,9 +44,9 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
   onToggleReportSelection,
   childName,
 }) => {
-  const { caregivers, canEdit, canDelete, canIncludeInReport } = useApp();
+  const { caregivers, canRead, canEdit, canDelete, canIncludeInReport } = useApp();
 
-  if (!isOpen || !observation) return null;
+  if (!isOpen || !observation || !canRead(observation)) return null;
 
   const isEditable = canEdit(observation);
   const isDeletable = canDelete(observation);

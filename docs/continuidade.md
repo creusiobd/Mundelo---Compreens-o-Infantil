@@ -277,14 +277,59 @@
 
 ---
 
-## Auditoria de conformidade dos princípios XIII, XIV e PG-06 (17/11/2026)
+## Contrato de domínio: núcleo compartilhado de compreensão da criança v0.1 (17/11/2026)
 
-- **Marco:** PR #16 mergeada na `main`, merge commit `93555223fcdf2f341774d8009e9d7829f718cbc7`.
-- **Problema investigado:** verificar se o código atual preserva perspectivas distintas sobre a criança e se a compreensão ajuda a ampliar possibilidades de interação sem criar uma narrativa totalizante.
-- **Intervenção documental:** criada `docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md`, em branch própria `audit/pg06-current-code-conformance-v0.1`.
-- **Achados principais:** perfil infantil contém atributos globais sem proveniência por item; métodos de Meu Mundo não aplicam autorização própria consistente; edição substitui o objeto e incrementa revisão sem histórico versionado nem autor da alteração; exclusão remove o item do estado de sessão; painel Compreender agrega contextos e contém textos fixos apresentados como padrões da amostra; relatório classifica genericamente notas como hipótese familiar e inclui atributos globais sem fonte; vocabulário “canônico” conflita com pluralidade.
-- **Segurança:** `src/security/authorization.ts` declara explicitamente que as regras são demonstrativas no cliente. Mantido bloqueio para dados infantis reais e colaboração profissional até autenticação, autorização server-side/RLS e testes reais.
-- **Status PG-06:** NÃO ATENDE integralmente para perfil global, painel, relatórios e histórico; PARCIAL para autoria/proveniência em observações individuais.
-- **Limites:** auditoria estática de código. Não foram executados testes, build, lint, E2E ou testes manuais nesta revisão. Nenhum código, schema, migration, RLS, credencial ou dado infantil real foi alterado/criado.
-- **Próxima hipótese:** desenhar e revisar o contrato conceitual de domínio para contribuições independentes, observações, interpretações, avaliações, orientações, experiências de interação e sínteses derivadas; definir correção, versionamento, exclusão e autorização antes de implementar.
-- **Status:** STATIC_AUDIT_RECORDED / PG06_NOT_COMPLIANT / DOMAIN_CONTRACT_PENDING.
+- **Problema:** formalizar como responsáveis legais e profissionais de saúde podem contribuir para a compreensão da criança sem confundir legitimidade, vínculo, autorização, permissão ou apagar a pluralidade das perspectivas.
+- **Diretriz central:** compartilhar compreensão não significa compartilhar indiscriminadamente todos os registros. O núcleo familiar e o acesso profissional são espaços distintos; o profissional recebe apenas escopo explicitamente autorizado.
+- **Regra de acesso profissional:** vínculo não concede acesso automático. A concessão é específica por criança, profissional, finalidade, categorias, operações e prazo. O acesso ao histórico anterior é uma escolha explícita por categoria; contribuições futuras permanecem limitadas ao escopo ativo.
+- **Modelo conceitual:** Child, ChildResponsibility, ProfessionalIdentity, ProfessionalRelationship, AccessGrant, AccessGrantScope, Contribution, ContributionVersion, InteractionExperience, ContributionRelation, DerivedSynthesis e AuditEvent. Identificadores são candidatos conceituais, não schema aprovado.
+- **Governança:** legitimidade e poderes dos responsáveis não serão reduzidos a uma regra universal de consentimento único ou unanimidade. Situações incertas, restrições ou conflitos bloqueiam novas concessões até verificação apropriada. Requer validação jurídica e de privacidade antes de dados reais.
+- **Intervenção documental:** criado `docs/contrato-dominio-mundelo-v0-1.md` na branch `docs/domain-contract-shared-child-understanding-v0.1`, com espaços de compartilhamento, categorias, operações, histórico, revogação, proveniência, divergência, sínteses, segurança, invariantes e critérios de aceitação.
+- **Limites:** proposta conceitual pendente de revisão. Nenhum código funcional, schema, migration, policy RLS, projeto Supabase, credencial ou dado infantil real foi criado/modificado.
+- **Próxima ação:** revisar o contrato e resolver pendências de legitimidade, governança, retenção e validação jurídica; somente após aprovação derivar modelo lógico, ADRs, RLS e testes.
+- **Status:** DOMAIN_CONTRACT_PROPOSED / IMPLEMENTATION_BLOCKED_PENDING_APPROVAL.
+
+---
+
+## Retomada e correções de privacidade — 21/11/2026
+
+- **Problema:** conexão direta do Codex/Git indisponível; recuperar estado atual e executar pendências do Project.
+- **Fonte:** integração autorizada GitHub; main `b6921b3b5100ace9c6bee46c8445b4e00c34dbb8`, issues vinculadas ao Project 4. Quadro visual privado não acessível nesta sessão; sem sincronização de seus campos.
+- **Resultado:** [checkpoint de 11 tarefas abertas](gestao/andamentos/2026-11-21-retomada.md); #44 já incorporada pela PR #48. Preparadas correções #43 (detalhe), #46 (relatório) e #45 (envelope v2 mínimo com importação v1).
+- **Validação:** 102 testes de unidade/domínio/segurança, tipos, build, scan e diff aprovados. Navegador local BLOCKED pelo ambiente; [CI 44945589494](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44945589494) PASS: 65 testes de navegador e 17 na etapa dedicada a11y (subconjunto da suíte), incluindo CTRL-01 e P01–P04 originais. [Evidência](qa/fix-43-45-46/validacao.json).
+- **Decisão/limites:** [D04 e compatibilidade](qa/fix-43-45-46/README.md). Arquivos v1 existentes não são reescritos; leitor anterior não abre v2. Autorização continua demonstrativa no cliente. R01–R16 e gates jurídicos/técnicos conservados. Nenhuma implantação ou dado real autorizado.
+- **Próxima ação:** revisar/incorporar PR #49. PR #50 entrega diagnóstico #29, proposta de experiência #34 e parecer técnico #35; comprovação externa, validação competente e fontes para #24–#26 continuam pendentes. Nenhuma issue é encerrada automaticamente antes da incorporação.
+
+
+---
+
+## Integração aprovada das PRs #49 e #50 — 21/11/2026
+
+- **Confirmação do responsável:** as duas PRs foram validadas e aprovadas; integração conferida no GitHub.
+- **PR #50:** incorporada em `6552f784d8fa369d3b95f36b6378cf81f9585be4`, entrega documental de UX-001/#34, diagnóstico parcial TEC-002/#29 e parecer técnico REL-001/#35.
+- **PR #49:** incorporada em `da66b9a4961233c43c6f16da0bded58fd636f6bf`, correções #43/#45/#46 e evidências de validação. A main inclui ambas; [CI da integração](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44946599881) concluído com sucesso.
+- **Tarefas encerradas nesta integração:** #34, #43, #45 e #46. São 12 encerradas e sete abertas entre as 19 issues de execução acompanhadas, sem incluir PRs antigas ou cartões avulsos não consultados.
+- **Pendências:** #24 precisa localizar o acervo dos 73 IDs; #25/#26 dependem de fontes integrais; #27 aguarda validação competente; #29 aguarda configuração/inventário/provas do ambiente externo; #35 depende dos gates para deliberar avanço; #36 permanece como acompanhamento recorrente.
+- **Próxima frente técnica:** TEC-002/#29, comprovar ambiente de desenvolvimento escolhido e capacidades de retenção, cópias, expurgo e restauração com dados sintéticos. Não criar infraestrutura por essa tarefa nem presumir projeto Supabase configurado.
+- **Limites mantidos:** aprovação e merge não habilitam dados infantis reais, não comprovam R01–R16 integrais nem substituem revisão humana/jurídica aplicável. Campos do Project não foram sincronizados nesta sessão.
+
+
+---
+
+## Replanejamento solicitado — pausa TEC-002 e fontes INF-002 / 21/11/2026
+
+- **Decisão do responsável:** manter #29 pendente diante das limitações de conexão ao Supabase e seguir à próxima frente. Tentativas de autenticação interrompidas; nenhum teste de backup, restauração ou expurgo externo executado. Retomada condicionada ao acesso e evidências do ambiente de desenvolvimento.
+- **Próxima frente selecionada:** INF-002/#24, conciliar versões/aprovações dos 73 identificadores anteriormente documentados.
+- **Resultado da localização:** o acervo não foi localizado nas branches de gestão/contrato conferidas nem nas buscas de fontes acessíveis. A tarefa #24 permanece bloqueada até receber os textos/matriz ou sua localização concreta. Não declarar 73 textos auditados nem transformar lembranças/resumos em fontes originais.
+- **Insumo para retomar #24:** arquivo ou pasta com os textos existentes e referências de origem/aprovação, preservando versões e lacunas. A exportação integral de #25 e os 219 IDs sem transcrição de #26 mantêm escopos próprios.
+- **Estado de segurança:** dados infantis reais e R01–R16 integrais continuam sujeitos aos gates anteriores. A pausa não altera sua disposição.
+
+
+## 21/11/2026 — Reavaliação da PR #17 (XIII/XIV e PG-06)
+
+- Auditoria estática atualizada na [v0.2](auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md), com [evidências fixadas](auditoria/pg06-2026-11-21/evidencias.json) na main `3208aa0d3b067d30bd940c7b12e59b0b14f508d8`.
+- Dez achados históricos reavaliados; AUD-11/AUD-12 acrescentados. V0.1 preservada sem alteração; retificações e melhorias das PRs #49/#50 explicitadas. PG-06 segue não atendido integralmente.
+- A branch da PR é conciliada com a main preservando os dois históricos. Entrega apenas documental, sem schema, RLS ou mudança funcional.
+- Próximos incrementos registrados no backlog do repositório: #51 padrões fixos; #52 preenchimentos sem relato; #53 leitura/comandos do perfil; #54 atribuição das interpretações. Sugestão de início: #51. Os novos itens ainda não tiveram campos do GitHub Project sincronizados.
+- Nenhuma dessas correções foi implementada nesta auditoria. Revisão humana independente e testes dirigidos aos recortes continuam pendentes; CI preexistente informa apenas regressão.
+- Mantidos: bloqueio de dados infantis reais, pausa #29 por conexão Supabase e indisponibilidade das fontes INF-ID #24–#26 no Codex. A auditoria não substitui validação jurídica nem comprovação externa de retenção/backups.

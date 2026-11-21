@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useRef, useLayoutEffect, useCallback } from 'react';
 import {
   ChildProfile,
   Observation,
@@ -48,6 +48,8 @@ interface AppContextType {
   switchCaregiver: (caregiverId: string) => void;
   // Permissions & access indicators
   isLinkedToActiveChild: boolean;
+  canReadProfile: boolean;
+  canRead: (obs: Observation) => boolean;
   canCreate: boolean;
   canEdit: (obs: Observation) => boolean;
   canDelete: (obs: Observation) => boolean;
@@ -101,7 +103,10 @@ interface AppContextType {
   showNotification: (message: string, type?: 'success' | 'info' | 'error') => void;
   clearNotification: () => void;
   // Encrypted Vault (Experimental Prototype)
-  exportVaultData: (childId?: string) => VaultPayload;
+  exportVault: <T>(
+    prepare: (payload: VaultPayload) => Promise<T>,
+    release: (prepared: T, payload: VaultPayload) => void
+  ) => Promise<void>;
   importVaultPayload: (
     payload: VaultPayload,
     mode: 'merge' | 'replace'
@@ -110,21 +115,33 @@ interface AppContextType {
   domainConcurrencyManager: DomainConcurrencyManager;
 }
 
+// Invalidate prepared exports synchronously when a relevant write is accepted,
+// even if React has not committed it yet or a later write restores the old value.
+function useDomainState<T>(initial: T, manager: DomainConcurrencyManager) {
+  const [value, setValue] = useState<T>(initial);
+  const update = useCallback((next: React.SetStateAction<T>) => {
+    manager.incrementGeneration();
+    setValue(next);
+  }, [manager]);
+  return [value, update] as const;
+}
+
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentScreen, setCurrentScreen] = useState<ScreenId>('home');
-  const [profiles, setProfiles] = useState<ChildProfile[]>([
-    MOCK_PROFILE_TOMAS,
-    MOCK_PROFILE_LIA,
-  ]);
-  const [activeProfileId, setActiveProfileId] = useState<string>('tomas');
-  const [caregivers, setCaregivers] = useState<Caregiver[]>(MOCK_CAREGIVERS);
-  const [activeCaregiverId, setActiveCaregiverId] = useState<string>('cg-helena');
-  const [observations, setObservations] = useState<Observation[]>(MOCK_OBSERVATIONS);
-
   // Instância singleton estável do gerenciador de concorrência no domínio
   const domainConcurrencyManager = useMemo(() => new DomainConcurrencyManager(), []);
+
+  const [currentScreen, setCurrentScreen] = useState<ScreenId>('home');
+  const [profiles, setProfiles] = useDomainState<ChildProfile[]>([
+    MOCK_PROFILE_TOMAS,
+    MOCK_PROFILE_LIA,
+  ], domainConcurrencyManager);
+  const [activeProfileId, setActiveProfileId] = useDomainState<string>('tomas', domainConcurrencyManager);
+  const [caregivers, setCaregivers] = useDomainState<Caregiver[]>(MOCK_CAREGIVERS, domainConcurrencyManager);
+  const [activeCaregiverId, setActiveCaregiverId] = useDomainState<string>('cg-helena', domainConcurrencyManager);
+  const [observations, setObservations] = useDomainState<Observation[]>(MOCK_OBSERVATIONS, domainConcurrencyManager);
+
 
   // Default selection for reports: initially active profile's observations
   const [selectedObservationIds, setSelectedObservationIds] = useState<string[]>(
@@ -146,6 +163,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     );
   }, [caregivers, activeCaregiverId]);
 
+  // Async work must read the last committed context, not its starting closure.
+  // Pending relevant writes already invalidate the generation via useDomainState.
+  const exportContextRef = useRef({ childId: activeProfileId, caregiver: activeCaregiver, profiles, observations, caregivers });
+  useLayoutEffect(() => {
+    exportContextRef.current = { childId: activeProfileId, caregiver: activeCaregiver, profiles, observations, caregivers };
+  }, [activeProfileId, activeCaregiver, profiles, observations, caregivers]);
+
   const isLinkedToActiveChild = useMemo(() => {
     return (
       activeCaregiver.status === 'ACTIVE' &&
@@ -161,6 +185,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     return observations.filter((o) => o.childId === activeProfileId);
   }, [observations, activeProfileId, activeCaregiver]);
+
+  const canReadProfile = canReadObservation(activeCaregiver, activeProfileId);
+  const canRead = (obs: Observation) =>
+    canReadObservation(activeCaregiver, activeProfileId, obs);
 
   const canCreate = useMemo(() => {
     return canCreateObservation(activeCaregiver, activeProfileId);
@@ -577,54 +605,55 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showNotification('Dados de demonstração originais e cuidadores restaurados na memória.', 'success');
   };
 
-  const exportVaultData = (childId?: string): VaultPayload => {
-    const targetChildId = childId || activeProfileId;
-    const targetChild = profiles.find((p) => p.id === targetChildId);
-    if (!targetChild) {
-      throw new Error(`Perfil infantil não encontrado para o ID: ${targetChildId}`);
-    }
+  const exportVault = async <T,>(
+    prepare: (payload: VaultPayload) => Promise<T>,
+    release: (prepared: T, payload: VaultPayload) => void
+  ): Promise<void> => {
+    const targetChild = profiles.find((p) => p.id === activeProfileId);
+    if (!targetChild) throw new Error('Perfil não encontrado para exportação.');
 
-    // Trava de operação de domínio (SEC-17 / SEC-18)
     const lock = domainConcurrencyManager.acquireLock(
-      'VAULT_EXPORT',
-      targetChild.id,
-      activeCaregiver.id
+      'VAULT_EXPORT', targetChild.id, activeCaregiver.id
     );
     if (!lock.acquired || !lock.snapshot) {
-      const lockErr = lock.error || 'Operação concorrente bloqueada no domínio.';
-      showNotification(lockErr, 'error');
-      throw new Error(lockErr);
+      throw new Error(lock.error || 'Operação concorrente bloqueada no domínio.');
     }
-
+    const operationId = lock.snapshot.operationId;
     try {
-      // Authorization Gate (SEC-12):
-      // Cuidador ativo deve ser ACTIVE e possuir vínculo com a criança alvo
       if (
         activeCaregiver.status !== 'ACTIVE' ||
         !activeCaregiver.linkedChildIds.includes(targetChild.id)
       ) {
-        const errMsg = `Acesso Negado: O cuidador ativo (${activeCaregiver.displayName}) não possui autorização para exportar o cofre de ${targetChild.name}.`;
-        showNotification(errMsg, 'error');
-        throw new Error(errMsg);
+        throw new Error('Acesso negado: o cuidador não pode exportar este perfil.');
       }
-
-      const targetObservations = observations.filter((o) => o.childId === targetChild.id);
-      const linkedCgs = caregivers.filter((c) => c.linkedChildIds.includes(targetChild.id));
-
-      return {
+      const payload: VaultPayload = {
         version: 1,
         exportedAt: new Date().toISOString(),
         childProfile: targetChild,
-        observations: targetObservations,
-        linkedCaregivers: linkedCgs,
+        observations: observations.filter((o) => o.childId === targetChild.id),
+        linkedCaregivers: caregivers.filter((cg) => cg.linkedChildIds.includes(targetChild.id)),
         metadata: {
           origin: 'Mundelo Foundation v0.4A.1 Prototype',
           description: `Cofre experimental de dados sintéticos da criança ${targetChild.name}`,
           isSyntheticData: true,
         },
       };
+      const prepared = await prepare(payload);
+      const current = exportContextRef.current;
+      const validation = domainConcurrencyManager.validateCommit(
+        operationId, current.childId, current.caregiver.id, current.caregiver.status,
+        current.caregiver.linkedChildIds.includes(current.childId)
+      );
+      if (
+        !validation.canCommit || current.profiles !== profiles ||
+        current.observations !== observations || current.caregivers !== caregivers
+      ) {
+        throw new Error('Exportação cancelada: o contexto ou os dados mudaram, ou a operação expirou. Inicie novamente.');
+      }
+      // No await between the final guard and the synchronous download handoff.
+      release(prepared, payload);
     } finally {
-      domainConcurrencyManager.releaseLock(lock.snapshot.operationId);
+      domainConcurrencyManager.releaseLock(operationId);
     }
   };
 
@@ -769,8 +798,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         nextObservations.filter((o) => o.childId === incomingChild.id).map((o) => o.id)
       );
 
-      // Avança a geração do estado no domínio
-      domainConcurrencyManager.incrementGeneration();
+      // Os setters do domínio invalidam preparações anteriores antes do commit React.
 
       const msg = `Cofre de ${incomingChild.name} importado com sucesso (${validated.observations.length} observações processadas).`;
       showNotification(msg, 'success');
@@ -797,6 +825,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         activeCaregiver,
         switchCaregiver,
         isLinkedToActiveChild,
+        canReadProfile,
+        canRead,
         canCreate,
         canEdit,
         canDelete,
@@ -836,7 +866,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         notification,
         showNotification,
         clearNotification,
-        exportVaultData,
+        exportVault,
         importVaultPayload,
         domainConcurrencyManager,
       }}

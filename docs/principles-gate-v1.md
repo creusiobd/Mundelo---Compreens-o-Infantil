@@ -114,14 +114,10 @@ A aprovação deste documento como norma institucional não significa que o MUND
 Aplicar PG-06 a schema, migrations, APIs, RLS, componentes, relatórios, analytics, prompts e automações. A autorização controla acesso, não a validade ou superioridade de uma perspectiva. Consultar [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md) como especificação normativa.
 
 
-## Registro de auditoria PG-06 — 17/11/2026
+## Reavaliação estática PG-06 — 21/11/2026
 
-A auditoria estática do código atual foi registrada em [Auditoria de conformidade dos princípios XIII, XIV e PG-06 v0.1](auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md).
+A [auditoria v0.2](auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md) é a referência atual para a PR #17; a v0.1 foi preservada como histórico, com retificações explícitas. Base examinada: `3208aa0d3b067d30bd940c7b12e59b0b14f508d8`.
 
-**Resultado:** PG-06 NÃO ATENDE integralmente no estado atual. Observações individuais preservam parte da autoria e proveniência, mas perfil global, histórico de alterações, painel Compreender e relatórios ainda não preservam perspectivas de ponta a ponta.
+PG-06 permanece **NÃO ATENDIDO integralmente**. Foram reavaliados dez achados e registrados dois recortes adicionais. As correções específicas de acesso/cofre já incorporadas são reconhecidas; esta entrega não altera código nem certifica conformidade. Encaminhamentos: #51 (padrões fixos), #52 (preenchimentos sem relato), #53 (acesso ao perfil/comandos), #54 (atribuição de interpretações).
 
-A auditoria foi estática. Nenhum teste foi executado nesta revisão. Não equivale a certificação, teste dinâmico ou revisão independente.
-
-**Bloqueios mantidos:** não habilitar dados infantis reais nem colaboração profissional com autorização apenas client-side; não apresentar textos fixos do painel como descobertas produzidas pelos registros; não tratar relatórios demonstrativos como avaliação ou síntese validada.
-
-Próxima etapa: aprovar o contrato conceitual de domínio e critérios de aceitação antes de qualquer migration ou alteração de persistência.
+A conferência estática e seus limites estão no relatório e no registro de evidências. Testes de comportamento dos novos recortes e revisão humana independente continuam pendentes. CI de regressão não substitui prova de PG-06. Dados infantis reais continuam bloqueados; #29 permanece pausada e fontes INF-ID #24–#26 não foram recuperadas.

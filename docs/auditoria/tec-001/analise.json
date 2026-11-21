@@ -1,0 +1,1275 @@
+{
+  "task": "TEC-001",
+  "issue": 23,
+  "as_of": "2026-11-19",
+  "repository": "creusiobd/Mundelo---Compreens-o-Infantil",
+  "commit": "512d95dd2c6f026e602a5a722fb6f03f08902321",
+  "owner": "Creusio Kizua",
+  "method": "Inventário completo e inspeção estática dirigida; CI histórico consultado no mesmo commit; nenhuma execução local de testes; CI da PR reexecuta automaticamente a suíte preexistente; 16 cenários de retenção não executados por esta auditoria",
+  "counts": {
+    "repository_files": 120,
+    "content_verified": 86,
+    "by_type": {
+      "configuracao_ou_suporte": 12,
+      "lockfiles": 2,
+      "documentacao": 53,
+      "aplicacao": 34,
+      "testes": 19
+    },
+    "operations": 14,
+    "statuses": {
+      "Demonstrativo": 8,
+      "Ausente": 6,
+      "Implementado integralmente": 0,
+      "Não verificado como estado principal": 0
+    }
+  },
+  "operations": [
+    {
+      "id": "OP-01",
+      "operation": "Preservar",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 27,
+        "end": 27,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L27"
+      },
+      "present": "Estado React em memória e exportação opcional para cofre cifrado.",
+      "gap": "Não há aplicação das durações, revisão de necessidade, exceções ou destinação por categoria.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 115,
+          "end": 132,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L115-L132"
+        },
+        {
+          "path": "src/crypto/vault.ts",
+          "start": 123,
+          "end": 187,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/vault.ts#L123-L187"
+        }
+      ],
+      "gaps": [
+        "G01",
+        "G09"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-02",
+      "operation": "Registrar (create)",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 28,
+        "end": 28,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L28"
+      },
+      "present": "addObservation verifica vínculo/status, atribui autoria e tempos, valida schema e cria revisão 1.",
+      "gap": "Permissão não distingue finalidade/categoria; novo registro é selecionado automaticamente para relatório. Lacunas têm defaults e a migração pode preencher fatos não conhecidos.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 245,
+          "end": 291,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L245-L291"
+        },
+        {
+          "path": "src/validation/schemas.ts",
+          "start": 78,
+          "end": 120,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/schemas.ts#L78-L120"
+        },
+        {
+          "path": "src/validation/migration.ts",
+          "start": 23,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/migration.ts#L23-L58"
+        }
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G10"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-03",
+      "operation": "Preparar para compartilhamento",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 29,
+        "end": 29,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L29"
+      },
+      "present": "Seleção de registros e montagem de síntese contextual em tela.",
+      "gap": "Não há unidade derivada versionada nem autorização própria de preparação/uso; seleção automática não representa decisão de finalidade.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 129,
+          "end": 132,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L129-L132"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 373,
+          "end": 403,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L373-L403"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 33,
+          "end": 95,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L33-L95"
+        }
+      ],
+      "gaps": [
+        "G02",
+        "G04"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-04",
+      "operation": "Consultar (read)",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 30,
+        "end": 30,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L30"
+      },
+      "present": "Lista de observações filtrada por criança e cuidador ativo vinculado.",
+      "gap": "Não há destinatário autenticado, concessão granular ou filtro histórico. Perfis são retornados separadamente e o detalhe mantém objeto em estado local sem guarda própria de leitura.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 36,
+          "end": 47,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L36-L47"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 139,
+          "end": 163,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L139-L163"
+        },
+        {
+          "path": "src/App.tsx",
+          "start": 60,
+          "end": 65,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/App.tsx#L60-L65"
+        },
+        {
+          "path": "src/components/ObservationDetailModal.tsx",
+          "start": 37,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/ObservationDetailModal.tsx#L37-L58"
+        }
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G06"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-05",
+      "operation": "Utilizar em síntese/interpretação",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 31,
+        "end": 31,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L31"
+      },
+      "present": "Relatório descritivo e contagens locais por ambiente/evento; tela declara ausência de IA ativa.",
+      "gap": "Uso deriva da leitura/vínculo, sem autorização específica, destinatário individual, linhagem persistida ou gestão do ciclo da síntese.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 112,
+          "end": 124,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L112-L124"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 38,
+          "end": 104,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L38-L104"
+        },
+        {
+          "path": "src/screens/UnderstandScreen.tsx",
+          "start": 22,
+          "end": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/UnderstandScreen.tsx#L22-L34"
+        },
+        {
+          "path": "src/screens/UnderstandScreen.tsx",
+          "start": 63,
+          "end": 75,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/UnderstandScreen.tsx#L63-L75"
+        }
+      ],
+      "gaps": [
+        "G02",
+        "G04",
+        "G07"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-06",
+      "operation": "Compartilhar (share)",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 32,
+        "end": 32,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L32"
+      },
+      "present": "Há texto de relatório para cópia/impressão, sem serviço de entrega/concessão.",
+      "gap": "Copiar ou imprimir não implementa compartilhamento governado: destinatário, autoridade, categorias, operações, vigência e contexto acessível não são avaliados.",
+      "evidence": [
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 33,
+          "end": 48,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L33-L48"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 59,
+          "end": 110,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L59-L110"
+        },
+        {
+          "path": "src/types/index.ts",
+          "start": 52,
+          "end": 59,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L52-L59"
+        }
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G07"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-07",
+      "operation": "Exportar (export)",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 33,
+        "end": 33,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L33"
+      },
+      "present": "Geração de cofre local com validação, AES-GCM e senha; relatório permite cópia e impressão.",
+      "gap": "Vínculo ativo basta para exportar todo o perfil/acervo/cuidadores ligados à criança. Faltam direito independente, escopo histórico, proteção de terceiros e revalidação ao disponibilizar o download.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 580,
+          "end": 628,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L580-L628"
+        },
+        {
+          "path": "src/components/VaultExportModal.tsx",
+          "start": 45,
+          "end": 104,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/VaultExportModal.tsx#L45-L104"
+        },
+        {
+          "path": "src/crypto/vault.ts",
+          "start": 164,
+          "end": 187,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/vault.ts#L164-L187"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 59,
+          "end": 110,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L59-L110"
+        }
+      ],
+      "gaps": [
+        "G02",
+        "G05",
+        "G06",
+        "G07"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-08",
+      "operation": "Corrigir (edit_own / revisão administrativa)",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 34,
+        "end": 34,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L34"
+      },
+      "present": "Atualiza revisão e updatedAt, preservando childId, autoria registradora e recordedAt; merge rejeita alguns conflitos.",
+      "gap": "Substitui o objeto anterior; não conserva histórico legítimo de versões nem aciona dependências. Papel LEGAL_GUARDIAN permite editar contribuição alheia sem procedimento administrativo específico; importação não aplica canEdit por registro.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 67,
+          "end": 83,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L67-L83"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 294,
+          "end": 342,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L294-L342"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 680,
+          "end": 743,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L680-L743"
+        },
+        {
+          "path": "src/security/conflictResolver.ts",
+          "start": 208,
+          "end": 227,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/conflictResolver.ts#L208-L227"
+        }
+      ],
+      "gaps": [
+        "G03",
+        "G04",
+        "G11"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-09",
+      "operation": "Contestar / solicitar correção",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 35,
+        "end": 35,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L35"
+      },
+      "present": "Campos de notas/hipótese são parte do registro; não representam um pedido autônomo.",
+      "gap": "Ausentes entidade/canal de contestação com autoria própria, encaminhamento, revisão e estados do pedido.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start": 114,
+          "end": 137,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L114-L137"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 39,
+          "end": 110,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L39-L110"
+        }
+      ],
+      "gaps": [
+        "G08"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-10",
+      "operation": "Restringir",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 36,
+        "end": 36,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L36"
+      },
+      "present": "SUSPENDED é estado global de cuidador e bloqueia funções demonstrativas.",
+      "gap": "Não representa restrição por conteúdo, operação, finalidade, período, destinatário e fundamento, nem revisão dos derivados.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start": 47,
+          "end": 59,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L47-L59"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start": 36,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L36-L58"
+        }
+      ],
+      "gaps": [
+        "G02",
+        "G07",
+        "G08"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-11",
+      "operation": "Eliminar / anonimizar",
+      "status": "Demonstrativo",
+      "coverage": "Parcial, em protótipo local",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 37,
+        "end": 37,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L37"
+      },
+      "present": "deleteObservation e limpeza do acervo removem objetos da sessão.",
+      "gap": "Não avalia pedido/dever, retenção, terceiros, cópias ou derivados; não há mecanismo de anonimização nem comprovação de eliminação fora da memória. A mensagem de exclusão individual delimita corretamente a sessão.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 345,
+          "end": 370,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L345-L370"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 554,
+          "end": 577,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L554-L577"
+        },
+        {
+          "path": "src/components/DeleteConfirmModal.tsx",
+          "start": 17,
+          "end": 61,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/DeleteConfirmModal.tsx#L17-L61"
+        }
+      ],
+      "gaps": [
+        "G03",
+        "G08",
+        "G09"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-12",
+      "operation": "Conceder / ampliar acesso",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 38,
+        "end": 38,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L38"
+      },
+      "present": "Lista de cuidadores/vínculos sintéticos; importação pode inserir cuidadores de IDs novos.",
+      "gap": "Sem AccessGrant ou procedimento de autoridade/finalidade/vigência. Preservar papéis de IDs existentes na importação não valida novos papéis/vínculos recebidos no arquivo.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start": 41,
+          "end": 59,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L41-L59"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 746,
+          "end": 766,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L746-L766"
+        },
+        {
+          "path": "src/crypto/schemas.ts",
+          "start": 78,
+          "end": 86,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/schemas.ts#L78-L86"
+        }
+      ],
+      "gaps": [
+        "G01",
+        "G02",
+        "G07"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-13",
+      "operation": "Revogar / expirar / suspender concessão",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 39,
+        "end": 39,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L39"
+      },
+      "present": "Funções negam cuidador SUSPENDED; gerenciador aceita checar vínculo/status fornecidos pelo chamador.",
+      "gap": "Não há concessão com ciclo de vida, prazos/eventos ou propagação. Simular outro cuidador não revoga uma concessão; a guarda de exportação termina antes da operação assíncrona.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 36,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L36-L58"
+        },
+        {
+          "path": "src/security/domainLock.ts",
+          "start": 117,
+          "end": 178,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/domainLock.ts#L117-L178"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 218,
+          "end": 243,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L218-L243"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 626,
+          "end": 628,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L626-L628"
+        }
+      ],
+      "gaps": [
+        "G02",
+        "G05",
+        "G07"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    },
+    {
+      "id": "OP-14",
+      "operation": "Reavaliar derivados",
+      "status": "Ausente",
+      "coverage": "Ausente no código versionado",
+      "criterion": {
+        "path": "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+        "start": 40,
+        "end": 40,
+        "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/contrato-dominio-criterios-operacoes-v0-1.md#L40"
+      },
+      "present": "Filtros e contagens são recalculados na renderização com o estado disponível.",
+      "gap": "Não há cadastro de dependências/versões/eventos, tratamento por validade/apresentação/uso/retenção nem prova de execução. Re-renderizar contagens não implementa esse fluxo.",
+      "evidence": [
+        {
+          "path": "src/screens/UnderstandScreen.tsx",
+          "start": 22,
+          "end": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/UnderstandScreen.tsx#L22-L34"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 38,
+          "end": 40,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L38-L40"
+        },
+        {
+          "path": "src/types/index.ts",
+          "start": 114,
+          "end": 137,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L114-L137"
+        }
+      ],
+      "gaps": [
+        "G04",
+        "G08",
+        "G09"
+      ],
+      "verification": "Inspeção estática; não executada aceitação integral desta operação nesta tarefa"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "G01",
+      "priority": "P0",
+      "title": "Identidade e fronteira de autorização no servidor",
+      "requirement": "Contrato §10 / autorização no banco ou API",
+      "finding": "A árvore completa não contém backend, SDK Supabase, migrations ou políticas SQL executáveis. ADR-005 aceita a arquitetura para implementação controlada, mas a dependência @supabase/supabase-js e sua integração não aparecem no código desta versão.",
+      "evidence": [
+        {
+          "path": "package.json",
+          "start": 17,
+          "end": 41,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/package.json#L17-L41"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 115,
+          "end": 124,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L115-L124"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start": 8,
+          "end": 17,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L8-L17"
+        },
+        {
+          "path": "docs/adr/005-identidade-e-persistencia-supabase.md",
+          "start": 15,
+          "end": 41,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/docs/adr/005-identidade-e-persistencia-supabase.md#L15-L41"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 35,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/35"
+        }
+      ],
+      "next": "Especificar e depois comprovar autenticação e autorização na fronteira efetiva; preservar o escopo aprovado de contas adultas, sem criar tabelas infantis por esta auditoria.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G02",
+      "priority": "P0",
+      "title": "Permissões independentes e cobertura dos perfis",
+      "requirement": "Contrato §§5.3–5.4; regras comuns e consultar/utilizar/exportar",
+      "finding": "Leitura, criação e inclusão em relatório dependem de ACTIVE + linkedChildIds; não há finalidade, categorias, intervalo histórico ou concessão versionada. activeProfile não usa o filtro de leitura das observações. updateProfile verifica só papel; os mutadores add/remove do perfil não repetem autorização no domínio.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 36,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L36-L58"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start": 112,
+          "end": 124,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L112-L124"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 139,
+          "end": 163,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L139-L163"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 405,
+          "end": 552,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L405-L552"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 59,
+          "end": 95,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L59-L95"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34"
+        }
+      ],
+      "next": "Definir matriz ator/objeto/versão/finalidade/operação/destinatário e aplicar em todo caminho, incluindo campos do perfil, preparação, cópia e impressão.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G03",
+      "priority": "P0",
+      "title": "Correção alheia e importação sem autoridade por contribuição",
+      "requirement": "Contrato §8; critério Corrigir",
+      "finding": "LEGAL_GUARDIAN pode editar/excluir contribuições de outros autores por papel. O merge verifica vínculo com a criança e revisão/imutabilidade, mas não invoca canEditObservation para cada contribuição recebida. Não existe fundamento/escopo de revisão administrativa específico.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start": 67,
+          "end": 105,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/authorization.ts#L67-L105"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 294,
+          "end": 342,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L294-L342"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 680,
+          "end": 743,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L680-L743"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 28,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28"
+        },
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        }
+      ],
+      "next": "Separar correção própria, pedido de correção e medida administrativa legitimada; estender a mesma decisão a importações/replace. A mera passagem dos testes antigos não resolve a divergência.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G04",
+      "priority": "P0",
+      "title": "Versões e linhagem das derivações",
+      "requirement": "Contrato §§7–9; Corrigir e Reavaliar derivados",
+      "finding": "Observation possui contador revision, sem repositório de versões, relações de derivação ou eventos de tratamento. updateObservation substitui o objeto. Relatório usa objetos atuais, sem unidade derivada com fontes/versões e estados de revisão.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start": 114,
+          "end": 137,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L114-L137"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 316,
+          "end": 340,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L316-L340"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 38,
+          "end": 95,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L38-L95"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 32,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32"
+        }
+      ],
+      "next": "Especificar identidade de versão, relações e reação a eventos; conservar conteúdo anterior somente quando e enquanto legítimo; distinguir recomputação visual de reavaliação documentada.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G05",
+      "priority": "P0",
+      "title": "Guarda termina antes da disponibilização assíncrona do cofre",
+      "requirement": "Regras comuns linha 9; Exportar e Revogar",
+      "finding": "exportVaultData adquire/libera trava dentro de função síncrona. O modal aguarda e cifra depois do retorno, baixando sem validateCommit. incrementGeneration só é chamado após importação, não nas demais mutações/trocas. A classe isolada tem controles, mas sua integração não cobre toda a janela da exportação.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 580,
+          "end": 628,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L580-L628"
+        },
+        {
+          "path": "src/components/VaultExportModal.tsx",
+          "start": 67,
+          "end": 96,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/VaultExportModal.tsx#L67-L96"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 772,
+          "end": 773,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L772-L773"
+        },
+        {
+          "path": "src/security/domainLock.ts",
+          "start": 117,
+          "end": 178,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/security/domainLock.ts#L117-L178"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 32,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32"
+        },
+        {
+          "number": 33,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33"
+        }
+      ],
+      "next": "Definir duração da operação, fonte de estado vigente e revalidação imediatamente antes de liberar resultado; testar troca/restrição/alteração entre preparação e download no fluxo real.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G06",
+      "priority": "P0",
+      "title": "Apresentação residual e metadados fora do escopo",
+      "requirement": "Consultar e Exportar; proteção de metadados",
+      "finding": "detailObs guarda um objeto de contribuição; o modal verifica edição/exclusão/seleção, mas não uma guarda de leitura própria. O envelope público do cofre inclui childName, childId e contagem. Criptografar ciphertext não cifra esses metadados. A extensão de apresentação residual no navegador não foi reproduzida nesta tarefa.",
+      "evidence": [
+        {
+          "path": "src/App.tsx",
+          "start": 60,
+          "end": 65,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/App.tsx#L60-L65"
+        },
+        {
+          "path": "src/App.tsx",
+          "start": 89,
+          "end": 93,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/App.tsx#L89-L93"
+        },
+        {
+          "path": "src/components/ObservationDetailModal.tsx",
+          "start": 47,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/components/ObservationDetailModal.tsx#L47-L58"
+        },
+        {
+          "path": "src/crypto/vault.ts",
+          "start": 164,
+          "end": 183,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/vault.ts#L164-L183"
+        },
+        {
+          "path": "src/crypto/schemas.ts",
+          "start": 51,
+          "end": 68,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/schemas.ts#L51-L68"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34"
+        },
+        {
+          "number": 33,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33"
+        }
+      ],
+      "next": "Especificar minimização/proteção do cabeçalho e revalidação de apresentações já abertas; conferir perda de acesso com detalhe/relatório em tela e ausência de exposição indireta por perfil/metadados.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G07",
+      "priority": "P0",
+      "title": "Concessões, compartilhamento e confiança nos cuidadores importados",
+      "requirement": "Contrato §5; Compartilhar, Conceder e Revogar",
+      "finding": "Caregiver tem apenas papel, status e linkedChildIds. O rótulo de destinatário do relatório não identifica pessoa nem concessão. A importação não sobrescreve cuidadores existentes, mas aceita novos IDs com papel/status/vínculos fornecidos no arquivo. A cifra garante integridade do arquivo, não autoridade representativa de quem o produziu.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start": 41,
+          "end": 59,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L41-L59"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start": 33,
+          "end": 48,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/ReportScreen.tsx#L33-L48"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 746,
+          "end": 766,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L746-L766"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 28,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28"
+        },
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        }
+      ],
+      "next": "Especificar concessão, origem de autoridade e eventos de ciclo de vida; impedir que arquivo/cópia/papel importado seja tratado como nova autorização por si só.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G08",
+      "priority": "P0",
+      "title": "Pedidos, restrições e evidência de tratamento",
+      "requirement": "Regras comuns e Contestar/Restringir/Eliminar",
+      "finding": "Não há entidade de pedido/decisão, contestação própria, fila, evidência minimizada ou estados recebido/pendente/parcial/concluído. Booleans e notificações transitórias do contexto não constituem trilha governada.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 39,
+          "end": 110,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L39-L110"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 181,
+          "end": 189,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L181-L189"
+        },
+        {
+          "path": "src/types/index.ts",
+          "start": 114,
+          "end": 137,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/types/index.ts#L114-L137"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 28,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28"
+        },
+        {
+          "number": 30,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30"
+        },
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34"
+        }
+      ],
+      "next": "Definir procedimento, responsáveis, estado e prova proporcionais por operação; incluir manifestação acessível e caminho de revisão sem sobrescrever contribuição alheia.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G09",
+      "priority": "P0",
+      "title": "Retenção, destinação, anonimização e restauração",
+      "requirement": "Contrato §10.1; política/10 categorias e 16 cenários",
+      "finding": "Não há motor de ciclo de vida nem aplicação dos parâmetros por categoria; excluir só filtra estado React. Um cofre anterior pode ser reimportado sem registro de medidas de eliminação/restrição anteriores. Não foi constatado serviço remoto de backups no repositório, nem conferida infraestrutura externa.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 345,
+          "end": 370,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L345-L370"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 554,
+          "end": 577,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L554-L577"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start": 723,
+          "end": 770,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/context/AppContext.tsx#L723-L770"
+        },
+        {
+          "path": "src/crypto/types.ts",
+          "start": 44,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/crypto/types.ts#L44-L58"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 28,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28"
+        },
+        {
+          "number": 29,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/29"
+        },
+        {
+          "number": 30,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30"
+        },
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 32,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32"
+        },
+        {
+          "number": 33,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33"
+        }
+      ],
+      "next": "Confrontar capacidade real do ambiente e procedimentos com os parâmetros candidatos; separar cópia externa de cópia sob governança; planejar verificação de escopo e restauração sem reativação indevida.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G10",
+      "priority": "P1",
+      "title": "Lacunas confundidas com valores preenchidos",
+      "requirement": "Regras comuns; Registrar; proveniência e indeterminação",
+      "finding": "Schemas e migração atribuem registrador padrão, proveniência DIRECT, criança tomas, ambiente casa, papel mae e horários atuais quando campos legados faltam. Isso pode promover ausência a afirmação sem evidência se reutilizado fora da demonstração. Alguns defaults textuais como 'Não observado' são úteis, mas não distinguem todos os estados documentais.",
+      "evidence": [
+        {
+          "path": "src/validation/schemas.ts",
+          "start": 78,
+          "end": 104,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/schemas.ts#L78-L104"
+        },
+        {
+          "path": "src/validation/migration.ts",
+          "start": 23,
+          "end": 58,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/validation/migration.ts#L23-L58"
+        },
+        {
+          "path": "src/screens/MyWorldScreen.tsx",
+          "start": 56,
+          "end": 63,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/src/screens/MyWorldScreen.tsx#L56-L63"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 31,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31"
+        },
+        {
+          "number": 34,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34"
+        }
+      ],
+      "next": "Definir estados de desconhecido/não informado/não observado/não aplicável e migração que não atribua autoria, fato ou contexto por presunção; preservar compatibilidade apenas com origem explícita.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    },
+    {
+      "id": "G11",
+      "priority": "P1",
+      "title": "Cobertura de testes e integração com o contrato novo",
+      "requirement": "Invariantes e cenários das 14 operações; QA-001",
+      "finding": "A suíte histórica testa a política demonstrativa; foundation-v0.3 afirma que guardião edita tudo. Parte dos testes adversariais usa funções/flags simuladas no próprio teste. A v0.4A.1 exercita classes reais, mas isso não prova sua integração em todo o fluxo React. Os 16 cenários de retenção não foram executados por esta auditoria.",
+      "evidence": [
+        {
+          "path": "tests/foundation-v0.3.test.ts",
+          "start": 118,
+          "end": 166,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.3.test.ts#L118-L166"
+        },
+        {
+          "path": "tests/vault-adversarial-v0.4a.test.ts",
+          "start": 318,
+          "end": 358,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/vault-adversarial-v0.4a.test.ts#L318-L358"
+        },
+        {
+          "path": "tests/vault-adversarial-v0.4a.test.ts",
+          "start": 436,
+          "end": 495,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/vault-adversarial-v0.4a.test.ts#L436-L495"
+        },
+        {
+          "path": "tests/foundation-v0.4a1.test.ts",
+          "start": 238,
+          "end": 338,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/foundation-v0.4a1.test.ts#L238-L338"
+        },
+        {
+          "path": "tests/e2e/internal-permissions.spec.ts",
+          "start": 5,
+          "end": 42,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/512d95dd2c6f026e602a5a722fb6f03f08902321/tests/e2e/internal-permissions.spec.ts#L5-L42"
+        }
+      ],
+      "followup_issues": [
+        {
+          "number": 32,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32"
+        },
+        {
+          "number": 33,
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33"
+        }
+      ],
+      "next": "Vincular cada cenário à implementação real disponível e aos limites novos; manter PASS histórico separado de aceitação atual; registrar resultados esperado/observado, versão e prova.",
+      "classification": "Lacuna ou divergência identificada por inspeção estática; correção não executada"
+    }
+  ],
+  "not_verified": [
+    "Configuração de ambiente Supabase, identidade e RLS efetivamente implantados fora do repositório",
+    "Provedor, retenção e restauração de backups reais",
+    "Fluxos completos no navegador para as divergências apontadas",
+    "16 cenários de retenção, execução e prova",
+    "Validação jurídica e independência de revisão"
+  ],
+  "ci": {
+    "commit": "512d95dd2c6f026e602a5a722fb6f03f08902321",
+    "run_id": 44543224727,
+    "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44543224727",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "Domain, TypeScript, Build, E2E and A11y",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-19T14:23:36Z",
+            "completed_at": "2026-11-19T14:23:37Z"
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-19T14:23:37Z",
+            "completed_at": "2026-11-19T14:23:38Z"
+          },
+          {
+            "name": "Setup Node.js 22",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-19T14:23:38Z",
+            "completed_at": "2026-11-19T14:23:39Z"
+          },
+          {
+            "name": "Install reproducible dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-19T14:23:39Z",
+            "completed_at": "2026-11-19T14:23:45Z"
+          },
+          {
+            "name": "Install Playwright Chromium and OS dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-19T14:23:45Z",
+            "completed_at": "2026-11-19T14:24:03Z"
+          },
+          {
+            "name": "Detect accidental committed credentials",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-11-19T14:24:03Z",
+            "completed_at": "2026-11-19T14:24:03Z"
+          },
+          {
+            "name": "Domain and security regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-11-19T14:24:03Z",
+            "completed_at": "2026-11-19T14:24:06Z"
+          },
+          {
+            "name": "TypeScript checks",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-19T14:24:06Z",
+            "completed_at": "2026-11-19T14:24:07Z"
+          },
+          {
+            "name": "Production build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-19T14:24:07Z",
+            "completed_at": "2026-11-19T14:24:08Z"
+          },
+          {
+            "name": "Browser E2E suite (includes accessibility)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-19T14:24:08Z",
+            "completed_at": "2026-11-19T14:25:07Z"
+          },
+          {
+            "name": "Dedicated accessibility suite",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-19T14:25:07Z",
+            "completed_at": "2026-11-19T14:25:39Z"
+          },
+          {
+            "name": "Upload failure artifacts",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 12,
+            "started_at": "2026-11-19T14:25:39Z",
+            "completed_at": "2026-11-19T14:25:39Z"
+          },
+          {
+            "name": "Post Setup Node.js 22",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-11-19T14:25:39Z",
+            "completed_at": "2026-11-19T14:25:40Z"
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-11-19T14:25:40Z",
+            "completed_at": "2026-11-19T14:25:40Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-11-19T14:25:40Z",
+            "completed_at": "2026-11-19T14:25:40Z"
+          }
+        ]
+      }
+    ]
+  },
+  "delivery_base_commit": "0e0f990d5e0ceb064a3148cf83d752fc9ddafa59",
+  "main_comparison": {
+    "from": "512d95dd2c6f026e602a5a722fb6f03f08902321",
+    "to": "0e0f990d5e0ceb064a3148cf83d752fc9ddafa59",
+    "changed_files": [
+      "docs/gestao/README.md",
+      "docs/gestao/backlog.md",
+      "docs/gestao/bloqueios.md",
+      "docs/gestao/marcos-entregas.md",
+      "docs/gestao/plano.json",
+      "docs/gestao/processo.md",
+      "docs/gestao/sprints.md"
+    ],
+    "application_tests_contract_unchanged": true
+  },
+  "pull_request_ci": {
+    "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/38/checks",
+    "mode": "Reexecução automática da suíte preexistente ao publicar a entrega; resultado nos checks da PR"
+  }
+}
