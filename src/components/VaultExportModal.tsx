@@ -75,10 +75,9 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
           const url = URL.createObjectURL(blob);
           const downloadLink = document.createElement('a');
           try {
-            const timestamp = new Date().toISOString().slice(0, 10);
-            const safeChildName = payload.childProfile.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            const fileId = globalThis.crypto.randomUUID();
             downloadLink.href = url;
-            downloadLink.download = `mundelo-${safeChildName}-${timestamp}.mundelo-vault`;
+            downloadLink.download = `mundelo-${fileId}.mundelo-vault`;
             document.body.appendChild(downloadLink);
             downloadLink.click();
           } finally {

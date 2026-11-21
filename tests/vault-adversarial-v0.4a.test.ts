@@ -16,7 +16,7 @@ import {
   base64ToUint8Array,
 } from '../src/crypto/vault';
 import {
-  MundeloVaultEnvelopeV1,
+  MundeloVaultEnvelopeV2,
   VaultPayload,
   VAULT_MAX_FILE_BYTES,
 } from '../src/crypto/types';
@@ -88,7 +88,7 @@ describe('GATE ADVERSARIAL — MUNDELO Foundation v0.4A (.mundelo-vault)', () =>
       rawBytes[mid] ^= 0xff; // Flips 8 bits
       const tamperedCiphertext = uint8ArrayToBase64(rawBytes);
 
-      const tamperedEnvelope: MundeloVaultEnvelopeV1 = {
+      const tamperedEnvelope: MundeloVaultEnvelopeV2 = {
         ...envelope,
         ciphertext: tamperedCiphertext,
       };
@@ -124,39 +124,12 @@ describe('GATE ADVERSARIAL — MUNDELO Foundation v0.4A (.mundelo-vault)', () =>
       );
     });
 
-    it('SEC-04: Alteração de AAD e metadados autenticados (childId) — deve detectar divergência', async () => {
-      const payload = createCanonicalFixture();
-      const envelope = await encryptVault(payload, TEST_PASSWORD, FAST_ITERATIONS);
-
-      // Caso 4A: Altera childId no cabeçalho sem alterar o campo aad
-      const tamperedHeader = {
-        ...envelope,
-        childId: 'lia',
-      };
-      await assert.rejects(
-        async () => {
-          await decryptVault(tamperedHeader, TEST_PASSWORD);
-        },
-        /inconsistência de AAD detectada/
-      );
-
-      // Caso 4B: Altera childId e forja novo campo aad para bater
-      const forgedAAD = buildCanonicalAAD(envelope.formatVersion, 'lia', envelope.format);
-      const forgedEnvelope = {
-        ...envelope,
-        childId: 'lia',
-        crypto: {
-          ...envelope.crypto,
-          aad: uint8ArrayToBase64(new TextEncoder().encode(forgedAAD)),
-        },
-      };
-      // A tag AES-GCM interna foi gerada com 'tomas', então falhará no GMAC
-      await assert.rejects(
-        async () => {
-          await decryptVault(forgedEnvelope, TEST_PASSWORD);
-        },
-        /Falha na decifragem: senha incorreta ou arquivo adulterado/
-      );
+    it('SEC-04: adulteração de AAD e inserção de identidade no envelope v2 são rejeitadas', async () => {
+      const envelope = await encryptVault(createCanonicalFixture(), TEST_PASSWORD, FAST_ITERATIONS);
+      await assert.rejects(() => decryptVault({...envelope, childId: 'lia'}, TEST_PASSWORD), /Unrecognized key/);
+      const forgedAAD = buildCanonicalAAD(1, 'lia', envelope.format);
+      await assert.rejects(() => decryptVault({...envelope, crypto: {...envelope.crypto,
+        aad: uint8ArrayToBase64(new TextEncoder().encode(forgedAAD))}}, TEST_PASSWORD), /inconsistência de AAD detectada/);
     });
 
     it('SEC-05: Substituição de algoritmo por AES-CBC ou DES — deve rejeitar no schema', async () => {
@@ -238,13 +211,13 @@ describe('GATE ADVERSARIAL — MUNDELO Foundation v0.4A (.mundelo-vault)', () =>
       }, /IV deve conter apenas caracteres Base64 válidos/);
     });
 
-    it('SEC-08: Versões de formato desconhecidas (formatVersion !== 1) — deve rejeitar', async () => {
+    it('SEC-08: Versões de formato desconhecidas (formatVersion desconhecida) — deve rejeitar', async () => {
       const payload = createCanonicalFixture();
       const envelope = await encryptVault(payload, TEST_PASSWORD, FAST_ITERATIONS);
 
       const futureEnvelope = {
         ...envelope,
-        formatVersion: 2,
+        formatVersion: 99,
       };
 
       assert.throws(() => {
@@ -604,7 +577,7 @@ describe('GATE ADVERSARIAL — MUNDELO Foundation v0.4A (.mundelo-vault)', () =>
         async () => {
           await decryptVault(tamperedRecordCountEnvelope, TEST_PASSWORD);
         },
-        /Inconsistência de integridade: a contagem de registros do cabeçalho \(42\) difere do total descriptografado/
+        /Unrecognized key/
       );
     });
   });

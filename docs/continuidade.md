@@ -288,3 +288,14 @@
 - **Limites:** proposta conceitual pendente de revisão. Nenhum código funcional, schema, migration, policy RLS, projeto Supabase, credencial ou dado infantil real foi criado/modificado.
 - **Próxima ação:** revisar o contrato e resolver pendências de legitimidade, governança, retenção e validação jurídica; somente após aprovação derivar modelo lógico, ADRs, RLS e testes.
 - **Status:** DOMAIN_CONTRACT_PROPOSED / IMPLEMENTATION_BLOCKED_PENDING_APPROVAL.
+
+---
+
+## Retomada e correções de privacidade — 21/11/2026
+
+- **Problema:** conexão direta do Codex/Git indisponível; recuperar estado atual e executar pendências do Project.
+- **Fonte:** integração autorizada GitHub; main `b6921b3b5100ace9c6bee46c8445b4e00c34dbb8`, issues vinculadas ao Project 4. Quadro visual privado não acessível nesta sessão; sem sincronização de seus campos.
+- **Resultado:** [checkpoint de 11 tarefas abertas](gestao/andamentos/2026-11-21-retomada.md); #44 já incorporada pela PR #48. Preparadas correções #43 (detalhe), #46 (relatório) e #45 (envelope v2 mínimo com importação v1).
+- **Validação local:** 102 testes de unidade/domínio/segurança PASS; tipos, build, scan e diff aprovados. Navegador local BLOCKED pelo ambiente; sete novas regressões e cinco probes originais encaminhadas ao CI. Não declarar correção comprovada antes do resultado de navegador.
+- **Decisão/limites:** [D04 e compatibilidade](qa/fix-43-45-46/README.md). Arquivos v1 existentes não são reescritos; leitor anterior não abre v2. Autorização continua demonstrativa no cliente. R01–R16 e gates jurídicos/técnicos conservados. Nenhuma implantação ou dado real autorizado.
+- **Próxima hipótese:** CI comprova supressão de conteúdo na perda de acesso e preservação dos caminhos autorizados; depois revisão/incorporação e tarefas #24/#29/#34.
