@@ -23,7 +23,7 @@ for (const actor of ['cg-ana-unlinked', 'cg-pedro-suspended']) {
     await selectCaregiver(page, 'cg-helena');
     await expect(region).toHaveCount(0);
     await page.getByRole('button', {name:'Ver análise completa',exact:true}).first().click();
-    await expect(region).toContainText(content.slice(0,50));
+    await expect.poll(() => region.innerText()).toBe(content);
   });
 
   test(`QA-F04: relatório, cópia e impressão são restringidos para ${actor}`, async ({page}) => {

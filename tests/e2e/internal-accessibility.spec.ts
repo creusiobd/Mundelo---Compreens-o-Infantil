@@ -40,7 +40,7 @@ test.describe('Gate UX-REAL-02 (Fase 2.4): Acessibilidade Automatizada e Teclado
     await selectCaregiver(page, 'cg-ana-unlinked');
 
     for (const screenId of ['journal', 'world', 'discoveries', 'report', 'privacy'] as const) {
-      await navigateToInternalScreen(page, screenId);
+      await navigateToInternalScreen(page, screenId, screenId === 'report' ? /^Relatório indisponível$/ : undefined);
       await expectZeroAxeViolations(page, `Tela ${screenId} com Cuidador Sem Vínculo`);
     }
   });
