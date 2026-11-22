@@ -1,5 +1,6 @@
 import {test, expect, type Page} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
+import {randomUUID} from 'node:crypto';
 import {decryptVault} from '../../src/crypto/vault';
 import {openCleanSession, selectCaregiver} from './fixtures/test-session';
 import {navigateToInternalScreen} from './helpers/navigation';
@@ -14,7 +15,8 @@ async function openActivity(page: Page) {
 async function exportActualPayload(page: Page) {
   await navigateToInternalScreen(page, 'privacy');
   await page.getByRole('button', {name:'Exportar Cofre (.mundelo-vault)',exact:true}).click();
-  const password = 'Synthetic-PG06-52-Only';
+  // Ephemeral, test-only value: no fixed credential in source control.
+  const password = randomUUID();
   await page.locator('#vault-password').fill(password);
   await page.locator('#vault-password-confirm').fill(password);
   const downloadPromise = page.waitForEvent('download');
