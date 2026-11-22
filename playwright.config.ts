@@ -31,7 +31,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: {
+  webServer: [{
     command: 'npm run build && npx vite preview --port 4173 --host 127.0.0.1 --strictPort',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: false,
@@ -40,5 +40,12 @@ export default defineConfig({
       NODE_ENV: 'test',
       VITE_APP_ENV: 'test',
     },
-  },
+  }, {
+    // Separate development entry exercises real context commands without production hooks.
+    command: 'npx vite --port 4174 --host 127.0.0.1 --strictPort',
+    url: 'http://127.0.0.1:4174/tests/harness/profile-context/index.html',
+    reuseExistingServer: false,
+    timeout: 60000,
+    env: {DISABLE_HMR: 'true'},
+  }],
 });

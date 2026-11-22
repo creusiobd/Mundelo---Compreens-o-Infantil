@@ -337,3 +337,10 @@ TypeScript e 102 testes de domínio/segurança PASS local; navegador local bloqu
 PR #55 já incorporada na main em `eca2025b918ca3fdee8c09e7ded27170617599b5`, conforme revisão/aprovação do responsável; #51 encerrada por integração. Próximo recorte #52 separa proposta de atividade de relato, remove padrões factuais dos formulários/validadores/migrador e conserva lacunas em estratégias. Campos obrigatórios sem informação bloqueiam o registro, sem inventar autoria/origem/data. Compatibilidade de registros completos e limites de legados incompletos explícitos em [fix-52](qa/fix-52/README.md).
 
 Controle negativo: 13 testes falham com fontes antigas; suíte corrigida 115 PASS local; TypeScript/build PASS. Cinco cenários E2E novos para execução CI na PR vinculada à #52, com criação/edição/estratégia verificadas pelo cofre exportado real. Resultados finais de CI registrados na PR/issue. #53/#54 pendentes, PG-06 integral e dados infantis reais bloqueados. #29 continua pausada, sem nova tentativa de conexão.
+
+
+## 22/11/2026 — Continuação após PR #56: correção #53
+
+PR #56 incorporada na main `04713b6ec5173b080eea4ab93a6548dc66b30954`; #52 concluída por integração. #53 separa leitura/gestão de perfil de criação de observações, aplica status/vínculo/contexto nos comandos reais e impede apresentação de Meu Mundo/configuração sem acesso. Gestão de atributos globais restrita ao responsável legal ACTIVE vinculado no protótipo; papel não valida perspectiva nem concede correção de contribuição alheia. Política e limites em [fix-53](qa/fix-53/README.md).
+
+142 testes de domínio/segurança e TypeScript/build PASS local. Oito cenários E2E novos, incluindo comandos no AppProvider real sem mock do avaliador; teste isolado de desenvolvimento fora do bundle de produção. Resultado de CI por commit registrado na PR/issue #53. #54, PG-06 integral/dados infantis reais continuam pendentes; #29 pausada, sem tentativas de conexão.

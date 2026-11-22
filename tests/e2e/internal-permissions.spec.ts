@@ -24,14 +24,12 @@ test.describe('Gate UX-REAL-02 (Fase 2.3 / 2.4): Permissões e Controle de Acess
       await expect(journalNewObsBtns.nth(i)).toBeDisabled();
     }
 
-    // 2. Em Meu Mundo: controles de adição/remoção e salvamento de estratégia devem estar desabilitados para cuidador sem vínculo
+    // 2. Denied profile must not render attributes or editing controls.
     await navigateToInternalScreen(page, 'world');
-    await expect(
-      page.getByRole('button', { name: 'Salvar Estratégia' })
-    ).toBeDisabled();
-    const addButtons = page.locator('main#main-content').getByRole('button', { name: 'Adicionar' });
-    expect(await addButtons.count()).toBeGreaterThan(0);
-    await expect(addButtons.first()).toBeDisabled();
+    await expect(page.getByRole('heading', {name:'Meu Mundo indisponível',exact:true})).toBeVisible();
+    await expect(page.locator('main').getByRole('textbox')).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('Naninha de malha macia azul claro');
+    await expect(page.getByRole('button', {name:'Salvar Estratégia',exact:true})).toHaveCount(0);
 
     // 3. Em Descobertas: botão "Registrar Observação a Partir Desta Descoberta" deve respeitar !canCreate
     await navigateToInternalScreen(page, 'discoveries');
