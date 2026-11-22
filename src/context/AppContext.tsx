@@ -17,11 +17,13 @@ import {
   MOCK_OBSERVATIONS,
   MOCK_CAREGIVERS,
 } from '../data/mockData';
-import { safeValidateObservation } from '../validation/schemas';
+import { ChildProfileSchema, safeValidateObservation } from '../validation/schemas';
 import { VaultPayload } from '../crypto/types';
 import { VaultPayloadSchema } from '../crypto/schemas';
 import {
   canReadObservation,
+  canReadChildProfile,
+  canManageChildProfile,
   canCreateObservation,
   canEditObservation,
   canDeleteObservation,
@@ -49,6 +51,7 @@ interface AppContextType {
   // Permissions & access indicators
   isLinkedToActiveChild: boolean;
   canReadProfile: boolean;
+  canManageProfile: boolean;
   canRead: (obs: Observation) => boolean;
   canCreate: boolean;
   canEdit: (obs: Observation) => boolean;
@@ -81,19 +84,19 @@ interface AppContextType {
   toggleSelectObservation: (id: string) => void;
   selectAllObservations: (select: boolean) => void;
   // Profile editing
-  updateProfile: (profile: Partial<ChildProfile>) => void;
-  addInterest: (interest: string) => void;
-  removeInterest: (interest: string) => void;
-  addComfortAnchor: (anchor: string) => void;
-  removeComfortAnchor: (anchor: string) => void;
-  addSensitivity: (sensitivity: string) => void;
-  removeSensitivity: (sensitivity: string) => void;
-  addCommunicationMode: (mode: string) => void;
-  removeCommunicationMode: (mode: string) => void;
-  addCelebratedMilestone: (milestone: string) => void;
-  removeCelebratedMilestone: (milestone: string) => void;
-  addSupportStrategy: (strategy: Omit<SupportStrategy, 'id'>) => void;
-  removeSupportStrategy: (strategyId: string) => void;
+  updateProfile: (profile: Partial<ChildProfile>) => boolean;
+  addInterest: (interest: string) => boolean;
+  removeInterest: (interest: string) => boolean;
+  addComfortAnchor: (anchor: string) => boolean;
+  removeComfortAnchor: (anchor: string) => boolean;
+  addSensitivity: (sensitivity: string) => boolean;
+  removeSensitivity: (sensitivity: string) => boolean;
+  addCommunicationMode: (mode: string) => boolean;
+  removeCommunicationMode: (mode: string) => boolean;
+  addCelebratedMilestone: (milestone: string) => boolean;
+  removeCelebratedMilestone: (milestone: string) => boolean;
+  addSupportStrategy: (strategy: Omit<SupportStrategy, 'id'>) => boolean;
+  removeSupportStrategy: (strategyId: string) => boolean;
   // Demo State Switchers
   clearActiveChildObservationsToEmpty: () => void;
   restoreDemoData: () => void;
@@ -186,7 +189,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return observations.filter((o) => o.childId === activeProfileId);
   }, [observations, activeProfileId, activeCaregiver]);
 
-  const canReadProfile = canReadObservation(activeCaregiver, activeProfileId);
+  const canReadProfile = canReadChildProfile(activeCaregiver, activeProfileId);
+  const canManageProfile = canManageChildProfile(activeCaregiver, activeProfileId);
   const canRead = (obs: Observation) =>
     canReadObservation(activeCaregiver, activeProfileId, obs);
 
@@ -434,164 +438,95 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setSelectedObservationIds(authorizedIds);
   };
 
-  const updateProfile = (updatedFields: Partial<ChildProfile>) => {
-    if (activeCaregiver.role !== 'LEGAL_GUARDIAN') {
-      showNotification(
-        'Aviso: Apenas Responsáveis Legais têm permissão para editar dados centrais do perfil da criança.',
-        'error'
-      );
-      return;
+  // Bind profile commands to this render. A later context/write invalidates old callbacks.
+  const profileCommandGeneration = domainConcurrencyManager.getGeneration();
+  const guardProfileWrite = (): boolean => {
+    const current = exportContextRef.current;
+    if (domainConcurrencyManager.getGeneration() !== profileCommandGeneration ||
+        current.childId !== activeProfileId || current.caregiver.id !== activeCaregiver.id ||
+        !canManageChildProfile(current.caregiver, current.childId)) {
+      showNotification('Acesso negado: gestão de perfil exige responsável legal ativo, vínculo e contexto vigente.', 'error');
+      return false;
     }
-    setProfiles((prev) =>
-      prev.map((p) => (p.id === activeProfileId ? { ...p, ...updatedFields } : p))
-    );
-    showNotification('Perfil demonstrativo atualizado.', 'success');
+    return true;
   };
 
-  const addInterest = (interest: string) => {
-    if (!interest.trim()) return;
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, interests: [...p.interests, interest.trim()] }
-          : p
-      )
-    );
-    showNotification('Interesse adicionado com sucesso.', 'success');
+  const commitProfileChange = (change: (profile: ChildProfile) => ChildProfile): boolean => {
+    if (!guardProfileWrite()) return false;
+    const target = exportContextRef.current.profiles.find(p => p.id === activeProfileId);
+    if (!target) return false;
+    const result = ChildProfileSchema.safeParse(change(target));
+    if (!result.success || result.data.id !== target.id) {
+      showNotification('Alteração de perfil inválida; identidade e estrutura devem ser preservadas.', 'error');
+      return false;
+    }
+    // No asynchronous gap between final policy check and the state write.
+    setProfiles(prev => prev.map(p => p.id === target.id ? result.data : p));
+    return true;
   };
 
-  const removeInterest = (interest: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, interests: p.interests.filter((i) => i !== interest) }
-          : p
-      )
-    );
+  const updateProfile = (updatedFields: Partial<ChildProfile>): boolean => {
+    const accepted = commitProfileChange(p => ({...p, ...updatedFields}));
+    if (accepted) showNotification('Perfil demonstrativo atualizado.', 'success');
+    return accepted;
   };
 
-  const addComfortAnchor = (anchor: string) => {
-    if (!anchor.trim()) return;
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, comfortAnchors: [...p.comfortAnchors, anchor.trim()] }
-          : p
-      )
-    );
-    showNotification('Fonte de conforto registrada.', 'success');
+  const addInterest = (interest: string): boolean => {
+    if (!interest.trim()) return false;
+    const accepted = commitProfileChange(p => ({...p, interests: [...p.interests, interest.trim()]}));
+    if (accepted) showNotification('Interesse adicionado com sucesso.', 'success');
+    return accepted;
   };
+  const removeInterest = (interest: string): boolean =>
+    commitProfileChange(p => ({...p, interests: p.interests.filter(item => item !== interest)}));
 
-  const removeComfortAnchor = (anchor: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, comfortAnchors: p.comfortAnchors.filter((a) => a !== anchor) }
-          : p
-      )
-    );
+  const addComfortAnchor = (anchor: string): boolean => {
+    if (!anchor.trim()) return false;
+    const accepted = commitProfileChange(p => ({...p, comfortAnchors: [...p.comfortAnchors, anchor.trim()]}));
+    if (accepted) showNotification('Fonte de conforto registrada.', 'success');
+    return accepted;
   };
+  const removeComfortAnchor = (anchor: string): boolean =>
+    commitProfileChange(p => ({...p, comfortAnchors: p.comfortAnchors.filter(item => item !== anchor)}));
 
-  const addSensitivity = (sensitivity: string) => {
-    if (!sensitivity.trim()) return;
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, sensitivities: [...p.sensitivities, sensitivity.trim()] }
-          : p
-      )
-    );
-    showNotification('Sensibilidade contextual anotada.', 'success');
+  const addSensitivity = (sensitivity: string): boolean => {
+    if (!sensitivity.trim()) return false;
+    const accepted = commitProfileChange(p => ({...p, sensitivities: [...p.sensitivities, sensitivity.trim()]}));
+    if (accepted) showNotification('Sensibilidade contextual anotada.', 'success');
+    return accepted;
   };
+  const removeSensitivity = (sensitivity: string): boolean =>
+    commitProfileChange(p => ({...p, sensitivities: p.sensitivities.filter(item => item !== sensitivity)}));
 
-  const removeSensitivity = (sensitivity: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, sensitivities: p.sensitivities.filter((s) => s !== sensitivity) }
-          : p
-      )
-    );
+  const addCommunicationMode = (mode: string): boolean => {
+    if (!mode.trim()) return false;
+    const accepted = commitProfileChange(p => ({...p, communicationModes: [...p.communicationModes, mode.trim()]}));
+    if (accepted) showNotification('Forma de comunicação adicionada.', 'success');
+    return accepted;
   };
+  const removeCommunicationMode = (mode: string): boolean =>
+    commitProfileChange(p => ({...p, communicationModes: p.communicationModes.filter(item => item !== mode)}));
 
-  const addCommunicationMode = (mode: string) => {
-    if (!mode.trim()) return;
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, communicationModes: [...p.communicationModes, mode.trim()] }
-          : p
-      )
-    );
-    showNotification('Forma de comunicação adicionada.', 'success');
+  const addCelebratedMilestone = (milestone: string): boolean => {
+    if (!milestone.trim()) return false;
+    const accepted = commitProfileChange(p => ({...p, celebratedMilestones: [...p.celebratedMilestones, milestone.trim()]}));
+    if (accepted) showNotification('Conquista afetiva celebrada e salva.', 'success');
+    return accepted;
   };
+  const removeCelebratedMilestone = (milestone: string): boolean =>
+    commitProfileChange(p => ({...p, celebratedMilestones: p.celebratedMilestones.filter(item => item !== milestone)}));
 
-  const removeCommunicationMode = (mode: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, communicationModes: p.communicationModes.filter((m) => m !== mode) }
-          : p
-      )
-    );
+  const addSupportStrategy = (strategy: Omit<SupportStrategy, 'id'>): boolean => {
+    const accepted = commitProfileChange(p => ({...p, supportStrategies: [...p.supportStrategies, {...strategy, id: `strat-${Date.now()}`}]}));
+    if (accepted) showNotification('Estratégia de acolhimento registrada.', 'success');
+    return accepted;
   };
-
-  const addCelebratedMilestone = (milestone: string) => {
-    if (!milestone.trim()) return;
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, celebratedMilestones: [...p.celebratedMilestones, milestone.trim()] }
-          : p
-      )
-    );
-    showNotification('Conquista afetiva celebrada e salva.', 'success');
-  };
-
-  const removeCelebratedMilestone = (milestone: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, celebratedMilestones: p.celebratedMilestones.filter((m) => m !== milestone) }
-          : p
-      )
-    );
-  };
-
-  const addSupportStrategy = (strategy: Omit<SupportStrategy, 'id'>) => {
-    const newStrategy: SupportStrategy = {
-      ...strategy,
-      id: `strat-${Date.now()}`,
-    };
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, supportStrategies: [...p.supportStrategies, newStrategy] }
-          : p
-      )
-    );
-    showNotification('Estratégia de acolhimento registrada.', 'success');
-  };
-
-  const removeSupportStrategy = (strategyId: string) => {
-    setProfiles((prev) =>
-      prev.map((p) =>
-        p.id === activeProfileId
-          ? { ...p, supportStrategies: p.supportStrategies.filter((s) => s.id !== strategyId) }
-          : p
-      )
-    );
-  };
+  const removeSupportStrategy = (strategyId: string): boolean =>
+    commitProfileChange(p => ({...p, supportStrategies: p.supportStrategies.filter(s => s.id !== strategyId)}));
 
   // Clears observations of the active child (requires LEGAL_GUARDIAN permission)
   const clearActiveChildObservationsToEmpty = () => {
-    if (activeCaregiver.role !== 'LEGAL_GUARDIAN') {
-      showNotification(
-        'Acesso Negado: Apenas Responsáveis Legais podem zerar o acervo de observações.',
-        'error'
-      );
-      return;
-    }
+    if (!guardProfileWrite()) return;
     setObservations((prev) => prev.filter((o) => o.childId !== activeProfileId));
     setSelectedObservationIds([]);
     showNotification(`Diário de ${activeProfile.name} zerado: modo de estado vazio ativo.`, 'info');
@@ -665,6 +600,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     payload: VaultPayload,
     mode: 'merge' | 'replace' = 'merge'
   ): { success: boolean; importedCount: number; message: string } => {
+    if (!guardProfileWrite()) return {
+      success: false, importedCount: 0,
+      message: 'Acesso negado: aplicar perfil de cofre exige responsável legal ativo, vínculo e contexto vigente.',
+    };
     const incomingChildId = payload?.childProfile?.id || activeProfileId;
 
     // 0. Pré-aquisição da trava de domínio (SEC-17 / SEC-18)
@@ -723,6 +662,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         throw new Error(
           `Acesso Negado: Apenas Responsáveis Legais (LEGAL_GUARDIAN) podem substituir completamente o acervo de observações.`
         );
+      }
+
+      if (!canManageChildProfile(currentCaregiver, incomingChild.id)) {
+        throw new Error('Acesso negado: aplicar perfil de cofre exige responsável legal ativo e vinculado.');
       }
 
       // 5. Validação relacional das observações (SEC-11)
@@ -830,6 +773,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         switchCaregiver,
         isLinkedToActiveChild,
         canReadProfile,
+        canManageProfile,
         canRead,
         canCreate,
         canEdit,

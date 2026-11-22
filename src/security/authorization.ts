@@ -122,3 +122,13 @@ export function canIncludeInReport(
   // Qualquer cuidador ativo vinculado à criança pode selecionar observações para o diálogo
   return true;
 }
+
+/** Independent profile policy for the synthetic prototype; not server authorization. */
+export function canReadChildProfile(caregiver: Caregiver | null | undefined, childId: string): boolean {
+  return Boolean(caregiver && childId && caregiver.status === 'ACTIVE' && caregiver.linkedChildIds.includes(childId));
+}
+
+/** Global attributes lack per-contribution ownership; no professional overwrite grant. */
+export function canManageChildProfile(caregiver: Caregiver | null | undefined, childId: string): boolean {
+  return canReadChildProfile(caregiver, childId) && caregiver?.role === 'LEGAL_GUARDIAN';
+}
