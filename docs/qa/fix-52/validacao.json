@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-21",
+  "base_commit": "eca2025b918ca3fdee8c09e7ded27170617599b5",
+  "scope": "PG06/AUD-11, issue #52; synthetic only",
+  "negative_control": {
+    "command": "node --import tsx --test tests/no-invented-observations.test.ts",
+    "sources": "Original schemas.ts and migration.ts from the pinned base; restored fixed files afterward",
+    "tests": 13,
+    "failed": 13,
+    "passed": 0,
+    "summary": [
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: recordedByCaregiverId (4.961504ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: provenance (0.412754ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: occurredAt (0.993038ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: recordedAt (0.223182ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: environment (0.24213ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: observerRole (0.182942ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: eventType (0.20883ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: childId (0.11443ms)",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: id (0.224624ms)",
+      "✖ PG06-52: campos opcionais ausentes não se tornam experiência ou interpretação (0.474155ms)",
+      "✖ PG06-52: estratégia incompleta conserva lacunas sem calma ou contexto presumidos (0.596508ms)",
+      "✖ PG06-52: cofre incompleto não obtém Helena ou DIRECT ao validar (2.023832ms)",
+      "✖ PG06-52: migração preserva registro completo e não infere observador a partir do registrador (0.557439ms)",
+      "ℹ tests 13",
+      "ℹ suites 0",
+      "ℹ pass 0",
+      "ℹ fail 13",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 311.716449",
+      "✖ PG06-52: entrada e migração rejeitam metadado ausente: recordedByCaregiverId (4.961504ms)"
+    ]
+  },
+  "fixed_domain_suite": {
+    "command": "node --import tsx --test tests/*.test.ts",
+    "tests": 115,
+    "passed": 115,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typescript": "PASS",
+  "build": "PASS; preexisting large-bundle warning",
+  "browser_tests": "CI result recorded in PR/issue; no local browser execution claimed",
+  "preserved_gates": {
+    "real_child_data": "BLOCKED",
+    "task_29": "PAUSED",
+    "PG06_full": "NOT_MET",
+    "issues_53_54": "PENDING"
+  }
+}

@@ -45,8 +45,8 @@ export const CaregiverStatusSchema = z.enum(['ACTIVE', 'INVITED', 'SUSPENDED'], 
 export const SupportStrategySchema = z.object({
   id: z.string().min(1, 'ID da estratégia é obrigatório.'),
   strategy: z.string().min(2, 'Descrição da estratégia é obrigatória.'),
-  context: z.string().default('Cotidiano geral'),
-  observedResponse: z.string().default('Resposta observada'),
+  context: z.string().default(''),
+  observedResponse: z.string().default(''),
 });
 
 export const ChildProfileSchema = z.object({
@@ -80,11 +80,10 @@ export const ObservationSchema = z.object({
   childId: z.string().min(1, 'Identificador da criança (childId) é obrigatório para garantir isolamento lógico.'),
   recordedByCaregiverId: z
     .string()
-    .min(1, 'Identificador do cuidador que registrou (recordedByCaregiverId) é obrigatório.')
-    .default('cg-helena'),
+    .trim().min(1, 'Identificador do cuidador que registrou (recordedByCaregiverId) é obrigatório.'),
   observedByCaregiverId: z.string().optional(),
   reportedByLabel: z.string().optional(),
-  provenance: ProvenanceSchema.default('DIRECT'),
+  provenance: ProvenanceSchema,
   occurredAt: z.string().min(1, 'Data e horário do fato observado são obrigatórios.'),
   recordedAt: z.string().min(1, 'Data e horário de registro no sistema são obrigatórios.'),
   updatedAt: z.string().optional(),
@@ -96,12 +95,12 @@ export const ObservationSchema = z.object({
     .string()
     .trim()
     .min(3, 'A descrição dos fatos objetivos deve conter ao menos 3 caracteres.'),
-  antecedents: z.string().default('Não observado'),
-  communicationSignals: z.string().default('Não observado'),
-  supportOffered: z.string().default('Apenas observação atenta'),
-  observedOutcome: z.string().default('Não observado'),
-  positiveAspects: z.string().default('Não observado'),
-  notes: z.string().default('Registro sem hipóteses adicionais.'),
+  antecedents: z.string().default(''),
+  communicationSignals: z.string().default(''),
+  supportOffered: z.string().default(''),
+  observedOutcome: z.string().default(''),
+  positiveAspects: z.string().default(''),
+  notes: z.string().default(''),
   contextDetails: z
     .object({
       environment: EnvironmentTypeSchema,

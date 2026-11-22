@@ -63,6 +63,7 @@ const MainAppContent: React.FC = () => {
   // Modal States
   const [isObsModalOpen, setIsObsModalOpen] = useState(false);
   const [editingObs, setEditingObs] = useState<Observation | null>(null);
+  const [discoveryProposal, setDiscoveryProposal] = useState<OfflineDiscovery | null>(null);
 
   const [detailId, setDetailId] = useState<string | null>(null);
   // Resolve the current, authorized record; never keep a detached content snapshot.
@@ -84,6 +85,7 @@ const MainAppContent: React.FC = () => {
   // Open New Observation
   const handleOpenNewObservation = () => {
     if (!canCreate) return;
+    setDiscoveryProposal(null);
     setEditingObs(null);
     setIsObsModalOpen(true);
   };
@@ -91,6 +93,7 @@ const MainAppContent: React.FC = () => {
   // Open Edit Observation
   const handleEditObservation = (obs: Observation) => {
     if (!canEdit(obs)) return;
+    setDiscoveryProposal(null);
     setEditingObs(obs);
     setIsObsModalOpen(true);
     setIsDetailModalOpen(false);
@@ -120,26 +123,9 @@ const MainAppContent: React.FC = () => {
   // Handle Discovery Activity to Observation Form pre-fill
   const handleStartObservationFromDiscovery = (discovery: OfflineDiscovery) => {
     if (!canCreate) return;
-    const prefill: Observation = {
-      id: '',
-      childId: activeProfile.id,
-      recordedByCaregiverId: activeCaregiver.id,
-      revision: 1,
-      occurredAt: new Date().toISOString().slice(0, 16),
-      recordedAt: new Date().toISOString(),
-      provenance: 'DIRECT',
-      environment: 'casa',
-      observerRole: 'mae',
-      eventType: 'descoberta',
-      description: `Vivenciamos a atividade offline "${discovery.title}". `,
-      antecedents: `Materiais utilizados: ${discovery.materials.join(', ')}. Clima tranquilo.`,
-      communicationSignals: 'Atenção visual, curiosidade com os materiais e gestos espontâneos.',
-      supportOffered: `Acompanhamento calmo: ${discovery.steps[0] || 'Mediação atenta'}`,
-      observedOutcome: 'Explorou a proposta com satisfação e interesse.',
-      positiveAspects: `Engajamento sensorial, exploração no foco de ${discovery.category}.`,
-      notes: `Hipótese observacional: Propostas lúdicas estruturadas com materiais simples favorecem o foco e a conexão.`,
-    };
-    setEditingObs(prefill);
+    // A proposal is context for the adult, never an observed event.
+    setEditingObs(null);
+    setDiscoveryProposal(discovery);
     setIsObsModalOpen(true);
   };
 
@@ -249,6 +235,7 @@ const MainAppContent: React.FC = () => {
         onClose={() => setIsObsModalOpen(false)}
         onSubmit={handleFormSubmit}
         initialData={editingObs}
+        discoveryProposal={discoveryProposal}
         childName={activeProfile.name}
       />
 

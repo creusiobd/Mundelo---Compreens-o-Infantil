@@ -50,6 +50,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'tomas',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'mae',
@@ -73,6 +74,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: '',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'mae',
@@ -91,6 +93,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'tomas',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'mae',
@@ -109,6 +112,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'tomas',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'mae',
@@ -127,6 +131,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'lia',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'escola',
         observerRole: 'educador',
@@ -136,6 +141,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
       const reportedCandidate = {
         ...directCandidate,
         id: 'test-obs-6',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'REPORTED_BY_OTHER',
       };
 
@@ -152,6 +158,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'tomas',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'pai',
@@ -160,8 +167,8 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
       });
 
       assert.equal(parsed.description, 'O som da buzina assustou Tomás na janela da sala.');
-      assert.equal(parsed.notes, 'Registro sem hipóteses adicionais.');
-      assert.equal(parsed.antecedents, 'Não observado');
+      assert.equal(parsed.notes, '');
+      assert.equal(parsed.antecedents, '');
     });
   });
 
@@ -176,6 +183,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: activeChildId,
         occurredAt: '2026-11-12T11:00',
         recordedAt: new Date().toISOString(),
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'parque',
         observerRole: 'mae',
@@ -332,6 +340,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'tomas',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'DIRECT',
         environment: 'casa',
         observerRole: 'mae',
@@ -353,6 +362,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.2', () => {
         childId: 'lia',
         occurredAt: '2026-11-12T10:00',
         recordedAt: '2026-11-12T10:05:00.000Z',
+        recordedByCaregiverId: 'cg-helena',
         provenance: 'REPORTED_BY_OTHER',
         environment: 'casa',
         observerRole: 'avo',

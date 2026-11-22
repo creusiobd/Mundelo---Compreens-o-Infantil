@@ -330,3 +330,10 @@
 Removidos os três padrões fixos de Compreender. A tela apresenta apenas contagens da amostra autorizada, com universo, limites e perguntas gerais explicitamente separadas. Amostra vazia não recebe percentuais fictícios. Quatro cenários E2E adicionados; expectativas de navegação atualizadas. Evidência e limites em [fix-51](qa/fix-51/README.md); execução de CI acompanhada na PR vinculada à issue #51.
 
 TypeScript e 102 testes de domínio/segurança PASS local; navegador local bloqueado antes das asserções. Não tratar a tentativa como teste de comportamento concluído. #52–#54 continuam pendentes; PG-06 integral e dados infantis reais seguem bloqueados. #29 permanece pausada por acesso ao Supabase.
+
+
+## 21/11/2026 — Continuação após PR #55: correção #52
+
+PR #55 já incorporada na main em `eca2025b918ca3fdee8c09e7ded27170617599b5`, conforme revisão/aprovação do responsável; #51 encerrada por integração. Próximo recorte #52 separa proposta de atividade de relato, remove padrões factuais dos formulários/validadores/migrador e conserva lacunas em estratégias. Campos obrigatórios sem informação bloqueiam o registro, sem inventar autoria/origem/data. Compatibilidade de registros completos e limites de legados incompletos explícitos em [fix-52](qa/fix-52/README.md).
+
+Controle negativo: 13 testes falham com fontes antigas; suíte corrigida 115 PASS local; TypeScript/build PASS. Cinco cenários E2E novos para execução CI na PR vinculada à #52, com criação/edição/estratégia verificadas pelo cofre exportado real. Resultados finais de CI registrados na PR/issue. #53/#54 pendentes, PG-06 integral e dados infantis reais bloqueados. #29 continua pausada, sem nova tentativa de conexão.

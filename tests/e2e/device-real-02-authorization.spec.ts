@@ -36,6 +36,11 @@ test.describe('DEVICE-REAL-02 | DR02-TB-01B authorization regression', () => {
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
     await dialog.locator('#obs-desc').fill('TESTE-HELENA-REGRESSION');
+    await dialog.locator('#obs-date').fill('2026-11-21T10:00');
+    await dialog.locator('#obs-env').selectOption('casa');
+    await dialog.locator('#obs-role').selectOption('mae');
+    await dialog.getByRole('button', {name:/^Conquista/}).click();
+    await dialog.getByRole('button', {name:/^Observação Direta/}).click();
     await dialog.getByRole('button', { name: /Salvar no Diário/i }).click();
     await expect(dialog).toHaveCount(0);
     await expect(page.locator('aside[aria-live="polite"]')).toContainText(/Observação canônica registrada/i);

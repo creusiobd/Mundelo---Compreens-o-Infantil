@@ -46,7 +46,7 @@ test.describe('Gate UX-REAL-02 (Fase 2.3): Matriz Funcional das 6 Telas Internas
 
     await expect(page.getByRole('heading', { name: 'Interesses & Fascínios' })).toBeVisible();
     await expect(
-      page.getByRole('heading', { name: 'Estratégias de Acolhimento Experimentadas' })
+      page.getByRole('heading', { name: 'Estratégias de Acolhimento' })
     ).toBeVisible();
 
     // Adicionar novo interesse sintético como Responsável Legal (Helena)
