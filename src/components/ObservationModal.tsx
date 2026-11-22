@@ -5,6 +5,7 @@ import {
   ObserverRole,
   EventType,
   ProvenanceType,
+  OfflineDiscovery,
 } from '../types';
 import { useApp } from '../context/AppContext';
 import {
@@ -36,6 +37,7 @@ interface ObservationModalProps {
   ) => boolean;
   initialData?: Observation | null;
   childName: string;
+  discoveryProposal?: OfflineDiscovery | null;
 }
 
 export type ObservationFocusMode = 'facts' | 'hypothesis' | 'split';
@@ -46,14 +48,15 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
   onSubmit,
   initialData,
   childName,
+  discoveryProposal,
 }) => {
   const { activeCaregiver, canCreate, canEdit } = useApp();
 
   const [occurredAt, setOccurredAt] = useState('');
-  const [environment, setEnvironment] = useState<EnvironmentType>('casa');
-  const [observerRole, setObserverRole] = useState<ObserverRole>('mae');
-  const [eventType, setEventType] = useState<EventType>('descoberta');
-  const [provenance, setProvenance] = useState<ProvenanceType>('DIRECT');
+  const [environment, setEnvironment] = useState<EnvironmentType | ''>('');
+  const [observerRole, setObserverRole] = useState<ObserverRole | ''>('');
+  const [eventType, setEventType] = useState<EventType | ''>('');
+  const [provenance, setProvenance] = useState<ProvenanceType | ''>('');
   const [reportedByLabel, setReportedByLabel] = useState('');
   const [description, setDescription] = useState('');
   const [antecedents, setAntecedents] = useState('');
@@ -67,7 +70,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
   const [focusMode, setFocusMode] = useState<ObservationFocusMode>('facts');
   const [activeInputZone, setActiveInputZone] = useState<'facts' | 'hypothesis'>('facts');
 
-  const [errors, setErrors] = useState<{ description?: string }>({});
+  const [errors, setErrors] = useState<{ description?: string; context?: string }>({});
 
   const descriptionInputRef = useRef<HTMLTextAreaElement | null>(null);
   const hypothesisInputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -78,7 +81,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
       setEnvironment(initialData.environment);
       setObserverRole(initialData.observerRole);
       setEventType(initialData.eventType);
-      setProvenance(initialData.provenance || 'DIRECT');
+      setProvenance(initialData.provenance || '');
       setReportedByLabel(initialData.reportedByLabel || '');
       setDescription(initialData.description);
       setAntecedents(initialData.antecedents);
@@ -90,25 +93,11 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
       setFocusMode('split');
       setActiveInputZone('facts');
     } else {
-      const now = new Date();
-      const localIso = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-        .toISOString()
-        .slice(0, 16);
-      setOccurredAt(localIso);
-      setEnvironment('casa');
-      setObserverRole(
-        activeCaregiver.role === 'EDUCATOR'
-          ? 'educador'
-          : activeCaregiver.role === 'PROFESSIONAL'
-          ? 'terapeuta'
-          : activeCaregiver.displayName.toLowerCase().includes('pai')
-          ? 'pai'
-          : activeCaregiver.displayName.toLowerCase().includes('avó')
-          ? 'avo'
-          : 'mae'
-      );
-      setEventType('conquista');
-      setProvenance('DIRECT');
+      setOccurredAt('');
+      setEnvironment('');
+      setObserverRole('');
+      setEventType('');
+      setProvenance('');
       setReportedByLabel('');
       setDescription('');
       setAntecedents('');
@@ -162,24 +151,31 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
       return;
     }
 
+    if (!occurredAt || !environment || !observerRole || !eventType || !provenance) {
+      setErrors({context: 'Informe data e horário, ambiente, quem observou, tipo e proveniência. Não presumimos esses dados.'});
+      setFocusMode('facts');
+      setActiveInputZone('facts');
+      return;
+    }
+
     const accepted = onSubmit({
-      occurredAt: occurredAt || new Date().toISOString().slice(0, 16),
+      occurredAt,
       environment,
       observerRole,
       eventType,
       provenance,
       reportedByLabel:
         provenance === 'REPORTED_BY_OTHER'
-          ? reportedByLabel.trim() || 'Relato de terceiro'
+          ? reportedByLabel.trim() || undefined
           : undefined,
       description: description.trim(),
-      antecedents: antecedents.trim() || 'Não observado',
-      communicationSignals: communicationSignals.trim() || 'Não observado',
+      antecedents: antecedents.trim(),
+      communicationSignals: communicationSignals.trim(),
       supportOffered:
-        supportOffered.trim() || 'Apenas observação atenta sem intervenção',
-      observedOutcome: observedOutcome.trim() || 'Não observado',
-      positiveAspects: positiveAspects.trim() || 'Não observado',
-      notes: notes.trim() || 'Registro sem hipóteses adicionais.',
+        supportOffered.trim(),
+      observedOutcome: observedOutcome.trim(),
+      positiveAspects: positiveAspects.trim(),
+      notes: notes.trim(),
     });
     if (accepted) onClose();
   };
@@ -226,7 +222,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                 id="modal-title"
                 className="text-base sm:text-lg font-bold text-[#133E43] font-display"
               >
-                {initialData ? 'Editar Observação' : 'Nova Observação no Diário'}
+                {isEditing ? 'Editar Observação' : 'Nova Observação no Diário'}
               </h2>
               <p className="text-xs text-[#265358]">
                 Observando {childName} com olhar afetuoso e livre de rótulos
@@ -386,6 +382,15 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
           onSubmit={handleSubmit}
           className="overflow-y-auto p-5 sm:p-6 space-y-5 text-sm"
         >
+          {discoveryProposal && !isEditing && (
+            <aside aria-label="Proposta de atividade" className="p-3 rounded-2xl bg-white border border-[#133E43]/15 text-xs text-[#133E43] space-y-1">
+              <strong>Proposta de atividade: {discoveryProposal.title}</strong>
+              <p>Esta é uma sugestão, não um relato de algo que aconteceu. Registre somente o que foi efetivamente observado. A proposta não será salva como experiência.</p>
+              <p>Materiais sugeridos: {discoveryProposal.materials.join(', ')}.</p>
+            </aside>
+          )}
+          {errors.context && <p role="alert" className="text-xs text-red-700">{errors.context}</p>}
+          <p className="text-xs text-[#265358]">Data, ambiente, quem observou, tipo e proveniência precisam ser informados. Os demais campos podem ficar vazios: ausência de informação não significa ausência de manifestação.</p>
           {/* Active Caregiver Banner */}
           <div
             className={`p-3 rounded-2xl border flex items-center justify-between text-xs ${
@@ -486,6 +491,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                         <button
                           key={t.id}
                           type="button"
+                          aria-pressed={isSelected}
                           onClick={() => setEventType(t.id)}
                           className={`p-2.5 rounded-xl border text-left transition-all min-h-[52px] ${
                             isSelected
@@ -515,6 +521,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <button
                       type="button"
+                      aria-pressed={provenance === 'DIRECT'}
                       onClick={() => setProvenance('DIRECT')}
                       className={`p-2.5 rounded-xl border text-left text-xs transition-colors min-h-[44px] ${
                         provenance === 'DIRECT'
@@ -533,6 +540,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                     </button>
                     <button
                       type="button"
+                      aria-pressed={provenance === 'REPORTED_BY_OTHER'}
                       onClick={() => setProvenance('REPORTED_BY_OTHER')}
                       className={`p-2.5 rounded-xl border text-left text-xs transition-colors min-h-[44px] ${
                         provenance === 'REPORTED_BY_OTHER'
@@ -559,7 +567,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                         htmlFor="obs-reported-by"
                         className="block text-xs font-semibold text-[#133E43]"
                       >
-                        Quem relatou este evento? <span className="text-[#8C4F48]">*</span>
+                        Quem relatou este evento? (opcional, se conhecido)
                       </label>
                       <input
                         id="obs-reported-by"
@@ -608,6 +616,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                     onChange={(e) => setEnvironment(e.target.value as EnvironmentType)}
                     className="w-full bg-[#F8F5EF]/60 border border-[#133E43]/20 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px]"
                   >
+                    <option value="">Selecione o ambiente</option>
                     <option value="casa">Casa</option>
                     <option value="parque">Parque / Ar Livre</option>
                     <option value="escola">Escola / Creche</option>
@@ -630,6 +639,7 @@ export const ObservationModal: React.FC<ObservationModalProps> = ({
                     onChange={(e) => setObserverRole(e.target.value as ObserverRole)}
                     className="w-full bg-[#F8F5EF]/60 border border-[#133E43]/20 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px]"
                   >
+                    <option value="">Selecione quem observou</option>
                     <option value="mae">Mãe</option>
                     <option value="pai">Pai</option>
                     <option value="avo">Avó / Avô</option>

@@ -55,7 +55,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
   const recordedByCaregiver = caregivers.find((c) => c.id === observation.recordedByCaregiverId);
   const recordedByText = recordedByCaregiver
     ? `${recordedByCaregiver.displayName} (${recordedByCaregiver.relationshipLabel || recordedByCaregiver.role})`
-    : observation.recordedByCaregiverId || 'Helena (Mãe)';
+    : observation.recordedByCaregiverId || 'Registrador não informado';
 
   const formatDate = (isoString: string) => {
     try {
@@ -205,7 +205,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Antecedentes / Contexto Prévio
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.antecedents || 'Não observado'}
+                {observation.antecedents || 'Não informado'}
               </p>
             </div>
 
@@ -214,7 +214,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Sinais Expressivos & Corporais
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.communicationSignals || 'Não observado'}
+                {observation.communicationSignals || 'Não informado'}
               </p>
             </div>
           </div>
@@ -227,7 +227,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Acolhimento / Mediação Oferecida
               </div>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.supportOffered || 'Apenas observação atenta'}
+                {observation.supportOffered || 'Não informado'}
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Resposta Observada da Criança
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.observedOutcome || 'Não observado'}
+                {observation.observedOutcome || 'Não informado'}
               </p>
             </div>
           </div>

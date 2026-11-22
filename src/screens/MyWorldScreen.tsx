@@ -58,8 +58,8 @@ export const MyWorldScreen: React.FC = () => {
     if (!canCreate || !stratName.trim()) return;
     addSupportStrategy({
       strategy: stratName.trim(),
-      context: stratContext.trim() || 'Cotidiano geral',
-      observedResponse: stratResponse.trim() || 'Resposta calma observada',
+      context: stratContext.trim(),
+      observedResponse: stratResponse.trim(),
     });
     setStratName('');
     setStratContext('');
@@ -517,9 +517,9 @@ export const MyWorldScreen: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-[#133E43] uppercase tracking-wider font-display">
-                    Estratégias de Acolhimento Experimentadas
+                    Estratégias de Acolhimento
                   </h2>
-                  <p className="text-[11px] text-[#265358]">O que a família já testou e a resposta observada</p>
+                  <p className="text-[11px] text-[#265358]">Propostas e experiências relatadas; campos ausentes permanecem não informados</p>
                 </div>
               </div>
               <span className="text-xs font-semibold text-[#265358]">
@@ -550,11 +550,11 @@ export const MyWorldScreen: React.FC = () => {
                       </button>
                     </div>
                     <div className="text-[11px] text-[#265358]">
-                      <strong>Contexto:</strong> {strat.context}
+                      <strong>Contexto:</strong> {strat.context || 'Não informado'}
                     </div>
                   </div>
                   <div className="pt-2 border-t border-[#133E43]/10 text-[#133E43]">
-                    <strong>Resposta observada:</strong> {strat.observedResponse}
+                    <strong>Resposta observada:</strong> {strat.observedResponse || 'Não informada'}
                   </div>
                 </div>
               ))}

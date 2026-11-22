@@ -296,12 +296,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       childId: activeProfileId,
       recordedByCaregiverId: activeCaregiver.id,
       observedByCaregiverId:
-        newObs.provenance === 'DIRECT' ? activeCaregiver.id : undefined,
+        newObs.observedByCaregiverId,
       reportedByLabel:
         newObs.provenance === 'REPORTED_BY_OTHER'
-          ? newObs.reportedByLabel || 'Relato de terceiro'
+          ? newObs.reportedByLabel
           : undefined,
-      provenance: newObs.provenance || 'DIRECT',
+      provenance: newObs.provenance,
       recordedAt,
       revision: 1,
     };
@@ -353,6 +353,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       recordedByCaregiverId: target.recordedByCaregiverId,
       recordedAt: target.recordedAt,
       updatedAt,
+      // Changing origin must not carry forward an inferred observer.
+      observedByCaregiverId: updatedFields.provenance && updatedFields.provenance !== target.provenance
+        ? updatedFields.observedByCaregiverId
+        : updatedFields.observedByCaregiverId ?? target.observedByCaregiverId,
       revision: nextRevision,
     };
 
