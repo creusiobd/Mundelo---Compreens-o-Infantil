@@ -69,3 +69,8 @@ O [checkpoint atual](andamentos/2026-11-21-retomada.md) sucede os retratos anter
 PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e [#50](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/50) aprovadas pelo responsável e incorporadas à main, respectivamente em `da66b9a4961233c43c6f16da0bded58fd636f6bf` e `6552f784d8fa369d3b95f36b6378cf81f9585be4`. [CI da integração](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44946599881) aprovado. Este registro sucede as indicações anteriores de revisão pendente dessas duas PRs.
 
 #34/#43/#45/#46 encerradas: **12 issues concluídas e sete abertas** entre as 19 acompanhadas. Restam #24/#25/#26 (fontes), #27 (validação competente), #29 (capacidade externa), #35 (deliberação por gates) e #36 (rotina recorrente). Próxima frente técnica: [TEC-002/#29](../auditoria/tec-002/README.md). Cadastro/dados infantis reais e cenários integrais continuam bloqueados conforme suas pré-condições. Sem sincronização dos campos privados do Project.
+
+
+## Atualização — #59 / 23/11/2026
+
+[Correção da Home AUD-13](andamentos/2026-11-23-task-59.md) entregue para revisão: perfil/contagens condicionados à leitura e linguagem sem atualidade/frequência presumidas. Validação local: 12 testes de navegador e 150 de domínio aprovados; inventário de 14 consumidores registra coberturas e pendências. #29 continua pausada, #53/#54 não reabertas e dados reais bloqueados. Não há conclusão de PG-06 integral nem sincronização automática dos campos do Project.
