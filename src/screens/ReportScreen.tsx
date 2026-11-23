@@ -5,15 +5,13 @@
 
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import {ObservationAttribution} from '../components/ObservationAttribution';
+import {buildObservationReport, ATTRIBUTION_LIMIT, PROFILE_OMISSION_NOTICE, INTERPRETATION_TEXT_LABEL, informedText, declaredProvenance, environmentLabels} from '../presentation/observationAttribution';
 import {
   FileText,
   Printer,
   Copy,
   Check,
-  Calendar,
-  MapPin,
-  User,
-  Heart,
   Eye,
   ShieldCheck,
   Sparkles,
@@ -49,60 +47,15 @@ export const ReportScreen: React.FC = () => {
     familia: 'Alinhamento com Rede de Apoio Familiar',
   };
 
-  const envLabels: Record<string, string> = {
-    casa: 'Casa',
-    parque: 'Parque / Ar Livre',
-    escola: 'Escola / Creche',
-    transporte_consulta: 'Transporte / Consulta',
-    reuniao_familia: 'Reunião Familiar',
-    outro: 'Outro Ambiente',
-  };
+  const envLabels = environmentLabels;
 
   const handleCopyReportText = () => {
     if (!canReadProfile) return;
-    const textLines = [
-      `MUNDELO - SÍNTESE CONTEXTUAL DE OBSERVAÇÃO INFANTIL`,
-      `"Compreender é o primeiro cuidado"`,
-      `----------------------------------------------------`,
-      `Criança (Dados Fictícios): ${activeProfile.name} (${activeProfile.ageLabel})`,
-      `Finalidade: ${recipientLabels[recipient]}`,
-      `Data da Síntese: ${new Date().toLocaleDateString('pt-BR')}`,
-      `Total de Observações Selecionadas: ${selectedObservations.length}`,
-      ``,
-      `1. REPERTÓRIO DE REGULAÇÃO & INTERESSES CENTRAIS`,
-      `- Interesses: ${activeProfile.interests.join(', ')}`,
-      `- Fontes de Conforto: ${activeProfile.comfortAnchors.join(', ')}`,
-      `- Sensibilidades Relatadas: ${activeProfile.sensitivities.join(', ')}`,
-      `- Comunicação Expressiva: ${activeProfile.communicationModes.join(', ')}`,
-      ``,
-      `2. REGISTROS CONTEXTUAIS SELECIONADOS:`,
-    ];
-
-    selectedObservations.forEach((obs, index) => {
-      const recorder = caregivers.find((c) => c.id === obs.recordedByCaregiverId);
-      const recorderName = recorder ? `${recorder.displayName} (${recorder.relationshipLabel || recorder.role})` : (obs.recordedByCaregiverId || 'Helena');
-      const provText = obs.provenance === 'REPORTED_BY_OTHER' ? `Relatada (${obs.reportedByLabel || 'Terceiro'})` : 'Observação Direta (DIRECT)';
-
-      textLines.push(
-        `\n[Registro ${index + 1}] - ${obs.occurredAt.replace('T', ' ')} | ${envLabels[obs.environment] || obs.environment} | Rev #${obs.revision || 1}`
-      );
-      textLines.push(`- Registrado por: ${recorderName}`);
-      textLines.push(`- Proveniência: ${provText}`);
-      textLines.push(`- Fatos Observados: ${obs.description}`);
-      textLines.push(`- Antecedentes: ${obs.antecedents}`);
-      textLines.push(`- Sinais Expressivos: ${obs.communicationSignals}`);
-      textLines.push(`- Acolhimento do Adulto: ${obs.supportOffered}`);
-      textLines.push(`- Resposta Observada: ${obs.observedOutcome}`);
-      textLines.push(`- Forças / Potências: ${obs.positiveAspects}`);
-      textLines.push(`- Hipótese Familiar (Não Diagnóstica): ${obs.notes}`);
+    const reportText = buildObservationReport({
+      profile: activeProfile, recipientLabel: recipientLabels[recipient],
+      dateLabel: new Date().toLocaleDateString('pt-BR'), observations: selectedObservations, caregivers,
     });
-
-    textLines.push(`\n----------------------------------------------------`);
-    textLines.push(
-      `AVISO ÉTICO: Este documento destina-se a apoiar a conversa presencial entre família e profissionais. Não constitui diagnóstico, laudo clínico ou previsão diagnóstica.`
-    );
-
-    navigator.clipboard.writeText(textLines.join('\n'));
+    navigator.clipboard.writeText(reportText);
     setCopied(true);
     showNotification('Texto da síntese copiado para a área de transferência!', 'success');
     setTimeout(() => setCopied(false), 3000);
@@ -236,7 +189,7 @@ export const ReportScreen: React.FC = () => {
                     <span>·</span>
                     <span>{envLabels[obs.environment] || obs.environment}</span>
                     <span>·</span>
-                    <span>{obs.provenance === 'REPORTED_BY_OTHER' ? 'Relatada' : 'Direta'}</span>
+                    <span>{declaredProvenance(obs)}</span>
                   </div>
                   <p className="text-[#133E43] truncate font-medium">{obs.description}</p>
                 </div>
@@ -247,7 +200,7 @@ export const ReportScreen: React.FC = () => {
       </div>
 
       {/* Structured Document Preview Sheet */}
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#133E43]/15 shadow-sm space-y-6 print:shadow-none print:border-none print:p-0">
+      <div role="region" aria-label="Prévia da síntese" className="bg-white rounded-3xl p-6 sm:p-10 border border-[#133E43]/15 shadow-sm space-y-6 print:shadow-none print:border-none print:p-0">
         {/* Document Header */}
         <div className="border-b-2 border-[#133E43] pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -269,31 +222,11 @@ export const ReportScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* Section: Child Regulation Anchors */}
-        <section className="space-y-3 bg-[#F8F5EF] p-4 sm:p-5 rounded-2xl border border-[#133E43]/10">
-          <h3 className="text-xs font-bold text-[#133E43] uppercase tracking-wider flex items-center gap-1.5">
-            <Heart className="w-4 h-4 text-[#8C4F48]" />
-            1. Perfil de Regulação & Preferências Centrais
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div>
-              <span className="font-bold text-[#133E43] block mb-0.5">Fascínios & Interesses:</span>
-              <p className="text-[#133E43]">{activeProfile.interests.join('; ')}</p>
-            </div>
-            <div>
-              <span className="font-bold text-[#133E43] block mb-0.5">Fontes de Conforto:</span>
-              <p className="text-[#133E43]">{activeProfile.comfortAnchors.join('; ')}</p>
-            </div>
-            <div>
-              <span className="font-bold text-[#133E43] block mb-0.5">Sensibilidades Relatadas:</span>
-              <p className="text-[#133E43]">{activeProfile.sensitivities.join('; ')}</p>
-            </div>
-            <div>
-              <span className="font-bold text-[#133E43] block mb-0.5">Modos de Comunicação:</span>
-              <p className="text-[#133E43]">{activeProfile.communicationModes.join('; ')}</p>
-            </div>
-          </div>
+        <section className="text-xs text-[#265358] space-y-2 bg-[#F8F5EF] p-4 rounded-2xl">
+          <h3 className="font-bold text-[#133E43]">Escopo e limites da síntese</h3>
+          <p>{PROFILE_OMISSION_NOTICE}</p>
+          <p>{ATTRIBUTION_LIMIT}</p>
+          <p>A finalidade escolhida organiza a conversa; não cria autorização de compartilhamento.</p>
         </section>
 
         {/* Section: Selected Observations */}
@@ -301,7 +234,7 @@ export const ReportScreen: React.FC = () => {
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold text-[#133E43] uppercase tracking-wider flex items-center gap-1.5">
               <Eye className="w-4 h-4 text-[#133E43]" />
-              2. Registros Contextuais Selecionados ({selectedObservations.length})
+              Registros Contextuais Selecionados ({selectedObservations.length})
             </h3>
             <span className="text-[11px] text-[#265358]">Diferenciação rigorosa de fatos e hipóteses</span>
           </div>
@@ -313,53 +246,41 @@ export const ReportScreen: React.FC = () => {
           ) : (
             <div className="space-y-4">
               {selectedObservations.map((obs, idx) => {
-                const recorder = caregivers.find((c) => c.id === obs.recordedByCaregiverId);
-                const recorderName = recorder
-                  ? `${recorder.displayName} (${recorder.relationshipLabel || recorder.role})`
-                  : obs.recordedByCaregiverId || 'Helena';
-                const provText =
-                  obs.provenance === 'REPORTED_BY_OTHER'
-                    ? `Relatada (${obs.reportedByLabel || 'Terceiro'})`
-                    : 'Observação Direta (DIRECT)';
-
                 return (
-                  <div
+                  <article
+                    aria-label={`Registro ${idx + 1}`}
                     key={obs.id}
                     className="p-4 rounded-2xl border border-[#133E43]/15 space-y-2 text-xs"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[#133E43]/10 pb-2">
                       <span className="font-bold text-[#133E43]">
-                        Registro #{idx + 1} — {obs.eventType.toUpperCase()} · Rev #{obs.revision || 1}
+                        Registro #{idx + 1} — {obs.eventType.toUpperCase()} · Rev #{obs.revision}
                       </span>
                       <span className="text-[#265358]">
                         {obs.occurredAt.replace('T', ' ')} · {envLabels[obs.environment] || obs.environment}
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-[11px] text-[#265358] bg-[#F8F5EF] p-2 rounded-xl">
-                      <span><strong>Registrado por:</strong> {recorderName}</span>
-                      <span>·</span>
-                      <span><strong>Proveniência:</strong> {provText}</span>
-                    </div>
+                    <ObservationAttribution observation={obs} caregivers={caregivers}/>
 
                     <div className="space-y-1.5">
                       <div>
-                        <strong className="text-[#133E43]">Fatos Objetivos:</strong>{' '}
+                        <strong className="text-[#133E43]">Fatos registrados (relato):</strong>{' '}
                         <span className="text-[#133E43]">{obs.description}</span>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#265358] pt-1">
                         <div>
-                          <strong>Antecedentes:</strong> {obs.antecedents}
+                          <strong>Antecedentes:</strong> {informedText(obs.antecedents)}
                         </div>
                         <div>
-                          <strong>Sinais Corporais:</strong> {obs.communicationSignals}
+                          <strong>Sinais Corporais:</strong> {informedText(obs.communicationSignals)}
                         </div>
                         <div>
-                          <strong>Acolhimento:</strong> {obs.supportOffered}
+                          <strong>Acolhimento:</strong> {informedText(obs.supportOffered)}
                         </div>
                         <div>
-                          <strong>Resposta da Criança:</strong> {obs.observedOutcome}
+                          <strong>Resposta da Criança:</strong> {informedText(obs.observedOutcome)}
                         </div>
                       </div>
 
@@ -370,10 +291,10 @@ export const ReportScreen: React.FC = () => {
                       )}
 
                       <div className="bg-[#F1CA91]/20 p-2.5 rounded-xl border border-[#F1CA91]/40 text-[#133E43] italic">
-                        <strong>Hipótese Familiar (Não Diagnóstica):</strong> &quot;{obs.notes}&quot;
+                        <strong>{INTERPRETATION_TEXT_LABEL}:</strong> &quot;{informedText(obs.notes)}&quot;
                       </div>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>

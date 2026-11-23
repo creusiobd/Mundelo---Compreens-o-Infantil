@@ -4,7 +4,7 @@ import {openCleanSession, selectCaregiver, selectChildProfile} from './fixtures/
 import {navigateToInternalScreen} from './helpers/navigation';
 
 const regionName = 'Conteúdo detalhado da observação';
-const comfortMarker = 'Naninha de malha macia azul claro';
+const reportMarker = 'Tomás explorou o caminho de pedrinhas no parque.';
 test.beforeEach(async ({page}) => {
   await page.route('**/*', route => ['127.0.0.1','localhost'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort());
   await openCleanSession(page);
@@ -28,7 +28,7 @@ for (const actor of ['cg-ana-unlinked', 'cg-pedro-suspended']) {
 
   test(`QA-F04: relatório, cópia e impressão são restringidos para ${actor}`, async ({page}) => {
     await navigateToInternalScreen(page, 'report');
-    await expect(page.locator('main')).toContainText(comfortMarker);
+    await expect(page.locator('main')).toContainText(reportMarker);
     await page.evaluate(() => {
       (window as any).__copies = [];
       (window as any).__prints = 0;
@@ -37,20 +37,22 @@ for (const actor of ['cg-ana-unlinked', 'cg-pedro-suspended']) {
     });
     await page.getByRole('button', {name:'Copiar Síntese',exact:true}).click();
     await page.getByRole('button', {name:'Imprimir / Gerar PDF',exact:true}).click();
-    expect(await page.evaluate(() => (window as any).__copies[0])).toContain(comfortMarker);
+    expect(await page.evaluate(() => (window as any).__copies[0])).toContain(reportMarker);
+    expect(await page.evaluate(() => (window as any).__copies[0])).toContain('Criança (Dados Fictícios): Tomás');
     expect(await page.evaluate(() => (window as any).__prints)).toBe(1);
     await selectCaregiver(page, actor);
     await expect(page.getByRole('heading', {name:'Relatório indisponível'})).toBeVisible();
-    await expect(page.locator('main')).not.toContainText(comfortMarker);
+    await expect(page.getByRole('region', {name:'Prévia da síntese',exact:true})).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText(reportMarker);
     await expect(page.getByRole('button', {name:'Copiar Síntese',exact:true})).toHaveCount(0);
     await expect(page.getByRole('button', {name:'Imprimir / Gerar PDF',exact:true})).toHaveCount(0);
     await page.emulateMedia({media:'print'});
-    await expect(page.locator('main')).not.toContainText(comfortMarker);
+    await expect(page.locator('main')).not.toContainText(reportMarker);
     expect(await page.evaluate(() => (window as any).__copies.length)).toBe(1);
     expect(await page.evaluate(() => (window as any).__prints)).toBe(1);
     await page.emulateMedia({media:'screen'});
     await selectCaregiver(page, 'cg-helena');
-    await expect(page.locator('main')).toContainText(comfortMarker);
+    await expect(page.locator('main')).toContainText(reportMarker);
   });
 }
 

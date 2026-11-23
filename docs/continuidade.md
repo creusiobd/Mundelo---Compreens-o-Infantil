@@ -344,3 +344,10 @@ Controle negativo: 13 testes falham com fontes antigas; suíte corrigida 115 PAS
 PR #56 incorporada na main `04713b6ec5173b080eea4ab93a6548dc66b30954`; #52 concluída por integração. #53 separa leitura/gestão de perfil de criação de observações, aplica status/vínculo/contexto nos comandos reais e impede apresentação de Meu Mundo/configuração sem acesso. Gestão de atributos globais restrita ao responsável legal ACTIVE vinculado no protótipo; papel não valida perspectiva nem concede correção de contribuição alheia. Política e limites em [fix-53](qa/fix-53/README.md).
 
 142 testes de domínio/segurança e TypeScript/build PASS local. Oito cenários E2E novos, incluindo comandos no AppProvider real sem mock do avaliador; teste isolado de desenvolvimento fora do bundle de produção. Resultado de CI por commit registrado na PR/issue #53. #54, PG-06 integral/dados infantis reais continuam pendentes; #29 pausada, sem tentativas de conexão.
+
+
+## 23/11/2026 — Continuação após PR #57: correção #54
+
+PR #57 incorporada em `a6144039f08fbd6f3a563ab0fef02ec57b5f8f5f`; #53 concluída por integração. #54 separa registrador, observador/papel, fonte textual e lacunas de autoria de interpretação/alteração, com apresentação compartilhada em detalhe/prévia/cópia/impressão. Remove atribuição automática familiar/profissional; perfil global sem fonte individual não é incluído na síntese. Relatos divergentes mantêm textos e contextos. Contrato de autores/versões continua pendente, sem schema ou autoria inventada; ver [fix-54](qa/fix-54/README.md).
+
+150 testes domínio/segurança e TypeScript/build PASS local; cinco E2E novos para CI e QA-F04 atualizado com marcador de contribuição autorizada, preservando guardas de acesso. Resultado final por commit na PR/issue #54. PG-06 integral, R01–R16, dados infantis reais e fontes INF ausentes continuam com bloqueios; #29 pausada.
