@@ -31,7 +31,7 @@ Cabeçalhos históricos que ainda dizem “proposta” ou “pendente” devem s
 
 ## Estado atual versus proposta
 
-O [tipo Observation](../../../src/types/index.ts) mantém campos descritivos e reflexivos no mesmo registro, registrador, observador opcional, fonte textual, datas e contador de revisão. Não há nesse tipo autoria separada de interpretação/alteração nem acervo governado de versões. O [apresentador de atribuições](../../../src/presentation/observationAttribution.ts) torna essa falta explícita. Os atributos do perfil continuam globais, e a [migração atual](../../../src/validation/migration.ts) valida sem inventar metadados faltantes.
+O [tipo Observation](../../../src/types/index.ts) mantém campos descritivos e reflexivos no mesmo registro, registrador, observador opcional, fonte textual, datas e contador de revisão. Não há nesse tipo autoria separada de interpretação/alteração nem acervo governado de versões. O [apresentador de atribuições](../../../src/presentation/observationAttribution.ts) torna essa falta explícita. Os atributos do perfil continuam globais, e a [migração atual](../../../src/validation/migration.ts) valida sem preencher autoria, proveniência ou datas históricas ausentes. Defaults estruturais do schema, como revision=1, não são evidência de autoria ou acervo histórico.
 
 O contrato proposto organiza unidades, atribuições, relações e operações para uma futura implementação incremental. Não renomeia nem migra campos/IDs/formatos existentes; não declara que novos conceitos já funcionam. O cofre v2 e seu leitor v1 preservam integridade/compatibilidade criptográfica no protótipo, sem provar identidade, autoria, verdade, concessão ou legitimidade de alteração do conteúdo importado.
 
