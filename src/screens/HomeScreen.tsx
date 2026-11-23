@@ -40,8 +40,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
     restoreDemoData,
     isAllEmpty,
     canCreate,
-    activeCaregiver,
+    canReadProfile,
+    canManageProfile,
   } = useApp();
+
+  // No profile attributes are read by presentation unless the current context can read.
+  const profile = canReadProfile ? activeProfile : null;
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -102,8 +106,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <div className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-[#265358]">
               <Smile className="w-4 h-4 text-[#80C5B5] shrink-0" aria-hidden="true" />
               <span>
-                {getGreeting()}, responsável por{' '}
-                <strong className="text-[#133E43] font-bold">{activeProfile.name}</strong>
+                {getGreeting()}{profile && <>, perfil de{' '}
+                  <strong className="text-[#133E43] font-bold">{profile.name}</strong></>}
               </span>
               <span aria-hidden="true">·</span>
               <span>Cada criança, um mundo</span>
@@ -117,28 +121,28 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </h1>
 
             <p className="text-sm sm:text-base text-[#265358] max-w-2xl leading-relaxed">
-              Cada observação é uma janela para o universo particular de{' '}
-              <strong className="font-semibold text-[#133E43]">{activeProfile.name}</strong> (
-              {activeProfile.ageLabel}). Registre fatos do cotidiano com calma, acolhendo antes de
-              interpretar e sem comparações.
+              {profile ? <>Cada observação é uma janela para o universo particular de{' '}
+                <strong className="font-semibold text-[#133E43]">{profile.name}</strong> (
+                {profile.ageLabel}). Registre fatos do cotidiano com calma, acolhendo antes de
+                interpretar e sem comparações.</> : <>A leitura deste perfil não está disponível para o cuidador selecionado.</>}
             </p>
           </div>
 
           {/* Painel Discreto e Integrado "Perfil em foco" à Direita (~35% -> 4 de 12 colunas) */}
           <div className="lg:col-span-5 xl:col-span-4 w-full">
-            <div className="p-5 rounded-[20px] bg-[#F8F5EF] border border-[#133E43]/12 space-y-3.5">
+            {profile ? <div className="p-5 rounded-[20px] bg-[#F8F5EF] border border-[#133E43]/12 space-y-3.5">
               <div className="flex items-center justify-between gap-2 border-b border-[#133E43]/10 pb-2.5">
                 <span className="text-xs font-bold text-[#265358]">
                   Perfil em foco
                 </span>
-                <button
+                {canManageProfile && <button
                   type="button"
                   onClick={() => setScreen('onboarding')}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#133E43] hover:text-[#194F55] underline underline-offset-2 min-h-[44px] px-1.5 rounded-lg"
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5 text-[#265358]" aria-hidden="true" />
                   <span>Ajustar Perfil</span>
-                </button>
+                </button>}
               </div>
 
               <div className="flex items-center gap-3.5">
@@ -146,31 +150,36 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   className="w-12 h-12 rounded-2xl bg-[#133E43] flex items-center justify-center text-lg font-extrabold text-[#F8F5EF] font-display shrink-0 shadow-2xs"
                   aria-hidden="true"
                 >
-                  {activeProfile.name[0]}
+                  {profile.name[0]}
                 </div>
                 <div className="min-w-0">
                   <div className="text-base sm:text-lg font-extrabold text-[#133E43] font-display leading-snug">
-                    {activeProfile.name}
+                    {profile.name}
                   </div>
                   <div className="text-xs sm:text-[13px] font-medium text-[#265358]">
-                    {activeProfile.ageLabel}
+                    {profile.ageLabel}
                   </div>
                 </div>
               </div>
 
               <div className="pt-2.5 border-t border-[#133E43]/10 space-y-1.5 text-xs sm:text-[13px] text-[#265358] leading-snug">
                 <div>
-                  <strong className="font-semibold text-[#133E43]">Interesse atual: </strong>
-                  <span>{activeProfile.interests[0] || 'Exploração livre'}</span>
+                  <strong className="font-semibold text-[#133E43]">Um interesse informado no perfil: </strong>
+                  <span>{profile.interests[0] || 'Nenhum interesse informado no perfil'}</span>
                 </div>
-                {activeProfile.communicationModes?.[0] && (
-                  <div>
-                    <strong className="font-semibold text-[#133E43]">Expressão frequente: </strong>
-                    <span>{activeProfile.communicationModes[0]}</span>
-                  </div>
-                )}
+                <div>
+                  <strong className="font-semibold text-[#133E43]">Uma forma de comunicação informada: </strong>
+                  <span>{profile.communicationModes[0] || 'Nenhuma forma de comunicação informada no perfil'}</span>
+                </div>
+                <p className="text-xs leading-relaxed">
+                  Estes são dados globais do perfil. A origem e a data não estão indicadas.
+                  A ordem dos itens não representa frequência, preferência ou atualidade.
+                </p>
               </div>
-            </div>
+            </div> : <div className="p-5 rounded-[20px] bg-[#F8F5EF] border border-[#133E43]/12 space-y-2">
+              <h2 className="text-base font-bold text-[#133E43]">Resumo do perfil indisponível</h2>
+              <p className="text-sm text-[#265358]">Dados e contagens do perfil não estão disponíveis neste contexto.</p>
+            </div>}
           </div>
         </div>
       </section>
@@ -200,7 +209,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             title={
               canCreate
                 ? 'Registrar nova observação no diário'
-                : `Ação desabilitada: ${activeCaregiver.displayName} não possui permissão de escrita ativa para ${activeProfile.name}`
+                : 'Ação desabilitada: requer cuidador vinculado ativo'
             }
             className={`h-full min-h-[104px] p-5 rounded-[18px] text-left transition-all flex items-start justify-between gap-3.5 group ${
               canCreate
@@ -305,6 +314,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         aria-label="Indicadores do perfil e lembrete afetivo"
         className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch"
       >
+        {profile && <>
         {/* Indicador 1: Diário em Memória */}
         <div className="h-full bg-white p-6 rounded-[20px] border border-[#133E43]/12 shadow-xs flex flex-col justify-between space-y-4">
           <div className="space-y-3">
@@ -322,11 +332,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
             <div>
               <div className="text-3xl sm:text-4xl font-extrabold text-[#133E43] font-display tabular-nums leading-none">
-                {activeChildObservations.length}
+                <span data-profile-count="observations">{activeChildObservations.length}</span>
               </div>
               <p className="text-xs sm:text-sm text-[#265358] mt-2 leading-relaxed">
                 observações contextuais registradas para{' '}
-                <strong className="font-semibold text-[#133E43]">{activeProfile.name}</strong>
+                <strong className="font-semibold text-[#133E43]">{profile.name}</strong>
               </p>
             </div>
           </div>
@@ -343,7 +353,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
         </div>
 
-        {/* Indicador 2: Estratégias Catalogadas */}
+        {/* Indicador 2: Estratégias no perfil */}
         <div className="h-full bg-white p-6 rounded-[20px] border border-[#133E43]/12 shadow-xs flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-2">
@@ -360,10 +370,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
             <div>
               <div className="text-3xl sm:text-4xl font-extrabold text-[#133E43] font-display tabular-nums leading-none">
-                {activeProfile.supportStrategies.length}
+                <span data-profile-count="strategies">{profile.supportStrategies.length}</span>
               </div>
               <p className="text-xs sm:text-sm text-[#265358] mt-2 leading-relaxed">
-                formas de apoio e acolhimento com resposta observada
+                estratégias informadas no perfil, sem avaliação de resultado neste resumo
               </p>
             </div>
           </div>
@@ -379,6 +389,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </button>
           </div>
         </div>
+
+        </>}
 
         {/* Card 3: Lembrete Afetivo (Tratamento Editorial Próprio) */}
         <div className="h-full bg-[#80C5B5]/16 p-6 rounded-[20px] border border-[#80C5B5]/40 shadow-xs flex flex-col justify-between space-y-4">
@@ -418,7 +430,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               Observações Recentes
             </h2>
             <p className="text-xs sm:text-[13px] text-[#265358]">
-              Registros contextuais mais recentes de {activeProfile.name}
+              {profile ? <>Registros contextuais mais recentes de {profile.name}</> : 'A leitura das observações não está disponível neste contexto.'}
             </p>
           </div>
           {activeChildObservations.length > 0 && (
@@ -433,7 +445,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           )}
         </div>
 
-        {isAllEmpty ? (
+        {!profile ? <p className="text-sm text-[#265358]">Observações indisponíveis neste contexto.</p> : isAllEmpty ? (
           <div className="bg-white rounded-[24px] p-8 sm:p-10 border border-dashed border-[#133E43]/25 text-center space-y-3.5">
             <div
               className="w-12 h-12 rounded-2xl bg-[#F8F5EF] text-[#133E43] flex items-center justify-center mx-auto border border-[#133E43]/10"
@@ -445,7 +457,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               Nenhuma observação registrada no momento
             </h3>
             <p className="text-xs sm:text-sm text-[#265358] max-w-md mx-auto leading-relaxed">
-              O estado vazio está ativo para {activeProfile.name}. Você pode registrar uma nova
+              O estado vazio está ativo para {profile.name}. Você pode registrar uma nova
               observação ou restaurar os dados sintéticos de demonstração.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
