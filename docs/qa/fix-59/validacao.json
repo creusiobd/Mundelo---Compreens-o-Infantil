@@ -1,0 +1,186 @@
+{
+  "task": 59,
+  "code": "PG06/AUD-13",
+  "date": "2026-11-23",
+  "base_commit": "88a7eb84a3beae187cb880990d2b465ef00f378c",
+  "owner": "Creusio Kizua",
+  "execution": "Agente em ambiente local isolado; não equivale a execução pessoal de Creusio nem revisão humana independente.",
+  "environment": {
+    "os": "Windows 11",
+    "node": "22.23.5",
+    "playwright": "1.65.0",
+    "data": "Exclusivamente fixtures sintéticas",
+    "browser_external_requests": "abortadas nos testes"
+  },
+  "before": {
+    "base": "88a7eb84a3beae187cb880990d2b465ef00f378c",
+    "tests": [
+      {
+        "title": "AUD-13: resumo autorizado delimita dados globais sem inferir atualidade ou frequ�ncia",
+        "status": "failed",
+        "observations": [
+          {
+            "state": "authorized",
+            "interestVisible": true,
+            "communicationVisible": true,
+            "unsupportedInterestLabel": true,
+            "unsupportedCommunicationLabel": true,
+            "strategiesCardVisible": true
+          }
+        ]
+      },
+      {
+        "title": "AUD-13: Home n�o apresenta atributos/contagens sem leitura � cg-ana-unlinked",
+        "status": "failed",
+        "observations": [
+          {
+            "state": "cg-ana-unlinked",
+            "interestVisible": true,
+            "communicationVisible": true,
+            "unsupportedInterestLabel": true,
+            "unsupportedCommunicationLabel": true,
+            "strategiesCardVisible": true
+          }
+        ]
+      },
+      {
+        "title": "AUD-13: Home n�o apresenta atributos/contagens sem leitura � cg-pedro-suspended",
+        "status": "failed",
+        "observations": [
+          {
+            "state": "cg-pedro-suspended",
+            "interestVisible": true,
+            "communicationVisible": true,
+            "unsupportedInterestLabel": true,
+            "unsupportedCommunicationLabel": true,
+            "strategiesCardVisible": true
+          }
+        ]
+      }
+    ]
+  },
+  "after": {
+    "stats": {
+      "startTime": "2026-11-23T14:00:47.983Z",
+      "duration": 42605.008,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "title": "Home e Header: renderização inicial, Perfil em foco, troca de criança e isolamento",
+        "status": "passed",
+        "duration_ms": 4222,
+        "observations": []
+      },
+      {
+        "title": "Proveniência nas Observações Recentes e abertura do modal Consultar detalhes",
+        "status": "passed",
+        "duration_ms": 1971,
+        "observations": []
+      },
+      {
+        "title": "Permissões: canCreate === true vs canCreate === false bloqueia UI e operação",
+        "status": "passed",
+        "duration_ms": 1867,
+        "observations": []
+      },
+      {
+        "title": "Ações Rápidas e Navegação Primária Desktop: transição entre telas",
+        "status": "passed",
+        "duration_ms": 1484,
+        "observations": []
+      },
+      {
+        "title": "BottomNav Mobile: exibição exclusiva < 768px, estado ativo, navegação e ausência de sobreposição",
+        "status": "passed",
+        "duration_ms": 2350,
+        "observations": []
+      },
+      {
+        "title": "AUD-13: resumo autorizado delimita dados globais sem inferir atualidade ou frequência",
+        "status": "passed",
+        "duration_ms": 1482,
+        "observations": [
+          {
+            "state": "authorized",
+            "interestVisible": true,
+            "communicationVisible": true,
+            "unsupportedInterestLabel": false,
+            "unsupportedCommunicationLabel": false,
+            "strategiesCardVisible": true
+          }
+        ]
+      },
+      {
+        "title": "AUD-13: Home não apresenta atributos/contagens sem leitura — cg-ana-unlinked",
+        "status": "passed",
+        "duration_ms": 1469,
+        "observations": [
+          {
+            "state": "cg-ana-unlinked",
+            "interestVisible": false,
+            "communicationVisible": false,
+            "unsupportedInterestLabel": false,
+            "unsupportedCommunicationLabel": false,
+            "strategiesCardVisible": false
+          }
+        ]
+      },
+      {
+        "title": "AUD-13: Home não apresenta atributos/contagens sem leitura — cg-pedro-suspended",
+        "status": "passed",
+        "duration_ms": 1526,
+        "observations": [
+          {
+            "state": "cg-pedro-suspended",
+            "interestVisible": false,
+            "communicationVisible": false,
+            "unsupportedInterestLabel": false,
+            "unsupportedCommunicationLabel": false,
+            "strategiesCardVisible": false
+          }
+        ]
+      },
+      {
+        "title": "AUD-13: troca/retorno de criança e cuidador recalcula a leitura na Home",
+        "status": "passed",
+        "duration_ms": 1702,
+        "observations": []
+      },
+      {
+        "title": "AUD-13: leitura legítima de educador conserva observações e acesso aos detalhes",
+        "status": "passed",
+        "duration_ms": 1277,
+        "observations": []
+      },
+      {
+        "title": "AUD-13: campo vazio é ausência de informação, sem interesse ou frequência inventados",
+        "status": "passed",
+        "duration_ms": 2593,
+        "observations": []
+      },
+      {
+        "title": "AUD-13: Home autorizada/restrita preserva acessibilidade em desktop e mobile",
+        "status": "passed",
+        "duration_ms": 11510,
+        "observations": []
+      }
+    ]
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "domain_security_suite": {
+    "tests": 150,
+    "pass": 150,
+    "fail": 0,
+    "exit_code": 0
+  },
+  "inventory_files": 14,
+  "production_authorization": false,
+  "new_contribution_model": false,
+  "real_data_used": false,
+  "paused_task29_resumed": false
+}
