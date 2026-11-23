@@ -1,0 +1,1333 @@
+{
+  "version": "0.1",
+  "task": 60,
+  "code": "PG06/AUD-01/03/06/07",
+  "date": "2026-11-23",
+  "base_commit": "9f7f22c4ca68c3824c26ba206b54ec38e15019b3",
+  "status": "PROPOSTA_DOCUMENTAL_PARA_REVISAO",
+  "owner": "Creusio Kizua",
+  "requirements": [
+    {
+      "id": "PC-01",
+      "title": "Natureza do conteúdo",
+      "rule": "Manifestação, descrição observacional, relato e interpretação são distinguíveis; descrição registrada não vira fato independente do relato e ausência de expressão não vira consentimento.",
+      "tec_requirements": [
+        "REQ-10"
+      ],
+      "cases": [
+        "CP-01",
+        "CP-02",
+        "CP-03"
+      ]
+    },
+    {
+      "id": "PC-02",
+      "title": "Autorias e papéis distintos",
+      "rule": "Separar registrador, autor da expressão/contribuição, observador, relator, intérprete e agente da alteração. Mesmo participante pode exercer mais de um papel somente com atribuição informada e fonte pertinente.",
+      "tec_requirements": [
+        "REQ-01",
+        "REQ-10",
+        "REQ-11"
+      ],
+      "cases": [
+        "CP-01",
+        "CP-04",
+        "CP-14"
+      ]
+    },
+    {
+      "id": "PC-03",
+      "title": "Lacunas e verificação por dimensão",
+      "rule": "Distinguir desconhecido, não informado, não observado e não aplicável; identificar declaração/fonte/verificação e sua extensão sem elevar identidade verificada a veracidade do conteúdo.",
+      "tec_requirements": [
+        "REQ-01",
+        "REQ-10"
+      ],
+      "cases": [
+        "CP-02",
+        "CP-03",
+        "CP-14",
+        "CP-15"
+      ]
+    },
+    {
+      "id": "PC-04",
+      "title": "Independência de perspectivas",
+      "rule": "Cada contribuição mantém pessoa/relação/contexto/finalidade/tipo próprios; uma pessoa pode ter várias contribuições, e evento compartilhado não funde autores. Identidade do evento e relação entre relatos são alegações contextualizadas.",
+      "tec_requirements": [
+        "REQ-03",
+        "REQ-05"
+      ],
+      "cases": [
+        "CP-05",
+        "CP-06",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "PC-05",
+      "title": "Temporalidade sem inferência",
+      "rule": "Distinguir acontecimento, registro, alteração e revisão; preservar intervalo/fuso/precisão/lacuna quando informados. Primeiro item, recência do cadastro e repetição de texto não comprovam atualidade ou frequência.",
+      "tec_requirements": [
+        "REQ-04",
+        "REQ-10"
+      ],
+      "cases": [
+        "CP-07",
+        "CP-15",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "PC-06",
+      "title": "Operações de correção distintas",
+      "rule": "Correção própria, complemento, pedido de correção, contestação e medida administrativa possuem atores/efeitos próprios. Corrigir não concede acesso atual nem preservação indefinida.",
+      "tec_requirements": [
+        "REQ-03",
+        "REQ-11"
+      ],
+      "cases": [
+        "CP-08",
+        "CP-09",
+        "CP-10",
+        "CP-16"
+      ]
+    },
+    {
+      "id": "PC-07",
+      "title": "Manifestação e representação",
+      "rule": "Expressão da criança e interpretação/decisão representativa permanecem distinguíveis; registrador adulto não se torna autor da experiência da criança. Legitimidade de representar depende do ato, sem regra universal de consentimento entre responsáveis.",
+      "tec_requirements": [
+        "REQ-01",
+        "REQ-11",
+        "REQ-14"
+      ],
+      "cases": [
+        "CP-01",
+        "CP-11",
+        "CP-24"
+      ]
+    },
+    {
+      "id": "PC-08",
+      "title": "Competência, vínculo e concessão",
+      "rule": "Profissão, guarda, parentesco e vínculo não conferem verdade, acesso universal ou poder de sobrescrever/compartilhar; identidade, competência pertinente, autoridade para o ato e concessão são avaliações separadas.",
+      "tec_requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-11",
+        "REQ-13"
+      ],
+      "cases": [
+        "CP-09",
+        "CP-10",
+        "CP-11",
+        "CP-17",
+        "CP-18"
+      ]
+    },
+    {
+      "id": "PC-09",
+      "title": "Versões e concorrência rastreáveis",
+      "rule": "Correção identifica versão alvo, agente/escopo/temporalidade e relação entre versões legitimamente conserváveis; conflitos não se resolvem silenciosamente pela última gravação. Contador e updatedAt não substituem história nem provam autor.",
+      "tec_requirements": [
+        "REQ-04",
+        "REQ-05",
+        "REQ-09",
+        "REQ-10"
+      ],
+      "cases": [
+        "CP-08",
+        "CP-12",
+        "CP-13",
+        "CP-14"
+      ]
+    },
+    {
+      "id": "PC-10",
+      "title": "Coexistência e divergência",
+      "rule": "Representar complemento/divergência/contestação sem votação, precedência profissional ou perfil de identidade unificado. Evidência pode ser examinada sem invalidar automaticamente a interpretação da pessoa sobre sua experiência.",
+      "tec_requirements": [
+        "REQ-06",
+        "REQ-11"
+      ],
+      "cases": [
+        "CP-05",
+        "CP-06",
+        "CP-09",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "PC-11",
+      "title": "Derivação e reavaliação",
+      "rule": "Derivado aponta versões efetivamente utilizadas e método/finalidade; fonte ou autorização alterada reabre validade, apresentação, utilização e retenção separadamente. Conter uso indevido antes de depender do recálculo assíncrono.",
+      "tec_requirements": [
+        "REQ-03",
+        "REQ-05",
+        "REQ-06",
+        "REQ-09"
+      ],
+      "cases": [
+        "CP-16",
+        "CP-17",
+        "CP-19",
+        "CP-20",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "PC-12",
+      "title": "Perfil curado não substitui fontes",
+      "rule": "Separar dados administrativos de identidade e afirmações contextuais curadas. Curador/método/seleção não assumem autoria das fontes; perfil e síntese não apagam perspectivas nem mostram consenso, preferência atual ou frequência sem suporte autorizado.",
+      "tec_requirements": [
+        "REQ-03",
+        "REQ-05",
+        "REQ-06",
+        "REQ-10",
+        "REQ-12"
+      ],
+      "cases": [
+        "CP-06",
+        "CP-07",
+        "CP-17",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "PC-13",
+      "title": "Ciclo de vida proporcional",
+      "rule": "Conteúdo, versões/diffs, metadados, provas e derivados seguem políticas próprias C01–C10. Não impor append-only perpétuo, hash como anonimato ou reconstrução de conteúdo legitimamente destinado para manter rastreabilidade.",
+      "tec_requirements": [
+        "REQ-07",
+        "REQ-08",
+        "REQ-14"
+      ],
+      "cases": [
+        "CP-16",
+        "CP-19",
+        "CP-20",
+        "CP-21",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "PC-14",
+      "title": "Legados sem autoria retroativa",
+      "rule": "Compatibilidade preserva valores efetivamente existentes e sua origem; não atribui intérprete/editor por registrador, papel, primeira pessoa, revision, updatedAt ou senha de cofre. Reconciliar preserva lacunas e medidas de acesso/destinação.",
+      "tec_requirements": [
+        "REQ-10",
+        "REQ-13"
+      ],
+      "cases": [
+        "CP-04",
+        "CP-14",
+        "CP-15",
+        "CP-18",
+        "CP-20"
+      ]
+    },
+    {
+      "id": "PC-15",
+      "title": "Acesso por operação e por versão",
+      "rule": "Consultar conteúdo/metadados, usar, preparar, compartilhar, exportar, corrigir e destinar exigem avaliação atual independente; histórico/linhagem/índices/caches não contornam o escopo. Autoria original não garante acesso atual.",
+      "tec_requirements": [
+        "REQ-01",
+        "REQ-03",
+        "REQ-04",
+        "REQ-12",
+        "REQ-13"
+      ],
+      "cases": [
+        "CP-08",
+        "CP-11",
+        "CP-16",
+        "CP-17",
+        "CP-18",
+        "CP-20"
+      ]
+    },
+    {
+      "id": "PC-16",
+      "title": "Decisão, prova e gates",
+      "rule": "Protocolo, decisão, efeito e conclusão são distintos; evidência minimizada e revisão aplicável não são substituídas por CI. Decisões físicas/jurídicas continuam abertas, casos propostos não executados e dados reais bloqueados.",
+      "tec_requirements": [
+        "REQ-02",
+        "REQ-08",
+        "REQ-14",
+        "REQ-15"
+      ],
+      "cases": [
+        "CP-10",
+        "CP-19",
+        "CP-21",
+        "CP-23",
+        "CP-24"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "CP-01",
+      "title": "Manifestação, observação e interpretação separadas",
+      "given": "Uma criança fictícia afasta um objeto; adulto A registra o gesto e acrescenta que acredita ser desconforto.",
+      "when": "Registrar a descrição e a interpretação com suas atribuições/contextos informados.",
+      "expected": "Gesto relatado é distinguível da interpretação de A; experiência interna, intenção e consentimento da criança não são preenchidos.",
+      "negative": "Não atribuir à criança a frase ou significado interpretado pelo adulto.",
+      "operations": [
+        "OP-02",
+        "OP-05"
+      ],
+      "retention_cases": [
+        "R02"
+      ],
+      "open_decisions": [
+        "J01",
+        "J02"
+      ],
+      "requirements": [
+        "PC-01",
+        "PC-02",
+        "PC-07"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-02",
+      "title": "Cadeia de relato sem conta presumida",
+      "given": "Registrador A recebe de B um relato cuja pessoa observadora não foi identificada.",
+      "when": "Registrar a fonte textual e consultar a proveniência no escopo permitido.",
+      "expected": "A é registrador, B é fonte declarada; observador/autor original desconhecidos continuam lacuna; fonte textual não vira conta autenticada.",
+      "negative": "Nome citado ou papel 'mãe' não resolve identidade, verificação ou autoria de interpretação.",
+      "operations": [
+        "OP-02",
+        "OP-04"
+      ],
+      "retention_cases": [
+        "R02"
+      ],
+      "open_decisions": [
+        "J01",
+        "T01"
+      ],
+      "requirements": [
+        "PC-01",
+        "PC-03"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-03",
+      "title": "Lacunas limitam operação pertinente",
+      "given": "Contribuição sintética tem contexto não informado e trecho não observado; há pedido de síntese que depende desse contexto.",
+      "when": "Registrar legitimamente e depois avaliar o uso específico.",
+      "expected": "Registro mantém estados distintos; uso dependente fica pendente ou explicitamente limitado, sem inventar o contexto.",
+      "negative": "Não bloquear todo registro só pela falta de explicação verbal; não preencher ausência por IA.",
+      "operations": [
+        "OP-02",
+        "OP-05"
+      ],
+      "retention_cases": [
+        "R01",
+        "R02"
+      ],
+      "open_decisions": [
+        "T01",
+        "J01"
+      ],
+      "requirements": [
+        "PC-01",
+        "PC-03"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-04",
+      "title": "Autoria de interpretação não inferida de registrador",
+      "given": "Legado contém recordedByCaregiverId, notes em primeira pessoa e revision=4, sem autor de interpretação/alteração.",
+      "when": "Apresentar o legado e preparar futura reconciliação.",
+      "expected": "Conserva o texto e sua proveniência permitida; intérprete/editor permanecem 'Não registrados separadamente' enquanto sem prova.",
+      "negative": "Não atribuir ao registrador, responsável legal ou último usuário autenticado a autoria faltante.",
+      "operations": [
+        "OP-04",
+        "OP-08"
+      ],
+      "retention_cases": [
+        "R03"
+      ],
+      "open_decisions": [
+        "T01"
+      ],
+      "requirements": [
+        "PC-02",
+        "PC-14"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-05",
+      "title": "Contribuições independentes sobre o mesmo evento",
+      "given": "A e B descrevem de modo incompatível um encontro sintético no mesmo período/contexto informado.",
+      "when": "Registrar ambas e relacionar a divergência.",
+      "expected": "Cada unidade mantém autoria/fonte/versão; divergência é visível no escopo autorizado e não escolhe vencedor automaticamente.",
+      "negative": "Profissão, quantidade de relatos, ordem de cadastro ou recência não apagam a outra contribuição.",
+      "operations": [
+        "OP-02",
+        "OP-05",
+        "OP-09"
+      ],
+      "retention_cases": [
+        "R03"
+      ],
+      "open_decisions": [
+        "T02",
+        "J01"
+      ],
+      "requirements": [
+        "PC-04",
+        "PC-10"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-06",
+      "title": "Contextos distintos não viram contradição total",
+      "given": "A registra aceitação de um objeto em casa; B registra recusa em outro ambiente e momento.",
+      "when": "Preparar perfil curado/síntese para finalidade autorizada.",
+      "expected": "Contextos/períodos e limites permanecem; perfil não vira 'sempre gosta/nunca gosta' nem apaga as fontes.",
+      "negative": "Não fundir por criança ou autor, nem tratar diferença contextual como falsidade.",
+      "operations": [
+        "OP-03",
+        "OP-05",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R03",
+        "R12"
+      ],
+      "open_decisions": [
+        "T02",
+        "T03"
+      ],
+      "requirements": [
+        "PC-04",
+        "PC-10",
+        "PC-12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-07",
+      "title": "Ordenação e atualidade",
+      "given": "Lista global legada apresenta um interesse primeiro e outro foi cadastrado mais recentemente; sem medida de frequência.",
+      "when": "Montar resumo ou perfil curado.",
+      "expected": "Apresentar como informação de perfil com fonte/tempo não indicados, ou limitar uso conforme a finalidade; nenhuma frequência/atualidade é inferida.",
+      "negative": "Não criar preferência por fallback, idade, ordem do array ou timestamp de importação.",
+      "operations": [
+        "OP-04",
+        "OP-05"
+      ],
+      "retention_cases": [
+        "R01"
+      ],
+      "open_decisions": [
+        "T01",
+        "T03"
+      ],
+      "requirements": [
+        "PC-05",
+        "PC-12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-08",
+      "title": "Correção própria condicionada ao acesso vigente",
+      "given": "Autor A pode corrigir sua unidade v1, com origem/atribuição verificáveis no contexto sintético.",
+      "when": "Corrigir para v2; repetir depois de perder a permissão pertinente.",
+      "expected": "Correção autorizada mantém agente/versão e reavalia dependências; repetição sem permissão é negada/pendente, sem efeito protegido.",
+      "negative": "Ser autor não contorna revogação/restrição ou dá direito de apagar dados de terceiros.",
+      "operations": [
+        "OP-08",
+        "OP-13",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R03",
+        "R06"
+      ],
+      "open_decisions": [
+        "T04",
+        "J01"
+      ],
+      "requirements": [
+        "PC-06",
+        "PC-09",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-09",
+      "title": "Contestação de outra perspectiva",
+      "given": "B discorda de contribuição de A e tem legitimidade para manifestar contestação.",
+      "when": "Registrar contestação e pedir revisão.",
+      "expected": "B assina sua manifestação relacionada a A/v1; decisão/estado do pedido são distintos; A/v1 não é sobrescrita nem declarada falsa por essa ocorrência.",
+      "negative": "Não exigir concordância com A ou capacidade universal de explicação verbal.",
+      "operations": [
+        "OP-09",
+        "OP-10"
+      ],
+      "retention_cases": [
+        "R02",
+        "R11"
+      ],
+      "open_decisions": [
+        "J01",
+        "J02"
+      ],
+      "requirements": [
+        "PC-06",
+        "PC-08",
+        "PC-10"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-10",
+      "title": "Administração não toma autoria alheia",
+      "given": "Uma medida administrativa sobre versão de A tem fundamento/escopo identificado; exige revisão adicional na fase aplicável.",
+      "when": "Propor alteração com e sem revisão/fundamento suficientes.",
+      "expected": "Só medida legitimada e revisada pode produzir efeito; agente administrativo é agente da alteração, não autor retroativo de A.",
+      "negative": "Não usar cargo, papel de guardião ou revisão de PR como checkpoint humano do caso.",
+      "operations": [
+        "OP-08",
+        "OP-10",
+        "OP-11"
+      ],
+      "retention_cases": [
+        "R03",
+        "R11"
+      ],
+      "open_decisions": [
+        "J01",
+        "J02",
+        "T05"
+      ],
+      "requirements": [
+        "PC-06",
+        "PC-08",
+        "PC-16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-11",
+      "title": "Representação, profissão e concessão independentes",
+      "given": "Pessoa com vínculo/credencial declarados pretende representar criança ou conceder histórico a outro destinatário.",
+      "when": "Avaliar cada ato, sua autoridade e escopo.",
+      "expected": "Representação/concessão seguem verificação por ato; vínculo e competência declarados não criam acesso, verdade ou autoridade universal.",
+      "negative": "Não decidir por regra universal de um/todos responsáveis nem herdar concessão por equipe.",
+      "operations": [
+        "OP-06",
+        "OP-12"
+      ],
+      "retention_cases": [
+        "R02",
+        "R05"
+      ],
+      "open_decisions": [
+        "J01",
+        "J02"
+      ],
+      "requirements": [
+        "PC-07",
+        "PC-08",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-12",
+      "title": "Edições concorrentes da mesma versão",
+      "given": "Duas alterações autorizadas partem de C-A/v1 com decisões/contextos próprios.",
+      "when": "Efetivar uma e tentar a outra com alvo superado.",
+      "expected": "Conflito é explícito e exige nova avaliação; não perder silenciosamente a alteração efetivada nem misturar autores.",
+      "negative": "Não resolver por último relógio do cliente, maior revision isolada ou sobrescrita automática.",
+      "operations": [
+        "OP-08"
+      ],
+      "retention_cases": [
+        "R10"
+      ],
+      "open_decisions": [
+        "T02",
+        "T04"
+      ],
+      "requirements": [
+        "PC-09"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-13",
+      "title": "Retry e evento fora de ordem",
+      "given": "Uma correção foi aplicada, mas a confirmação falhou; há retentativa e evento mais antigo.",
+      "when": "Repetir a mesma intenção e processar o evento atrasado.",
+      "expected": "Prova distingue tentativa/efeito e evita duplicação; evento antigo não reativa conteúdo ou permissão; acesso ao resultado requer avaliação atual.",
+      "negative": "Não reiniciar retenção/prazo por retry nem gerar novo autor por execução em job.",
+      "operations": [
+        "OP-08",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R07",
+        "R10"
+      ],
+      "open_decisions": [
+        "T04",
+        "T05"
+      ],
+      "requirements": [
+        "PC-09"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-14",
+      "title": "revision/updatedAt não reconstituem acervo",
+      "given": "Legado tem revision=5 e updatedAt, sem versões anteriores nem editor informado.",
+      "when": "Converter representação conceitual e apresentar o histórico disponível.",
+      "expected": "Preservar valores como metadados declarados, com cobertura histórica não demonstrada; nova operação futura tem seu agente sem inventar os anteriores.",
+      "negative": "Não criar cinco versões, autor antigo ou data do acontecimento a partir da importação.",
+      "operations": [
+        "OP-04",
+        "OP-08"
+      ],
+      "retention_cases": [
+        "R03"
+      ],
+      "open_decisions": [
+        "T01",
+        "T02"
+      ],
+      "requirements": [
+        "PC-02",
+        "PC-03",
+        "PC-09",
+        "PC-14"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-15",
+      "title": "Tempo do acontecimento desconhecido",
+      "given": "Arquivo legado tem data de importação atual e occurredAt ausente/incerto; relação/papel histórico também não comprovados.",
+      "when": "Conciliar ou receber em área apropriada segundo política futura.",
+      "expected": "Tempo de ingestão fica separado; acontecimento/relação histórica mantêm lacuna ou verificação pendente; operação dependente é limitada.",
+      "negative": "Não usar 'agora', papel atual, fixture padrão ou data de edição como fato histórico.",
+      "operations": [
+        "OP-02",
+        "OP-04"
+      ],
+      "retention_cases": [
+        "R01",
+        "R03"
+      ],
+      "open_decisions": [
+        "T01",
+        "J01"
+      ],
+      "requirements": [
+        "PC-03",
+        "PC-05",
+        "PC-14"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-16",
+      "title": "Correção e eliminação de versão anterior",
+      "given": "C-A/v1 alimentou síntese S/v1; v2 corrige a fonte e a decisão cabível manda destinar conteúdo de v1.",
+      "when": "Aplicar medida e reavaliar versões, perfil curado, síntese, logs e referências conhecidos.",
+      "expected": "Conteúdo legitimamente eliminável não fica em diff/prova; quatro dimensões do derivado são decididas separadamente; nenhum restauro para produzir histórico.",
+      "negative": "Não guardar cópia integral/hash identificável indefinidamente por rastreabilidade nem apagar fatos independentes automaticamente.",
+      "operations": [
+        "OP-08",
+        "OP-11",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R03",
+        "R04",
+        "R14"
+      ],
+      "open_decisions": [
+        "T02",
+        "T03",
+        "T05"
+      ],
+      "requirements": [
+        "PC-06",
+        "PC-11",
+        "PC-13",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-17",
+      "title": "Leitura não concede uso nem revela fonte restrita",
+      "given": "Leitor pode consultar fonte A, não pode usá-la na finalidade de síntese e não pode consultar fonte B.",
+      "when": "Preparar/apresentar/exportar perfil ou síntese que referencie A e B.",
+      "expected": "Uso sem condição é impedido; linhagem/citações/contagens não revelam B; se contexto íntegro não puder ser entregue legitimamente, representação não é disponibilizada.",
+      "negative": "Não expor identidade, existência ou metadados de B pela justificativa ou por um resumo inferencial.",
+      "operations": [
+        "OP-03",
+        "OP-04",
+        "OP-05",
+        "OP-06",
+        "OP-07"
+      ],
+      "retention_cases": [
+        "R05",
+        "R12",
+        "R13"
+      ],
+      "open_decisions": [
+        "T03",
+        "J01"
+      ],
+      "requirements": [
+        "PC-08",
+        "PC-11",
+        "PC-12",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-18",
+      "title": "Importação v1/v2 não cria autoridade",
+      "given": "Cofre sintético íntegro contém papel de guardião, registrador e revisão maiores que o estado atual.",
+      "when": "Importar/conferir legado e decidir autoria/acesso/alteração por operação.",
+      "expected": "Integridade e compatibilidade preservam apenas alegações demonstráveis; perfil/papel/ID importado não concede poder, não preenche autoria e não substitui verificação atual.",
+      "negative": "Senha correta, schema válido e maior revisão não permitem alterar contribuição alheia ou ampliar acesso.",
+      "operations": [
+        "OP-02",
+        "OP-08",
+        "OP-12"
+      ],
+      "retention_cases": [
+        "R02",
+        "R03"
+      ],
+      "open_decisions": [
+        "T01",
+        "T04",
+        "J01"
+      ],
+      "requirements": [
+        "PC-08",
+        "PC-14",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-19",
+      "title": "Retenção necessária sem exposição irrestrita",
+      "given": "Uma versão contestada precisa permanecer no escopo de política/exceção concretamente verificada.",
+      "when": "Avaliar conservação, leitura, uso e próxima revisão.",
+      "expected": "Conservar somente extensão/período aplicáveis, mantendo restrições; controvérsia/indisponibilidade de revisor não cria prazo indefinido.",
+      "negative": "Não mudar parâmetros candidatos C01–C10 nem confundir bloqueio de uso com eliminação.",
+      "operations": [
+        "OP-01",
+        "OP-10",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R01",
+        "R08",
+        "R11"
+      ],
+      "open_decisions": [
+        "J01",
+        "J02",
+        "T05"
+      ],
+      "requirements": [
+        "PC-11",
+        "PC-13",
+        "PC-16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-20",
+      "title": "Restauração e cobertura limitada",
+      "given": "Backup anterior contém conteúdo destinado e concessão revogada; índice de dependências tem cobertura incompleta.",
+      "when": "Restaurar em isolamento e conciliar antes de reabrir leitura/uso.",
+      "expected": "Reaplicar medidas atuais; cobertura insuficiente mantém escopo afetado pendente, sem remontar conteúdo eliminado para reconstruir o grafo.",
+      "negative": "Não reiniciar retenção, reativar acesso ou declarar propagação completa porque o backup abriu.",
+      "operations": [
+        "OP-01",
+        "OP-04",
+        "OP-11",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R08",
+        "R09"
+      ],
+      "open_decisions": [
+        "T02",
+        "T05"
+      ],
+      "requirements": [
+        "PC-11",
+        "PC-13",
+        "PC-14",
+        "PC-15"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-21",
+      "title": "Prova falha depois de efeito parcial",
+      "given": "Parte de uma destinação foi aplicada e outra tarefa/prova falhou.",
+      "when": "Conferir efeito por escopo e comunicar estado.",
+      "expected": "Resultado é parcial/sob verificação com ação responsável; evidência minimizada tem política própria e não recompõe o conteúdo eliminado.",
+      "negative": "Não declarar conclusão integral por comando aceito, nem restaurar dado para provar que foi apagado.",
+      "operations": [
+        "OP-11",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R07",
+        "R10",
+        "R14"
+      ],
+      "open_decisions": [
+        "T05",
+        "J02"
+      ],
+      "requirements": [
+        "PC-13",
+        "PC-16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-22",
+      "title": "Curador/método não assume autoria",
+      "given": "Curador seleciona contribuições de A e B; um método automatizado auxilia a organização.",
+      "when": "Gerar perfil curado e revisar seleção.",
+      "expected": "Registrar curadoria/método e versões usadas; atribuições originais e divergências persistem no escopo permitido; campos sem suporte ficam lacuna, sem consenso fabricado.",
+      "negative": "Não dar ao curador, sistema ou profissional prioridade narrativa automática nem atribuir sua interpretação à criança.",
+      "operations": [
+        "OP-03",
+        "OP-05",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R12",
+        "R15"
+      ],
+      "open_decisions": [
+        "T03",
+        "J01"
+      ],
+      "requirements": [
+        "PC-04",
+        "PC-05",
+        "PC-10",
+        "PC-12"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-23",
+      "title": "Cópias externas e aprendizagem institucional",
+      "given": "Resultado derivado foi legitimamente entregue fora do sistema; incidente gera nota metodológica sem necessidade do teor pessoal.",
+      "when": "Revogar futuro uso/entrega e avaliar destinação do material e da aprendizagem.",
+      "expected": "Registrar alcance real; método C10 é separado das fontes pessoais, que seguem suas políticas; código/pseudônimo não prova anonimato.",
+      "negative": "Não alegar apagar cópia fora da governança ou conservar dados pessoais para sempre como aprendizado.",
+      "operations": [
+        "OP-01",
+        "OP-07",
+        "OP-13",
+        "OP-14"
+      ],
+      "retention_cases": [
+        "R13",
+        "R15",
+        "R16"
+      ],
+      "open_decisions": [
+        "T05",
+        "J01"
+      ],
+      "requirements": [
+        "PC-11",
+        "PC-13",
+        "PC-16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    },
+    {
+      "id": "CP-24",
+      "title": "Aprovação documental não abre gate real",
+      "given": "Contrato foi incorporado, mas #27 está sem validação, #29 pausada e V2 não tem pessoa designada.",
+      "when": "Solicitar migração/medida real com fundamento apenas nesta entrega ou na CI.",
+      "expected": "Manter implementação dependente de revisão própria e dados reais bloqueados; nenhum controle ou competência é presumido existente.",
+      "negative": "Não retomar Supabase, criar infraestrutura ou marcar cenário funcional PASS a partir do contrato.",
+      "operations": [
+        "OP-02",
+        "OP-11",
+        "OP-12"
+      ],
+      "retention_cases": [
+        "R02",
+        "R11"
+      ],
+      "open_decisions": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "J01",
+        "J02"
+      ],
+      "requirements": [
+        "PC-07",
+        "PC-16"
+      ],
+      "status": "NAO_EXECUTADO",
+      "evidence_required": "No ensaio futuro: commit/ambiente/política, atores e escopos sintéticos, origem/versões, estímulo e efeito observado por caminho distinto, resultado por critério, evidência minimizada e limites; nenhum dado real enquanto gates fechados."
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "title": "Natureza, papéis, lacunas e verificação",
+      "requirements": [
+        "PC-01",
+        "PC-02",
+        "PC-03"
+      ],
+      "cases": [
+        "CP-01",
+        "CP-02",
+        "CP-03",
+        "CP-04",
+        "CP-14",
+        "CP-15"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "title": "Contribuição independente, temporalidade, derivação e perfil",
+      "requirements": [
+        "PC-04",
+        "PC-05",
+        "PC-10",
+        "PC-11",
+        "PC-12"
+      ],
+      "cases": [
+        "CP-05",
+        "CP-06",
+        "CP-22",
+        "CP-07",
+        "CP-15",
+        "CP-09",
+        "CP-16",
+        "CP-17",
+        "CP-19",
+        "CP-20",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "title": "Correção, representação, contestação, administração e concessão",
+      "requirements": [
+        "PC-06",
+        "PC-07",
+        "PC-08"
+      ],
+      "cases": [
+        "CP-08",
+        "CP-09",
+        "CP-10",
+        "CP-16",
+        "CP-01",
+        "CP-11",
+        "CP-24",
+        "CP-17",
+        "CP-18"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "title": "Linhagem e destinação legítimas",
+      "requirements": [
+        "PC-09",
+        "PC-11",
+        "PC-13"
+      ],
+      "cases": [
+        "CP-08",
+        "CP-12",
+        "CP-13",
+        "CP-14",
+        "CP-16",
+        "CP-17",
+        "CP-19",
+        "CP-20",
+        "CP-23",
+        "CP-21"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "title": "Legados, lacunas de autoria e operações",
+      "requirements": [
+        "PC-14",
+        "PC-15"
+      ],
+      "cases": [
+        "CP-04",
+        "CP-14",
+        "CP-15",
+        "CP-18",
+        "CP-20",
+        "CP-08",
+        "CP-11",
+        "CP-16",
+        "CP-17"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "title": "Cenários futuros e decisões técnicas/jurídicas",
+      "requirements": [
+        "PC-16"
+      ],
+      "decisions": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "J01",
+        "J02"
+      ],
+      "cases": [
+        "CP-10",
+        "CP-19",
+        "CP-21",
+        "CP-23",
+        "CP-24"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "title": "Status e limites sem aprovação de schema/dados reais",
+      "requirements": [
+        "PC-16"
+      ],
+      "decisions": [
+        "J01",
+        "J02",
+        "T04",
+        "T05"
+      ],
+      "cases": [
+        "CP-10",
+        "CP-19",
+        "CP-21",
+        "CP-23",
+        "CP-24"
+      ]
+    }
+  ],
+  "open_decisions": [
+    {
+      "id": "T01",
+      "title": "Representação de lacunas, identidades e reconciliação de legados",
+      "owner": "Creusio Kizua; revisão técnica posterior",
+      "status": "ABERTA",
+      "decision": "Escolher representação lógica/física de atribuições por unidade, identidade declarada versus verificada, fonte, granularidade e ingresso seguro de legados incompletos. Não alterar o validador atual nem preencher defaults por esta proposta."
+    },
+    {
+      "id": "T02",
+      "title": "Versões, dependências e capacidade de retenção",
+      "owner": "Revisão técnica; dependência externa #29 PAUSADA",
+      "status": "ABERTA_COM_DEPENDENCIA_PAUSADA",
+      "decision": "Definir mecanismo físico de versões/relações, comparações de revisão, cobertura/ciclos e destinação verificável de conteúdo/diffs/índices/cópias. Planejar sem conexão ou retomada de #29."
+    },
+    {
+      "id": "T03",
+      "title": "Perfil curado, unidades de interpretação e método de síntese",
+      "owner": "Creusio Kizua; revisão de produto/domínio",
+      "status": "ABERTA",
+      "decision": "Revisar granularidade e fronteiras das unidades autorais, seleção autorizada, explicação de cobertura/divergência e métodos admissíveis; automação não é autorizada por esta descrição."
+    },
+    {
+      "id": "T04",
+      "title": "Fronteira efetiva e concorrência por operação",
+      "owner": "Revisão técnica própria; TEC-003 D01–D04/D08",
+      "status": "ABERTA",
+      "decision": "Derivar posteriormente API/schema/RLS, idempotência, concessões e guarda de efeito para o modelo. Preservar ADR-005 aceita para identidade adulta; não reabrir escolha de provedor nem criar infraestrutura. Correções client-side/cofre v2 não demonstram autorização persistente."
+    },
+    {
+      "id": "T05",
+      "title": "Prova, anonimização e destinação em todos os suportes",
+      "owner": "Revisão técnica/governança; #27 e #29 PAUSADA quando pertinentes",
+      "status": "ABERTA",
+      "decision": "Definir evidência minimizada, critérios de identificabilidade, método de verificação e capacidade de eliminar/reconciliar versões, logs, pacotes e backups; sem novos números de retenção ou marcadores perpétuos."
+    },
+    {
+      "id": "J01",
+      "title": "Legitimidade de autoria, representação e tratamento por categoria/ato",
+      "owner": "GOV-001/#27; competência apropriada a comprovar",
+      "status": "PENDENTE_VALIDACAO_JURIDICA",
+      "decision": "Conferir enquadramentos e alcance territorial, participação/representação, dados de terceiros, histórico e poderes por operação. Não estabelecer consenso familiar universal, hierarquia profissional ou direitos finais nesta proposta."
+    },
+    {
+      "id": "J02",
+      "title": "Revisão adicional, conflitos e medidas irreversíveis",
+      "owner": "Creusio Kizua; V2/V3 competentes a designar conforme GOV-003",
+      "status": "PENDENTE_APLICACAO_POR_CASO",
+      "decision": "Aplicar fases/gatilhos GOV-002/GOV-003 e comprovar competência/ausência de conflito/acesso mínimo. O próprio executor e a CI não substituem pessoa distinta; falta de capacidade não autoriza efeito ou retenção irrestritos."
+    }
+  ],
+  "case_execution_count": 0,
+  "physical_schema_approved": false,
+  "migrations_created": false,
+  "functional_code_changed": false,
+  "real_data_authorized": false,
+  "task29_resumed": false,
+  "independent_reviewer_assigned": false,
+  "new_INF_principles": 0,
+  "source_paths": [
+    "docs/contrato-dominio-criterios-operacoes-v0-1.md",
+    "docs/contrato-dominio-mundelo-v0-1.md",
+    "docs/qa/fix-54/decisao-dominio-pendente.md",
+    "docs/especificacoes/tec-003/modelo.json",
+    "src/types/index.ts",
+    "docs/adr/005-identidade-e-persistencia-supabase.md",
+    "src/validation/migration.ts",
+    "docs/gestao/README.md",
+    "docs/politica-operacional-retencao-destinacao-v0-1.md",
+    "docs/governanca/gov-002/modelo.json",
+    "docs/governanca/gov-003/modelo.json",
+    "docs/politica-operacional-retencao-cenarios-v0-1.md",
+    "docs/parametros-retencao-categorias-v0-1.json",
+    "src/presentation/observationAttribution.ts"
+  ],
+  "incorporation_is_not_automatic_implementation_approval": true,
+  "operations": [
+    {
+      "id": "OP-01",
+      "name": "Preservar",
+      "conditions": "Política da categoria e legitimidade de conservação identificadas",
+      "effect": "Conservar só o escopo legítimo; conteúdo, versão, relação e prova têm limites próprios",
+      "cases": [
+        "CP-19",
+        "CP-20",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "OP-02",
+      "name": "Registrar (create)",
+      "conditions": "Ator legitimado para criar; fonte/tipo/atribuições conhecidos ou lacuna explícita",
+      "effect": "Criar unidade independente, sem publicar, completar autoria ou escolher narrativa verdadeira",
+      "cases": [
+        "CP-01",
+        "CP-02",
+        "CP-03",
+        "CP-05",
+        "CP-15",
+        "CP-18",
+        "CP-24"
+      ]
+    },
+    {
+      "id": "OP-03",
+      "name": "Preparar para compartilhamento",
+      "conditions": "Uso das fontes, representação e finalidade autorizados",
+      "effect": "Preparação privada ligada a versões; não concede leitura ao destinatário",
+      "cases": [
+        "CP-06",
+        "CP-17",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "OP-04",
+      "name": "Consultar (read)",
+      "conditions": "Leitura específica de conteúdo/versão/intervalo/metadados verificada",
+      "effect": "Apresentar apenas o escopo permitido; nem referência de fonte restrita revela existência indevida",
+      "cases": [
+        "CP-02",
+        "CP-04",
+        "CP-07",
+        "CP-14",
+        "CP-15",
+        "CP-17",
+        "CP-20"
+      ]
+    },
+    {
+      "id": "OP-05",
+      "name": "Utilizar em síntese/interpretação",
+      "conditions": "Fontes/versões e utilização/finalidade/método/destinatário legitimados",
+      "effect": "Derivado não canônico conserva diferenças e limites; não presume autoria da criança",
+      "cases": [
+        "CP-01",
+        "CP-03",
+        "CP-05",
+        "CP-06",
+        "CP-07",
+        "CP-17",
+        "CP-22"
+      ]
+    },
+    {
+      "id": "OP-06",
+      "name": "Compartilhar (share)",
+      "conditions": "Autoridade para compartilhar, destinatário e contexto íntegro conferidos",
+      "effect": "Entregar representação permitida; sem legitimidade para contexto suficiente, não liberar aquela unidade",
+      "cases": [
+        "CP-11",
+        "CP-17"
+      ]
+    },
+    {
+      "id": "OP-07",
+      "name": "Exportar (export)",
+      "conditions": "Operação/destino/versões/terceiros e autorização atuais",
+      "effect": "Pacote só contém conteúdo/proveniência exportáveis; arquivo não é concessão nem prova de veracidade",
+      "cases": [
+        "CP-17",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "OP-08",
+      "name": "Corrigir (edit_own / revisão administrativa)",
+      "conditions": "Autoridade própria ou revisão administrativa específica, versão alvo e fase pertinentes",
+      "effect": "Nova versão/relação rastreável; agente da alteração separado do autor original; antigas só enquanto legítimas",
+      "cases": [
+        "CP-04",
+        "CP-08",
+        "CP-10",
+        "CP-12",
+        "CP-13",
+        "CP-14",
+        "CP-16",
+        "CP-18"
+      ]
+    },
+    {
+      "id": "OP-09",
+      "name": "Contestar / solicitar correção",
+      "conditions": "Canal/legitimidade adequados e referência ao alvo quando possível",
+      "effect": "Manifestação autônoma e pedido acompanhado; sem sobrescrita, sanção ou falsidade automática",
+      "cases": [
+        "CP-05",
+        "CP-09"
+      ]
+    },
+    {
+      "id": "OP-10",
+      "name": "Restringir",
+      "conditions": "Fundamento, agente competente, escopo e operações afetadas identificados",
+      "effect": "Restringir somente o cabível; preservar legitimamente não autoriza mostrar/usar",
+      "cases": [
+        "CP-09",
+        "CP-10",
+        "CP-19"
+      ]
+    },
+    {
+      "id": "OP-11",
+      "name": "Eliminar / anonimizar",
+      "conditions": "Política, direitos/terceiros, revisão adicional e cobertura verificados",
+      "effect": "Destinação comprovada por escopo; versão/diff/log não conservam cópia indevida; não restaurar para produzir prova",
+      "cases": [
+        "CP-10",
+        "CP-16",
+        "CP-20",
+        "CP-21",
+        "CP-24"
+      ]
+    },
+    {
+      "id": "OP-12",
+      "name": "Conceder / ampliar acesso",
+      "conditions": "Poder específico, finalidade/categoria/operação/histórico/destinatário/vigência conferidos",
+      "effect": "Concessão não é prova de verdade, autoria ou direito de modificar terceiros; sem herança por vínculo",
+      "cases": [
+        "CP-11",
+        "CP-18",
+        "CP-24"
+      ]
+    },
+    {
+      "id": "OP-13",
+      "name": "Revogar / expirar / suspender concessão",
+      "conditions": "Evento e escopo verificados na fronteira efetiva",
+      "effect": "Impedir novas operações abrangidas; autoria não muda e cópias externas não são declaradas recolhidas",
+      "cases": [
+        "CP-08",
+        "CP-23"
+      ]
+    },
+    {
+      "id": "OP-14",
+      "name": "Reavaliar derivados",
+      "conditions": "Evento de fonte/versão/atribuição/política e dependências conhecidas",
+      "effect": "Separar validade/apresentação/uso/retenção; limitar escopo incerto e verificar efeito, sem agendamento como conclusão",
+      "cases": [
+        "CP-06",
+        "CP-08",
+        "CP-13",
+        "CP-16",
+        "CP-19",
+        "CP-20",
+        "CP-21",
+        "CP-22",
+        "CP-23"
+      ]
+    }
+  ]
+}
