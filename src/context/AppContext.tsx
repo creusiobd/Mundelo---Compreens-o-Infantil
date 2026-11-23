@@ -319,7 +319,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     setObservations((prev) => [validation.data, ...prev]);
     setSelectedObservationIds((prev) => [...prev, id]);
-    showNotification('Observação canônica registrada com proveniência e autoria.', 'success');
+    showNotification('Observação registrada na memória desta sessão de demonstração.', 'success');
     return true;
   };
 
@@ -391,10 +391,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return false;
     }
 
-    // 2. Authorization Gate: Only LEGAL_GUARDIAN can delete
+    // Demonstrative gate: ACTIVE + child link, and LEGAL_GUARDIAN or original recorder.
+    // Removing from session memory is not governed erasure of copies/backups.
     if (!canDeleteObservation(activeCaregiver, activeProfileId, target)) {
       showNotification(
-        'Acesso Negado: Apenas Responsáveis Legais (LEGAL_GUARDIAN) vinculados podem excluir observações.',
+        'Acesso negado: remover um registro desta memória de demonstração exige cuidador ativo, vinculado ao perfil e responsável legal ou a pessoa que registrou a observação.',
         'error'
       );
       return false;
@@ -402,7 +403,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     setObservations((prev) => prev.filter((item) => item.id !== id));
     setSelectedObservationIds((prev) => prev.filter((item) => item !== id));
-    showNotification('Observação excluída da memória da sessão.', 'info');
+    showNotification('Registro retirado da memória desta sessão de demonstração.', 'info');
     return true;
   };
 
