@@ -325,11 +325,38 @@
 - **Estado de segurança:** dados infantis reais e R01–R16 integrais continuam sujeitos aos gates anteriores. A pausa não altera sua disposição.
 
 
-## 21/11/2026 — Reavaliação da PR #17 (XIII/XIV e PG-06)
+## 21/11/2026 — Correção #51: contagens sem conclusões fixas
 
-- Auditoria estática atualizada na [v0.2](auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md), com [evidências fixadas](auditoria/pg06-2026-11-21/evidencias.json) na main `3208aa0d3b067d30bd940c7b12e59b0b14f508d8`.
-- Dez achados históricos reavaliados; AUD-11/AUD-12 acrescentados. V0.1 preservada sem alteração; retificações e melhorias das PRs #49/#50 explicitadas. PG-06 segue não atendido integralmente.
-- A branch da PR é conciliada com a main preservando os dois históricos. Entrega apenas documental, sem schema, RLS ou mudança funcional.
-- Próximos incrementos registrados no backlog do repositório: #51 padrões fixos; #52 preenchimentos sem relato; #53 leitura/comandos do perfil; #54 atribuição das interpretações. Sugestão de início: #51. Os novos itens ainda não tiveram campos do GitHub Project sincronizados.
-- Nenhuma dessas correções foi implementada nesta auditoria. Revisão humana independente e testes dirigidos aos recortes continuam pendentes; CI preexistente informa apenas regressão.
-- Mantidos: bloqueio de dados infantis reais, pausa #29 por conexão Supabase e indisponibilidade das fontes INF-ID #24–#26 no Codex. A auditoria não substitui validação jurídica nem comprovação externa de retenção/backups.
+Removidos os três padrões fixos de Compreender. A tela apresenta apenas contagens da amostra autorizada, com universo, limites e perguntas gerais explicitamente separadas. Amostra vazia não recebe percentuais fictícios. Quatro cenários E2E adicionados; expectativas de navegação atualizadas. Evidência e limites em [fix-51](qa/fix-51/README.md); execução de CI acompanhada na PR vinculada à issue #51.
+
+TypeScript e 102 testes de domínio/segurança PASS local; navegador local bloqueado antes das asserções. Não tratar a tentativa como teste de comportamento concluído. #52–#54 continuam pendentes; PG-06 integral e dados infantis reais seguem bloqueados. #29 permanece pausada por acesso ao Supabase.
+
+
+## 21/11/2026 — Continuação após PR #55: correção #52
+
+PR #55 já incorporada na main em `eca2025b918ca3fdee8c09e7ded27170617599b5`, conforme revisão/aprovação do responsável; #51 encerrada por integração. Próximo recorte #52 separa proposta de atividade de relato, remove padrões factuais dos formulários/validadores/migrador e conserva lacunas em estratégias. Campos obrigatórios sem informação bloqueiam o registro, sem inventar autoria/origem/data. Compatibilidade de registros completos e limites de legados incompletos explícitos em [fix-52](qa/fix-52/README.md).
+
+Controle negativo: 13 testes falham com fontes antigas; suíte corrigida 115 PASS local; TypeScript/build PASS. Cinco cenários E2E novos para execução CI na PR vinculada à #52, com criação/edição/estratégia verificadas pelo cofre exportado real. Resultados finais de CI registrados na PR/issue. #53/#54 pendentes, PG-06 integral e dados infantis reais bloqueados. #29 continua pausada, sem nova tentativa de conexão.
+
+
+## 22/11/2026 — Continuação após PR #56: correção #53
+
+PR #56 incorporada na main `04713b6ec5173b080eea4ab93a6548dc66b30954`; #52 concluída por integração. #53 separa leitura/gestão de perfil de criação de observações, aplica status/vínculo/contexto nos comandos reais e impede apresentação de Meu Mundo/configuração sem acesso. Gestão de atributos globais restrita ao responsável legal ACTIVE vinculado no protótipo; papel não valida perspectiva nem concede correção de contribuição alheia. Política e limites em [fix-53](qa/fix-53/README.md).
+
+142 testes de domínio/segurança e TypeScript/build PASS local. Oito cenários E2E novos, incluindo comandos no AppProvider real sem mock do avaliador; teste isolado de desenvolvimento fora do bundle de produção. Resultado de CI por commit registrado na PR/issue #53. #54, PG-06 integral/dados infantis reais continuam pendentes; #29 pausada, sem tentativas de conexão.
+
+
+## 23/11/2026 — Continuação após PR #57: correção #54
+
+PR #57 incorporada em `a6144039f08fbd6f3a563ab0fef02ec57b5f8f5f`; #53 concluída por integração. #54 separa registrador, observador/papel, fonte textual e lacunas de autoria de interpretação/alteração, com apresentação compartilhada em detalhe/prévia/cópia/impressão. Remove atribuição automática familiar/profissional; perfil global sem fonte individual não é incluído na síntese. Relatos divergentes mantêm textos e contextos. Contrato de autores/versões continua pendente, sem schema ou autoria inventada; ver [fix-54](qa/fix-54/README.md).
+
+150 testes domínio/segurança e TypeScript/build PASS local; cinco E2E novos para CI e QA-F04 atualizado com marcador de contribuição autorizada, preservando guardas de acesso. Resultado final por commit na PR/issue #54. PG-06 integral, R01–R16, dados infantis reais e fontes INF ausentes continuam com bloqueios; #29 pausada.
+
+
+## Reavaliação PG-06 — 23/11/2026 (v0.3)
+
+A [auditoria v0.3](auditoria-conformidade-principios-xiii-xiv-pg06-v0-3.md) reavalia a main `88a7eb84a3beae187cb880990d2b465ef00f378c`, após #51–#54 / PRs #55–#58. Reconhece as correções nos respectivos recortes, preserva v0.1/v0.2 como histórico e mantém **PG-06 integral: NÃO ATENDE; dados infantis reais: BLOCKED / NO-GO**. Efeitos do princípio XIV em uso humano não foram avaliados.
+
+Novo achado estático AUD-13 na Home originou #59 (próxima execução recomendada, com dados sintéticos). #60 trata primeiro do contrato documental de contribuições/autoria/versões; #61 trata linguagem e mensagens sem alterar permissões. O achado da Home não foi reproduzido dinamicamente nesta auditoria e não reabre o recorte concluído de #53.
+
+CI da main integrada conferida: run 45106790083, 150 testes de domínio/segurança e 87 E2E; 17 da etapa dedicada a11y são subconjunto. Isso não comprova R01–R16 integrais, retenção externa, legitimidade jurídica ou impacto humano. #29 permanece pausada; #24–#26 aguardam fontes; #27/#35 mantêm seus gates. Campos do GitHub Project não foram sincronizados. As regras normativas deste gate permanecem vigentes.

@@ -20,9 +20,21 @@ import {
 } from 'lucide-react';
 
 export const MyWorldScreen: React.FC = () => {
+  const {activeProfile, activeCaregiver, canReadProfile, canManageProfile} = useApp();
+  if (!canReadProfile) return (
+    <div className="max-w-3xl mx-auto px-4 py-8 space-y-3">
+      <h1 className="text-2xl font-bold text-[#133E43]">Meu Mundo indisponível</h1>
+      <p className="text-sm text-[#265358]">O cuidador ativo não possui acesso de leitura ao perfil neste contexto demonstrativo.</p>
+    </div>
+  );
+  // Remount on context changes: drafts from one child/person cannot follow another.
+  return <MyWorldContent key={`${activeProfile.id}:${activeCaregiver.id}:${activeCaregiver.status}:${canManageProfile}`} />;
+};
+
+const MyWorldContent: React.FC = () => {
   const {
     activeProfile,
-    canCreate,
+    canManageProfile,
     addInterest,
     removeInterest,
     addComfortAnchor,
@@ -55,12 +67,13 @@ export const MyWorldScreen: React.FC = () => {
 
   const handleAddStrategy = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!canCreate || !stratName.trim()) return;
-    addSupportStrategy({
+    if (!canManageProfile || !stratName.trim()) return;
+    const accepted = addSupportStrategy({
       strategy: stratName.trim(),
-      context: stratContext.trim() || 'Cotidiano geral',
-      observedResponse: stratResponse.trim() || 'Resposta calma observada',
+      context: stratContext.trim(),
+      observedResponse: stratResponse.trim(),
     });
+    if (!accepted) return;
     setStratName('');
     setStratContext('');
     setStratResponse('');
@@ -82,6 +95,7 @@ export const MyWorldScreen: React.FC = () => {
         </p>
       </div>
 
+      {!canManageProfile && <p role="status" className="text-sm text-[#265358]">Leitura disponível. A gestão dos atributos globais deste perfil demonstrativo exige responsável legal ativo e vinculado; registrar uma observação é uma operação independente.</p>}
       {/* Tabs Filter */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
         {[
@@ -138,10 +152,10 @@ export const MyWorldScreen: React.FC = () => {
                 >
                   <span className="font-medium">{item}</span>
                   <button
-                    onClick={() => canCreate && removeInterest(item)}
-                    disabled={!canCreate}
+                    onClick={() => canManageProfile && removeInterest(item)}
+                    disabled={!canManageProfile}
                     className={`p-1 rounded min-h-[32px] min-w-[32px] flex items-center justify-center ${
-                      canCreate
+                      canManageProfile
                         ? 'text-[#265358] hover:text-red-700'
                         : 'text-[#265358]/40 cursor-not-allowed'
                     }`}
@@ -157,29 +171,27 @@ export const MyWorldScreen: React.FC = () => {
               <input
                 type="text"
                 aria-label="Novo interesse ou fascínio"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 value={inputInterest}
                 onChange={(e) => setInputInterest(e.target.value)}
                 placeholder="Novo interesse (ex: trenzinhos, água)..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && canCreate) {
+                  if (e.key === 'Enter' && canManageProfile) {
                     e.preventDefault();
-                    addInterest(inputInterest);
-                    setInputInterest('');
+                    if (addInterest(inputInterest)) setInputInterest('');
                   }
                 }}
                 className="flex-1 min-w-0 bg-[#F8F5EF] border border-[#133E43]/15 rounded-xl px-3 py-1.5 text-xs text-[#133E43] placeholder:text-[#265358] focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px] disabled:opacity-50"
               />
               <button
                 type="button"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 onClick={() => {
-                  if (!canCreate) return;
-                  addInterest(inputInterest);
-                  setInputInterest('');
+                  if (!canManageProfile) return;
+                  if (addInterest(inputInterest)) setInputInterest('');
                 }}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1 ${
-                  canCreate
+                  canManageProfile
                     ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                     : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                 }`}
@@ -217,10 +229,10 @@ export const MyWorldScreen: React.FC = () => {
                 >
                   <span className="font-medium">{item}</span>
                   <button
-                    onClick={() => canCreate && removeComfortAnchor(item)}
-                    disabled={!canCreate}
+                    onClick={() => canManageProfile && removeComfortAnchor(item)}
+                    disabled={!canManageProfile}
                     className={`p-1 rounded min-h-[32px] min-w-[32px] flex items-center justify-center ${
-                      canCreate
+                      canManageProfile
                         ? 'text-[#265358] hover:text-red-700'
                         : 'text-[#265358]/40 cursor-not-allowed'
                     }`}
@@ -236,29 +248,27 @@ export const MyWorldScreen: React.FC = () => {
               <input
                 type="text"
                 aria-label="Nova fonte de conforto"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 value={inputComfort}
                 onChange={(e) => setInputComfort(e.target.value)}
                 placeholder="Novo conforto (ex: naninha azul)..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && canCreate) {
+                  if (e.key === 'Enter' && canManageProfile) {
                     e.preventDefault();
-                    addComfortAnchor(inputComfort);
-                    setInputComfort('');
+                    if (addComfortAnchor(inputComfort)) setInputComfort('');
                   }
                 }}
                 className="flex-1 min-w-0 bg-[#F8F5EF] border border-[#133E43]/15 rounded-xl px-3 py-1.5 text-xs text-[#133E43] placeholder:text-[#265358] focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px] disabled:opacity-50"
               />
               <button
                 type="button"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 onClick={() => {
-                  if (!canCreate) return;
-                  addComfortAnchor(inputComfort);
-                  setInputComfort('');
+                  if (!canManageProfile) return;
+                  if (addComfortAnchor(inputComfort)) setInputComfort('');
                 }}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1 ${
-                  canCreate
+                  canManageProfile
                     ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                     : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                 }`}
@@ -296,10 +306,10 @@ export const MyWorldScreen: React.FC = () => {
                 >
                   <span className="font-medium">{item}</span>
                   <button
-                    onClick={() => canCreate && removeSensitivity(item)}
-                    disabled={!canCreate}
+                    onClick={() => canManageProfile && removeSensitivity(item)}
+                    disabled={!canManageProfile}
                     className={`p-1 rounded min-h-[32px] min-w-[32px] flex items-center justify-center ${
-                      canCreate
+                      canManageProfile
                         ? 'text-[#265358] hover:text-red-700'
                         : 'text-[#265358]/40 cursor-not-allowed'
                     }`}
@@ -315,29 +325,27 @@ export const MyWorldScreen: React.FC = () => {
               <input
                 type="text"
                 aria-label="Nova sensibilidade relatada"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 value={inputSensitivity}
                 onChange={(e) => setInputSensitivity(e.target.value)}
                 placeholder="Nova sensibilidade (ex: etiquetas, som alto)..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && canCreate) {
+                  if (e.key === 'Enter' && canManageProfile) {
                     e.preventDefault();
-                    addSensitivity(inputSensitivity);
-                    setInputSensitivity('');
+                    if (addSensitivity(inputSensitivity)) setInputSensitivity('');
                   }
                 }}
                 className="flex-1 min-w-0 bg-[#F8F5EF] border border-[#133E43]/15 rounded-xl px-3 py-1.5 text-xs text-[#133E43] placeholder:text-[#265358] focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px] disabled:opacity-50"
               />
               <button
                 type="button"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 onClick={() => {
-                  if (!canCreate) return;
-                  addSensitivity(inputSensitivity);
-                  setInputSensitivity('');
+                  if (!canManageProfile) return;
+                  if (addSensitivity(inputSensitivity)) setInputSensitivity('');
                 }}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1 ${
-                  canCreate
+                  canManageProfile
                     ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                     : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                 }`}
@@ -375,10 +383,10 @@ export const MyWorldScreen: React.FC = () => {
                 >
                   <span className="font-medium">{item}</span>
                   <button
-                    onClick={() => canCreate && removeCommunicationMode(item)}
-                    disabled={!canCreate}
+                    onClick={() => canManageProfile && removeCommunicationMode(item)}
+                    disabled={!canManageProfile}
                     className={`p-1 rounded min-h-[32px] min-w-[32px] flex items-center justify-center ${
-                      canCreate
+                      canManageProfile
                         ? 'text-[#265358] hover:text-red-700'
                         : 'text-[#265358]/40 cursor-not-allowed'
                     }`}
@@ -394,29 +402,27 @@ export const MyWorldScreen: React.FC = () => {
               <input
                 type="text"
                 aria-label="Nova forma de comunicação"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 value={inputComm}
                 onChange={(e) => setInputComm(e.target.value)}
                 placeholder="Nova forma de comunicação..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && canCreate) {
+                  if (e.key === 'Enter' && canManageProfile) {
                     e.preventDefault();
-                    addCommunicationMode(inputComm);
-                    setInputComm('');
+                    if (addCommunicationMode(inputComm)) setInputComm('');
                   }
                 }}
                 className="flex-1 min-w-0 bg-[#F8F5EF] border border-[#133E43]/15 rounded-xl px-3 py-1.5 text-xs text-[#133E43] placeholder:text-[#265358] focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px] disabled:opacity-50"
               />
               <button
                 type="button"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 onClick={() => {
-                  if (!canCreate) return;
-                  addCommunicationMode(inputComm);
-                  setInputComm('');
+                  if (!canManageProfile) return;
+                  if (addCommunicationMode(inputComm)) setInputComm('');
                 }}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1 ${
-                  canCreate
+                  canManageProfile
                     ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                     : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                 }`}
@@ -454,10 +460,10 @@ export const MyWorldScreen: React.FC = () => {
                 >
                   <span className="font-medium">{item}</span>
                   <button
-                    onClick={() => canCreate && removeCelebratedMilestone(item)}
-                    disabled={!canCreate}
+                    onClick={() => canManageProfile && removeCelebratedMilestone(item)}
+                    disabled={!canManageProfile}
                     className={`p-1 rounded min-h-[32px] min-w-[32px] flex items-center justify-center ${
-                      canCreate
+                      canManageProfile
                         ? 'text-[#265358] hover:text-red-700'
                         : 'text-[#265358]/40 cursor-not-allowed'
                     }`}
@@ -473,29 +479,27 @@ export const MyWorldScreen: React.FC = () => {
               <input
                 type="text"
                 aria-label="Celebrar nova conquista"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 value={inputMilestone}
                 onChange={(e) => setInputMilestone(e.target.value)}
                 placeholder="Celebrar nova conquista..."
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && canCreate) {
+                  if (e.key === 'Enter' && canManageProfile) {
                     e.preventDefault();
-                    addCelebratedMilestone(inputMilestone);
-                    setInputMilestone('');
+                    if (addCelebratedMilestone(inputMilestone)) setInputMilestone('');
                   }
                 }}
                 className="flex-1 min-w-0 bg-[#F8F5EF] border border-[#133E43]/15 rounded-xl px-3 py-1.5 text-xs text-[#133E43] placeholder:text-[#265358] focus:ring-2 focus:ring-[#133E43] focus:outline-none min-h-[44px] disabled:opacity-50"
               />
               <button
                 type="button"
-                disabled={!canCreate}
+                disabled={!canManageProfile}
                 onClick={() => {
-                  if (!canCreate) return;
-                  addCelebratedMilestone(inputMilestone);
-                  setInputMilestone('');
+                  if (!canManageProfile) return;
+                  if (addCelebratedMilestone(inputMilestone)) setInputMilestone('');
                 }}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1 ${
-                  canCreate
+                  canManageProfile
                     ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                     : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                 }`}
@@ -517,9 +521,9 @@ export const MyWorldScreen: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-[#133E43] uppercase tracking-wider font-display">
-                    Estratégias de Acolhimento Experimentadas
+                    Estratégias de Acolhimento
                   </h2>
-                  <p className="text-[11px] text-[#265358]">O que a família já testou e a resposta observada</p>
+                  <p className="text-[11px] text-[#265358]">Propostas e experiências relatadas; campos ausentes permanecem não informados</p>
                 </div>
               </div>
               <span className="text-xs font-semibold text-[#265358]">
@@ -537,10 +541,10 @@ export const MyWorldScreen: React.FC = () => {
                     <div className="flex items-start justify-between gap-1">
                       <span className="font-bold text-[#133E43] leading-snug">{strat.strategy}</span>
                       <button
-                        onClick={() => canCreate && removeSupportStrategy(strat.id)}
-                        disabled={!canCreate}
+                        onClick={() => canManageProfile && removeSupportStrategy(strat.id)}
+                        disabled={!canManageProfile}
                         className={`p-1 rounded shrink-0 min-h-[28px] min-w-[28px] flex items-center justify-center ${
-                          canCreate
+                          canManageProfile
                             ? 'text-[#265358] hover:text-red-700'
                             : 'text-[#265358]/40 cursor-not-allowed'
                         }`}
@@ -550,11 +554,11 @@ export const MyWorldScreen: React.FC = () => {
                       </button>
                     </div>
                     <div className="text-[11px] text-[#265358]">
-                      <strong>Contexto:</strong> {strat.context}
+                      <strong>Contexto:</strong> {strat.context || 'Não informado'}
                     </div>
                   </div>
                   <div className="pt-2 border-t border-[#133E43]/10 text-[#133E43]">
-                    <strong>Resposta observada:</strong> {strat.observedResponse}
+                    <strong>Resposta observada:</strong> {strat.observedResponse || 'Não informada'}
                   </div>
                 </div>
               ))}
@@ -569,7 +573,7 @@ export const MyWorldScreen: React.FC = () => {
                 <input
                   type="text"
                   aria-label="Nome da estratégia de acolhimento"
-                  disabled={!canCreate}
+                  disabled={!canManageProfile}
                   value={stratName}
                   onChange={(e) => setStratName(e.target.value)}
                   placeholder="Nome da estratégia (ex: aviso sonoro 5 min antes)..."
@@ -579,7 +583,7 @@ export const MyWorldScreen: React.FC = () => {
                 <input
                   type="text"
                   aria-label="Contexto de aplicação da estratégia"
-                  disabled={!canCreate}
+                  disabled={!canManageProfile}
                   value={stratContext}
                   onChange={(e) => setStratContext(e.target.value)}
                   placeholder="Contexto de aplicação (ex: saída do banho)..."
@@ -588,7 +592,7 @@ export const MyWorldScreen: React.FC = () => {
                 <input
                   type="text"
                   aria-label="Resposta observada da criança"
-                  disabled={!canCreate}
+                  disabled={!canManageProfile}
                   value={stratResponse}
                   onChange={(e) => setStratResponse(e.target.value)}
                   placeholder="Como a criança respondeu..."
@@ -598,9 +602,9 @@ export const MyWorldScreen: React.FC = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  disabled={!canCreate}
+                  disabled={!canManageProfile}
                   className={`px-4 py-2 text-xs font-semibold rounded-xl min-h-[44px] flex items-center gap-1.5 shadow-xs ${
-                    canCreate
+                    canManageProfile
                       ? 'bg-[#133E43] text-white hover:bg-[#133E43]/90'
                       : 'bg-[#133E43]/30 text-white/70 cursor-not-allowed'
                   }`}

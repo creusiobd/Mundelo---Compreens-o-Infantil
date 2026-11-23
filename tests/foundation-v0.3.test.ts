@@ -233,6 +233,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
     it('deve incrementar revision em +1 e preservar childId, recordedAt e recordedByCaregiverId na edição', () => {
       const baseObs: Observation = validateObservation({
         id: 'obs-rev-1',
+        provenance: 'DIRECT',
         childId: 'tomas',
         recordedByCaregiverId: 'cg-helena',
         revision: 1,
@@ -267,9 +268,10 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
 
   // 5. Migração de Registros da Foundation v0.2 para Foundation v0.3
   describe('5. Migração Canônica e Compatibilidade Reversa (v0.2 -> v0.3)', () => {
-    it('deve migrar registro v0.2 sem campos v0.3 atribuindo valores canônicos seguros', () => {
+    it('deve migrar registro legado com autoria e origem explícitas preservadas', () => {
       const legacyV2Record = {
         id: 'legacy-obs-01',
+        recordedByCaregiverId: 'cg-helena',
         childId: 'tomas',
         occurredAt: '2026-11-10T09:30',
         recordedAt: '2026-11-10T10:00:00.000Z',
@@ -286,7 +288,7 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
         notes: 'Hipótese: rotina matinal estruturada traz calma.',
       };
 
-      const migrated = migrateObservationV2ToV3(legacyV2Record, 'cg-helena');
+      const migrated = migrateObservationV2ToV3(legacyV2Record);
 
       assert.equal(migrated.id, 'legacy-obs-01');
       assert.equal(migrated.childId, 'tomas');
@@ -297,9 +299,10 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
       assert.equal(migrated.notes, 'Hipótese: rotina matinal estruturada traz calma.');
     });
 
-    it('deve migrar registro v0.2 REPORTED_BY_OTHER com label padrão seguro', () => {
+    it('deve preservar fonte desconhecida em registro legado REPORTED_BY_OTHER', () => {
       const legacyReported = {
         id: 'legacy-obs-02',
+        recordedByCaregiverId: 'cg-marina',
         childId: 'lia',
         occurredAt: '2026-11-10T15:00',
         recordedAt: '2026-11-10T16:00:00.000Z',
@@ -310,10 +313,10 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
         description: 'Lia brincou na mesa de tintas.',
       };
 
-      const migrated = migrateObservationV2ToV3(legacyReported, 'cg-marina');
+      const migrated = migrateObservationV2ToV3(legacyReported);
 
       assert.equal(migrated.provenance, 'REPORTED_BY_OTHER');
-      assert.equal(migrated.reportedByLabel, 'Relatado por terceiro');
+      assert.equal(migrated.reportedByLabel, undefined);
       assert.equal(migrated.recordedByCaregiverId, 'cg-marina');
       assert.equal(migrated.revision, 1);
     });
@@ -322,6 +325,9 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
       const legacyBatch = [
         {
           id: 'batch-1',
+          recordedByCaregiverId: 'cg-carlos',
+          provenance: 'DIRECT',
+          recordedAt: '2026-11-11T12:00:00.000Z',
           childId: 'tomas',
           occurredAt: '2026-11-11T10:00',
           environment: 'casa',
@@ -331,6 +337,9 @@ describe('Suite de Testes Automatizados — MUNDELO Foundation v0.3', () => {
         },
         {
           id: 'batch-2',
+          recordedByCaregiverId: 'cg-carlos',
+          provenance: 'DIRECT',
+          recordedAt: '2026-11-11T12:00:00.000Z',
           childId: 'lia',
           occurredAt: '2026-11-11T11:00',
           environment: 'parque',

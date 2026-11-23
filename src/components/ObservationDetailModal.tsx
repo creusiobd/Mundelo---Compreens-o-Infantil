@@ -6,11 +6,11 @@
 import React from 'react';
 import { Observation } from '../types';
 import { useApp } from '../context/AppContext';
+import {ObservationAttribution} from './ObservationAttribution';
+import {ATTRIBUTION_LIMIT, INTERPRETATION_TEXT_LABEL, informedText} from '../presentation/observationAttribution';
 import {
   X,
   Calendar,
-  MapPin,
-  User,
   Heart,
   Eye,
   Sparkles,
@@ -18,9 +18,6 @@ import {
   Trash2,
   FileCheck,
   FilePlus,
-  ShieldAlert,
-  UserCheck,
-  History,
 } from 'lucide-react';
 
 interface ObservationDetailModalProps {
@@ -52,11 +49,6 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
   const isDeletable = canDelete(observation);
   const isReportable = canIncludeInReport(observation);
 
-  const recordedByCaregiver = caregivers.find((c) => c.id === observation.recordedByCaregiverId);
-  const recordedByText = recordedByCaregiver
-    ? `${recordedByCaregiver.displayName} (${recordedByCaregiver.relationshipLabel || recordedByCaregiver.role})`
-    : observation.recordedByCaregiverId || 'Helena (Mãe)';
-
   const formatDate = (isoString: string) => {
     try {
       const d = new Date(isoString);
@@ -79,16 +71,6 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
     transporte_consulta: 'Transporte / Consulta',
     reuniao_familia: 'Reunião Familiar',
     outro: 'Outro Ambiente',
-  };
-
-  const roleLabels: Record<string, string> = {
-    mae: 'Mãe',
-    pai: 'Pai',
-    avo: 'Avó / Avô',
-    cuidador: 'Cuidador(a)',
-    educador: 'Educador(a)',
-    terapeuta: 'Terapeuta',
-    outro: 'Outro Observador',
   };
 
   const typeLabels: Record<string, { label: string; colorClass: string }> = {
@@ -123,7 +105,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 </span>
                 <span aria-hidden="true">·</span>
                 <span className="font-mono bg-[#80C5B5]/20 text-[#133E43] px-2 py-0.5 rounded text-[11px] font-bold">
-                  Rev #{observation.revision || 1}
+                  Rev #{observation.revision}
                 </span>
               </div>
             </div>
@@ -144,54 +126,15 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
           aria-label="Conteúdo detalhado da observação"
           className="overflow-y-auto p-5 sm:p-6 space-y-5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43]"
         >
-          {/* Metadata Bar with Provenance & Caregiver Attribution */}
-          <div className="flex flex-wrap items-center gap-3 text-xs bg-white/80 p-3.5 rounded-2xl border border-[#133E43]/10">
-            <div className="flex items-center gap-1.5 text-[#133E43]">
-              <MapPin className="w-4 h-4 text-[#80C5B5]" />
-              <span className="font-semibold">Ambiente:</span>
-              <span>{envLabels[observation.environment] || observation.environment}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[#133E43]">
-              <User className="w-4 h-4 text-[#80C5B5]" />
-              <span className="font-semibold">Observador(a):</span>
-              <span>{roleLabels[observation.observerRole] || observation.observerRole}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[#133E43]">
-              <UserCheck className="w-4 h-4 text-[#80C5B5]" />
-              <span className="font-semibold">Registrado por:</span>
-              <span>{recordedByText}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[#133E43]">
-              <Eye className="w-4 h-4 text-[#80C5B5]" />
-              <span className="font-semibold">Proveniência:</span>
-              <span>
-                {observation.provenance === 'REPORTED_BY_OTHER'
-                  ? `Relatada (${observation.reportedByLabel || 'Terceiro'})`
-                  : 'Observação Direta (DIRECT)'}
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[#133E43]">
-              <History className="w-4 h-4 text-[#80C5B5]" />
-              <span className="font-semibold">Revisão:</span>
-              <span className="font-mono bg-[#80C5B5]/20 text-[#133E43] px-1.5 py-0.5 rounded font-bold">
-                #{observation.revision || 1}
-              </span>
-            </div>
-            {observation.recordedAt && (
-              <div className="text-[11px] text-[#265358] w-full pt-1.5 border-t border-[#133E43]/10 flex flex-wrap gap-4">
-                <span>Registrado no sistema: {new Date(observation.recordedAt).toLocaleString('pt-BR')}</span>
-                {observation.updatedAt && (
-                  <span>Última modificação: {new Date(observation.updatedAt).toLocaleString('pt-BR')}</span>
-                )}
-              </div>
-            )}
-          </div>
+          <div className="text-xs text-[#133E43]">Ambiente: {envLabels[observation.environment] || observation.environment}</div>
+          <ObservationAttribution observation={observation} caregivers={caregivers}/>
+          <p className="text-xs text-[#265358]">{ATTRIBUTION_LIMIT}</p>
 
           {/* Section 1: Fatos Objetivos */}
           <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#133E43]/10 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold text-[#133E43] uppercase tracking-wider mb-2">
               <Eye className="w-4 h-4 text-[#133E43]" />
-              Fatos Observáveis (O que ocorreu objetivamente)
+              Fatos registrados (relato)
             </div>
             <p className="text-sm leading-relaxed text-[#133E43]">
               {observation.description}
@@ -205,7 +148,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Antecedentes / Contexto Prévio
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.antecedents || 'Não observado'}
+                {observation.antecedents || 'Não informado'}
               </p>
             </div>
 
@@ -214,7 +157,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Sinais Expressivos & Corporais
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.communicationSignals || 'Não observado'}
+                {observation.communicationSignals || 'Não informado'}
               </p>
             </div>
           </div>
@@ -227,7 +170,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Acolhimento / Mediação Oferecida
               </div>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.supportOffered || 'Apenas observação atenta'}
+                {observation.supportOffered || 'Não informado'}
               </p>
             </div>
 
@@ -236,7 +179,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
                 Resposta Observada da Criança
               </h3>
               <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed">
-                {observation.observedOutcome || 'Não observado'}
+                {observation.observedOutcome || 'Não informado'}
               </p>
             </div>
           </div>
@@ -255,10 +198,10 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
           {/* Hipóteses / Reflexões subjetivas */}
           <div className="bg-[#F1CA91]/20 p-4 rounded-2xl border border-[#F1CA91]/40">
             <div className="text-xs font-bold text-[#133E43] uppercase tracking-wider mb-1">
-              Reflexão / Hipótese do Observador (Não diagnóstica)
+              {INTERPRETATION_TEXT_LABEL}
             </div>
             <p className="text-xs sm:text-sm text-[#133E43] leading-relaxed italic">
-              &quot;{observation.notes || 'Sem hipóteses adicionais registradas.'}&quot;
+              &quot;{informedText(observation.notes)}&quot;
             </p>
           </div>
         </div>

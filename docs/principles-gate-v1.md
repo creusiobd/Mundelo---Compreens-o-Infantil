@@ -114,10 +114,10 @@ A aprovação deste documento como norma institucional não significa que o MUND
 Aplicar PG-06 a schema, migrations, APIs, RLS, componentes, relatórios, analytics, prompts e automações. A autorização controla acesso, não a validade ou superioridade de uma perspectiva. Consultar [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md) como especificação normativa.
 
 
-## Reavaliação estática PG-06 — 21/11/2026
+## Reavaliação PG-06 — 23/11/2026 (v0.3)
 
-A [auditoria v0.2](auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md) é a referência atual para a PR #17; a v0.1 foi preservada como histórico, com retificações explícitas. Base examinada: `3208aa0d3b067d30bd940c7b12e59b0b14f508d8`.
+A [auditoria v0.3](auditoria-conformidade-principios-xiii-xiv-pg06-v0-3.md) reavalia a main `88a7eb84a3beae187cb880990d2b465ef00f378c`, após #51–#54 / PRs #55–#58. Reconhece as correções nos respectivos recortes, preserva v0.1/v0.2 como histórico e mantém **PG-06 integral: NÃO ATENDE; dados infantis reais: BLOCKED / NO-GO**. Efeitos do princípio XIV em uso humano não foram avaliados.
 
-PG-06 permanece **NÃO ATENDIDO integralmente**. Foram reavaliados dez achados e registrados dois recortes adicionais. As correções específicas de acesso/cofre já incorporadas são reconhecidas; esta entrega não altera código nem certifica conformidade. Encaminhamentos: #51 (padrões fixos), #52 (preenchimentos sem relato), #53 (acesso ao perfil/comandos), #54 (atribuição de interpretações).
+Novo achado estático AUD-13 na Home originou #59 (próxima execução recomendada, com dados sintéticos). #60 trata primeiro do contrato documental de contribuições/autoria/versões; #61 trata linguagem e mensagens sem alterar permissões. O achado da Home não foi reproduzido dinamicamente nesta auditoria e não reabre o recorte concluído de #53.
 
-A conferência estática e seus limites estão no relatório e no registro de evidências. Testes de comportamento dos novos recortes e revisão humana independente continuam pendentes. CI de regressão não substitui prova de PG-06. Dados infantis reais continuam bloqueados; #29 permanece pausada e fontes INF-ID #24–#26 não foram recuperadas.
+CI da main integrada conferida: run 45106790083, 150 testes de domínio/segurança e 87 E2E; 17 da etapa dedicada a11y são subconjunto. Isso não comprova R01–R16 integrais, retenção externa, legitimidade jurídica ou impacto humano. #29 permanece pausada; #24–#26 aguardam fontes; #27/#35 mantêm seus gates. Campos do GitHub Project não foram sincronizados. As regras normativas deste gate permanecem vigentes.

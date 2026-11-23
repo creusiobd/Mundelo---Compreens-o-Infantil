@@ -1,0 +1,526 @@
+{
+  "date": "2026-11-23",
+  "examined_commit": "88a7eb84a3beae187cb880990d2b465ef00f378c",
+  "examined_tree": "2ff4b872a3ed109298a28ae13070e73c9b463ced",
+  "scope": "Static documentary reassessment; no source changes or new functional tests",
+  "prior_versions": [
+    {
+      "version": "0.1",
+      "path": "docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md",
+      "blob_sha": "79e3faabb657f1913393923cf29fb34d7991289f"
+    },
+    {
+      "version": "0.2",
+      "path": "docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md",
+      "blob_sha": "1796c1ef306dae50a5b9ab56c314798fe71847ef"
+    },
+    {
+      "version": "0.2 evidence",
+      "path": "docs/auditoria/pg06-2026-11-21/evidencias.json",
+      "blob_sha": "11a71b263af45c214c1b6e8442f3ca446087b76e"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "src/types/index.ts",
+      "blob_sha": "196802ada34c85e9e634dc560347edfa8efbbbd8"
+    },
+    {
+      "path": "src/validation/schemas.ts",
+      "blob_sha": "3ee81ccb7ecd03eb72fa0641a63ec3e8ae90a0b9"
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a"
+    },
+    {
+      "path": "src/security/authorization.ts",
+      "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc"
+    },
+    {
+      "path": "src/presentation/observationAttribution.ts",
+      "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e"
+    },
+    {
+      "path": "docs/especificacoes/tec-003/README.md",
+      "blob_sha": "edb3065a32ba8920c7b3f58afd05f4aaebf61d6c"
+    },
+    {
+      "path": "src/screens/UnderstandScreen.tsx",
+      "blob_sha": "bd6d69f6d8ec6799bf7041a04cc510b98c9a9c89"
+    },
+    {
+      "path": "src/validation/migration.ts",
+      "blob_sha": "bc337d796e833579921c91c0c18f25dc166bed31"
+    },
+    {
+      "path": "src/App.tsx",
+      "blob_sha": "ba5e7ce1ec50f1a332c37ccaa74cc8ebf74b0caa"
+    },
+    {
+      "path": "src/components/ObservationModal.tsx",
+      "blob_sha": "e857ecf1fd9bd518aa084304a3a59e80445a2365"
+    },
+    {
+      "path": "src/screens/MyWorldScreen.tsx",
+      "blob_sha": "a3578c0a48d163b92ecbfe47a641e13d3e68958f"
+    },
+    {
+      "path": "src/screens/OnboardingScreen.tsx",
+      "blob_sha": "197f84c55d9b344c60512ed5e921804e5f6c1988"
+    },
+    {
+      "path": "src/screens/ReportScreen.tsx",
+      "blob_sha": "e1a0a5c9060f2d9e0f0c197416160045bffb8326"
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "blob_sha": "6cc747e1f44082c69a9cd15d83e26fb3112b448e"
+    },
+    {
+      "path": "src/components/ObservationDetailModal.tsx",
+      "blob_sha": "3597e33982b964e7e0f0ce03cdbd0e2a88ad1443"
+    },
+    {
+      "path": "src/screens/DiscoveriesScreen.tsx",
+      "blob_sha": "aa71b115f467d0665ebded966d7e23c97d24ae5f"
+    },
+    {
+      "path": "docs/principles-gate-v1.md",
+      "blob_sha": "5651b52d58233cb2ce262588dc86203e21aceb6f"
+    },
+    {
+      "path": "docs/continuidade.md",
+      "blob_sha": "be07f69fa44e4c191b3d4fb2657991f660e2edf5"
+    },
+    {
+      "path": "docs/manifesto-principios-mundelo-v1.md",
+      "blob_sha": "d9e4257a483dbc495513b5c09838f5e67dcbf6c1"
+    },
+    {
+      "path": "docs/principio-pluralidade-perspectivas-v0-1.md",
+      "blob_sha": "333027b47f44564b0792c0b36a0fdfd511d1a1ad"
+    },
+    {
+      "path": "docs/contrato-dominio-mundelo-v0-1.md",
+      "blob_sha": "6692ba4a7701674b62c49b0797cb3cd5696abca5"
+    },
+    {
+      "path": "docs/politica-operacional-retencao-destinacao-v0-1.md",
+      "blob_sha": "5e30042e2878129c0db7605a7fd72b3dbe2ee91e"
+    },
+    {
+      "path": "docs/qa/fix-53/politica-perfil.md",
+      "blob_sha": "3284664061e38896fa3f3da276d5c48dd9332b18"
+    },
+    {
+      "path": "docs/qa/fix-54/decisao-dominio-pendente.md",
+      "blob_sha": "6e8fc16192b9f5f347a3bc7a9aefa00c44104662"
+    }
+  ],
+  "findings": [
+    {
+      "id": "AUD-01",
+      "status": "MANTIDO",
+      "summary": "Perfil global não possui proveniência/contexto/autoria por item; exclusão do relatório mitiga uma saída, sem mudar modelo.",
+      "evidence": [
+        {
+          "path": "src/types/index.ts",
+          "start_line": 84,
+          "end_line": 105,
+          "blob_sha": "196802ada34c85e9e634dc560347edfa8efbbbd8",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/types/index.ts#L84-L105",
+          "excerpt_sha256": "f9f54c1df20ab2bf483336e7de2b3f1d46dfbb853bc81aeb9069a50987f66870"
+        },
+        {
+          "path": "src/validation/schemas.ts",
+          "start_line": 45,
+          "end_line": 64,
+          "blob_sha": "3ee81ccb7ecd03eb72fa0641a63ec3e8ae90a0b9",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/validation/schemas.ts#L45-L64",
+          "excerpt_sha256": "caaa7402ccf50806be6ea5fbe9c6b6a077cbbb5173cda8c6149a4b96becf7757"
+        }
+      ]
+    },
+    {
+      "id": "AUD-02",
+      "status": "CORRIGIDO_NO_RECORTE_53",
+      "summary": "Treze mutadores, aplicação de perfil por cofre e limpeza demonstrativa revalidam gestão/contexto; não é autorização de servidor.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 441,
+          "end_line": 529,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L441-L529",
+          "excerpt_sha256": "7c774050032ce1b8660b30cdad1ba7fc82405d3dce58107f25e3951a09122d78"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 602,
+          "end_line": 607,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L602-L607",
+          "excerpt_sha256": "87b6e7e33e7e45ad4bd28c69f951fb5644b0da2d4b428af6a4183782618ce7d3"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start_line": 126,
+          "end_line": 134,
+          "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/security/authorization.ts#L126-L134",
+          "excerpt_sha256": "e158e86bde7c96ac85f95f7b58cb449ba5437312150dcad808af7f5f2ec23420"
+        }
+      ]
+    },
+    {
+      "id": "AUD-03",
+      "status": "MANTIDO",
+      "summary": "Edição substitui objeto, sem acervo de versões ou autor de alteração; responsável legal ainda edita registro alheio na política demonstrativa.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 326,
+          "end_line": 378,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L326-L378",
+          "excerpt_sha256": "ec894586c1ea4c73ed09680112c44dde2d8423e4a0d3def75117f47bbb02304d"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start_line": 61,
+          "end_line": 83,
+          "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/security/authorization.ts#L61-L83",
+          "excerpt_sha256": "5156dab7c286d1748ac6c7c1b81700cebb92750418c5442ec5b2928200a78ecd"
+        },
+        {
+          "path": "src/presentation/observationAttribution.ts",
+          "start_line": 27,
+          "end_line": 39,
+          "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/presentation/observationAttribution.ts#L27-L39",
+          "excerpt_sha256": "f9b9985eaacfd619522746601f5e16be131c9436c77cbbbb596991b7e36f2758"
+        }
+      ]
+    },
+    {
+      "id": "AUD-04",
+      "status": "MANTIDO_COM_AVANCO_DOCUMENTAL",
+      "summary": "Exclusão remove da memória; retenção/destinação/backups governados não demonstrados por isso.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 381,
+          "end_line": 405,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L381-L405",
+          "excerpt_sha256": "e079b976582577cd67591d3832240d6cbbcc7a97a5f19dd4dcdc8141d0a6b8cc"
+        },
+        {
+          "path": "docs/especificacoes/tec-003/README.md",
+          "start_line": 85,
+          "end_line": 107,
+          "blob_sha": "edb3065a32ba8920c7b3f58afd05f4aaebf61d6c",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/docs/especificacoes/tec-003/README.md#L85-L107",
+          "excerpt_sha256": "4d99c0f2b1a75432afe1864ab3b3cb9db9797b77fb3708b5d39f3dfcd34dc472"
+        }
+      ]
+    },
+    {
+      "id": "AUD-05",
+      "status": "CORRIGIDO_NO_RECORTE_51",
+      "summary": "Cartões fixos retirados; contagens autorizadas com universo e limites. Não há modelo completo de recorte por perspectiva.",
+      "evidence": [
+        {
+          "path": "src/screens/UnderstandScreen.tsx",
+          "start_line": 17,
+          "end_line": 37,
+          "blob_sha": "bd6d69f6d8ec6799bf7041a04cc510b98c9a9c89",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/UnderstandScreen.tsx#L17-L37",
+          "excerpt_sha256": "09ef93ddaba7c6a965d84b0d3f6e7aa82fa4bcb084d907a12e51d18608a4cdff"
+        },
+        {
+          "path": "src/screens/UnderstandScreen.tsx",
+          "start_line": 44,
+          "end_line": 76,
+          "blob_sha": "bd6d69f6d8ec6799bf7041a04cc510b98c9a9c89",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/UnderstandScreen.tsx#L44-L76",
+          "excerpt_sha256": "5e1e54e0db1190f006f5335a5ccf6d6fc7325931563f2c9185d6629ec8accad6"
+        }
+      ]
+    },
+    {
+      "id": "AUD-06",
+      "status": "APRESENTACAO_CORRIGIDA_MODELO_PENDENTE",
+      "summary": "Notas deixam de ser atribuídas à família; atributos globais omitidos da síntese; autoria própria de interpretação continua ausente.",
+      "evidence": [
+        {
+          "path": "src/presentation/observationAttribution.ts",
+          "start_line": 3,
+          "end_line": 5,
+          "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/presentation/observationAttribution.ts#L3-L5",
+          "excerpt_sha256": "e66065dd8000b6d0262c8c8c44863cb2165104aac8f7c4bd8d210d69aa87f733"
+        },
+        {
+          "path": "src/presentation/observationAttribution.ts",
+          "start_line": 27,
+          "end_line": 39,
+          "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/presentation/observationAttribution.ts#L27-L39",
+          "excerpt_sha256": "f9b9985eaacfd619522746601f5e16be131c9436c77cbbbb596991b7e36f2758"
+        },
+        {
+          "path": "src/presentation/observationAttribution.ts",
+          "start_line": 42,
+          "end_line": 78,
+          "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/presentation/observationAttribution.ts#L42-L78",
+          "excerpt_sha256": "c2ff1cd246dd3018efcd4bb333be740109cb1009ee701675e740138acf57a43e"
+        }
+      ]
+    },
+    {
+      "id": "AUD-07",
+      "status": "PARCIAL_COM_LACUNAS_EXPLICITAS",
+      "summary": "Registrador/proveniência exigidos e observador opcional sem inferência; fonte livre não autenticada e autoria de interpretação/alteração não representadas.",
+      "evidence": [
+        {
+          "path": "src/validation/schemas.ts",
+          "start_line": 78,
+          "end_line": 103,
+          "blob_sha": "3ee81ccb7ecd03eb72fa0641a63ec3e8ae90a0b9",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/validation/schemas.ts#L78-L103",
+          "excerpt_sha256": "29d2c2bf6987ecb2fac092ab80971a0497fd24e007bd3c4cf7667716de8c51e2"
+        },
+        {
+          "path": "src/validation/migration.ts",
+          "start_line": 1,
+          "end_line": 22,
+          "blob_sha": "bc337d796e833579921c91c0c18f25dc166bed31",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/validation/migration.ts#L1-L22",
+          "excerpt_sha256": "7708d1d91d6a71aa0bbb7576d1e8108a246314cc0a419d345b0121abf5f4e010"
+        },
+        {
+          "path": "src/presentation/observationAttribution.ts",
+          "start_line": 17,
+          "end_line": 39,
+          "blob_sha": "ff9222236d72aad520d543f005051eb87fee448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/presentation/observationAttribution.ts#L17-L39",
+          "excerpt_sha256": "4cf0b4a747d7424c6ef3a4011cd079f60e0764beb56c273e837c914addb8990a"
+        }
+      ]
+    },
+    {
+      "id": "AUD-08",
+      "status": "MANTIDO_BLOQUEADOR_DADOS_REAIS",
+      "summary": "Autorização no cliente, identidade/vínculos simulados; infraestrutura externa não comprovada.",
+      "evidence": [
+        {
+          "path": "src/security/authorization.ts",
+          "start_line": 8,
+          "end_line": 17,
+          "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/security/authorization.ts#L8-L17",
+          "excerpt_sha256": "e75acfd1a1935e3205df85f8a0491700423406b34b9ad4d23adfc181365ba019"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 134,
+          "end_line": 158,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L134-L158",
+          "excerpt_sha256": "8ce97bd13cfd05a914982dfa5161fb0a05f904cd10b36dc8a5d86dcf4e33f819"
+        }
+      ]
+    },
+    {
+      "id": "AUD-09",
+      "status": "QUALIFICADO_BAIXA_PRIORIDADE",
+      "summary": "Mensagem canônica permanece; termo técnico isolado não prova consenso automático.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 320,
+          "end_line": 323,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L320-L323",
+          "excerpt_sha256": "c97633b3dc4b36a7d4e4e8fe71bf2cccee6e388a6e82c51fbbe6be579657e9ae"
+        }
+      ]
+    },
+    {
+      "id": "AUD-10",
+      "status": "INCONSISTENCIA_REMANESCENTE",
+      "summary": "Wrapper/commentário fala apenas em responsável legal; helper também permite autor ativo vinculado.",
+      "evidence": [
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 394,
+          "end_line": 400,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L394-L400",
+          "excerpt_sha256": "11e95bc163021212cd194f1c97a93d5a1ddae25a5d0c76eed5a66c9d8129c713"
+        },
+        {
+          "path": "src/security/authorization.ts",
+          "start_line": 86,
+          "end_line": 105,
+          "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/security/authorization.ts#L86-L105",
+          "excerpt_sha256": "8056ca00df5dbcfdc60024bfb3d7ad645b29010569a408c8f924db05bc1c2892"
+        }
+      ]
+    },
+    {
+      "id": "AUD-11",
+      "status": "CORRIGIDO_NO_RECORTE_52",
+      "summary": "Atividade é proposta separada; campos vazios não viram experiências; validadores/migração não inventam autoria/origem.",
+      "evidence": [
+        {
+          "path": "src/App.tsx",
+          "start_line": 123,
+          "end_line": 130,
+          "blob_sha": "ba5e7ce1ec50f1a332c37ccaa74cc8ebf74b0caa",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/App.tsx#L123-L130",
+          "excerpt_sha256": "c36454292b4304398cc0113e413194f7ef60a07d63f4433589d997124b6f2708"
+        },
+        {
+          "path": "src/components/ObservationModal.tsx",
+          "start_line": 83,
+          "end_line": 118,
+          "blob_sha": "e857ecf1fd9bd518aa084304a3a59e80445a2365",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/components/ObservationModal.tsx#L83-L118",
+          "excerpt_sha256": "a28dacae4703870b513d303f0a08f6c2e609b3f8c753800c699fa373e67cc226"
+        },
+        {
+          "path": "src/validation/schemas.ts",
+          "start_line": 45,
+          "end_line": 49,
+          "blob_sha": "3ee81ccb7ecd03eb72fa0641a63ec3e8ae90a0b9",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/validation/schemas.ts#L45-L49",
+          "excerpt_sha256": "b902999cf8dcaa13bda6c8fba61cb6aac55901ba3e639ae9b6aa62882e790613"
+        },
+        {
+          "path": "src/validation/migration.ts",
+          "start_line": 1,
+          "end_line": 22,
+          "blob_sha": "bc337d796e833579921c91c0c18f25dc166bed31",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/validation/migration.ts#L1-L22",
+          "excerpt_sha256": "7708d1d91d6a71aa0bbb7576d1e8108a246314cc0a419d345b0121abf5f4e010"
+        }
+      ]
+    },
+    {
+      "id": "AUD-12",
+      "status": "CORRIGIDO_NO_RECORTE_53",
+      "summary": "Meu Mundo/configuração agora restringem atributos e rascunhos; isso não implica cobertura de Home e demais superfícies.",
+      "evidence": [
+        {
+          "path": "src/screens/MyWorldScreen.tsx",
+          "start_line": 22,
+          "end_line": 38,
+          "blob_sha": "a3578c0a48d163b92ecbfe47a641e13d3e68958f",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/MyWorldScreen.tsx#L22-L38",
+          "excerpt_sha256": "f90748e5976533dab8dc2f0c2730a86628f1d31bd991e904ebf123430cb60a2a"
+        },
+        {
+          "path": "src/screens/OnboardingScreen.tsx",
+          "start_line": 20,
+          "end_line": 28,
+          "blob_sha": "197f84c55d9b344c60512ed5e921804e5f6c1988",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/OnboardingScreen.tsx#L20-L28",
+          "excerpt_sha256": "a35437b5169d4a35b044025444a3b0519189fe0907ed2b1fd6a6fb7c2e257dcf"
+        },
+        {
+          "path": "src/screens/ReportScreen.tsx",
+          "start_line": 52,
+          "end_line": 75,
+          "blob_sha": "e1a0a5c9060f2d9e0f0c197416160045bffb8326",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/ReportScreen.tsx#L52-L75",
+          "excerpt_sha256": "814143e66e79ba1d34a2e94e4486ee05d528cf0bfd3b770cc1b3caa78b4f6d2d"
+        }
+      ]
+    },
+    {
+      "id": "AUD-13",
+      "status": "NOVO_ACHADO_ESTATICO_ALTA",
+      "summary": "Home apresenta atributos sem guarda de perfil e usa primeiro item/fallback como atual/frequente. Sem reprodução dinâmica nesta reavaliação.",
+      "evidence": [
+        {
+          "path": "src/screens/HomeScreen.tsx",
+          "start_line": 144,
+          "end_line": 170,
+          "blob_sha": "6cc747e1f44082c69a9cd15d83e26fb3112b448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/HomeScreen.tsx#L144-L170",
+          "excerpt_sha256": "71e8f8ae531b1d2825b57e87fd8a12b795ccca15f26ea7124ed7b0732d2ff482"
+        },
+        {
+          "path": "src/screens/HomeScreen.tsx",
+          "start_line": 350,
+          "end_line": 367,
+          "blob_sha": "6cc747e1f44082c69a9cd15d83e26fb3112b448e",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/screens/HomeScreen.tsx#L350-L367",
+          "excerpt_sha256": "196e067b8e2f60b544d7e2f81ec8c76a22f47de84ed0c0df40fe86aa711cd156"
+        },
+        {
+          "path": "src/context/AppContext.tsx",
+          "start_line": 157,
+          "end_line": 195,
+          "blob_sha": "91e992894c47a9d6f23d316e27143bf7c854647a",
+          "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/88a7eb84a3beae187cb880990d2b465ef00f378c/src/context/AppContext.tsx#L157-L195",
+          "excerpt_sha256": "ce75542490ce5d93c91167053795007c73e26674fbaf3652bbb903944a50e1eb"
+        }
+      ]
+    }
+  ],
+  "followups": [
+    {
+      "key": "home",
+      "number": 59,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/59",
+      "title": "[PG06/AUD-13] Restringir resumo do perfil na Home e retirar atribuições sem evidência"
+    },
+    {
+      "key": "contract",
+      "number": 60,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/60",
+      "title": "[PG06/AUD-01/03/06/07] Consolidar contrato de contribuições, autoria e versões por perspectiva"
+    },
+    {
+      "key": "language",
+      "number": 61,
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/61",
+      "title": "[PG06/AUD-09/10] Alinhar linguagem de registro e mensagens de exclusão à política demonstrativa"
+    }
+  ],
+  "source_ci": {
+    "run_id": 45106790083,
+    "job_id": 137469815162,
+    "commit": "88a7eb84a3beae187cb880990d2b465ef00f378c",
+    "conclusion": "success",
+    "domain_security_tests": 150,
+    "browser_tests": 87,
+    "dedicated_a11y_tests": 17,
+    "dedicated_a11y_is_subset": true,
+    "new_execution_by_this_audit": false
+  },
+  "verification": {
+    "source_blobs": "PASS",
+    "historical_blobs": "PASS",
+    "line_spans": "PASS",
+    "relative_links": "PASS",
+    "new_functional_tests": "NOT_EXECUTED",
+    "new_finding_browser_reproduction": "NOT_EXECUTED",
+    "independent_human_review": "NOT_EXECUTED"
+  },
+  "decision": {
+    "PG06": "NAO_ATENDE_INTEGRALMENTE",
+    "real_child_data": "BLOCKED",
+    "task_29": "PAUSED",
+    "INF_sources": "UNAVAILABLE",
+    "R01_R16_full": "PRECONDITIONS_REMAIN",
+    "project_fields": "NOT_SYNCHRONIZED"
+  }
+}

@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import {canReadChildProfile} from '../security/authorization';
 import {
   User,
   Heart,
@@ -17,8 +18,20 @@ import {
 } from 'lucide-react';
 
 export const OnboardingScreen: React.FC = () => {
+  const {activeProfile, activeCaregiver, canReadProfile, canManageProfile} = useApp();
+  if (!canReadProfile || !canManageProfile) return (
+    <div className="max-w-3xl mx-auto px-4 py-8 space-y-3">
+      <h1 className="text-2xl font-bold text-[#133E43]">Configuração de perfil indisponível</h1>
+      <p className="text-sm text-[#265358]">A gestão deste perfil demonstrativo exige responsável legal ativo e vinculado.</p>
+    </div>
+  );
+  return <OnboardingContent key={`${activeProfile.id}:${activeCaregiver.id}`} />;
+};
+
+const OnboardingContent: React.FC = () => {
   const {
     activeProfile,
+    activeCaregiver,
     updateProfile,
     switchProfile,
     availableProfiles,
@@ -39,11 +52,12 @@ export const OnboardingScreen: React.FC = () => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    updateProfile({
+    const accepted = updateProfile({
       name: name.trim(),
-      ageLabel: ageLabel.trim() || '2 anos',
+      ageLabel: ageLabel.trim(),
       preferredPronoun,
     });
+    if (!accepted) return;
     showNotification('Perfil demonstrativo atualizado com sucesso!', 'success');
     setScreen('home');
   };
@@ -109,7 +123,7 @@ export const OnboardingScreen: React.FC = () => {
           Escolha um modelo de demonstração pré-carregado:
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {availableProfiles.map((p) => {
+          {availableProfiles.filter(p => canReadChildProfile(activeCaregiver, p.id)).map((p) => {
             const isSelected = p.id === activeProfile.id;
             return (
               <button

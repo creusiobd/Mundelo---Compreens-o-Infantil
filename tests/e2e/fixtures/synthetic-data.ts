@@ -30,7 +30,7 @@ export const INTERNAL_SCREENS: readonly InternalScreenDescriptor[] = [
     id: 'world',
     navLabel: 'Meu Mundo',
     inBottomNav: true,
-    expectedHeadingRegex: /Meu Mundo:\s*(Tomás|Lia)/i,
+    expectedHeadingRegex: /Meu Mundo:\s*(Tomás|Lia)|Meu Mundo indisponível/i,
   },
   {
     id: 'discoveries',
@@ -42,7 +42,7 @@ export const INTERNAL_SCREENS: readonly InternalScreenDescriptor[] = [
     id: 'understand',
     navLabel: 'Compreender',
     inBottomNav: true,
-    expectedHeadingRegex: /Compreender\s*(Tomás|Lia):\s*Padrões & Hipóteses/i,
+    expectedHeadingRegex: /Compreender\s*(Tomás|Lia):\s*Registros & Contextos/i,
   },
   {
     id: 'report',

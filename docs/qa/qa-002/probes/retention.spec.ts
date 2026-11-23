@@ -90,11 +90,18 @@ test('P03: envelope acessível sem senha não expõe nome/id do perfil', async (
 });
 test('P04: perfil não aparece no relatório após perda de acesso demonstrativa', async ({ page }, info) => {
   await navigateToInternalScreen(page, 'report');
-  const marker = 'Naninha de malha macia azul claro';
+  // Global attributes without individual sources are omitted from the #54 report.
+  // Keep this access probe on the document identity and an authorized contribution.
+  const marker = 'Tomás explorou o caminho de pedrinhas no parque.';
+  await expect(page.getByRole('region', {name:'Prévia da síntese',exact:true})).toContainText('Criança: Tomás');
   await expect(page.locator('main')).toContainText(marker);
   await selectCaregiver(page, 'cg-ana-unlinked');
   await expect(page.getByLabel('Selecionar cuidador ativo simulado')).toHaveValue('cg-ana-unlinked');
+  await expect(page.getByRole('heading', {name:'Relatório indisponível',exact:true})).toBeVisible();
   const exposed = (await page.locator('main').innerText()).includes(marker);
-  await evidence(info, { caregiver: 'cg-ana-unlinked', profileComfortMarkerVisible: exposed, syntheticMarkerOnly: true });
+  const identityExposed = (await page.locator('main').innerText()).includes('Criança: Tomás');
+  await evidence(info, { caregiver: 'cg-ana-unlinked', reportContributionMarkerVisible: exposed, profileIdentityVisible: identityExposed, syntheticMarkerOnly: true });
+  expect(identityExposed, 'A identidade do documento também deve desaparecer após perda de acesso').toBe(false);
+  await expect(page.getByRole('region', {name:'Prévia da síntese',exact:true})).toHaveCount(0);
   expect(exposed, 'Restringir observações não pode deixar o perfil acessível no relatório').toBe(false);
 });
