@@ -79,3 +79,8 @@ PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e
 ## Atualização — #60 / 23/11/2026
 
 [Consolidação de contribuições/autoria/versões](andamentos/2026-11-23-task-60.md) entregue para revisão após incorporação da PR #62/#59: 16 requisitos, 14 operações, 24 cenários futuros e sete decisões abertas. Legados mantêm lacunas e retenção permanece proporcional; nenhuma implantação/schema/migration foi autorizada. #27 segue pendente, #29 pausada e dados reais bloqueados. #61 mantém o recorte seguinte de linguagem demonstrativa. Sem sincronização automática dos campos do Project.
+
+
+## Atualização — #61 / 23/11/2026
+
+[Alinhamento da linguagem demonstrativa](andamentos/2026-11-23-task-61.md) entregue para revisão após incorporação da PR #63/#60. Oito testes E2E aprovados e matriz de cinco atores preservada antes/depois; helper de autorização, modelos e formatos não mudaram. Remoção está delimitada à memória da sessão, sem comprovação de eliminação governada. #29 continua pausada e dados reais bloqueados. Sem sincronização automática dos campos do Project.
