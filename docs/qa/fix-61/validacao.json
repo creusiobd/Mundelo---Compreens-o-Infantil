@@ -171,10 +171,44 @@
     "src/App.tsx",
     "src/components/ObservationDetailModal.tsx",
     "src/context/AppContext.tsx",
-    "src/screens/JournalScreen.tsx"
+    "src/screens/JournalScreen.tsx",
+    "tests/e2e/device-real-02-authorization.spec.ts"
   ],
   "data_schema_or_formats_changed": false,
   "authority_expanded": false,
   "real_data_used": false,
-  "task29_resumed": false
+  "task29_resumed": false,
+  "historical_regression": {
+    "stats": {
+      "startTime": "2026-11-23T19:16:28.671Z",
+      "duration": 31602.719999999998,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "title": "unlinked caregiver cannot open or create an observation from Header, Home or Journal",
+        "status": "passed",
+        "duration_ms": 5420
+      },
+      {
+        "title": "caregiver status blocks Header action in a tablet-sized viewport",
+        "status": "passed",
+        "duration_ms": 1027
+      },
+      {
+        "title": "authorized observation still succeeds and is visible in journal",
+        "status": "passed",
+        "duration_ms": 2589
+      }
+    ]
+  },
+  "browser_pass_total": 11,
+  "initial_ci": {
+    "run": 45246170609,
+    "conclusion": "failure",
+    "reason": "Expectativa histórica ainda exigia a mensagem antiga; os oito novos casos passaram. Expectativa alinhada e presença do registro no Diário verificada."
+  }
 }
