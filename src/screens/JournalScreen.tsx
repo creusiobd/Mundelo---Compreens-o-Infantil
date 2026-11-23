@@ -541,7 +541,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
                         title={
                           canDeleteObs
                             ? 'Excluir esta observação'
-                            : 'Ação não permitida: apenas responsáveis legais ou o autor podem excluir'
+                            : 'Ação não permitida: nesta demonstração, a remoção exige cuidador ativo e vinculado ao perfil, responsável legal ou a pessoa que registrou a observação.'
                         }
                         aria-label="Excluir esta observação"
                       >

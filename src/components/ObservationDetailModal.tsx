@@ -245,7 +245,7 @@ export const ObservationDetailModal: React.FC<ObservationDetailModalProps> = ({
               disabled={!isDeletable}
               title={
                 !isDeletable
-                  ? 'Ação não permitida: apenas responsáveis legais ou o autor vinculado podem excluir'
+                  ? 'Ação não permitida: nesta demonstração, a remoção exige cuidador ativo e vinculado ao perfil, responsável legal ou a pessoa que registrou a observação.'
                   : 'Excluir esta observação'
               }
               className={`flex items-center gap-1 text-xs font-medium px-3 py-2 rounded-xl transition-colors min-h-[44px] ${

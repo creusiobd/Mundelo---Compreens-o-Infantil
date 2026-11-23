@@ -1,0 +1,214 @@
+{
+  "task": 61,
+  "code": "PG06/AUD-09/10",
+  "date": "2026-11-23",
+  "base_commit": "76d2b161343043c282a1bb279ad73fd68e9173ab",
+  "responsible": "Creusio Kizua",
+  "executed_by": "Agente, em laboratório sintético local; não revisão humana independente",
+  "before_policy_matrix": {
+    "base": "76d2b161343043c282a1bb279ad73fd68e9173ab",
+    "authorization_helper_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+    "helper_unchanged": true,
+    "tests": [
+      {
+        "title": "AUD-10: retornos e efeitos reais do provider preservam a matriz de cinco atores",
+        "status": "passed",
+        "matrix": [
+          [
+            {
+              "actor": "cg-carlos",
+              "own": false,
+              "allowed": true,
+              "result": true,
+              "countBefore": 8,
+              "countAfter": 7
+            },
+            {
+              "actor": "cg-marina",
+              "own": true,
+              "allowed": true,
+              "result": true,
+              "countBefore": 9,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-marina",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-ana-unlinked",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-pedro-suspended",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "after": {
+    "stats": {
+      "startTime": "2026-11-23T19:07:02.820Z",
+      "duration": 45236.849,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "title": "AUD-09: registro real usa mensagem demonstrativa e mantém o conteúdo fornecido",
+        "status": "passed",
+        "duration_ms": 6881,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: responsável legal vinculado remove registro de outra pessoa somente da memória",
+        "status": "passed",
+        "duration_ms": 1227,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: pessoa ativa vinculada que registrou pode remover o próprio registro",
+        "status": "passed",
+        "duration_ms": 5570,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: confirmação iniciada não contorna negativa para cg-marina",
+        "status": "passed",
+        "duration_ms": 1209,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: confirmação iniciada não contorna negativa para cg-ana-unlinked",
+        "status": "passed",
+        "duration_ms": 1272,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: confirmação iniciada não contorna negativa para cg-pedro-suspended",
+        "status": "passed",
+        "duration_ms": 1384,
+        "matrix": []
+      },
+      {
+        "title": "AUD-10: retornos e efeitos reais do provider preservam a matriz de cinco atores",
+        "status": "passed",
+        "duration_ms": 4878,
+        "matrix": [
+          [
+            {
+              "actor": "cg-carlos",
+              "own": false,
+              "allowed": true,
+              "result": true,
+              "countBefore": 8,
+              "countAfter": 7
+            },
+            {
+              "actor": "cg-marina",
+              "own": true,
+              "allowed": true,
+              "result": true,
+              "countBefore": 9,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-marina",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-ana-unlinked",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            },
+            {
+              "actor": "cg-pedro-suspended",
+              "own": false,
+              "allowed": false,
+              "result": false,
+              "countBefore": 8,
+              "countAfter": 8
+            }
+          ]
+        ]
+      },
+      {
+        "title": "AUD-09/10: confirmação e negativa mantêm acessibilidade desktop/mobile",
+        "status": "passed",
+        "duration_ms": 10598,
+        "matrix": []
+      }
+    ]
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "authorization_helper_unchanged": true,
+  "authorization_helper_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+  "existing_technical_files_changed": [
+    "src/App.tsx",
+    "src/components/ObservationDetailModal.tsx",
+    "src/context/AppContext.tsx",
+    "src/screens/JournalScreen.tsx",
+    "tests/e2e/device-real-02-authorization.spec.ts"
+  ],
+  "data_schema_or_formats_changed": false,
+  "authority_expanded": false,
+  "real_data_used": false,
+  "task29_resumed": false,
+  "historical_regression": {
+    "stats": {
+      "startTime": "2026-11-23T19:16:28.671Z",
+      "duration": 31602.719999999998,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "title": "unlinked caregiver cannot open or create an observation from Header, Home or Journal",
+        "status": "passed",
+        "duration_ms": 5420
+      },
+      {
+        "title": "caregiver status blocks Header action in a tablet-sized viewport",
+        "status": "passed",
+        "duration_ms": 1027
+      },
+      {
+        "title": "authorized observation still succeeds and is visible in journal",
+        "status": "passed",
+        "duration_ms": 2589
+      }
+    ]
+  },
+  "browser_pass_total": 11,
+  "initial_ci": {
+    "run": 45246170609,
+    "conclusion": "failure",
+    "reason": "Expectativa histórica ainda exigia a mensagem antiga; os oito novos casos passaram. Expectativa alinhada e presença do registro no Diário verificada."
+  }
+}
