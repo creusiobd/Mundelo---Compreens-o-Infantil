@@ -19,7 +19,7 @@ A confirmação e o retorno de sucesso delimitam a ação à memória desta sess
 | [Diário](../../../src/screens/JournalScreen.tsx) | Tooltip de negativa inclui atividade/vínculo e registrador |
 | [Detalhe](../../../src/components/ObservationDetailModal.tsx) | Mesmo limite no tooltip de remoção |
 
-O helper `src/security/authorization.ts` permaneceu byte a byte igual à base (SHA de blob no JSON). Todos os demais arquivos técnicos existentes fora dos quatro caminhos acima foram conferidos contra a árvore da base; modelos, schema, migração, formato de cofre, fixtures e identificadores foram preservados.
+O helper `src/security/authorization.ts` permaneceu byte a byte igual à base (SHA de blob no JSON). Os quatro arquivos de aplicação mudaram apenas texto/comentário. Um teste histórico foi atualizado para esperar a nova redação e conferir a presença do registro no Diário; suas negativas foram preservadas. Modelos, schema, migração, formato de cofre, fixtures e identificadores foram preservados.
 
 ## Antes e depois: política preservada
 
@@ -49,6 +49,8 @@ O [novo teste E2E](../../../tests/e2e/record-language.spec.ts) contém oito caso
 8. Confirmação/negativa e acessibilidade pertinente em desktop e mobile.
 
 A confirmação iniciada em contexto autorizado não contorna a negativa após troca do cuidador. Os ensaios de UI acionam controles reais; a matriz usa o harness de contexto já existente, apenas em desenvolvimento, sem hooks novos na aplicação de produção. [Evidências minimizadas](validacao.json) registram estados/resultados/duração, sem conteúdo de pessoas reais.
+
+Além dos oito casos novos, os três testes [DEVICE-REAL-02](../../../tests/e2e/device-real-02-authorization.spec.ts) passaram após atualizar a expectativa da notificação antiga e conferir o registro no Diário. São **11 verificações locais de navegador aprovadas** em duas execuções, com resultados separados no JSON. A primeira CI apontou apenas a expectativa histórica de mensagem, que foi corrigida sem afrouxar permissões.
 
 Tipos e build locais aprovados. Para reproduzir em checkout preparado com Node compatível e dependências do lockfile:
 
