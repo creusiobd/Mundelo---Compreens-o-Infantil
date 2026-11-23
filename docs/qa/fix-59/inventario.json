@@ -1,0 +1,516 @@
+{
+  "base_commit": "88a7eb84a3beae187cb880990d2b465ef00f378c",
+  "date": "2026-11-23",
+  "method": "Busca de activeProfile/availableProfiles em src e leitura dos consumidores; Home inclui alias profile após a guarda. Revisão estática das demais superfícies, sem atribuir nova execução a elas.",
+  "owner": "Creusio Kizua",
+  "surfaces": [
+    {
+      "path": "src/App.tsx",
+      "references": [
+        {
+          "line": 40,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 79,
+          "text": "}, [activeProfile.id, activeCaregiver.id, activeCaregiver.status, canReadProfile]);"
+        },
+        {
+          "line": 239,
+          "text": "childName={activeProfile.name}"
+        },
+        {
+          "line": 252,
+          "text": "childName={activeProfile.name}"
+        }
+      ],
+      "scope": "Coordenação de formulários e detalhe de observação",
+      "status": "PARCIAL_EXISTENTE",
+      "finding": "Detalhe resolve observação autorizada atual e limpa seleção em mudança de contexto; nome é passado a formulários/modais. Outros ciclos de formulário não são aceitos dinamicamente nesta entrega.",
+      "next": "Preservar guardas existentes e conferir identidade/rascunhos dos demais modais no próximo recorte PG-06."
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "references": [
+        {
+          "line": 37,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 38,
+          "text": "availableProfiles,"
+        },
+        {
+          "line": 160,
+          "text": "Controles de demonstra��o ({activeProfile.name}:{' '}"
+        },
+        {
+          "line": 195,
+          "text": "Simular Estado Vazio ({activeProfile.name})"
+        },
+        {
+          "line": 212,
+          "text": "<span className=\"block\">Ajustar Perfil de {activeProfile.name}</span>"
+        },
+        {
+          "line": 302,
+          "text": ": !c.linkedChildIds.includes(activeProfile.id)"
+        },
+        {
+          "line": 318,
+          "text": "value={activeProfile.id}"
+        },
+        {
+          "line": 323,
+          "text": "{availableProfiles.map((p) => ("
+        },
+        {
+          "line": 457,
+          "text": ": !c.linkedChildIds.includes(activeProfile.id)"
+        },
+        {
+          "line": 471,
+          "text": "<span>Ajustar Perfil de {activeProfile.name}</span>"
+        }
+      ],
+      "scope": "Identidades de fixtures, seletor e menus desktop/mobile",
+      "status": "PENDENTE_IDENTIDADE_DE_FIXTURES",
+      "finding": "availableProfiles enumera nome/idade; menus e indicação de contexto usam nome ativo. A ausência de perfil na Home não elimina esses nomes do cabeçalho.",
+      "next": "Definir minimização de identidade dos seletores/menus e verificar tela e impressão em recorte próprio; rótulo de papel simulado não prova autoridade real."
+    },
+    {
+      "path": "src/components/VaultExportModal.tsx",
+      "references": [
+        {
+          "line": 32,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 47,
+          "text": "activeCaregiver.linkedChildIds.includes(activeProfile.id);"
+        },
+        {
+          "line": 141,
+          "text": "<strong className=\"text-sm font-display\">{activeProfile.name} ({activeProfile.ageLabel})</strong>"
+        },
+        {
+          "line": 161,
+          "text": "O cuidador ativo simulado � <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que n�o possui v�nculo ativo com {activeProfile.name}. A exporta��o de cofre est� bloqueada para preservar o modelo de menor privil�gio."
+        }
+      ],
+      "scope": "Resumo visual e mensagem de negativa do cofre",
+      "status": "PENDENTE_RESUMO_VISUAL",
+      "finding": "A guarda de liberação/cifra não impede o modal de mostrar nome/idade do perfil e a contagem filtrada. Envelope v2 é uma superfície diferente da apresentação do modal.",
+      "next": "Conferir leitura do resumo/erros do exportador; não reabrir a correção de liberação nem afirmar que v2 resolve toda apresentação."
+    },
+    {
+      "path": "src/components/VaultImportModal.tsx",
+      "references": [
+        {
+          "line": 47,
+          "text": "const { importVaultPayload, allObservations, activeProfile, activeCaregiver } = useApp();"
+        },
+        {
+          "line": 68,
+          "text": "const importContextRef = useRef({ caregiver: activeCaregiver, profileId: activeProfile.id });"
+        },
+        {
+          "line": 70,
+          "text": "importContextRef.current = { caregiver: activeCaregiver, profileId: activeProfile.id };"
+        },
+        {
+          "line": 71,
+          "text": "}, [activeCaregiver, activeProfile.id]);"
+        },
+        {
+          "line": 144,
+          "text": "const startProfileId = activeProfile.id;"
+        },
+        {
+          "line": 176,
+          "text": "activeProfile.id !== previewSnapshot.activeProfileId)"
+        }
+      ],
+      "scope": "Identificador de contexto e prévia de payload decifrado",
+      "status": "GUARDA_EXISTENTE_ESCOPO_LIMITADO",
+      "finding": "Estado atual é conferido depois da decifragem; prévia depende de contexto/status/vínculo. Arquivos legados e seus nomes externos têm limites próprios.",
+      "next": "Preservar as guardas e os testes anteriores; esta tarefa não revalida integralmente importação/compatibilidade."
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "references": [
+        {
+          "line": 44,
+          "text": "activeProfile: ChildProfile;"
+        },
+        {
+          "line": 45,
+          "text": "availableProfiles: ChildProfile[];"
+        },
+        {
+          "line": 159,
+          "text": "const activeProfile = useMemo(() => {"
+        },
+        {
+          "line": 266,
+          "text": "`Simula��o de Cuidador: ${target.displayName} (${target.role}). Sem v�nculo com ${activeProfile.name}.`,"
+        },
+        {
+          "line": 532,
+          "text": "showNotification(`Di�rio de ${activeProfile.name} zerado: modo de estado vazio ativo.`, 'info');"
+        },
+        {
+          "line": 769,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 770,
+          "text": "availableProfiles: profiles,"
+        }
+      ],
+      "scope": "Perfil bruto, catálogo de perfis, mensagens e operações",
+      "status": "LIMITE_ARQUITETURAL",
+      "finding": "activeProfile/availableProfiles continuam em memória e são expostos aos consumidores; permissões são do protótipo cliente. Mensagens de troca usam identidade do alvo.",
+      "next": "Consumidores devem aplicar a política; mapear mensagens/identidades e manter autorização efetiva no servidor como gate separado, sem ativar dados reais."
+    },
+    {
+      "path": "src/screens/DiscoveriesScreen.tsx",
+      "references": [
+        {
+          "line": 28,
+          "text": "const { activeProfile, canCreate } = useApp();"
+        },
+        {
+          "line": 58,
+          "text": "Descobertas Sem Tela para {activeProfile.name}"
+        }
+      ],
+      "scope": "Título personalizado com nome do perfil",
+      "status": "PENDENTE_IDENTIDADE_DE_FIXTURES",
+      "finding": "Título usa nome ativo; catálogo de propostas é sintético/global. Proposta de atividade não é observação acontecida.",
+      "next": "Revisar identidade do título sem alterar nesta tarefa o fluxo de propostas/rascunhos."
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "references": [
+        {
+          "line": 37,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 48,
+          "text": "const profile = canReadProfile ? activeProfile : null;"
+        }
+      ],
+      "scope": "Saudação, resumo, atributos, contagens e estados da Home",
+      "status": "CORRIGIDO_NESTA_ENTREGA",
+      "finding": "canReadProfile determina profile ou null; sem leitura não se renderizam nome/idade, atributos, contagens ou ajuste. Dados globais são delimitados sem temporalidade/frequência presumidas.",
+      "next": "Revisar/incorporar esta entrega. Sete testes específicos cobrem autorização, troca/retorno, impressão, vazio, ações legítimas e a11y."
+    },
+    {
+      "path": "src/screens/JournalScreen.tsx",
+      "references": [
+        {
+          "line": 52,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 163,
+          "text": "Demonstra��o de Pol�tica de Autoriza��o: Cuidador sem V�nculo com {activeProfile.name}"
+        },
+        {
+          "line": 166,
+          "text": "O cuidador simulado atual � <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que n�o possui v�nculo com {activeProfile.name}."
+        },
+        {
+          "line": 181,
+          "text": "Di�rio de Observa��es: {activeProfile.name}"
+        },
+        {
+          "line": 331,
+          "text": "Tente redefinir os filtros de busca ou adicione uma nova observa��o contextual para {activeProfile.name}."
+        },
+        {
+          "line": 372,
+          "text": "Exibindo <strong>{filteredObservations.length}</strong> de {activeChildObservations.length} observa��es de {activeProfile.name}"
+        }
+      ],
+      "scope": "Título, negativa, vazio e lista de observações",
+      "status": "PENDENTE_IDENTIDADE_COM_LISTA_FILTRADA",
+      "finding": "Observações usam a lista autorizada; títulos, mensagens e vazio ainda referem nome do perfil. Filtragem de observações não equivale a proteção de toda identidade da tela.",
+      "next": "Revisar a apresentação de identidade separadamente; sem declarar que o acervo está vazio apenas por leitura negada."
+    },
+    {
+      "path": "src/screens/MyWorldScreen.tsx",
+      "references": [
+        {
+          "line": 23,
+          "text": "const {activeProfile, activeCaregiver, canReadProfile, canManageProfile} = useApp();"
+        },
+        {
+          "line": 31,
+          "text": "return <MyWorldContent key={`${activeProfile.id}:${activeCaregiver.id}:${activeCaregiver.status}:${canManageProfile}`} />;"
+        },
+        {
+          "line": 36,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 91,
+          "text": "Meu Mundo: {activeProfile.name}"
+        },
+        {
+          "line": 94,
+          "text": "O repert�rio vivo do que encanta, acalma, desafia e apoia {activeProfile.name} ({activeProfile.ageLabel}). Um guia pr�tico de refer�ncia para pais, educadores e cuidadores."
+        },
+        {
+          "line": 144,
+          "text": "<span className=\"text-xs font-semibold text-[#265358]\">{activeProfile.interests.length}</span>"
+        },
+        {
+          "line": 148,
+          "text": "{activeProfile.interests.map((item, idx) => ("
+        },
+        {
+          "line": 221,
+          "text": "<span className=\"text-xs font-semibold text-[#265358]\">{activeProfile.comfortAnchors.length}</span>"
+        },
+        {
+          "line": 225,
+          "text": "{activeProfile.comfortAnchors.map((item, idx) => ("
+        },
+        {
+          "line": 298,
+          "text": "<span className=\"text-xs font-semibold text-[#265358]\">{activeProfile.sensitivities.length}</span>"
+        },
+        {
+          "line": 302,
+          "text": "{activeProfile.sensitivities.map((item, idx) => ("
+        },
+        {
+          "line": 375,
+          "text": "<span className=\"text-xs font-semibold text-[#265358]\">{activeProfile.communicationModes.length}</span>"
+        },
+        {
+          "line": 379,
+          "text": "{activeProfile.communicationModes.map((item, idx) => ("
+        },
+        {
+          "line": 452,
+          "text": "<span className=\"text-xs font-semibold text-[#265358]\">{activeProfile.celebratedMilestones.length}</span>"
+        },
+        {
+          "line": 456,
+          "text": "{activeProfile.celebratedMilestones.map((item, idx) => ("
+        },
+        {
+          "line": 530,
+          "text": "{activeProfile.supportStrategies.length} estrat�gias"
+        },
+        {
+          "line": 535,
+          "text": "{activeProfile.supportStrategies.map((strat) => ("
+        }
+      ],
+      "scope": "Leitura/gestão de atributos globais",
+      "status": "GUARDA_EXISTENTE_53",
+      "finding": "Componente externo exige canReadProfile; gestão exige canManageProfile e muda chave por contexto. Atribuição por contribuição não existe nos atributos globais.",
+      "next": "Não reabrir #53; preservar escopo documentado e encaminhar evolução do modelo por perspectiva à #60."
+    },
+    {
+      "path": "src/screens/OnboardingScreen.tsx",
+      "references": [
+        {
+          "line": 21,
+          "text": "const {activeProfile, activeCaregiver, canReadProfile, canManageProfile} = useApp();"
+        },
+        {
+          "line": 28,
+          "text": "return <OnboardingContent key={`${activeProfile.id}:${activeCaregiver.id}`} />;"
+        },
+        {
+          "line": 33,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 37,
+          "text": "availableProfiles,"
+        },
+        {
+          "line": 42,
+          "text": "const [name, setName] = useState(activeProfile.name);"
+        },
+        {
+          "line": 43,
+          "text": "const [ageLabel, setAgeLabel] = useState(activeProfile.ageLabel);"
+        },
+        {
+          "line": 44,
+          "text": "const [preferredPronoun, setPreferredPronoun] = useState(activeProfile.preferredPronoun);"
+        },
+        {
+          "line": 68,
+          "text": "interests: [...activeProfile.interests, newInterest.trim()],"
+        },
+        {
+          "line": 74,
+          "text": "const updated = activeProfile.interests.filter((_, i) => i !== index);"
+        },
+        {
+          "line": 81,
+          "text": "comfortAnchors: [...activeProfile.comfortAnchors, newComfort.trim()],"
+        },
+        {
+          "line": 87,
+          "text": "const updated = activeProfile.comfortAnchors.filter((_, i) => i !== index);"
+        },
+        {
+          "line": 94,
+          "text": "communicationModes: [...activeProfile.communicationModes, newCommunication.trim()],"
+        },
+        {
+          "line": 100,
+          "text": "const updated = activeProfile.communicationModes.filter((_, i) => i !== index);"
+        },
+        {
+          "line": 126,
+          "text": "{availableProfiles.filter(p => canReadChildProfile(activeCaregiver, p.id)).map((p) => {"
+        },
+        {
+          "line": 127,
+          "text": "const isSelected = p.id === activeProfile.id;"
+        },
+        {
+          "line": 220,
+          "text": "<span className=\"text-xs text-[#133E43]/60\">{activeProfile.interests.length} itens</span>"
+        },
+        {
+          "line": 224,
+          "text": "{activeProfile.interests.map((item, idx) => ("
+        },
+        {
+          "line": 274,
+          "text": "<span className=\"text-xs text-[#133E43]/60\">{activeProfile.comfortAnchors.length} itens</span>"
+        },
+        {
+          "line": 278,
+          "text": "{activeProfile.comfortAnchors.map((item, idx) => ("
+        },
+        {
+          "line": 328,
+          "text": "<span className=\"text-xs text-[#133E43]/60\">{activeProfile.communicationModes.length} itens</span>"
+        },
+        {
+          "line": 332,
+          "text": "{activeProfile.communicationModes.map((item, idx) => ("
+        }
+      ],
+      "scope": "Configuração e perfis disponíveis para gestão",
+      "status": "GUARDA_EXISTENTE_53",
+      "finding": "Leitura e gestão são exigidas antes do conteúdo; catálogo é filtrado pela política de perfil.",
+      "next": "Não reabrir #53; nenhuma nova atribuição/autoria é criada por esta correção da Home."
+    },
+    {
+      "path": "src/screens/PrivacyScreen.tsx",
+      "references": [
+        {
+          "line": 35,
+          "text": "const { clearActiveChildObservationsToEmpty, restoreDemoData, activeChildObservations, activeProfile } = useApp();"
+        },
+        {
+          "line": 71,
+          "text": "Registros tempor�rios em mem�ria ({activeProfile.name}): <strong>{activeChildObservations.length}</strong>"
+        },
+        {
+          "line": 79,
+          "text": "Zerar Mem�ria de {activeProfile.name}"
+        },
+        {
+          "line": 117,
+          "text": "<span>Perfil Ativo: <strong>{activeProfile.name}</strong> ({activeChildObservations.length} observa��es sint�ticas)</span>"
+        }
+      ],
+      "scope": "Nome ativo e contagem filtrada em controles/resumo",
+      "status": "PENDENTE_IDENTIDADE_DE_FIXTURES",
+      "finding": "Mostra nome do perfil ao lado de contagens derivadas das observações autorizadas. Comandos e apresentação não são a mesma proteção.",
+      "next": "Conferir apresentação/identidades e escopo dos controles em recorte próprio; nenhuma alteração de política ou capacidade de retenção nesta entrega."
+    },
+    {
+      "path": "src/screens/ReportScreen.tsx",
+      "references": [
+        {
+          "line": 22,
+          "text": "activeProfile,"
+        },
+        {
+          "line": 55,
+          "text": "profile: activeProfile, recipientLabel: recipientLabels[recipient],"
+        },
+        {
+          "line": 90,
+          "text": "Selecione os registros que melhor contextualizam a rotina de {activeProfile.name} para compartilhar presencialmente com profissionais ou a escola."
+        },
+        {
+          "line": 146,
+          "text": "<strong>{selectedObservations.length}</strong> de {activeChildObservations.length} observa��es de {activeProfile.name} selecionadas para este documento"
+        },
+        {
+          "line": 219,
+          "text": "<div><strong>Crian�a:</strong> {activeProfile.name} (Dados Fict�cios)</div>"
+        },
+        {
+          "line": 220,
+          "text": "<div><strong>Idade:</strong> {activeProfile.ageLabel}</div>"
+        }
+      ],
+      "scope": "Identidade e representação de síntese",
+      "status": "GUARDA_EXISTENTE_54",
+      "finding": "canReadProfile impede apresentação; observações são filtradas e ações conferem leitura. Estes controles não se propagavam automaticamente para a Home.",
+      "next": "Não reabrir #54; manter os testes anteriores. Dados globais e modelo de autoria por perspectiva continuam sendo temas distintos."
+    },
+    {
+      "path": "src/screens/UnderstandScreen.tsx",
+      "references": [
+        {
+          "line": 17,
+          "text": "const { activeProfile, activeChildObservations } = useApp();"
+        },
+        {
+          "line": 50,
+          "text": "Compreender {activeProfile.name}: Registros & Contextos"
+        }
+      ],
+      "scope": "Título e contagens baseadas em registros",
+      "status": "PENDENTE_IDENTIDADE_DE_FIXTURES",
+      "finding": "Contagens usam observações autorizadas; título ainda usa nome ativo. Linguagem de registros/contextos não prova leitura de identidade.",
+      "next": "Revisar identidade do título sem desfazer o recorte de contagens já corrigido."
+    },
+    {
+      "path": "src/screens/WelcomeScreen.tsx",
+      "references": [
+        {
+          "line": 21,
+          "text": "const { setScreen, activeProfile } = useApp();"
+        },
+        {
+          "line": 47,
+          "text": "<span>Explorar In�cio com {activeProfile.name}</span>"
+        }
+      ],
+      "scope": "Ação inicial com nome do perfil",
+      "status": "PENDENTE_IDENTIDADE_DE_FIXTURES",
+      "finding": "Ação de exploração menciona nome da fixture ativa.",
+      "next": "Definir apresentação neutra ou autorizada na entrada demonstrativa em recorte PG-06 próprio."
+    }
+  ],
+  "fixture_identity": {
+    "sources": [
+      "src/data/mockData.ts",
+      "tests/e2e/fixtures/synthetic-data.ts"
+    ],
+    "meaning": "Nomes, idades e vínculos são exemplos de demonstração/teste; não constituem evidência de identidade, autoria, frequência ou legitimidade real.",
+    "remaining_surface": "Cabeçalho, seletores e mensagens podem continuar identificando fixtures fora do conteúdo da Home; inclusive ao imprimir a página inteira.",
+    "production_authorization": false
+  },
+  "paused_task29_resumed": false
+}
