@@ -20,3 +20,8 @@ Permanece pendente especificar e revisar:
 - Validação com casos contraditórios, múltiplos intérpretes, autoria contestada, troca de vínculos, perda de acesso e fontes não verificadas.
 
 Este documento registra uma decisão de representação de lacuna e uma agenda de contrato. Não aprova schema novo, autenticação, histórico persistente ou enquadramento jurídico. Não cria princípios INF-ID nem recupera o acervo ausente. Dados infantis reais continuam bloqueados e #29 permanece pausada.
+
+
+## Continuidade documental — #60 / 23/11/2026
+
+A [proposta de contrato de contribuições, autoria e versões por perspectiva](../../contratos/contribuicoes-perspectivas/README.md) consolida a agenda acima para revisão. A apresentação de lacunas adotada em #54 permanece válida; este vínculo não declara implantação de autoria separada, acervo de versões, schema ou autorização de dados reais. Os 24 cenários propostos não foram executados. #27 continua pendente e #29 permanece pausada.
