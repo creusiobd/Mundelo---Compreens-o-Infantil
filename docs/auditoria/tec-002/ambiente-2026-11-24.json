@@ -1,0 +1,148 @@
+{
+  "task": 29,
+  "code": "TEC-002",
+  "observed_on": "2026-11-24",
+  "responsible": "Creusio Kizua",
+  "repo_base_commit": "57d4c32bb92fb1ef0a8c294c9c27a5aaad6703d6",
+  "access": {
+    "provider": "Supabase",
+    "channel": "Authenticated dashboard via browser",
+    "confirmed": true,
+    "plugin_connected": false,
+    "credentials_copied": false
+  },
+  "environment": {
+    "project_ref": "qopxjinlcravchuignuk",
+    "name": "Mundelo---Compreens-o-Infantil",
+    "branch": "main",
+    "compute": "Nano",
+    "region": "West US (Oregon)",
+    "region_id": "us-west-2",
+    "purpose": {
+      "value": "Development and synthetic data only",
+      "source": "Explicit owner reply in this conversation",
+      "independently_audited": false
+    },
+    "status_at_inspection": "Healthy"
+  },
+  "observations": [
+    {
+      "id": "ENV-01",
+      "surface": "Identification",
+      "status": "OBSERVED",
+      "finding": "Project name/reference, main branch, Oregon/us-west-2 and Nano compute visible",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/settings/general"
+    },
+    {
+      "id": "ENV-02",
+      "surface": "Managed backups",
+      "status": "UNAVAILABLE_IN_CURRENT_PLAN_UI",
+      "finding": "Overview: No backups. Backups page: Free Plan does not include project backups; upgrade offered",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/database/backups/scheduled"
+    },
+    {
+      "id": "ENV-03",
+      "surface": "Point-in-time recovery",
+      "status": "UNAVAILABLE_IN_CURRENT_PLAN_UI",
+      "finding": "Dashboard offers PITR as a Pro add-on, without a recovery point or configured window in inspected UI",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/database/backups/pitr"
+    },
+    {
+      "id": "ENV-04",
+      "surface": "Read replicas",
+      "status": "NOT_CONFIGURED_AS_SHOWN",
+      "finding": "No read replicas; all reads and writes go to primary",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/settings/infrastructure"
+    },
+    {
+      "id": "ENV-05",
+      "surface": "Application tables",
+      "status": "OBSERVED_SCOPED",
+      "finding": "Schema public has 0 tables. Other schemas and data contents not inventoried",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/database/tables"
+    },
+    {
+      "id": "ENV-06",
+      "surface": "File buckets",
+      "status": "EMPTY_STATE_OBSERVED",
+      "finding": "Files page shows Create a file bucket. Other storage products and external copies not inventoried",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/storage/buckets"
+    },
+    {
+      "id": "ENV-07",
+      "surface": "Migration history",
+      "status": "OVERVIEW_ONLY",
+      "finding": "Project overview says No migrations; this does not audit every schema or SQL operation",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk"
+    },
+    {
+      "id": "ENV-08",
+      "surface": "External log drains",
+      "status": "UNAVAILABLE_IN_CURRENT_PLAN_UI",
+      "finding": "Dashboard offers upgrade to enable log drains; no configured drain shown",
+      "source": "https://supabase.com/dashboard/project/qopxjinlcravchuignuk/settings/log-drains"
+    },
+    {
+      "id": "ENV-09",
+      "surface": "Log retention and expurgo",
+      "status": "NOT_VERIFIED",
+      "finding": "Postgres log interface accessible; no actual retention/expurgo policy proved. No raw log entries copied",
+      "source": "Authenticated dashboard, Postgres logs navigation; exact logs route not retained"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "P1",
+      "status": "PARTIAL_READ_ONLY_INVENTORY",
+      "remaining": "Inventory external copies, jobs, temporary files/caches, logs and responsible parties; service internal copies not determined"
+    },
+    {
+      "id": "P2",
+      "status": "NOT_EXECUTED",
+      "remaining": "Define contained synthetic marker and copy/destination surfaces; record scope/timestamps and effects"
+    },
+    {
+      "id": "P3",
+      "status": "NOT_EXECUTED",
+      "remaining": "Controlled failure scenario and expected partial result not executed"
+    },
+    {
+      "id": "P4",
+      "status": "BLOCKED_NOT_EXECUTED",
+      "remaining": "No available backup/recovery point or authorized isolated restore target/strategy identified"
+    },
+    {
+      "id": "P5",
+      "status": "BLOCKED_NOT_EXECUTED",
+      "remaining": "No managed snapshot/replica rotation test available; external copy lifecycles unknown"
+    }
+  ],
+  "changes": {
+    "provider_configuration_changed": false,
+    "infrastructure_created": false,
+    "plan_changed": false,
+    "sql_submitted": false,
+    "synthetic_marker_created": false,
+    "backup_created_or_restored": false,
+    "source_material_edited": false
+  },
+  "disposition": {
+    "issue29": "OPEN_PARTIAL_DIAGNOSIS",
+    "previous_pause": "Inspection resumed by owner; no operational tests executed",
+    "readiness_issue35": "BLOCKED_FOR_REAL_CHILD_DATA",
+    "legal_issue27": "REMAINS_PENDING",
+    "new_INF_principles": 0,
+    "real_child_data_authorized": false
+  },
+  "limitations": [
+    "No managed backups in the UI is not proof of absence of provider-internal disaster-recovery copies",
+    "Zero public tables is not proof that every schema is empty",
+    "No verification of browser/OS temporary copies, third-party jobs, underlying provider copies or retention execution",
+    "Vendor pricing, plan changes and alternative backup designs were not contracted or selected"
+  ],
+  "next_decisions": [
+    "Choose a scoped, testable backup/isolated restore strategy, or record a confirmed capability gap for readiness decision",
+    "Provisioning or paid changes require a separate concrete scope; no automatic upgrade",
+    "Confront implemented limits with PR21 without silently changing internal parameters"
+  ]
+}

@@ -46,3 +46,10 @@ Todos os cinco procedimentos estão **NÃO EXECUTADOS** nesta entrega. Documenta
 ## Resultado dos critérios de #29
 
 Identificação da arquitetura escolhida e evidência disponível: realizada. Confronto com PR21: realizado nesta matriz. Capacidades locais e diferenças: registradas. **Provedor efetivamente configurado e capacidades externas não comprovados**: manter #29 aberta para complemento externo; não encerrar pelo diagnóstico. Nenhuma infraestrutura, prazo, política do provedor ou dado real foi modificado.
+
+
+## Complemento de inspeção autenticada — 24/11/2026
+
+O [relatório do ambiente](ambiente-2026-11-24.md) e o [registro estruturado](ambiente-2026-11-24.json) identificam o projeto Supabase informado por Creusio, com acesso autenticado pelo navegador. Creusio confirmou uso exclusivo de desenvolvimento e dados sintéticos. O painel mostra Nano/Oregon, schema public sem tabelas, ausência de réplicas de leitura e indisponibilidade de backups gerenciados/PITR/log drains no plano apresentado. Retenção/expurgo de logs não comprovados.
+
+Esta observação supera a falta de identificação/acesso descrita no retrato histórico acima; não representa testes de backup, restauração, eliminação ou rotação executados. P1 recebeu inventário parcial, P2–P5 permanecem não executados. #29 continua aberta para decisão de estratégia e comprovação; sem mudança de plano/configuração, infraestrutura ou habilitação de dados reais.
