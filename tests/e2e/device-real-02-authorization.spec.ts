@@ -43,6 +43,8 @@ test.describe('DEVICE-REAL-02 | DR02-TB-01B authorization regression', () => {
     await dialog.getByRole('button', {name:/^Observação Direta/}).click();
     await dialog.getByRole('button', { name: /Salvar no Diário/i }).click();
     await expect(dialog).toHaveCount(0);
-    await expect(page.locator('aside[aria-live="polite"]')).toContainText(/Observação canônica registrada/i);
+    await expect(page.locator('aside[aria-live="polite"]')).toContainText('Observação registrada na memória desta sessão de demonstração.');
+    await page.getByRole('navigation', {name:'Navegação principal'}).getByRole('button', {name:'Diário',exact:true}).click();
+    await expect(page.locator('main article').filter({hasText:'TESTE-HELENA-REGRESSION'})).toHaveCount(1);
   });
 });

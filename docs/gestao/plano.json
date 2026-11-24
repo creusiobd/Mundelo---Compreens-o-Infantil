@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-19",
+  "as_of": "2026-11-23",
   "owner": "Creusio Kizua",
   "project_url": "https://github.com/users/creusiobd/projects/4",
   "tasks": [
@@ -54,7 +54,7 @@
       "title": "Conciliar versões e aprovação dos 73 INF-ID documentados",
       "milestone": "M01",
       "sprint": "SP01",
-      "status": "Pronto",
+      "status": "Bloqueado",
       "priority": "P1",
       "dependencies": [],
       "acceptance": [
@@ -66,7 +66,13 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24",
-      "issue_number": 24
+      "issue_number": 24,
+      "blocker": {
+        "id": "BL-06",
+        "cause": "Acervo dos 73 textos e fontes concretas não localizado na consulta anterior; conciliação não executada",
+        "owner": "Creusio Kizua",
+        "unblock_action": "Disponibilizar matriz/acervo e fonte conferível; não reconstruir princípios"
+      }
     },
     {
       "id": "INF-001",
@@ -176,7 +182,7 @@
       "title": "Comprovar capacidade do ambiente para retenção e backups",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Planejado",
+      "status": "Pausado",
       "priority": "P0",
       "dependencies": [
         "TEC-001"
@@ -190,14 +196,22 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/29",
-      "issue_number": 29
+      "issue_number": 29,
+      "blocker": {
+        "id": "BL-07",
+        "cause": "Capacidade externa não comprovada; tarefa pausada a pedido de Creusio",
+        "owner": "Creusio Kizua",
+        "unblock_action": "Aguardar instrução explícita de retomada e disponibilidade de acesso/evidências"
+      },
+      "document_delivered": true,
+      "external_procedures_executed": 0
     },
     {
       "id": "GOV-003",
       "title": "Definir verificação adicional para medidas destrutivas ou disputadas",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Em revisão",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [
         "GOV-002"
@@ -213,9 +227,10 @@
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30",
       "issue_number": 30,
       "document_delivered": true,
-      "incorporation_pending": true,
+      "incorporation_pending": false,
       "evidence": [
-        "../governanca/gov-003/README.md"
+        "../governanca/gov-003/README.md",
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/40"
       ]
     },
     {
@@ -223,7 +238,7 @@
       "title": "Especificar autorização, versões e propagação aos derivados",
       "milestone": "M02",
       "sprint": "SP02",
-      "status": "Pronto",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [
         "TEC-001",
@@ -247,14 +262,17 @@
         "resolved_on": "2026-11-20",
         "evidence": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/39",
         "note": "Dependência documental resolvida; especificação não executada."
-      }
+      },
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/41"
+      ]
     },
     {
       "id": "QA-001",
       "title": "Preparar roteiro executável dos 16 cenários de retenção",
       "milestone": "M03",
       "sprint": "SP03",
-      "status": "Bloqueado",
+      "status": "Concluído",
       "priority": "P1",
       "dependencies": [
         "TEC-003"
@@ -268,20 +286,23 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32",
-      "blocker": {
+      "issue_number": 32,
+      "historical_blocker": {
         "id": "BL-03",
         "cause": "Ainda depende da especificação e dos controles a examinar",
         "owner": "Creusio Kizua",
         "unblock_action": "Concluir TEC-003 e identificar ambiente sintético"
       },
-      "issue_number": 32
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/42"
+      ]
     },
     {
       "id": "QA-002",
       "title": "Executar cenários aplicáveis com dados sintéticos e registrar resultados",
       "milestone": "M03",
       "sprint": "SP03",
-      "status": "Bloqueado",
+      "status": "Concluído",
       "priority": "P0",
       "dependencies": [
         "QA-001",
@@ -296,20 +317,23 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33",
-      "blocker": {
+      "issue_number": 33,
+      "historical_blocker": {
         "id": "BL-04",
         "cause": "Roteiro e controles implementados disponíveis ainda não comprovados",
         "owner": "Creusio Kizua",
         "unblock_action": "Concluir QA-001 e confrontar com a implementação real"
       },
-      "issue_number": 33
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/47"
+      ]
     },
     {
       "id": "UX-001",
       "title": "Revisar a experiência de pedidos, restrições e acompanhamento",
       "milestone": "M03",
       "sprint": "Backlog",
-      "status": "Planejado",
+      "status": "Concluído",
       "priority": "P1",
       "dependencies": [
         "GOV-002",
@@ -324,7 +348,10 @@
       "owner": "Creusio Kizua",
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34",
-      "issue_number": 34
+      "issue_number": 34,
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/50"
+      ]
     },
     {
       "id": "REL-001",
@@ -361,7 +388,7 @@
       "title": "Manter atualização de sprint, entregas e bloqueios",
       "milestone": "M01",
       "sprint": "Recorrente",
-      "status": "Planejado",
+      "status": "Recorrente",
       "priority": "P1",
       "dependencies": [
         "PM-001"
@@ -376,6 +403,204 @@
       "assignee": "creusiobd",
       "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36",
       "issue_number": 36
+    },
+    {
+      "id": "FIX-43",
+      "title": "Revalidar leitura de detalhe já aberto ao perder acesso",
+      "milestone": "M03",
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/43",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 43,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/43",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49"
+      ]
+    },
+    {
+      "id": "FIX-44",
+      "title": "Revalidar contexto após criptografia e antes de baixar cofre",
+      "milestone": "M03",
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/44",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 44,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/44",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/48"
+      ]
+    },
+    {
+      "id": "FIX-45",
+      "title": "Minimizar e proteger identificadores públicos do envelope do cofre",
+      "milestone": "M03",
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/45",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 45,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/45",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49"
+      ]
+    },
+    {
+      "id": "FIX-46",
+      "title": "Aplicar restrição de acesso ao perfil usado no relatório",
+      "milestone": "M03",
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/46",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 46,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/46",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49"
+      ]
+    },
+    {
+      "id": "FIX-51",
+      "title": "Retirar padrões fixos apresentados como resultados da amostra",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/51",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 51,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/51",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/55"
+      ]
+    },
+    {
+      "id": "FIX-52",
+      "title": "Impedir respostas e fatos observados preenchidos sem relato",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/52",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 52,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/52",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/56"
+      ]
+    },
+    {
+      "id": "FIX-53",
+      "title": "Revalidar acesso ao perfil e aos comandos de Meu Mundo",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/53",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 53,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/53",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/57"
+      ]
+    },
+    {
+      "id": "FIX-54",
+      "title": "Preservar atribuição das interpretações em detalhe e relatório",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/54",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 54,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/54",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/58"
+      ]
+    },
+    {
+      "id": "FIX-59",
+      "title": "Restringir resumo do perfil na Home e retirar atribuições sem evidência",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/59",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 59,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/59",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/62"
+      ]
+    },
+    {
+      "id": "FIX-60",
+      "title": "Consolidar contrato de contribuições, autoria e versões por perspectiva",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/60",
+      "delivery": "Contrato documental; implementação e casos CP não executados",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 60,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/60",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/63"
+      ]
+    },
+    {
+      "id": "FIX-61",
+      "title": "Alinhar linguagem de registro e mensagens de exclusão à política demonstrativa",
+      "milestone": null,
+      "sprint": "Não atribuído neste checkpoint",
+      "status": "Concluído",
+      "priority": "P1",
+      "dependencies": [],
+      "acceptance_source": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/61",
+      "delivery": "Correção demonstrativa no recorte da issue; preservar limites da entrega",
+      "owner": "Creusio Kizua",
+      "assignee": "creusiobd",
+      "issue_number": 61,
+      "issue_url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/61",
+      "evidence": [
+        "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/64"
+      ]
     }
   ],
   "milestones": [
@@ -398,7 +623,7 @@
       "title": "M01 — Gestão e baseline rastreável",
       "description": "Gestão operacional, mapa técnico e conciliação dos textos acessíveis. Recuperação integral permanece rastreada à parte se faltar exportação. Meta de planejamento, não garantia.",
       "due": "2026-11-28",
-      "status": "Em andamento",
+      "status": "Em andamento; fontes pendentes",
       "number": 2,
       "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/2"
     },
@@ -407,7 +632,7 @@
       "title": "M02 — Governança e especificação verificáveis",
       "description": "Enquadramentos, exceções, verificação adicional, capacidades do ambiente e especificação de operações com evidências. Data-alvo depende dos bloqueios.",
       "due": "2026-12-12",
-      "status": "Planejado com bloqueios",
+      "status": "Documentos parciais concluídos; validação/capacidade pendentes",
       "number": 3,
       "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/3"
     },
@@ -416,7 +641,7 @@
       "title": "M03 — Verificação sintética e experiência",
       "description": "Cenários executados onde houver controles reais disponíveis, falhas registradas e experiência revisada. Não equivale a liberação de produção.",
       "due": "2026-12-26",
-      "status": "Planejado com bloqueios",
+      "status": "Entregas parciais concluídas; aceite integral pendente",
       "number": 4,
       "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestone/4"
     },
@@ -439,7 +664,9 @@
       "activation": "2026-11-19",
       "status": "Corrente",
       "objective": "Implantar gestão e estabelecer mapa técnico e documental do que existe.",
-      "capacity": "No máximo três tarefas ativas selecionadas; uma execução por vez. O ciclo pré-existente do Project começa em 15/11; esta organização foi mobilizada em 19/11, sem atribuir trabalho retroativo."
+      "capacity": "No máximo três tarefas ativas selecionadas; uma execução por vez. O ciclo pré-existente do Project começa em 15/11; esta organização foi mobilizada em 19/11, sem atribuir trabalho retroativo.",
+      "reconciled_on": "2026-11-23",
+      "note": "Datas originais preservadas; entregas adiantadas foram reconhecidas, sem presumir conclusão do objetivo integral."
     },
     {
       "id": "SP02",
@@ -448,7 +675,9 @@
       "end": "2026-12-12",
       "status": "Planejada",
       "objective": "Resolver/registrar decisões e preparar especificação das operações.",
-      "capacity": "Replanejar ao fim de SP01; dependências externas não são compromisso de entrega."
+      "capacity": "Replanejar ao fim de SP01; dependências externas não são compromisso de entrega.",
+      "reconciled_on": "2026-11-23",
+      "note": "Datas originais preservadas; entregas adiantadas foram reconhecidas, sem presumir conclusão do objetivo integral."
     },
     {
       "id": "SP03",
@@ -457,13 +686,55 @@
       "end": "2026-12-26",
       "status": "Planejada",
       "objective": "Preparar/executar verificação disponível e revisar experiência.",
-      "capacity": "Execução depende de implementação disponível e ambiente sintético apropriado."
+      "capacity": "Execução depende de implementação disponível e ambiente sintético apropriado.",
+      "reconciled_on": "2026-11-23",
+      "note": "Datas originais preservadas; entregas adiantadas foram reconhecidas, sem presumir conclusão do objetivo integral."
     }
   ],
   "latest_update": {
-    "date": "2026-11-20",
-    "task": "GOV-003",
-    "result": "Modelo entregue para revisão; GOV-002 incorporada; TEC-003 disponível para especificação",
-    "report": "../governanca/gov-003/README.md"
-  }
+    "date": "2026-11-23",
+    "task": "PM-002 / PG-06 v0.4",
+    "result": "Conciliação após incorporação de #59–#61; sete pendências, auditoria atualizada e fila sintética proposta",
+    "report": "andamentos/2026-11-23-consolidacao-pg06.md",
+    "audit": "../auditoria-conformidade-principios-xiii-xiv-pg06-v0-4.md"
+  },
+  "baseline_commit": "e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9",
+  "issue_snapshot": {
+    "closed": 19,
+    "open": 7,
+    "open_pull_requests": [
+      5,
+      17
+    ],
+    "native_project_fields_synchronized": false
+  },
+  "next_cycle": [
+    {
+      "id": "PG06-N01",
+      "priority": "P1",
+      "status": "Planejado; não executado",
+      "title": "Minimizar identidade nas superfícies restantes",
+      "dependency": "Inventário fix-59 e auditoria v0.4; sem depender da #29",
+      "scope": "Cabeçalho/seletores, mensagens de troca, títulos de Journal/Discoveries/Understand/Privacy/Welcome e resumo visual de exportação. Preservar comandos e formatos já corrigidos.",
+      "acceptance": [
+        "Definir por superfície se a identidade pode ser mostrada segundo a leitura vigente; acesso negado não deve ser descrito como acervo vazio.",
+        "Cobrir troca de contexto, perda de acesso, renderização e impressão onde aplicável, com caminhos legítimos preservados.",
+        "Executar testes proporcionais nos componentes/provider reais e conferir acessibilidade; sem declarar proteção fora das superfícies verificadas."
+      ]
+    },
+    {
+      "id": "PG06-N02",
+      "priority": "P1",
+      "status": "Planejado; não executado",
+      "title": "Resolver decisões do contrato de contribuições antes do primeiro incremento",
+      "dependency": "Contrato #60; J01/#27 e J02/GOV-003 permanecem condicionantes",
+      "scope": "Preparar decisões T01/T03 e um primeiro incremento lógico com cenários CP selecionados. Registrar T02/T04/T05 com dependências, sem retomar capacidade externa ou antecipar schema.",
+      "acceptance": [
+        "Registrar alternativas, decisão ou pendência, responsável e efeito por operação; ausência de fonte/autoria continua explícita.",
+        "Definir unidade mínima que distingue registrador, observador, relator, intérprete e editor sem inventar autoria de legados.",
+        "Vincular cenários CP ao incremento futuro, separando descrito de executado; nenhum dos 24 casos recebe PASS pela documentação.",
+        "Manter T02 condicionado à pausa da #29 quando pertinente; J01/J02 não são resolvidos por aprovação técnica."
+      ]
+    }
+  ]
 }

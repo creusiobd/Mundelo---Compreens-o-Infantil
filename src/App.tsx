@@ -257,7 +257,7 @@ const MainAppContent: React.FC = () => {
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={handleConfirmDelete}
         title="Excluir Observação"
-        message="Deseja realmente remover esta anotação da memória de demonstração da sessão?"
+        message="Remover este registro da memória desta sessão de demonstração? Esta ação não comprova eliminação em cópias ou backups."
       />
 
       {/* Experimental Vault Modals */}

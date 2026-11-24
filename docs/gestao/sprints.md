@@ -1,5 +1,17 @@
 # Sprints
 
+Atualização vigente: 23/11/2026. Responsável: Creusio Kizua. As datas originais abaixo são preservadas; nenhuma entrega foi atribuída retroativamente a um período.
+
+## Replanejamento do ciclo corrente SP01
+
+Período original: 15–28/11/2026; mobilização em 19/11. Gestão e mapa técnico concluídos; conciliação INF-002/#24 bloqueada por fontes. As entregas de governança/especificação/testes que estavam previstas para SP02/SP03 foram antecipadas em seus recortes documentais ou demonstrativos; não representam conclusão integral desses objetivos.
+
+Seleção imediata: #36 e PR #17 — checkpoint e reavaliação após #59–#61. Fila posterior, ainda não executada: PG06-N01 (identidade das superfícies restantes), depois PG06-N02 (decisões e primeiro recorte do contrato). Escopos/aceites em [backlog](backlog.md) e [plano](plano.json).
+
+Capacidade: uma execução por vez, no máximo três itens selecionados. #24–#27 dependem de fontes/validação; #29 continua pausada. Nenhuma data de produção ou conclusão externa foi prometida. Revisar SP02/SP03 no encerramento de SP01 com evidências, sem recolocar como pendentes documentos já incorporados.
+
+## Histórico preservado — planejamento inicial
+
 Responsável: Creusio Kizua. Planejamento inicial em 19/11/2026. Datas futuras são metas condicionais e devem ser revistas ao término de cada ciclo.
 
 ## SP01 — Organização e baseline
@@ -53,3 +65,4 @@ Candidatas ao ciclo:
 4. Encerrar com entregas efetivas, pendências e decisões de replanejamento. Não mover trabalho incompleto para concluído para fechar o ciclo.
 
 A SP01 usa o ciclo já existente do Project, iniciado em 15/11. Esta organização foi mobilizada em 19/11; não se atribui trabalho retroativo. A rotina recorrente é acompanhada em [PM-002 #36](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36); não foi criada automação de lembrete.
+

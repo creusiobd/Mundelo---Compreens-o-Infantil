@@ -1,5 +1,17 @@
 # MUNDELO — Gestão e Entregas
 
+**Checkpoint vigente — 23/11/2026**
+
+Base: `e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9`. **19 issues encerradas, sete abertas e duas PRs abertas (#5/#17)**. As PRs #62/#63/#64 incorporaram #59/#60/#61; o contrato #60 é documental. [CI da main](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/45247961227) aprovada. #29 pausada; dados infantis reais bloqueados. [Checkpoint detalhado](andamentos/2026-11-23-consolidacao-pg06.md) · [Auditoria v0.4](../auditoria-conformidade-principios-xiii-xiv-pg06-v0-4.md).
+
+Pendências: #24/#25/#26 fontes, #27 validação competente, #29 capacidade externa pausada, #35 prontidão e #36 rotina recorrente. Fila planejada: PG06-N01 identidade das demais superfícies; PG06-N02 decisões do contrato. Uma execução por vez; itens ainda não executados. Campos nativos do Project não foram sincronizados.
+
+O plano estruturado e o backlog abaixo refletem o checkpoint; os registros datados anteriores permanecem como história. Responsável: **Creusio Kizua**.
+
+[Backlog](backlog.md) · [Sprints](sprints.md) · [Marcos](marcos-entregas.md) · [Bloqueios](bloqueios.md) · [Processo](processo.md) · [Plano estruturado](plano.json)
+
+## Histórico preservado — retratos anteriores
+
 Atualizado em 20/11/2026. Responsável atual: **Creusio Kizua**, idealizador e desenvolvedor, responsável por produto, governança e execução técnica conforme sua declaração.
 
 **[Abrir o GitHub Project](https://github.com/users/creusiobd/projects/4)** · [Tarefas](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues) · [Marcos](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestones)
@@ -69,3 +81,18 @@ O [checkpoint atual](andamentos/2026-11-21-retomada.md) sucede os retratos anter
 PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e [#50](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/50) aprovadas pelo responsável e incorporadas à main, respectivamente em `da66b9a4961233c43c6f16da0bded58fd636f6bf` e `6552f784d8fa369d3b95f36b6378cf81f9585be4`. [CI da integração](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/44946599881) aprovado. Este registro sucede as indicações anteriores de revisão pendente dessas duas PRs.
 
 #34/#43/#45/#46 encerradas: **12 issues concluídas e sete abertas** entre as 19 acompanhadas. Restam #24/#25/#26 (fontes), #27 (validação competente), #29 (capacidade externa), #35 (deliberação por gates) e #36 (rotina recorrente). Próxima frente técnica: [TEC-002/#29](../auditoria/tec-002/README.md). Cadastro/dados infantis reais e cenários integrais continuam bloqueados conforme suas pré-condições. Sem sincronização dos campos privados do Project.
+
+
+## Atualização — #59 / 23/11/2026
+
+[Correção da Home AUD-13](andamentos/2026-11-23-task-59.md) entregue para revisão: perfil/contagens condicionados à leitura e linguagem sem atualidade/frequência presumidas. Validação local: 12 testes de navegador e 150 de domínio aprovados; inventário de 14 consumidores registra coberturas e pendências. #29 continua pausada, #53/#54 não reabertas e dados reais bloqueados. Não há conclusão de PG-06 integral nem sincronização automática dos campos do Project.
+
+
+## Atualização — #60 / 23/11/2026
+
+[Consolidação de contribuições/autoria/versões](andamentos/2026-11-23-task-60.md) entregue para revisão após incorporação da PR #62/#59: 16 requisitos, 14 operações, 24 cenários futuros e sete decisões abertas. Legados mantêm lacunas e retenção permanece proporcional; nenhuma implantação/schema/migration foi autorizada. #27 segue pendente, #29 pausada e dados reais bloqueados. #61 mantém o recorte seguinte de linguagem demonstrativa. Sem sincronização automática dos campos do Project.
+
+
+## Atualização — #61 / 23/11/2026
+
+[Alinhamento da linguagem demonstrativa](andamentos/2026-11-23-task-61.md) entregue para revisão após incorporação da PR #63/#60. Onze verificações locais de navegador aprovadas (oito novas/três históricas) e matriz de cinco atores preservada antes/depois; helper de autorização, modelos e formatos não mudaram. Remoção está delimitada à memória da sessão, sem comprovação de eliminação governada. #29 continua pausada e dados reais bloqueados. Sem sincronização automática dos campos do Project.
