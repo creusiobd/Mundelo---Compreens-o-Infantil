@@ -49,11 +49,11 @@ export async function selectCaregiver(page: Page, caregiverId: string): Promise<
     if (isExpanded !== 'true') {
       await menuBtn.click();
     }
-    const mobileCaregiverSelect = page.getByLabel('Cuidador Ativo Simulado');
+    const mobileCaregiverSelect = page.getByLabel('Cuidador Ativo Simulado', {exact:true});
     await mobileCaregiverSelect.selectOption(caregiverId);
     await menuBtn.click();
   } else {
-    const desktopCaregiverSelect = page.getByLabel('Selecionar cuidador ativo simulado');
+    const desktopCaregiverSelect = page.getByLabel('Selecionar cuidador ativo simulado', {exact:true});
     await desktopCaregiverSelect.selectOption(caregiverId);
   }
 }

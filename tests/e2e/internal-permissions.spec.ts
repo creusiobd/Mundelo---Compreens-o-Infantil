@@ -14,7 +14,7 @@ test.describe('Gate UX-REAL-02 (Fase 2.3 / 2.4): Permissões e Controle de Acess
     // 1. No Diário: banner de política de autorização visível, 0 observações listadas e botão Nova Observação desabilitado
     await navigateToInternalScreen(page, 'journal');
     await expect(
-      page.getByText(/Demonstração de Política de Autorização: Cuidador sem Vínculo/i)
+      page.getByText(/Demonstração de Política de Autorização: Acesso Restrito/i)
     ).toBeVisible();
     const journalNewObsBtns = page
       .locator('main#main-content')

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { Observation, EventType, EnvironmentType } from '../types';
 import {
@@ -50,6 +50,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
   const {
     activeChildObservations,
     activeProfile,
+    canReadProfile,
     selectedObservationIds,
     toggleSelectObservation,
     restoreDemoData,
@@ -66,6 +67,13 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
   const [filterEnv, setFilterEnv] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
+
+  useEffect(() => {
+    setFilterType('all');
+    setFilterEnv('all');
+    setSearchTerm('');
+    setSortOrder('desc');
+  }, [activeProfile.id, activeCaregiver.id, activeCaregiver.status]);
 
   const filteredObservations = useMemo(() => {
     return activeChildObservations
@@ -155,15 +163,15 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 space-y-6 animate-in fade-in duration-150">
       {/* Privilege Simulation Banner when Caregiver not linked */}
-      {!isLinkedToActiveChild && (
+      {!canReadProfile && (
         <div className="p-4 bg-amber-50 border border-amber-300 rounded-3xl text-xs text-amber-950 flex items-start gap-3 shadow-xs">
           <ShieldAlert className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
           <div className="space-y-1">
             <strong className="font-semibold text-amber-900 text-sm">
-              Demonstração de Política de Autorização: Cuidador sem Vínculo com {activeProfile.name}
+              Demonstração de Política de Autorização: Acesso Restrito
             </strong>
             <p className="leading-relaxed">
-              O cuidador simulado atual é <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que não possui vínculo com {activeProfile.name}.
+              O cuidador simulado atual é <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que não possui permissão de leitura neste contexto.
               As operações de registro, edição e inclusão em relatório estão desabilitadas para simular o modelo de menor privilégio.
             </p>
           </div>
@@ -178,7 +186,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
             <span>Linha Temporal Contextual</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#133E43] font-display">
-            Diário de Observações: {activeProfile.name}
+            Diário de Observações{canReadProfile ? `: ${activeProfile.name}` : ''}
           </h1>
           <p className="text-xs sm:text-sm text-[#265358] mt-1">
             Registros descritivos de acontecimentos, sinais corporais e acolhimento
@@ -230,7 +238,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="bg-white p-4 rounded-3xl border border-[#133E43]/15 shadow-xs space-y-3">
+      {canReadProfile && <div className="bg-white p-4 rounded-3xl border border-[#133E43]/15 shadow-xs space-y-3">
         {/* Search Input */}
         <div className="relative">
           <Search className="w-4 h-4 text-[#265358] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -315,10 +323,14 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
             </button>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Observations Timeline Feed */}
-      {filteredObservations.length === 0 ? (
+      {!canReadProfile ? (
+        <div role="status" className="bg-white rounded-3xl p-8 border border-[#133E43]/20 text-sm text-[#265358]">
+          Leitura das observações indisponível neste contexto. Isso não informa se o acervo está vazio.
+        </div>
+      ) : filteredObservations.length === 0 ? (
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-dashed border-[#133E43]/20 text-center space-y-4">
           <div className="w-14 h-14 rounded-2xl bg-[#80C5B5]/20 text-[#133E43] flex items-center justify-center mx-auto">
             <Eye className="w-7 h-7" />

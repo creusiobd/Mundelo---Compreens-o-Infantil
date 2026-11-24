@@ -6,6 +6,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { ScreenId } from '../types';
+import { canReadChildProfile } from '../security/authorization';
 import { BrandLogo } from './BrandLogo';
 import {
   BookHeart,
@@ -42,11 +43,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
     switchCaregiver,
     isLinkedToActiveChild,
     canCreate,
+    canReadProfile,
+    canManageProfile,
     clearActiveChildObservationsToEmpty,
     restoreDemoData,
     isAllEmpty,
     activeChildObservations,
   } = useApp();
+
+  const profileName = canReadProfile ? activeProfile.name : 'perfil com acesso restrito';
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [utilityMenuOpen, setUtilityMenuOpen] = useState(false);
@@ -157,11 +162,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
                   role="presentation"
                   className="px-3 py-1.5 border-b border-[#133E43]/10 text-[11px] text-[#265358]"
                 >
-                  Controles de demonstração ({activeProfile.name}:{' '}
-                  <strong className="tabular-nums">{activeChildObservations.length}</strong> reg.)
+                  {canReadProfile ? <>Controles de demonstração ({profileName}:{' '}
+                  <strong className="tabular-nums">{activeChildObservations.length}</strong> reg.)</> : 'Controles de demonstração: leitura indisponível'}
                 </div>
 
-                {isAllEmpty ? (
+                {canReadProfile && (isAllEmpty ? (
                   <button
                     type="button"
                     role="menuitem"
@@ -192,24 +197,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
                     <Trash2 className="w-4 h-4 text-[#CFA5A0] shrink-0" />
                     <div>
                       <span className="block">
-                        Simular Estado Vazio ({activeProfile.name})
+                        Simular Estado Vazio ({profileName})
                       </span>
                       <span className="text-[11px] font-normal text-[#265358]">
                         Limpa temporariamente os registros em memória
                       </span>
                     </div>
                   </button>
-                )}
+                ))}
 
                 <button
                   type="button"
                   role="menuitem"
+                  disabled={!canManageProfile}
                   onClick={() => handleNav('onboarding')}
                   className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs font-semibold text-[#133E43] hover:bg-[#F8F5EF] transition-colors min-h-[44px] text-left"
                 >
                   <Users className="w-4 h-4 text-[#80C5B5] shrink-0" />
                   <div>
-                    <span className="block">Ajustar Perfil de {activeProfile.name}</span>
+                    <span className="block">Ajustar Perfil{canReadProfile ? ` de ${profileName}` : ''}</span>
                     <span className="text-[11px] font-normal text-[#265358]">
                       Interesses, sinais e rotina de referência
                     </span>
@@ -320,9 +326,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
                 className="w-full sm:w-auto sm:max-w-[175px] xl:max-w-[225px] truncate bg-white border border-[#133E43]/20 hover:border-[#133E43]/40 text-[#133E43] text-xs font-semibold rounded-xl px-3 py-2 pr-7 shadow-2xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#133E43] min-h-[44px] cursor-pointer"
                 title="Criança fictícia em observação"
               >
-                {availableProfiles.map((p) => (
+                {availableProfiles.map((p, index) => (
                   <option key={p.id} value={p.id}>
-                    Criança: {p.name} ({p.ageLabel})
+                    {canReadChildProfile(activeCaregiver, p.id)
+                      ? `Criança: ${p.name} (${p.ageLabel})`
+                      : `Perfil ${index + 1} — acesso restrito`}
                   </option>
                 ))}
               </select>
@@ -333,7 +341,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
               type="button"
               onClick={onOpenNewObservation}
               disabled={!canCreate}
-              className={`text-xs sm:text-[13px] font-semibold px-3.5 py-2 rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 min-h-[44px] whitespace-nowrap shrink-0 ${
+              className={`text-xs sm:text-[13px] font-semibold px-3.5 py-2 rounded-xl transition-transform shadow-xs flex items-center justify-center gap-1.5 min-h-[44px] whitespace-nowrap shrink-0 ${
                 canCreate
                   ? 'bg-[#133E43] hover:bg-[#194F55] text-[#F8F5EF] active:scale-[0.98]'
                   : 'bg-[#133E43]/30 text-[#F8F5EF]/70 cursor-not-allowed'
@@ -465,10 +473,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
           <div className="mt-3 pt-3 border-t border-[#133E43]/10 flex flex-col gap-1.5">
             <button
               type="button"
+              disabled={!canManageProfile}
               onClick={() => handleNav('onboarding')}
               className="flex items-center justify-between text-xs font-semibold text-[#133E43] px-3 py-2.5 hover:bg-[#133E43]/5 rounded-xl min-h-[44px]"
             >
-              <span>Ajustar Perfil de {activeProfile.name}</span>
+              <span>Ajustar Perfil{canReadProfile ? ` de ${profileName}` : ''}</span>
               <span className="text-[#265358] underline">Configurar</span>
             </button>
             <button
