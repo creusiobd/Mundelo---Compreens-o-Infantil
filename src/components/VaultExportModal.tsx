@@ -30,6 +30,7 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
 }) => {
   const {
     activeProfile,
+    canReadProfile,
     activeCaregiver,
     activeChildObservations,
     exportVault,
@@ -84,7 +85,7 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
             downloadLink.remove();
             URL.revokeObjectURL(url);
           }
-          showNotification(`Cofre criptografado de ${payload.childProfile.name} baixado com sucesso!`, 'success');
+          showNotification('Cofre criptografado baixado com sucesso!', 'success');
           onClose();
         }
       );
@@ -138,11 +139,11 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
           <div className="bg-white p-3.5 rounded-2xl border border-[#133E43]/10 space-y-1.5 text-xs text-[#133E43]">
             <div className="flex items-center justify-between">
               <span className="font-semibold">Perfil Selecionado:</span>
-              <strong className="text-sm font-display">{activeProfile.name} ({activeProfile.ageLabel})</strong>
+              <strong className="text-sm font-display">{canReadProfile ? <>{activeProfile.name} ({activeProfile.ageLabel})</> : 'Leitura do perfil indisponível'}</strong>
             </div>
             <div className="flex items-center justify-between">
               <span className="font-semibold">Observações no Pacote:</span>
-              <span><strong>{activeChildObservations.length}</strong> registros sintéticos</span>
+              <span>{canReadProfile ? <><strong>{activeChildObservations.length}</strong> registros sintéticos</> : 'Contagem indisponível'}</span>
             </div>
             <div className="flex items-center justify-between text-[11px] text-[#133E43]/70 pt-1 border-t border-[#133E43]/10">
               <span>Formato & Algoritmo:</span>
@@ -158,7 +159,7 @@ export const VaultExportModal: React.FC<VaultExportModalProps> = ({
                   Acesso Negado: Cuidador Não Autorizado
                 </strong>
                 <p>
-                  O cuidador ativo simulado é <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que não possui vínculo ativo com {activeProfile.name}. A exportação de cofre está bloqueada para preservar o modelo de menor privilégio.
+                  O cuidador ativo simulado é <strong>{activeCaregiver.displayName}</strong> ({activeCaregiver.relationshipLabel || activeCaregiver.role}), que não possui permissão para exportar o perfil selecionado. A exportação de cofre está bloqueada para preservar o modelo de menor privilégio.
                 </p>
               </div>
             </div>

@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export const WelcomeScreen: React.FC = () => {
-  const { setScreen, activeProfile } = useApp();
+  const { setScreen, activeProfile, canReadProfile } = useApp();
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 sm:py-10 space-y-8 animate-in fade-in duration-200">
@@ -44,7 +44,7 @@ export const WelcomeScreen: React.FC = () => {
             onClick={() => setScreen('home')}
             className="px-6 py-3 rounded-2xl bg-[#133E43] hover:bg-[#133E43]/90 text-white font-semibold text-sm shadow-md transition-all active:scale-[0.98] min-h-[48px] flex items-center gap-2"
           >
-            <span>Explorar Início com {activeProfile.name}</span>
+            <span>Explorar Início{canReadProfile ? ` com ${activeProfile.name}` : ''}</span>
             <ArrowRight className="w-4 h-4 text-[#80C5B5]" />
           </button>
           <button

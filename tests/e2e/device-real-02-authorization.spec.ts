@@ -6,7 +6,8 @@ test.describe('DEVICE-REAL-02 | DR02-TB-01B authorization regression', () => {
     await openCleanSession(page, { width: 1280, height: 800 });
     await selectCaregiver(page, 'cg-ana-unlinked');
 
-    await expect(page.locator('aside[aria-live="polite"]')).toContainText(/Sem vínculo com Tomás/i);
+    await expect(page.locator('aside[aria-live="polite"]')).toContainText(/Sem vínculo com o perfil selecionado/i);
+    await expect(page.locator('aside[aria-live="polite"]')).not.toContainText('Tomás');
     const headerButton = page.locator('header').getByRole('button', { name: 'Nova Observação' });
     await expect(headerButton).toBeDisabled();
     await expect(page.locator('main').getByRole('button', { name: /Nova Observação/i }).first()).toBeDisabled();

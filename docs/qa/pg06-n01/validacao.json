@@ -1,0 +1,30 @@
+{
+  "task": 65,
+  "code": "PG06-N01",
+  "base_commit": "e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9",
+  "responsible": "Creusio Kizua",
+  "typecheck": "PASS",
+  "build": "PASS",
+  "domain": {
+    "pass": 150,
+    "fail": 0
+  },
+  "local_browser": {
+    "status": "BLOCKED_BEFORE_ASSERTIONS",
+    "attempts": [
+      "Vite preview + dev server",
+      "Static production build server"
+    ],
+    "negative_control": "NOT_EXECUTED"
+  },
+  "new_browser_cases": 8,
+  "CI": "TRACKED_IN_PR_AND_ISSUE_BY_COMMIT",
+  "authorization_helper_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+  "authorization_helper_changed": false,
+  "crypto_or_formats_changed": false,
+  "task29_resumed": false,
+  "real_data_authorized": false,
+  "independent_human_review": false,
+  "started_on": "2026-11-23",
+  "prepared_on": "2026-11-24"
+}

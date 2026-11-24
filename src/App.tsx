@@ -76,6 +76,9 @@ const MainAppContent: React.FC = () => {
   useEffect(() => {
     setDetailId(null);
     setIsDetailModalOpen(false);
+    setIsObsModalOpen(false);
+    setEditingObs(null);
+    setDiscoveryProposal(null);
   }, [activeProfile.id, activeCaregiver.id, activeCaregiver.status, canReadProfile]);
 
   // Vault Modals (Foundation v0.4A Web Crypto)
@@ -231,12 +234,12 @@ const MainAppContent: React.FC = () => {
 
       {/* Global Modals */}
       <ObservationModal
-        isOpen={isObsModalOpen}
+        isOpen={isObsModalOpen && canCreate && (!editingObs || canEdit(editingObs))}
         onClose={() => setIsObsModalOpen(false)}
         onSubmit={handleFormSubmit}
         initialData={editingObs}
         discoveryProposal={discoveryProposal}
-        childName={activeProfile.name}
+        childName={canReadProfile ? activeProfile.name : 'perfil com acesso restrito'}
       />
 
       <ObservationDetailModal
@@ -249,7 +252,7 @@ const MainAppContent: React.FC = () => {
           detailObs ? selectedObservationIds.includes(detailObs.id) : false
         }
         onToggleReportSelection={(id) => toggleSelectObservation(id)}
-        childName={activeProfile.name}
+        childName={canReadProfile ? activeProfile.name : 'perfil com acesso restrito'}
       />
 
       <DeleteConfirmModal

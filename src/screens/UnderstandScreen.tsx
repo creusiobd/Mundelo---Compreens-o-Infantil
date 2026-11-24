@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export const UnderstandScreen: React.FC = () => {
-  const { activeProfile, activeChildObservations } = useApp();
+  const { activeProfile, activeChildObservations, canReadProfile } = useApp();
 
   // Count only the active child’s observations authorized by the context.
   const envCounts = activeChildObservations.reduce((acc, curr) => {
@@ -37,6 +37,13 @@ export const UnderstandScreen: React.FC = () => {
   };
 
   const totalObs = activeChildObservations.length;
+
+  if (!canReadProfile) return (
+    <div className="max-w-6xl mx-auto px-4 py-6 space-y-3">
+      <h1 className="text-2xl font-bold text-[#133E43]">Compreender: Registros &amp; Contextos</h1>
+      <p role="status" className="text-sm text-[#265358]">Leitura do perfil indisponível neste contexto. As contagens não podem ser consultadas.</p>
+    </div>
+  );
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8 animate-in fade-in duration-150">

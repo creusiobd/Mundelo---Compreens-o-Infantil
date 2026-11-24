@@ -234,9 +234,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const childObs = observations.filter((o) => o.childId === profileId);
     setSelectedObservationIds(childObs.map((o) => o.id));
 
-    if (!activeCaregiver.linkedChildIds.includes(profileId)) {
+    if (!canReadChildProfile(activeCaregiver, profileId)) {
       showNotification(
-        `Aviso de Autorização: ${activeCaregiver.displayName} não possui vínculo ativo com ${target.name}. Acesso restrito.`,
+        `Aviso de Autorização: leitura do perfil selecionado indisponível para ${activeCaregiver.displayName}. Acesso restrito.`,
         'error'
       );
     } else {
@@ -263,7 +263,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       );
     } else if (!isLinked) {
       showNotification(
-        `Simulação de Cuidador: ${target.displayName} (${target.role}). Sem vínculo com ${activeProfile.name}.`,
+        `Simulação de Cuidador: ${target.displayName} (${target.role}). Sem vínculo com o perfil selecionado.`,
         'error'
       );
     } else {
