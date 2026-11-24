@@ -37,6 +37,7 @@ Ajustes históricos são específicos: toast da DEVICE-REAL-02 não exige mais n
 - Domínio/segurança local: 150 PASS, 0 FAIL.
 - Tentativas locais de navegador: bloqueadas na inicialização do servidor, antes das asserções, inclusive fallback estático; não são execução funcional aprovada.
 - CI 45316980421 (2f571e8): os oito novos casos passaram; total 108 PASS e dois FAIL. Uma expectativa histórica de anúncio ainda exigia nome restrito; outro caso capturou contraste intermediário do CTA em transição. Expectativa corrigida com ausência de nome explícita; transição de cores removida no produto, sem desabilitar regra axe ou relaxar teste.
+- CI 45318047425 (2db4341): 109 E2E PASS; anúncio e contraste anteriores aprovados. Um caso novo encontrou ambiguidade no helper mobile, cujo rótulo parcial também correspondia ao seletor desktop oculto. O helper passou a usar o rótulo exato, sem mudar a operação ou as asserções.
 - A revisão posterior é conferida pela CI da PR; resultado identificado por commit na issue/PR.
 - Não foi executado controle negativo de navegador contra a versão antiga; não atribuir tal evidência.
 - Helper src/security/authorization.ts e formatos/cifra não alterados.

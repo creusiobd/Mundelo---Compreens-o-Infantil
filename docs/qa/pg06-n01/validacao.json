@@ -38,5 +38,14 @@
       "Contraste intermediário de CTA habilitado durante transição de cores"
     ],
     "disposition": "Corrigir expectativa com negativa de identidade e remover interpolação de cores do CTA; manter axe e testes históricos"
+  },
+  "followup_ci": {
+    "run": 45318047425,
+    "commit": "2db4341c77b4a83d1b19623b6084816b02601532",
+    "browser_pass": 109,
+    "browser_fail": 1,
+    "previous_failures_resolved": true,
+    "failure": "Helper mobile getByLabel parcial correspondia a dois seletores",
+    "disposition": "Usar rótulos exatos de desktop/mobile, preservando asserções e ação real"
   }
 }
