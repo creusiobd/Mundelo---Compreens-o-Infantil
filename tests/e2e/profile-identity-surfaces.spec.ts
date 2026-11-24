@@ -102,7 +102,7 @@ test('N01: suspensão com vínculo não revela identidade ao trocar perfil', asy
   await expect(page.locator('#profile-select option[value="tomas"]')).toContainText('Tomás');
   await expect(main(page)).toContainText('Tomás');
 });
-test('N01: formulário aberto é fechado e descartado na troca de contexto', async ({page}) => {
+test('N01: formulário e busca são descartados na troca de contexto', async ({page}) => {
   await openCleanSession(page);
   await page.locator('header').getByRole('button',{name:'Nova Observação',exact:true}).click();
   const dialog=page.getByRole('dialog');
@@ -116,6 +116,12 @@ test('N01: formulário aberto é fechado e descartado na troca de contexto', asy
   await expect(dialog.locator('#obs-desc')).toHaveValue('');
   await selectChildProfile(page,'lia');
   await expect(dialog).toHaveCount(0);
+  await navigateToInternalScreen(page,'journal');
+  await main(page).getByRole('textbox',{name:'Buscar observações por palavras-chave',exact:true}).fill('Lia RASCUNHO-N01');
+  await selectCaregiver(page,'cg-ana-unlinked');
+  await expect(main(page).getByRole('textbox')).toHaveCount(0);
+  await selectCaregiver(page,'cg-helena');
+  await expect(main(page).getByRole('textbox',{name:'Buscar observações por palavras-chave',exact:true})).toHaveValue('');
 });
 test('N01: estados restritos e exportador preservam acessibilidade desktop e mobile', async ({page}) => {
   await openCleanSession(page);

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { Observation, EventType, EnvironmentType } from '../types';
 import {
@@ -67,6 +67,13 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
   const [filterEnv, setFilterEnv] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
+
+  useEffect(() => {
+    setFilterType('all');
+    setFilterEnv('all');
+    setSearchTerm('');
+    setSortOrder('desc');
+  }, [activeProfile.id, activeCaregiver.id, activeCaregiver.status]);
 
   const filteredObservations = useMemo(() => {
     return activeChildObservations
@@ -231,7 +238,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="bg-white p-4 rounded-3xl border border-[#133E43]/15 shadow-xs space-y-3">
+      {canReadProfile && <div className="bg-white p-4 rounded-3xl border border-[#133E43]/15 shadow-xs space-y-3">
         {/* Search Input */}
         <div className="relative">
           <Search className="w-4 h-4 text-[#265358] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -316,7 +323,7 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
             </button>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Observations Timeline Feed */}
       {!canReadProfile ? (
