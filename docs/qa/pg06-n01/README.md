@@ -24,7 +24,9 @@ Oito testes em [profile-identity-surfaces.spec.ts](../../../tests/e2e/profile-id
 5. Leitura de cada opção, educador em perfil sem vínculo e retorno ao perfil legível com cinco observações e criação habilitada.
 6. Suspenso troca entre perfis sem revelar identidade nas notificações; retorno autorizado preservado.
 7. Formulário aberto e rascunho descartados ao trocar cuidador/perfil; busca do Diário ocultada e limpa na troca.
-8. Axe nos estados restritos de Journal/Understand/Privacy e exportador, desktop/mobile.
+8. Axe nos estados restritos de Journal/Understand/Privacy e exportador, desktop/mobile, incluindo retorno imediato a cuidador autorizado.
+
+O CTA do Header conserva animação de escala, sem interpolar cores ao mudar de bloqueado para habilitado: evita contraste intermediário insuficiente no instante em que o botão já é operável.
 
 Ajustes históricos são específicos: toast da DEVICE-REAL-02 não exige mais nome vedado; restrição em Understand exige indisponibilidade e ausência das regiões, mantendo a prova do retorno às cinco observações. Descritores de navegação aceitam título neutro e autorizado; asserções de conteúdo autorizado permanecem.
 
@@ -34,7 +36,8 @@ Ajustes históricos são específicos: toast da DEVICE-REAL-02 não exige mais n
 - Build local da primeira revisão (9092d46): PASS; revisão posterior do Diário validada pela CI do commit publicado.
 - Domínio/segurança local: 150 PASS, 0 FAIL.
 - Tentativas locais de navegador: bloqueadas na inicialização do servidor, antes das asserções, inclusive fallback estático; não são execução funcional aprovada.
-- Oito casos novos e suíte histórica: execução pela CI da PR; resultado identificado por commit na issue/PR.
+- CI 45316980421 (2f571e8): os oito novos casos passaram; total 108 PASS e dois FAIL. Uma expectativa histórica de anúncio ainda exigia nome restrito; outro caso capturou contraste intermediário do CTA em transição. Expectativa corrigida com ausência de nome explícita; transição de cores removida no produto, sem desabilitar regra axe ou relaxar teste.
+- A revisão posterior é conferida pela CI da PR; resultado identificado por commit na issue/PR.
 - Não foi executado controle negativo de navegador contra a versão antiga; não atribuir tal evidência.
 - Helper src/security/authorization.ts e formatos/cifra não alterados.
 

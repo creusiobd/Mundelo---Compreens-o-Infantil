@@ -136,5 +136,9 @@ test('N01: estados restritos e exportador preservam acessibilidade desktop e mob
     await expectZeroAxeViolations(page,'N01 exportador '+width);
     await noIdentity(page);
     await page.getByRole('button',{name:'Fechar exportador de cofre',exact:true}).click();
+    await selectCaregiver(page,'cg-clara');
+    await expect(page.locator('header').getByRole('button',{name:'Nova Observação',exact:true})).toBeEnabled();
+    await expectZeroAxeViolations(page,'N01 retorno de acesso '+width);
+    await selectCaregiver(page,'cg-ana-unlinked');
   }
 });

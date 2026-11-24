@@ -92,7 +92,8 @@ test.describe('Gate UX-REAL-01B: Prontidão Assistiva da Home, Header Global, Li
     // Trocar cuidador para Ana (Sem Vínculo) -> deve anunciar restrição de acesso em aria-live="polite"
     await selectCaregiver(page, 'cg-ana-unlinked');
     await expect(liveRegion).toBeVisible();
-    await expect(liveRegion).toContainText(/Sem vínculo com Lia/i);
+    await expect(liveRegion).toContainText(/Sem vínculo com o perfil selecionado/i);
+    await expect(liveRegion).not.toContainText('Lia');
   });
 
   test('1.1c Foco após abertura e fechamento do menu móvel (Escape) e do modal de detalhes da observação', async ({

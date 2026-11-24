@@ -26,5 +26,17 @@
   "real_data_authorized": false,
   "independent_human_review": false,
   "started_on": "2026-11-23",
-  "prepared_on": "2026-11-24"
+  "prepared_on": "2026-11-24",
+  "initial_ci": {
+    "run": 45316980421,
+    "commit": "2f571e81aa9eb588fe292689749fb4d730ea7cc9",
+    "browser_pass": 108,
+    "browser_fail": 2,
+    "new_cases_pass": 8,
+    "failures": [
+      "Expectativa histórica exigia Sem vínculo com Lia",
+      "Contraste intermediário de CTA habilitado durante transição de cores"
+    ],
+    "disposition": "Corrigir expectativa com negativa de identidade e remover interpolação de cores do CTA; manter axe e testes históricos"
+  }
 }

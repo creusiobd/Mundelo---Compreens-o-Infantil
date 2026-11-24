@@ -341,7 +341,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewObservation }) => {
               type="button"
               onClick={onOpenNewObservation}
               disabled={!canCreate}
-              className={`text-xs sm:text-[13px] font-semibold px-3.5 py-2 rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 min-h-[44px] whitespace-nowrap shrink-0 ${
+              className={`text-xs sm:text-[13px] font-semibold px-3.5 py-2 rounded-xl transition-transform shadow-xs flex items-center justify-center gap-1.5 min-h-[44px] whitespace-nowrap shrink-0 ${
                 canCreate
                   ? 'bg-[#133E43] hover:bg-[#194F55] text-[#F8F5EF] active:scale-[0.98]'
                   : 'bg-[#133E43]/30 text-[#F8F5EF]/70 cursor-not-allowed'
