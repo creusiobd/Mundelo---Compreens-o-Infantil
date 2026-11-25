@@ -54,6 +54,18 @@ export function revisePerspective(current: Perspective, next: Perspective, permi
       next.version !== current.version + 1) return {ok:false,reason:'CONFLICT'};
   if (next.attribution.recorderId !== current.attribution.recorderId || next.changedBy !== permission.actorId ||
       (next.interpretation.state === 'INFORMED' && !next.attribution.interpreterId)) return {ok:false,reason:'INVALID'};
+  // A correction by the recorder cannot silently rewrite another person's interpretation.
+  const interpretationChanged = current.interpretation.state !== next.interpretation.state ||
+    current.interpretation.text !== next.interpretation.text;
+  if (interpretationChanged && (
+       (current.interpretation.state === 'INFORMED' &&
+        current.attribution.interpreterId !== permission.actorId) ||
+       (next.interpretation.state === 'INFORMED' &&
+        next.attribution.interpreterId !== permission.actorId)
+     )) return {ok:false,reason:'DENIED'};
+  if (current.interpretation.state === 'INFORMED' &&
+      current.attribution.interpreterId !== next.attribution.interpreterId)
+    return {ok:false,reason:'INVALID'};
   return {ok:true,value:structuredClone(next)};
 }
 export function contestPerspective(target: Perspective, dissent: Perspective, permission: Permission): Result<Perspective> {

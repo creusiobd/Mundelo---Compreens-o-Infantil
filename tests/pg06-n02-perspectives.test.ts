@@ -82,3 +82,20 @@ test('CP-18: importação não concede autoridade',()=>{
 for (const id of ['CP-10','CP-11','CP-13','CP-16','CP-19','CP-20','CP-21','CP-22','CP-23','CP-24']) {
  test.todo(id+': cenário sistêmico pendente de controles operacionais, revisão e/ou capacidade externa');
 }
+
+test('PG06-N04: registrador não reescreve interpretação de terceiro',()=>{
+  const thirdParty={...base,attribution:{recorderId:'adult-A',interpreterId:'adult-B'}};
+  const newVersion={...thirdParty,version:2,previousVersion:1,changedBy:'adult-A',
+    interpretation:claim('INFORMED','Adulto A discorda da leitura de B')};
+  assert.deepEqual(revisePerspective(thirdParty,newVersion,A),{ok:false,reason:'DENIED'});
+  // Alterar apenas a observação ainda não transfere autoria da hipótese de B.
+  assert.equal(revisePerspective(thirdParty,{...newVersion,interpretation:thirdParty.interpretation},A).ok,true);
+});
+test('PG06-N04: criar interpretação na revisão exige autoria explicitamente da pessoa que edita',()=>{
+  const without={...base,interpretation:claim('UNKNOWN'),attribution:{recorderId:'adult-A'}};
+  const next={...without,version:2,previousVersion:1,changedBy:'adult-A',
+    interpretation:claim('INFORMED','Hipótese declarada agora'),
+    attribution:{recorderId:'adult-A',interpreterId:'adult-B'}};
+  assert.deepEqual(revisePerspective(without,next,A),{ok:false,reason:'DENIED'});
+  assert.equal(revisePerspective(without,{...next,attribution:{...next.attribution,interpreterId:'adult-A'}},A).ok,true);
+});
