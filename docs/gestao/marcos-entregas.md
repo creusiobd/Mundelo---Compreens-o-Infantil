@@ -39,3 +39,8 @@ As três PRs estão vinculadas ao marco nativo M00. A conclusão documental dess
 - [PM-002 #36](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36): Rotina de acompanhamento; não automação agendada.
 
 Qualquer implementação adicional revelada pelo inventário deverá virar tarefa própria com escopo, critérios e dependências antes da execução. A data de M03 depende da disponibilidade real dos controles necessários; especificação não substitui implementação.
+
+
+## Marco candidato acrescentado ao planejamento em 25/11/2026
+
+**M05 — Onboarding adulto e jornada de acolhimento** está **planejada, NÃO criada como milestone GitHub nativa**. Critérios e questões de sincronização em [ONB-ROADMAP](onboarding-roadmap-2026-11.md) e [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89). M00–M04 permanecem separados; não tratar planejamento documental como milestone configurada.
