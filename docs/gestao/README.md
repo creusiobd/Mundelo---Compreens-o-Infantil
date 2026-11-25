@@ -84,3 +84,8 @@ PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e
 ## Atualização — #61 / 23/11/2026
 
 [Alinhamento da linguagem demonstrativa](andamentos/2026-11-23-task-61.md) entregue para revisão após incorporação da PR #63/#60. Onze verificações locais de navegador aprovadas (oito novas/três históricas) e matriz de cinco atores preservada antes/depois; helper de autorização, modelos e formatos não mudaram. Remoção está delimitada à memória da sessão, sem comprovação de eliminação governada. #29 continua pausada e dados reais bloqueados. Sem sincronização automática dos campos do Project.
+
+
+## Frente ONB (25/11/2026)
+
+Novo [roadmap de onboarding adulto e acolhimento](onboarding-roadmap-2026-11.md) com [épico #83](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/83), tarefas [#84–#88](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84) e sincronização nativa [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89). Issues criadas; Project #4 / milestone M05 aguardam sincronização. Não há implementação de onboarding iniciada.
