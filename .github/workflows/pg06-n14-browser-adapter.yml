@@ -92,6 +92,8 @@ jobs:
           guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
           professional=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).professional.id)")
           psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -v professional="$professional" -f tests/supabase-lab/pg06-n12-seed.sql >/dev/null
+      - name: Install pinned JavaScript dependencies
+        run: npm ci --no-audit --no-fund
       - name: Install Playwright Chromium and OS dependencies
         run: npx playwright install --with-deps chromium
       - name: Browser-to-local-PostgREST authenticated transaction proof
