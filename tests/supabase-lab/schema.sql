@@ -20,8 +20,10 @@ create table pg06_lab.authorities (
   actor_id uuid not null,
   child_id uuid not null,
   authority text not null check(authority in ('CONTRIBUTE','GRANT','REVOKE')),
+  category text not null,
+  purpose text not null,
   verified boolean not null default false,
-  primary key(actor_id,child_id,authority)
+  primary key(actor_id,child_id,authority,category,purpose)
 );
 create table pg06_lab.grants (
   id uuid primary key default gen_random_uuid(),
@@ -102,7 +104,8 @@ begin
  end if;
  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(p_child_id::text,307));
  if not exists(select 1 from pg06_lab.authorities a where a.actor_id=actor
-  and a.child_id=p_child_id and a.authority='CONTRIBUTE' and a.verified)
+  and a.child_id=p_child_id and a.authority='CONTRIBUTE'
+  and a.category=p_category and a.purpose='authoring' and a.verified)
  then raise exception 'operation unavailable' using errcode='42501'; end if;
  insert into public.pg06_lab_perspectives(id,version,child_id,category,recorder_id,body,context)
  values(identity_id,1,p_child_id,p_category,actor,p_body,p_context);
@@ -124,7 +127,8 @@ begin
  if not found then raise exception 'operation unavailable' using errcode='42501'; end if;
  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(source.child_id::text,307));
  if not exists(select 1 from pg06_lab.authorities a where a.actor_id=actor
-    and a.child_id=source.child_id and a.authority='GRANT' and a.verified)
+    and a.child_id=source.child_id and a.authority='GRANT'
+    and a.category=source.category and a.purpose=p_purpose and a.verified)
  or not exists(select 1 from auth.users u where u.id=p_recipient)
  then raise exception 'operation unavailable' using errcode='42501'; end if;
  insert into pg06_lab.grants (child_id,recipient_id,source_id,source_version,category,purpose,operation,issued_by,expires_at)
@@ -147,7 +151,8 @@ begin
  if not found then raise exception 'operation unavailable' using errcode='42501'; end if;
  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(g.child_id::text,307));
  if not exists(select 1 from pg06_lab.authorities a where a.actor_id=actor
-  and a.child_id=g.child_id and a.authority='REVOKE' and a.verified)
+  and a.child_id=g.child_id and a.authority='REVOKE'
+  and a.category=g.category and a.purpose=g.purpose and a.verified)
  then raise exception 'operation unavailable' using errcode='42501'; end if;
  update pg06_lab.grants set revoked_at=now(),revision=revision+1
  where id=p_grant and revoked_at is null;
