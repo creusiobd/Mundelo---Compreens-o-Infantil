@@ -94,7 +94,7 @@ export function PerspectiveJournal() {
   return (
     <section aria-label="Perspectivas do Diário" data-testid="perspective-journal"
       className="bg-white border border-[#133E43]/20 rounded-3xl p-4 sm:p-6 space-y-4">
-      <header className="flex flex-wrap gap-3 items-start justify-between">
+      <div className="flex flex-wrap gap-3 items-start justify-between">
         <div className="space-y-1">
           <h2 className="font-bold text-lg text-[#133E43]">Perspectivas e diálogos</h2>
           <p className="text-sm text-[#265358]">Cada relato conserva seu olhar e contexto. Não representa uma verdade definitiva sobre a criança.</p>
@@ -104,7 +104,7 @@ export function PerspectiveJournal() {
           className="min-h-[44px] rounded-xl bg-[#133E43] text-white px-4 py-2 font-semibold text-sm">
           Registrar perspectiva
         </button>
-      </header>
+      </div>
       {notice && <p role="status" className="text-sm text-[#133E43]">{notice}</p>}
       {activeChildPerspectives.length===0 ?
         <p className="text-sm text-[#265358]">Nenhuma perspectiva registrada nesta sessão demonstrativa.</p> :
