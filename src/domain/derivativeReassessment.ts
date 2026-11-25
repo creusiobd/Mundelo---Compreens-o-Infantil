@@ -32,7 +32,6 @@ export type ReassessmentResult = Readonly<{
 
 const key=(r:VersionRef)=>JSON.stringify([r.childId,r.id,r.version]);
 const same=(a:VersionRef,b:VersionRef)=>key(a)===key(b);
-const uniq=<T>(xs:readonly T[]):T[]=>[...new Set(xs)];
 const orderedReasons:DerivedDisposition['reasons'][number][]=[
  'SOURCE_CHANGED','INTERPRETATION_CONTESTED','PERMISSION_CHANGED',
  'SOURCE_RESTRICTED','SOURCE_DISPOSED','INVALID_LINEAGE'
@@ -112,7 +111,7 @@ export function reassessDerivatives(
       g.purpose===purpose && g.operation===operation &&
       g.category===source.category && g.sourceId===source.ref.id &&
       g.versions.includes(source.ref.version)));
-  const accessChanged=reasons.has('PERMISSION_CHANGED')||!permits('READ')||!permits('USE');
+  const accessChanged=!permits('READ')||!permits('USE');
   if(accessChanged)reasons.add('PERMISSION_CHANGED');
   // Any event affecting the synthesis suspends presentation and use until an
   // explicit revalidation operation; no auto-approval after a later grant.
