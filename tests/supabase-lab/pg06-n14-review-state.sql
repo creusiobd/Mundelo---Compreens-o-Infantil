@@ -42,7 +42,7 @@ BEGIN
   ORDER BY e.expires_at DESC,e.evidence_id
   LIMIT 1;
 
- SELECT pg_catalog.coalesce(pg_catalog.jsonb_agg(
+ SELECT COALESCE(pg_catalog.jsonb_agg(
   pg_catalog.jsonb_build_object(
    'id',p.id::text,'authorId',p.author_id::text,
    'provenance',p.provenance,'statement',p.statement
@@ -51,7 +51,7 @@ BEGIN
  FROM pg06_n12.perspectives p
  WHERE p.child_id=p_child AND p.derived_id=p_derived;
 
- SELECT pg_catalog.coalesce(pg_catalog.jsonb_agg(
+ SELECT COALESCE(pg_catalog.jsonb_agg(
   pg_catalog.jsonb_build_object(
    'id',d.decision_id::text,'authorId',d.actor_id::text,
    'outcome',d.outcome,'reason',d.reason,
