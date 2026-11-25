@@ -100,7 +100,12 @@ async function verify(){
  r=await call('professional','pg06_lab_revoke',{p_grant:grantId});
  denied(r,'professional cannot revoke guardian grant');
  r=await api('/rest/v1/pg06_lab_perspectives?id=eq.'+sourceId,{body:'FORGED'},users.professional.token,'PATCH');
- ok(r.status===401||r.status===403||r.status===404,'direct UPDATE denied by RLS');
+ // PostgREST can return HTTP 204 when RLS silently targets zero rows. Verify the effect, not only HTTP.
+ ok([200,204,401,403,404].includes(r.status),'direct UPDATE is rejected or matches no authorized row');
+ r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
+ ok(r.status===200&&r.data?.[0]?.body==='SYNTH-PERSPECTIVE-PRIVATE','direct UPDATE did not modify protected source');
+ r=await list('professional');
+ ok(r.status===200&&Array.isArray(r.data)&&r.data.length===0,'direct UPDATE does not open SELECT metadata channel');
  r=await api('/rest/v1/pg06_lab_grants?select=*',undefined,users.professional.token,'GET');
  ok(r.status===401||r.status===403||r.status===404,'private grant metadata not queryable via API');
  r=await api('/rest/v1/pg06_lab_report?select=*',undefined,users.professional.token,'GET');
