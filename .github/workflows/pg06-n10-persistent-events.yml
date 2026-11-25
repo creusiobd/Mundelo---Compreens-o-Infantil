@@ -56,6 +56,15 @@ jobs:
           psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -v family_b="$family_b" -v professional="$professional" -f tests/supabase-lab/pg06-n10-seed.sql > /dev/null
       - name: Real HTTP Auth and concurrency verification
         run: node tests/supabase-lab/pg06-n10-api.mjs "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Assert committed database state independent of HTTP responses
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n10-postcheck.sql
       - name: Destroy all synthetic containers
         if: always()
         run: supabase stop --no-backup || true
