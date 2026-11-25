@@ -40,6 +40,20 @@ test.describe('PG06-N14 · real local Supabase checkpoint reached through UI',()
   await expect(page.getByText('Observação direta')).toBeVisible();
   await expect(page.getByText('Interpretação adulta')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3)).toBe(true);
+  const incomplete=await request.post(url+'/rest/v1/rpc/pg06_n12_decide',{
+   headers:{apikey:anonKey,Authorization:'Bearer '+users.guardian.token},
+   data:{
+    p_decision:'40000000-0000-4000-8000-000000000021',
+    p_child:synthetic.childId,p_derived:synthetic.derivedId,
+    p_outcome:'APPROVE',p_expected_revision:6,
+    p_versions:[{id:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1',version:2}],
+    p_reason:'A decisão não pode ignorar uma das perspectivas previamente registradas.',
+    p_evidence:'10000000-0000-4000-8000-000000000001',
+    p_perspective_ids:['20000000-0000-4000-8000-000000000001'],
+    p_request:null,p_purpose:'care'
+   }
+  });
+  expect(incomplete.status()).toBe(403);
   const reason=page.getByLabel('Justificativa (20 a 500 caracteres)');
   const check=page.getByRole('checkbox');
   await reason.fill('As contribuições fictícias exigem detalhes adicionais antes de permitir a interpretação.');
