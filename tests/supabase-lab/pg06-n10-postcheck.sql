@@ -26,5 +26,5 @@ BEGIN
  IF (SELECT body FROM pg06_events.nodes
      WHERE id='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2') <> 'SYNTH-CONTEST-SOURCE' THEN
   RAISE EXCEPTION 'Contestation rewrote source instead of preserving its history'; END IF;
-END $$;
+END $tag$;
 SELECT 'PASS: committed revisions, event provenance, quarantine, revocation and cross-child isolation' AS verification;
