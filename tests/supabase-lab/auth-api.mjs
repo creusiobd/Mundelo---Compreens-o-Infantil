@@ -93,6 +93,13 @@ async function verify(){
  ok(r.status===200&&r.data===2,'guardian recorded append-only version 2 with CAS');
  r=await call('guardian','pg06_lab_revise',{p_id:sourceId,p_expected_version:1,p_body:'STALE-WRITE',p_context:'stale'});
  ok(r.status===409||r.status===403,'stale version cannot overwrite revision 2');
+ const writers=await Promise.all([
+  call('guardian','pg06_lab_revise',{p_id:sourceId,p_expected_version:2,p_body:'CONCURRENT-WRITE-A',p_context:'synthetic'}),
+  call('guardian','pg06_lab_revise',{p_id:sourceId,p_expected_version:2,p_body:'CONCURRENT-WRITE-B',p_context:'synthetic'}),
+ ]);
+ ok(writers.filter(x=>x.status===200&&x.data===3).length===1 &&
+    writers.filter(x=>x.status===409).length===1,
+    'concurrent same-version writes serialize: one commit and one conflict');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:2,p_purpose:'care'});
  denied(r,'new version is not automatically included in previous grant');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
@@ -134,6 +141,17 @@ async function verify(){
  ok(r.status===200&&r.data===true,'verified authority can advance restriction revision');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
  denied(r,'old grant blocked after restriction revision changes');
+ r=await call('guardian','pg06_lab_grant',{p_id:sourceId,p_version:1,p_recipient:users.professional.id,p_purpose:'care'});
+ ok(r.status===200,'regrant after restriction has new authorization revision');
+ const race=await Promise.all([
+  call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'}),
+  call('guardian','pg06_lab_revoke',{p_grant:r.data}),
+ ]);
+ ok(race[1].status===200&&race[1].data===true,'concurrent revoke completes under shared child lock');
+ ok(race[0].status===200||race[0].status===403,
+   'racing read was serialized before or after revocation');
+ r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
+ denied(r,'no access remains after concurrent revoke commits');
  console.log('PG06-N06: '+passed+' API assertions passed using signed Supabase Auth JWTs.');
 }
 await (stage==='setup'?setup():verify());
