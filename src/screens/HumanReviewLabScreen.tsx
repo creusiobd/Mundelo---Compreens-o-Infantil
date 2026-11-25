@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getLocalReviewCredentials } from '../domain/localReviewTransactionAdapter';
+import { ConnectedReviewLab } from './ConnectedReviewLab';
 import {
   applySyntheticReview,
   INITIAL_REVIEW_STATE,
@@ -38,6 +40,9 @@ export const HumanReviewLabScreen:React.FC<Props>=({onBackToApp})=>{
  const [notice,setNotice]=useState('');
  const [error,setError]=useState('');
  const [sequence,setSequence]=useState(0);
+
+ const localCredentials=getLocalReviewCredentials();
+ if(localCredentials)return <ConnectedReviewLab credentials={localCredentials} onBackToApp={onBackToApp}/>;
 
  const submit=(event:React.FormEvent<HTMLFormElement>)=>{
   event.preventDefault();
