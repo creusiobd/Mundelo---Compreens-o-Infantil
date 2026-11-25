@@ -202,7 +202,7 @@ begin
  ) then raise exception 'operation unavailable' using errcode='42501'; end if;
  select max(version) into latest from public.pg06_lab_perspectives where id=p_id;
  if latest<>p_expected_version then
-   raise exception 'stale version' using errcode='40001';
+   raise exception 'stale version' using errcode='PT409';
  end if;
  insert into public.pg06_lab_perspectives(id,version,child_id,category,recorder_id,body,context)
  values(rec.id,latest+1,rec.child_id,rec.category,rec.recorder_id,p_body,p_context);
