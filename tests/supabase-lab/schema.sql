@@ -183,7 +183,7 @@ create or replace function public.pg06_lab_revise(
  p_id uuid,p_expected_version integer,p_body text,p_context text
 ) returns integer
 language plpgsql security definer set search_path=''
-as $
+as $$
 declare actor uuid; rec public.pg06_lab_perspectives%rowtype;
  latest integer;
 begin
@@ -207,13 +207,13 @@ begin
  insert into public.pg06_lab_perspectives(id,version,child_id,category,recorder_id,body,context)
  values(rec.id,latest+1,rec.child_id,rec.category,rec.recorder_id,p_body,p_context);
  return latest+1;
-end $;
+end $$;
 
 create or replace function public.pg06_lab_restrict(
  p_child uuid,p_category text,p_purpose text
 ) returns boolean
 language plpgsql security definer set search_path=''
-as $
+as $$
 declare actor uuid;
 begin
  actor:=auth.uid();
@@ -228,7 +228,7 @@ begin
   where child_id=p_child;
  if not found then raise exception 'operation unavailable' using errcode='42501'; end if;
  return true;
-end $;
+end $$;
 
 -- Do not let default EXECUTE privilege expose SECURITY DEFINER functions to anon.
 revoke all on function public.pg06_lab_read(uuid,integer,text) from public, anon;
