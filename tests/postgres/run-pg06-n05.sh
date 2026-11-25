@@ -4,17 +4,19 @@ export PGHOST="${PGHOST:-127.0.0.1}" PGPORT="${PGPORT:-5432}" PGUSER="${PGUSER:-
 SQL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 psql -X -q -v ON_ERROR_STOP=1 -f "$SQL_DIR/pg06-n05-fixtures.sql" >/dev/null
 passed=0
+# Random ephemeral credentials generated inside CI; no credentials in Git.
+declare -A auth_keys
+for role in mundelo_lab_family_a mundelo_lab_family_b mundelo_lab_professional_a mundelo_lab_outsider; do
+  key="$(openssl rand -hex 24)"
+  auth_keys["$role"]="$key"
+  printf "ALTER ROLE %s PASSWORD '%s';\\n" "$role" "$key" | psql -X -q -v ON_ERROR_STOP=1 >/dev/null
+done
+unset key
 
 query_as(){
-  local role="$1" purpose="$2" sql="$3" password
-  case "$role" in
-    mundelo_lab_family_a) password="lab-family-a-password";;
-    mundelo_lab_family_b) password="lab-family-b-password";;
-    mundelo_lab_professional_a) password="lab-professional-a-password";;
-    mundelo_lab_outsider) password="lab-outsider-password";;
-    *) echo "Unknown synthetic lab principal" >&2; return 1;;
-  esac
-  PGPASSWORD="$password" psql -h "$PGHOST" -p "$PGPORT" -U "$role" -d "$PGDATABASE" -X -qAt -v ON_ERROR_STOP=1 -c "SET mundelo_lab.purpose='$purpose'; $sql"
+  local role="$1" purpose="$2" sql="$3"
+  if [[ -z "${auth_keys[$role]:-}" ]]; then echo "Unknown synthetic lab principal" >&2; return 1; fi
+  PGPASSWORD="${auth_keys[$role]}" psql -h "$PGHOST" -p "$PGPORT" -U "$role" -d "$PGDATABASE" -X -qAt -v ON_ERROR_STOP=1 -c "SET mundelo_lab.purpose='$purpose'; $sql"
 }
 check_count(){
   local name="$1" role="$2" purpose="$3" expected="$4"
@@ -57,7 +59,7 @@ check_count "other family grant unaffected" mundelo_lab_family_a care 1
 psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.access_grant SET revoked=false WHERE id='g-prof';" >/dev/null
 result_file="$(mktemp)"
 trap 'rm -f "$result_file"' EXIT
-PGPASSWORD="lab-professional-a-password" psql -h "$PGHOST" -p "$PGPORT" -U mundelo_lab_professional_a -d "$PGDATABASE" -X -qAt -v ON_ERROR_STOP=1 \
+PGPASSWORD="${auth_keys[mundelo_lab_professional_a]}" psql -h "$PGHOST" -p "$PGPORT" -U mundelo_lab_professional_a -d "$PGDATABASE" -X -qAt -v ON_ERROR_STOP=1 \
  -c "BEGIN ISOLATION LEVEL READ COMMITTED; SET mundelo_lab.purpose='follow-up'; SELECT COUNT(*) FROM mundelo_lab.contribution; SELECT pg_sleep(5); SELECT COUNT(*) FROM mundelo_lab.contribution; COMMIT;" >"$result_file" &
 reader_pid=$!
 seen=0
