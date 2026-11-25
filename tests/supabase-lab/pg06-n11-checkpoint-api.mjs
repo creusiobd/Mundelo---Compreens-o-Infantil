@@ -31,7 +31,11 @@ async function call(name,fn,body,override){
  return {status:res.status,data};
 }
 const reason='Independent synthetic review: sources checked; preserve multiple perspectives.';
-const review=(n,revision,versions=snapshot(n===2?1:n,n===1||n===2||n===7?2:1),extras={})=>({
+const versionSnapshotForDerived=n=>snapshot(
+ n===2?1:n===3?2:n===4?3:n,
+ n===1||n===2||n===7||n===8?2:1
+);
+const review=(n,revision,versions=versionSnapshotForDerived(n),extras={})=>({
  p_review:randomUUID(),p_child:child,p_derived:derived(n),p_purpose:'care',
  p_expected_revision:revision,p_versions:versions,p_reason:reason,p_evidence:evidence(n),...extras
 });
