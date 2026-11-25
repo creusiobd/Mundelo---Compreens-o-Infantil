@@ -57,6 +57,7 @@ test('PG06-N07: READ grant does not authorize EXPORT; no partial export from mix
  assert.deepEqual(selectExport([a,b],grants,{...req,refs:[a.ref,b.ref]}),{ok:false,reason:'DENIED'});
  assert.equal(selectExport([a],grants.map(g=>({...g,operation:'READ'})),req).ok,false);
  assert.equal(selectExport([a],grants,{...req,purpose:'publicity'}).ok,false);
+ assert.equal(selectExport([a],grants,{...req,recipientId:'outside-recipient'}).ok,false);
  assert.equal(selectExport([a],grants.map(g=>({...g,active:false})),req).ok,false);
  assert.equal(selectExport([a],grants,{...req,refs:[a.ref,{...a.ref,version:2}]}).ok,false);
  assert.equal(selectExport([a],grants,{...req,refs:[a.ref,{...a.ref,childId:'synthetic-b'}]}).ok,false);
