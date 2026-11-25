@@ -1,6 +1,6 @@
 -- PG06-N10: assert committed database state only; never print synthetic contents.
 SELECT pg_catalog.set_config('pg06.n10.expected_guardian', :'guardian', false);
-DO $
+DO $tag$
 DECLARE guardian uuid := pg_catalog.current_setting('pg06.n10.expected_guardian')::uuid;
 BEGIN
  IF (SELECT revision FROM pg06_events.child_state
