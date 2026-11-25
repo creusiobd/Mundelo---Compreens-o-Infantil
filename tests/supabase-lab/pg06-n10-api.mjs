@@ -53,11 +53,9 @@ for(const op of ['READ','SHARE','EXPORT']){
  check(r.status===200&&r.data==='SYNTH-CORRECTION-DERIVED','pre-event authorized '+op);
 }
 const forged=users.professional.token.slice(0,-5)+'abcde';
-isDenied(await deliver('professional',1,'READ',0).then(async()=>{
- return post('professional','pg06_n10_deliver',{
-  p_derived:derived(1),p_purpose:'care',p_operation:'READ',p_hold_ms:0
- },forged);
-}),'tampered JWT');
+isDenied(await post('professional','pg06_n10_deliver',{
+ p_derived:derived(1),p_purpose:'care',p_operation:'READ',p_hold_ms:0
+},forged),'tampered JWT');
 isDenied(await deliver('outsider',1,'READ'),'outsider not granted');
 isDenied(await deliver('familyB',1,'READ'),'different family cannot view child A');
 const cross=event('SOURCE_REVISED',1,0);
