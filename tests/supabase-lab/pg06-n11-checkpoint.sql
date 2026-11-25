@@ -52,6 +52,7 @@ CREATE TABLE pg06_n11.reviews(
  reason text NOT NULL,
  source_snapshot jsonb NOT NULL,
  blocked_revision integer NOT NULL,
+ requested_revision integer NOT NULL,
  revision integer NOT NULL,
  reviewed_at timestamptz NOT NULL DEFAULT clock_timestamp(),
  UNIQUE(child_id,revision)
@@ -154,7 +155,8 @@ BEGIN
  IF FOUND THEN
   IF prior.actor_id<>actor OR prior.child_id<>p_child OR prior.derived_id<>p_derived OR
    prior.evidence_id<>p_evidence OR prior.purpose<>p_purpose OR
-   prior.reason<>p_reason OR prior.source_snapshot<>p_versions
+   prior.reason<>p_reason OR prior.source_snapshot<>p_versions OR
+   prior.requested_revision<>p_expected_revision
   THEN RAISE EXCEPTION 'review unavailable' USING ERRCODE='42501'; END IF;
   RETURN prior.revision; -- identical replay has no side effect
  END IF;
@@ -206,9 +208,9 @@ BEGIN
  UPDATE pg06_n11.holds SET review_id=p_review,reinstated_revision=state_revision+1
  WHERE derived_id=p_derived AND child_id=p_child;
  INSERT INTO pg06_n11.reviews(review_id,child_id,derived_id,actor_id,evidence_id,
-   purpose,reason,source_snapshot,blocked_revision,revision)
+   purpose,reason,source_snapshot,blocked_revision,requested_revision,revision)
  VALUES(p_review,p_child,p_derived,actor,p_evidence,p_purpose,p_reason,
-        current_snapshot,h.blocked_revision,state_revision+1);
+        current_snapshot,h.blocked_revision,p_expected_revision,state_revision+1);
  RETURN state_revision+1;
 END $fn$;
 REVOKE ALL ON FUNCTION public.pg06_n11_revalidate(uuid,uuid,uuid,text,integer,jsonb,text,uuid)
