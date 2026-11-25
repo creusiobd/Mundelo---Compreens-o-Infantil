@@ -63,7 +63,7 @@ AS $fn$
    SELECT 1 FROM mundelo_lab.principal p
    JOIN mundelo_lab.access_grant g ON g.subject_id=p.subject_id
    CROSS JOIN mundelo_lab.policy_state ps
-   WHERE p.db_role = current_user AND p.active
+   WHERE p.db_role = current_setting('role',true)::name AND p.active
      AND g.subject_id=p.subject_id AND g.child_id=p_child
      AND g.source_id=p_id AND g.source_version=p_version
      AND g.category=p_category AND g.operation='READ'
