@@ -9,7 +9,7 @@ declare -A auth_keys
 for role in mundelo_lab_family_a mundelo_lab_family_b mundelo_lab_professional_a mundelo_lab_outsider; do
   key="$(openssl rand -hex 24)"
   auth_keys["$role"]="$key"
-  printf "ALTER ROLE %s PASSWORD '%s';\\n" "$role" "$key" | psql -X -q -v ON_ERROR_STOP=1 >/dev/null
+  printf "ALTER ROLE %s PASSWORD '%s';\n" "$role" "$key" | psql -X -q -v ON_ERROR_STOP=1 >/dev/null
 done
 unset key
 
