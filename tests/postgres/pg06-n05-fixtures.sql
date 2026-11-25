@@ -1,11 +1,12 @@
 
 -- PG06-N05: isolated PostgreSQL laboratory, synthetic fixtures ONLY.
+-- Lab-only credentials; database recreated for each CI run, never deploy.
 -- NOT a production migration, Supabase schema, or authorization rollout.
 BEGIN;
-CREATE ROLE mundelo_lab_family_a NOLOGIN;
-CREATE ROLE mundelo_lab_family_b NOLOGIN;
-CREATE ROLE mundelo_lab_professional_a NOLOGIN;
-CREATE ROLE mundelo_lab_outsider NOLOGIN;
+CREATE ROLE mundelo_lab_family_a LOGIN PASSWORD 'lab-family-a-password';
+CREATE ROLE mundelo_lab_family_b LOGIN PASSWORD 'lab-family-b-password';
+CREATE ROLE mundelo_lab_professional_a LOGIN PASSWORD 'lab-professional-a-password';
+CREATE ROLE mundelo_lab_outsider LOGIN PASSWORD 'lab-outsider-password';
 CREATE SCHEMA mundelo_lab;
 REVOKE ALL ON SCHEMA mundelo_lab FROM PUBLIC;
 CREATE TABLE mundelo_lab.principal (
@@ -63,7 +64,7 @@ AS $fn$
    SELECT 1 FROM mundelo_lab.principal p
    JOIN mundelo_lab.access_grant g ON g.subject_id=p.subject_id
    CROSS JOIN mundelo_lab.policy_state ps
-   WHERE p.db_role = current_setting('role',true)::name AND p.active
+   WHERE p.db_role = session_user AND p.active
      AND g.subject_id=p.subject_id AND g.child_id=p_child
      AND g.source_id=p_id AND g.source_version=p_version
      AND g.category=p_category AND g.operation='READ'
