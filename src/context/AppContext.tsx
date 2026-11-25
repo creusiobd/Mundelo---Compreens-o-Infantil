@@ -65,6 +65,7 @@ interface AppContextType {
   canIncludeInReport: (obs: Observation) => boolean;
   // Isolated synthetic perspective-command ledger; legacy observations are NOT silently migrated.
   activeChildPerspectives: Perspective[];
+  getPerspectiveHistory: (perspectiveId: string) => Perspective[];
   executePerspectiveCommand: (command: PerspectiveCommand) => CommandResult;
   // All in-memory observations
   allObservations: Observation[];
@@ -206,6 +207,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     () => readPerspectiveCurrent(perspectiveLedger, activeCaregiver, activeProfileId),
     [perspectiveLedger, activeCaregiver, activeProfileId]
   );
+  const getPerspectiveHistory = (perspectiveId: string): Perspective[] => {
+    const current = exportContextRef.current;
+    if (!perspectiveId || current.childId !== activeProfileId ||
+        current.caregiver.id !== activeCaregiver.id ||
+        !canReadObservation(current.caregiver, current.childId)) return [];
+    const latest = readPerspectiveCurrent(perspectiveLedgerRef.current,current.caregiver,current.childId)
+      .find(p => p.id === perspectiveId);
+    if (!latest) return [];
+    return perspectiveLedgerRef.current.versions
+      .filter(p => p.childId === current.childId && p.id === perspectiveId)
+      .map(p => structuredClone(p));
+  };
   // A command binds to the current render and its domain generation. Old closures fail closed.
   const perspectiveCommandGeneration = domainConcurrencyManager.getGeneration();
   const executePerspectiveCommand = (command: PerspectiveCommand): CommandResult => {
@@ -817,6 +830,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         canIncludeInReport: canReport,
         switchProfile,
         activeChildPerspectives,
+        getPerspectiveHistory,
         executePerspectiveCommand,
         allObservations: observations,
         activeChildObservations,

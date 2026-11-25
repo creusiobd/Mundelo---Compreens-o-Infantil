@@ -5,6 +5,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { PerspectiveJournal } from '../components/PerspectiveJournal';
 import { Observation, EventType, EnvironmentType } from '../types';
 import {
   Plus,
@@ -236,6 +237,13 @@ export const JournalScreen: React.FC<JournalScreenProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Independent synthetic contribution ledger; never included in legacy reports or vault. */}
+      {canReadProfile && (
+        <PerspectiveJournal
+          key={activeProfile.id + ':' + activeCaregiver.id + ':' + activeCaregiver.status}
+        />
+      )}
 
       {/* Search & Filter Toolbar */}
       {canReadProfile && <div className="bg-white p-4 rounded-3xl border border-[#133E43]/15 shadow-xs space-y-3">
