@@ -34,6 +34,15 @@ const LazySecurityLab = import.meta.env.DEV
     )
   : null;
 
+// UI-only synthetic human-review lab. The production bundle has no route or import.
+const LazyHumanReviewLab = import.meta.env.DEV
+  ? /* @__PURE__ */ React.lazy(() =>
+      import('./screens/HumanReviewLabScreen').then((m) => ({
+        default: m.HumanReviewLabScreen,
+      }))
+    )
+  : null;
+
 const MainAppContent: React.FC = () => {
   const {
     currentScreen,
@@ -58,6 +67,12 @@ const MainAppContent: React.FC = () => {
       window.location.pathname === '/security-lab' ||
       window.location.hash === '#/security-lab'
     );
+  });
+
+  const [isHumanReviewLabOpen, setIsHumanReviewLabOpen] = useState<boolean>(() => {
+    if (!import.meta.env.DEV || typeof window === 'undefined') return false;
+    return window.location.pathname === '/review-lab' ||
+      window.location.hash === '#/review-lab';
   });
 
   // Modal States
@@ -164,7 +179,14 @@ const MainAppContent: React.FC = () => {
 
       {/* Main Content Area */}
       <main id="main-content" className="flex-1 pb-20 lg:pb-12 focus:outline-none">
-        {import.meta.env.DEV && isSecurityLabOpen && LazySecurityLab ? (
+        {import.meta.env.DEV && isHumanReviewLabOpen && LazyHumanReviewLab ? (
+          <React.Suspense fallback={<p className="p-10 text-center text-sm">Carregando laboratório de revisão sintética…</p>}>
+            <LazyHumanReviewLab onBackToApp={() => {
+              setIsHumanReviewLabOpen(false);
+              if (typeof window !== 'undefined') window.history.pushState({}, '', '/');
+            }} />
+          </React.Suspense>
+        ) : import.meta.env.DEV && isSecurityLabOpen && LazySecurityLab ? (
           <React.Suspense
             fallback={
               <div className="p-12 text-center text-sm text-[#133E43]">
@@ -213,6 +235,16 @@ const MainAppContent: React.FC = () => {
               <PrivacyScreen
                 onOpenExportVault={() => setIsExportVaultOpen(true)}
                 onOpenImportVault={() => setIsImportVaultOpen(true)}
+                onOpenReviewLab={
+                  import.meta.env.DEV
+                    ? () => {
+                        setIsHumanReviewLabOpen(true);
+                        if (typeof window !== 'undefined') {
+                          window.history.pushState({}, '', '/review-lab');
+                        }
+                      }
+                    : undefined
+                }
                 onOpenSecurityLab={
                   import.meta.env.DEV
                     ? () => {

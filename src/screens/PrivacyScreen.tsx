@@ -25,12 +25,14 @@ interface PrivacyScreenProps {
   onOpenExportVault?: () => void;
   onOpenImportVault?: () => void;
   onOpenSecurityLab?: () => void;
+  onOpenReviewLab?: () => void;
 }
 
 export const PrivacyScreen: React.FC<PrivacyScreenProps> = ({
   onOpenExportVault,
   onOpenImportVault,
   onOpenSecurityLab,
+  onOpenReviewLab,
 }) => {
   const { clearActiveChildObservationsToEmpty, restoreDemoData, activeChildObservations, activeProfile, canReadProfile, canManageProfile } = useApp();
 
@@ -119,6 +121,16 @@ export const PrivacyScreen: React.FC<PrivacyScreenProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {import.meta.env.DEV && onOpenReviewLab && (
+              <button
+                type="button"
+                onClick={onOpenReviewLab}
+                className="px-3 py-2 rounded-xl border border-[#133E43]/25 bg-[#E5F5EE] text-[#133E43] hover:bg-[#D1EBE1] flex items-center gap-1.5 text-xs font-semibold min-h-[44px]"
+              >
+                <FileCheck2 className="w-4 h-4" aria-hidden="true" />
+                <span>Revisão Humana (Lab Dev)</span>
+              </button>
+            )}
             {import.meta.env.DEV && onOpenSecurityLab && (
               <button
                 onClick={onOpenSecurityLab}
