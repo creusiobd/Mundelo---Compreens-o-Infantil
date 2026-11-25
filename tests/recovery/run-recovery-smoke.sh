@@ -19,8 +19,10 @@ insert into synthetic_perspectives values
  ('synthetic-a','SYNTHETIC-PRIVATE-FOR-RESTORE','child-a'),
  ('synthetic-b','SYNTHETIC-KEEP','child-b');
 SQL
-pg_dump -Fc -d "$src" -f "$work/snapshot.dump"
-test -s "$work/snapshot.dump"
+pg_dump -Fp --no-owner --no-acl -d "$src" -f "$work/snapshot.sql"
+# Some newer distro clients emit transaction_timeout unsupported by PostgreSQL 16.
+sed -i '/^SET transaction_timeout = /d' "$work/snapshot.sql"
+test -s "$work/snapshot.sql"
 psql -X -q -d "$src" -v ON_ERROR_STOP=1 <<'SQL'
 insert into synthetic_deletion_register values('synthetic-a','verified-synthetic-review',true);
 delete from synthetic_perspectives where id='synthetic-a';
@@ -28,7 +30,7 @@ SQL
 [[ "$(psql -X -qAt -d "$src" -c "select count(*) from synthetic_perspectives;")" == "1" ]]
 echo "PASS: synthetic deletion executed after snapshot"
 createdb "$dst"
-pg_restore --exit-on-error --no-owner --no-acl -d "$dst" "$work/snapshot.dump"
+psql -X -q -v ON_ERROR_STOP=1 -d "$dst" -f "$work/snapshot.sql" > /dev/null
 [[ "$(psql -X -qAt -d "$dst" -c "select count(*) from synthetic_perspectives where id='synthetic-a';")" == "1" ]]
 echo "PASS: restore resurrected pre-deletion bytes (quarantine required)"
 # Never expose the restored contents before reconciliation. Both databases are
@@ -48,7 +50,7 @@ SQL
 [[ "$(psql -X -qAt -d "$dst" -c "select count(*) from synthetic_perspectives where id='synthetic-a';")" == "0" ]]
 [[ "$(psql -X -qAt -d "$dst" -c "select count(*) from synthetic_perspectives where id='synthetic-b';")" == "1" ]]
 echo "PASS: reconciled deleted entry without affecting retained synthetic record"
-rm -f "$work/snapshot.dump" "$work/post_snapshot_deletions.sql"
-test ! -e "$work/snapshot.dump"
+rm -f "$work/snapshot.sql" "$work/post_snapshot_deletions.sql"
+test ! -e "$work/snapshot.sql"
 echo "PASS: ephemeral backup file removed from runner workspace"
 echo "PG06-N07: local synthetic backup/restore/reconciliation smoke test passed"
