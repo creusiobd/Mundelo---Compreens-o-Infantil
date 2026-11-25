@@ -3,10 +3,10 @@
 -- Lab-only credentials; database recreated for each CI run, never deploy.
 -- NOT a production migration, Supabase schema, or authorization rollout.
 BEGIN;
-CREATE ROLE mundelo_lab_family_a LOGIN PASSWORD 'lab-family-a-password';
-CREATE ROLE mundelo_lab_family_b LOGIN PASSWORD 'lab-family-b-password';
-CREATE ROLE mundelo_lab_professional_a LOGIN PASSWORD 'lab-professional-a-password';
-CREATE ROLE mundelo_lab_outsider LOGIN PASSWORD 'lab-outsider-password';
+CREATE ROLE mundelo_lab_family_a LOGIN;
+CREATE ROLE mundelo_lab_family_b LOGIN;
+CREATE ROLE mundelo_lab_professional_a LOGIN;
+CREATE ROLE mundelo_lab_outsider LOGIN;
 CREATE SCHEMA mundelo_lab;
 REVOKE ALL ON SCHEMA mundelo_lab FROM PUBLIC;
 CREATE TABLE mundelo_lab.principal (
