@@ -35,13 +35,13 @@ O contrato `canAuthorizeGrant` bloqueia na falta de qualquer um dos pontos neces
 - Uma revisão cria unidade imutável com `priorVersion` exata e autor/editor explícito; concorrência desatualizada conflita.
 - Registrar, observar, relatar, interpretar e experienciar são dimensões distintas; interpretação adulta não se torna identidade, diagnóstico ou experiência subjetiva da criança.
 - Contestar produz contribuição própria, sem reescrever o outro; fontes/versões legítimas são representadas como referência exata.
-- Derivado C04 exige todas as origens necessárias acessíveis, mesma criança, integridade de referência, atribuição de curador/intérprete e ausência de referência circular imediata ou duplicidade. **Linhagem transitiva/ciclos indiretos continuam pendentes** para o grafo de produção.
+- Derivado C04 exige todas as origens necessárias acessíveis, mesma criança, integridade de referência, atribuição de curador/intérprete e ausência de referência circular imediata ou duplicidade. O novo contrato puro `resolveDependencyClosure` percorre também ancestrais indiretos, bloqueia ciclos, chaves duplicadas e fontes ausentes, restritas ou destinadas. A implementação **persistente e transacional** desse fechamento, inclusive reavaliação em lote após mudança de política, continua pendente para o grafo de produção.
 - Propagação após mudança de fonte, autorização ou restrição deve reavaliar separadamente validade, apresentação, utilização e retenção; não se confunde `retained` com autorização de leitura.
 - Histórico tem destino próprio C02; append-only técnico não autoriza preservação perpétua.
 
 ## 3. Exportações seletivas
 
-**O seletor sintético não cria arquivo nem habilita endpoint.** A operação EXPORT exige concessão própria por unidade/categoria/fonte/versão/finalidade/destinatário e estado vigente. Não existe exportação parcial silenciosa se uma origem requisitada não puder ser disponibilizada. Revogação ou restrição conhecida impede nova preparação. Antes de exportar realmente, será necessário:
+**O seletor sintético não cria arquivo nem habilita endpoint.** A operação EXPORT exige concessão própria por unidade/categoria/fonte/versão/finalidade/destinatário e estado vigente. Para um derivado, a prova sintética agora exige concessão EXPORT também para cada ancestral transitivo, sem acrescentar esses ancestrais automaticamente ao conteúdo retornado. Esta é uma política conservadora de laboratório, **não uma decisão jurídica de compartilhamento definitivo**. Não existe exportação parcial silenciosa se uma origem requisitada não puder ser disponibilizada. Revogação ou restrição conhecida impede nova preparação. Antes de exportar realmente, será necessário:
 
 1. validar por conta autenticada, escopo, autorizações e concessões na **fronteira do efeito** (não por estado React);
 2. gerar pacote com proveniência mínima permitida, versão exata, finalidade e destinatário;
@@ -74,7 +74,7 @@ O Supabase hospedado existente NÃO foi modificado. O roteiro exige ambiente iso
 
 | Gate | Resultado |
 |---|---|
-| Domínio e testes sintéticos de linhagem/exportação | sujeito à CI da PR |
+| Domínio e testes sintéticos de linhagem/exportação, incluindo ancestrais transitivos | sujeito à CI da PR |
 | Backup/restore em Postgres descartável | sujeito à CI da PR |
 | Fundamento e competência jurídica real #27 | **BLOQUEADO** |
 | Backup/retenção/restauração comprovados no fornecedor #29 | **BLOQUEADO** |
