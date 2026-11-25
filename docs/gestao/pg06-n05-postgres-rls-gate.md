@@ -4,7 +4,7 @@
 
 ## O que esta entrega realmente comprova quando o workflow estiver verde
 
-1. PostgreSQL aplica RLS a `contribution` de acordo com identidade de papel de banco e grant autorizado por fonte, versão, finalidade e operação READ.
+1. PostgreSQL aplica RLS a `contribution` de acordo com identidade de login autenticado de banco e grant autorizado por fonte, versão, finalidade e operação READ.
 2. Famílias A/B, profissional A e outro grupo têm conjuntos distintos; uma sessão não lista conteúdo, ID ou versões fora do seu conjunto permitido.
 3. O papel leitor não possui permissão de SELECT/INSERT/UPDATE em `access_grant` nem UPDATE em `contribution`.
 4. Após revogação pelo administrador da fixture, uma nova instrução SQL perde acesso, mantendo os demais grants independentes.
@@ -13,7 +13,7 @@
 
 ## Fronteira de identidade do laboratório
 
-O teste autentica **papéis isolados de banco**, simulados por `SET ROLE` numa conexão superusuária da CI. A função lê o papel explicitamente selecionado. **Isto não comprova identidade autenticada de usuário Supabase.**
+O teste autentica **quatro contas PostgreSQL independentes** por login/senha **exclusivamente sintéticos e efêmeros da CI**. A função usa `session_user` para vincular a sessão ao principal autenticado no banco, sem aceitar identificador de cliente. Há teste negativo de tentativa de `SET ROLE` para outro usuário. **Isto comprova autenticação PostgreSQL no laboratório, não autenticação de usuário Supabase.**
 
 No Supabase, todos os usuários finais normalmente chegam com o papel `authenticated`; portanto **é proibido reutilizar a função `can_read` e esta tabela `principal` diretamente como RLS de produção**. A integração futura deverá usar `auth.uid()` derivado de JWT **validado pelo PostgREST/Supabase**, nunca um UID arbitrário enviado no payload, e testar JWTs assinados e vínculos realmente verificados.
 
@@ -21,7 +21,7 @@ A fixture `approved_authority=true` é plantada pelo administrador de laboratór
 
 ## Consistência e revogação
 
-Os testes verificam revogação **após commit**, em outra instrução, usando semântica de snapshots de leitura normal. Não demonstram revogação linearizável durante SELECT já iniciado, nem prevenção de `REPEATABLE READ` mantendo um snapshot antigo. Para entrega e exports futuros exigimos RPC transacional com ordenação/locks, versões das fontes/grants/política e guarda na fronteira do efeito, sem confiar em validação do React.
+Os testes verificam revogação **após commit**, em outra instrução e outra conexão, usando semântica de snapshots de leitura normal. Não demonstram revogação linearizável durante SELECT já iniciado, nem prevenção de `REPEATABLE READ` mantendo um snapshot antigo. Para entrega e exports futuros exigimos RPC transacional com ordenação/locks, versões das fontes/grants/política e guarda na fronteira do efeito, sem confiar em validação do React.
 
 O conjunto não autoriza WRITE/SHARE/EXPORT, transferência a terceiros, V2/V3, retenção, backups ou prontidão de dados reais. Não há integração com Diário ou cofre.
 
