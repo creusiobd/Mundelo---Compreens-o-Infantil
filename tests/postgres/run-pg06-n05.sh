@@ -6,8 +6,15 @@ psql -X -q -v ON_ERROR_STOP=1 -f "$SQL_DIR/pg06-n05-fixtures.sql" >/dev/null
 passed=0
 
 query_as(){
-  local role="$1" purpose="$2" sql="$3"
-  psql -X -qAt -v ON_ERROR_STOP=1 -c "SET ROLE $role; SET mundelo_lab.purpose='$purpose'; $sql"
+  local role="$1" purpose="$2" sql="$3" password
+  case "$role" in
+    mundelo_lab_family_a) password="lab-family-a-password";;
+    mundelo_lab_family_b) password="lab-family-b-password";;
+    mundelo_lab_professional_a) password="lab-professional-a-password";;
+    mundelo_lab_outsider) password="lab-outsider-password";;
+    *) echo "Unknown synthetic lab principal" >&2; return 1;;
+  esac
+  PGPASSWORD="$password" psql -h "$PGHOST" -p "$PGPORT" -U "$role" -d "$PGDATABASE" -X -qAt -v ON_ERROR_STOP=1 -c "SET mundelo_lab.purpose='$purpose'; $sql"
 }
 check_count(){
   local name="$1" role="$2" purpose="$3" expected="$4"
@@ -40,6 +47,7 @@ check_denied "cannot self-approve grant" mundelo_lab_family_a "UPDATE mundelo_la
 check_denied "cannot create self-grant" mundelo_lab_family_a "INSERT INTO mundelo_lab.access_grant (id) VALUES ('forged');"
 check_denied "cannot alter restricted perspective" mundelo_lab_family_a "UPDATE mundelo_lab.contribution SET body='forged' WHERE id='p-a';"
 check_denied "cannot query grant metadata" mundelo_lab_family_a "SELECT * FROM mundelo_lab.access_grant;"
+check_denied "cannot impersonate another login via SET ROLE" mundelo_lab_family_a "SET ROLE mundelo_lab_family_b;"
 # The server has previously allowed the professional's read. Revoke in the admin connection.
 psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.access_grant SET revoked=true WHERE id='g-prof';" >/dev/null
 check_count "revoked professional next SQL statement denied" mundelo_lab_professional_a follow-up 0
