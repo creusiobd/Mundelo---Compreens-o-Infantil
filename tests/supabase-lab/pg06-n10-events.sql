@@ -156,6 +156,9 @@ BEGIN
  IF NOT FOUND OR d.kind<>'DERIVED' THEN
    RAISE EXCEPTION 'access unavailable' USING ERRCODE='42501'; END IF;
  PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(d.child_id::text,93010));
+ -- Re-read after acquiring the child lock: no pre-lock snapshot can authorize delivery.
+ SELECT * INTO d FROM pg06_events.nodes WHERE id=p_derived;
+ IF NOT FOUND OR d.kind<>'DERIVED' THEN RAISE EXCEPTION 'access unavailable' USING ERRCODE='42501'; END IF;
  IF d.presentation<>'ALLOW' OR d.use_status<>'ALLOW' OR d.validity<>'CURRENT' THEN
    RAISE EXCEPTION 'access unavailable' USING ERRCODE='42501'; END IF;
  IF NOT EXISTS(SELECT 1 FROM pg06_events.grants g
