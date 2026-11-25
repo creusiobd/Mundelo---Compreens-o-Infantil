@@ -1,3 +1,4 @@
+import {resolveDependencyClosure} from './derivationClosure';
 /** PG06-N07: synthetic-only executable governance contracts.
  * This is not a legal authorization decision, database policy, or real export endpoint.
  */
@@ -63,37 +64,29 @@ export function appendRevision(history:readonly Unit[],next:Unit,actorId:string)
  */
 export function validateDerivation(units:readonly Unit[],derivative:Unit):Verdict {
  if(!derivative.sourceRefs.length||derivative.category!=='C04')return deny('SOURCE_REQUIRED');
- const all=new Map(units.map(u=>[key(u.ref),u]));
- const keys=new Set<string>();
- for(const ref of derivative.sourceRefs){
-  const k=key(ref);const src=all.get(k);
-  if(!src||!src.retained||src.restricted||src.ref.childId!==derivative.ref.childId)
-    return deny('SOURCE_UNAVAILABLE');
-  if(keys.has(k)||same(ref,derivative.ref))return deny('INVALID_LINEAGE');
-  keys.add(k);
- }
  if(!derivative.authorId||derivative.interpreterId===null)return deny('ATTRIBUTION_REQUIRED');
- return {ok:true};
+ const closure=resolveDependencyClosure([...units,derivative],[derivative.ref]);
+ return closure.ok?{ok:true}:deny(closure.reason);
 }
 export type ExportRequest = Readonly<{actorId:string;childId:string;purpose:string;recipientId:string;refs:readonly VersionRef[]}>;
 export type ExportResult = Readonly<{ok:true;items:readonly Unit[]}>|Readonly<{ok:false;reason:string}>;
 /** Demonstrative serializer selection only. No file, network, or export capability. */
 export function selectExport(units:readonly Unit[],grants:readonly ScopedGrant[],req:ExportRequest):ExportResult {
- if(!req.actorId||!req.purpose||!req.recipientId||req.recipientId!==req.actorId||!req.refs.length)return {ok:false,reason:'DENIED'};
- const seen=new Set<string>();
- const selected:Unit[]=[];
- for(const ref of req.refs){
-  const k=key(ref);
-  if(seen.has(k)||ref.childId!==req.childId)return {ok:false,reason:'DENIED'};
-  seen.add(k);
-  const source=units.find(u=>same(u.ref,ref));
-  if(!source||source.restricted||!source.retained)return {ok:false,reason:'DENIED'};
-  if(!grants.some(g=>g.active&&g.recipientId===req.actorId&&g.childId===req.childId&&
-    g.purpose===req.purpose&&g.operation==='EXPORT'&&g.category===source.category&&
-    g.sourceId===source.ref.id&&g.versions.includes(ref.version)))return {ok:false,reason:'DENIED'};
-  selected.push(structuredClone(source));
+ if(!req.actorId||!req.purpose||!req.recipientId||req.recipientId!==req.actorId||!req.refs.length)
+   return {ok:false,reason:'DENIED'};
+ const closure=resolveDependencyClosure(units,req.refs);
+ if(!closure.ok)return {ok:false,reason:'DENIED'};
+ // Every transitive source requires its *own* explicit EXPORT authorization.
+ // This does not mean all underlying sources are automatically returned.
+ for(const source of closure.units){
+   if(!grants.some(g=>g.active&&g.recipientId===req.actorId&&g.childId===req.childId&&
+     g.purpose===req.purpose&&g.operation==='EXPORT'&&g.category===source.category&&
+     g.sourceId===source.ref.id&&g.versions.includes(source.ref.version)))
+     return {ok:false,reason:'DENIED'};
  }
- return {ok:true,items:selected};
+ const selected=req.refs.map(ref=>closure.units.find(u=>same(u.ref,ref)));
+ if(selected.some(u=>!u))return {ok:false,reason:'DENIED'};
+ return {ok:true,items:(selected as Unit[]).map(u=>structuredClone(u))};
 }
 export type Tombstone=Readonly<{ref:VersionRef;decidedAt:number;authorityReference:string;verified:boolean}>;
 /** Post-restore reconciliation must remove a previously deleted unit again;
