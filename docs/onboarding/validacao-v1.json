@@ -1,0 +1,129 @@
+{
+  "task": 84,
+  "date": "2026-11-25",
+  "base_commit": "c2a8d1f6d10da13324c6a0b7de21da87068f9345",
+  "result": "PASS",
+  "method": "Conferência estrutural de vínculos e IDs; não valida semântica, Mermaid renderizado, Auth, UX ou RLS.",
+  "relative_links_checked": 20,
+  "criteria": 24,
+  "decisions": 8,
+  "source_blobs": 16,
+  "functional_scenarios": "NOT_EXECUTED",
+  "files": [
+    {
+      "path": "docs/onboarding/arquitetura-v1.md",
+      "sha256": "fc3e4f68e6e40a5fbefa09efa415718bcc1c3219baa9fe8592e1bc334f1309c3"
+    },
+    {
+      "path": "docs/onboarding/criterios-v1.md",
+      "sha256": "bb4e581f01821d8250e82674f540a62b1be1cf661399f9aab3e1cc5b5dbfddfd"
+    },
+    {
+      "path": "docs/onboarding/jornadas-v1.md",
+      "sha256": "6f5c5c1898b13248a4a03b90a60933ebca39f3c4d52340cb3efc161215fa1866"
+    }
+  ],
+  "links": [
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/onboarding/jornadas-v1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/onboarding/criterios-v1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/onboarding/fontes-v1.json",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/adr/005-identidade-e-persistencia-supabase.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/public-family-onboarding-implementation-plan-v0.1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/threat-model-public-family-onboarding-v0.1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/screens/WelcomeScreen.tsx",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/screens/OnboardingScreen.tsx",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/App.tsx",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/context/AppContext.tsx",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/security/authorization.ts",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "src/domain/persistentAccessContract.ts",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/contratos/contribuicoes-perspectivas/contrato.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/gestao/onboarding-roadmap-2026-11.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/gestao/processo.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/arquitetura-v1.md",
+      "target": "docs/parametros-retencao-categorias-v0-1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/criterios-v1.md",
+      "target": "docs/onboarding/arquitetura-v1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/criterios-v1.md",
+      "target": "docs/onboarding/jornadas-v1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/jornadas-v1.md",
+      "target": "docs/onboarding/arquitetura-v1.md",
+      "exists": true
+    },
+    {
+      "source": "docs/onboarding/jornadas-v1.md",
+      "target": "docs/onboarding/criterios-v1.md",
+      "exists": true
+    }
+  ],
+  "errors": []
+}
