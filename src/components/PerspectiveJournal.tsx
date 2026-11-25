@@ -138,7 +138,8 @@ export function PerspectiveJournal() {
             </article>;
           })}
         </div>}
-      {mode && <div role="dialog" aria-modal="true" aria-label="Formulário de perspectiva"
+      {mode && <div role="dialog" aria-modal="false" aria-label="Formulário de perspectiva"
+        onKeyDown={event=>{if(event.key==='Escape'){setMode(null);setDraft(empty);setNotice('');}}}
         className="rounded-xl border-2 border-[#133E43] p-4 space-y-3 bg-[#F8F5EF]">
         <h3 className="font-bold text-[#133E43]">{mode==='CREATE'?'Nova perspectiva':mode==='REVISE'?'Nova versão':'Nova contestação'}</h3>
         {selected && <p className="text-xs text-[#265358]">Referência: versão {selected.version}, contexto {shown(selected.context)}.</p>}
