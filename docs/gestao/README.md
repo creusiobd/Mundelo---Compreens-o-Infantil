@@ -89,3 +89,9 @@ PRs [#49](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/pull/49) e
 ## Frente ONB (25/11/2026)
 
 Novo [roadmap de onboarding adulto e acolhimento](onboarding-roadmap-2026-11.md) com [épico #83](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/83), tarefas [#84–#88](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84) e sincronização nativa [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89). Issues criadas; Project #4 / milestone M05 aguardam sincronização. Não há implementação de onboarding iniciada.
+
+
+## ONB-001 — arquitetura entregue para revisão (25/11/2026)
+
+[Arquitetura v1.0](../onboarding/arquitetura-v1.md), [jornadas e estados](../onboarding/jornadas-v1.md) e [critérios](../onboarding/criterios-v1.md) da [#84](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84): conciliação de ADR/plano/ameaças/código, separação entre demonstração e conta adulta e decisões propostas para #85–#88. Entrega documental sujeita a revisão e incorporação; não implementa Auth ou UI. Progresso de produto continua 0/5 até aceite da entrega correspondente. PM-003/#89 já concluída com M05 e campos nativos comprovados; o registro anterior de sincronização pendente é histórico. #27/#29/#35 permanecem independentes.
+
