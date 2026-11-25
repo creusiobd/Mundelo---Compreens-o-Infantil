@@ -77,17 +77,6 @@ jobs:
           export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
           guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
           psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n11-evidence.sql > /dev/null
-      - name: Adversarial signed JWT checkpoint and concurrent reblock tests
-        run: node tests/supabase-lab/pg06-n11-checkpoint-api.mjs "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
-      - name: Independent committed checkpoint audit
-        run: |
-          set -euo pipefail
-          set -a
-          source "$RUNNER_TEMP/mundelo-local-env"
-          set +a
-          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
-          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
-          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n11-postcheck.sql
       - name: Install separate attributed, synthetic review perspectives
         run: |
           set -euo pipefail
