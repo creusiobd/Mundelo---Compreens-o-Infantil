@@ -53,3 +53,8 @@ Candidatas ao ciclo:
 4. Encerrar com entregas efetivas, pendências e decisões de replanejamento. Não mover trabalho incompleto para concluído para fechar o ciclo.
 
 A SP01 usa o ciclo já existente do Project, iniciado em 15/11. Esta organização foi mobilizada em 19/11; não se atribui trabalho retroativo. A rotina recorrente é acompanhada em [PM-002 #36](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36); não foi criada automação de lembrete.
+
+
+## Extensão planejada em 25/11/2026 — onboarding adulto
+
+O plano [ONB-ROADMAP](onboarding-roadmap-2026-11.md) propõe ONB-001/#84 e ONB-002/#85 para SP02 e ONB-003/#86 para SP03. SP04 (27/12/2026–09/01/2027) e SP05 (10/01–23/01/2027) são **novas propostas**, ainda não confirmadas como iterations nativas no Project #4. O plano não altera estados históricos nem o limite WIP de uma tarefa.
