@@ -87,6 +87,14 @@ async function verify(){
  r=await call('guardian','pg06_lab_grant',{p_id:sourceId,p_version:1,p_recipient:users.professional.id,p_purpose:'care'});
  ok(r.status===200&&typeof r.data==='string','verified scoped guardian grants source/version/purpose to professional');
  const grantId=r.data;
+ r=await call('professional','pg06_lab_revise',{p_id:sourceId,p_expected_version:1,p_body:'FORGED BY PROF',p_context:'care'});
+ denied(r,'professional cannot overwrite another recorder and version');
+ r=await call('guardian','pg06_lab_revise',{p_id:sourceId,p_expected_version:1,p_body:'SYNTH-REVISION-PRIVATE',p_context:'synthetic second context'});
+ ok(r.status===200&&r.data===2,'guardian recorded append-only version 2 with CAS');
+ r=await call('guardian','pg06_lab_revise',{p_id:sourceId,p_expected_version:1,p_body:'STALE-WRITE',p_context:'stale'});
+ ok(r.status===409||r.status===403,'stale version cannot overwrite revision 2');
+ r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:2,p_purpose:'care'});
+ denied(r,'new version is not automatically included in previous grant');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
  ok(r.status===200&&r.data?.[0]?.body==='SYNTH-PERSPECTIVE-PRIVATE','professional reads exact granted version via signed JWT');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'publicity'});
@@ -116,6 +124,16 @@ async function verify(){
  ok(r.status===200&&r.data===true,'verified revoker revokes grant in server transaction');
  r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
  denied(r,'previous valid JWT immediately loses access after revocation');
+ r=await call('guardian','pg06_lab_grant',{p_id:sourceId,p_version:1,p_recipient:users.professional.id,p_purpose:'care'});
+ ok(r.status===200,'authorized regrant has explicit new revision');
+ r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
+ ok(r.status===200,'fresh valid grant restores only its scoped read');
+ r=await call('professional','pg06_lab_restrict',{p_child:childA,p_category:'OBSERVATION',p_purpose:'care'});
+ denied(r,'professional cannot change restrictions');
+ r=await call('guardian','pg06_lab_restrict',{p_child:childA,p_category:'OBSERVATION',p_purpose:'care'});
+ ok(r.status===200&&r.data===true,'verified authority can advance restriction revision');
+ r=await call('professional','pg06_lab_read',{p_id:sourceId,p_version:1,p_purpose:'care'});
+ denied(r,'old grant blocked after restriction revision changes');
  console.log('PG06-N06: '+passed+' API assertions passed using signed Supabase Auth JWTs.');
 }
 await (stage==='setup'?setup():verify());
