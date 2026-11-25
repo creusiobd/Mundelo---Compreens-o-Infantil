@@ -1,0 +1,92 @@
+name: PG06-N11 Explicit Review Checkpoint Synthetic Gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/supabase-lab/pg06-n11-*'
+      - '.github/workflows/pg06-n11-explicit-checkpoint.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  events:
+    name: Verified reviewer evidence, version snapshot, CAS and concurrent re-block
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.81.3
+      - name: Start ephemeral local Supabase
+        run: |
+          supabase init --yes
+          supabase start -x studio,imgproxy,realtime,storage-api,edge-runtime,logflare,vector,postgres-meta,supavisor
+          supabase status -o env > "$RUNNER_TEMP/mundelo-local-env"
+      - name: Install PostgreSQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Install synthetic schemas in local database only
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          test -n "$DB_URL"
+          case "$DB_URL" in
+            *"127.0.0.1"*|*"localhost"*) ;;
+            *) echo "Remote database prohibited"; exit 1;;
+          esac
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/supabase-lab/schema.sql >/dev/null
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/supabase-lab/pg06-n10-events.sql >/dev/null
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/supabase-lab/pg06-n11-checkpoint.sql >/dev/null
+      - name: Create real, synthetic, local Auth identities
+        run: node tests/supabase-lab/auth-api.mjs setup "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Seed private grants and multi-level dependency graph
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          family_b=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).familyB.id)")
+          professional=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).professional.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -v family_b="$family_b" -v professional="$professional" -f tests/supabase-lab/pg06-n10-seed.sql > /dev/null
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/supabase-lab/pg06-n11-baseline.sql > /dev/null
+      - name: Real HTTP Auth and concurrency verification
+        run: node tests/supabase-lab/pg06-n10-api.mjs "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Assert committed database state independent of HTTP responses
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n10-postcheck.sql
+      - name: Seed independently verified synthetic reviewer authority and evidence
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n11-evidence.sql > /dev/null
+      - name: Adversarial signed JWT checkpoint and concurrent reblock tests
+        run: node tests/supabase-lab/pg06-n11-checkpoint-api.mjs "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Independent committed checkpoint audit
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -f tests/supabase-lab/pg06-n11-postcheck.sql
+      - name: Destroy all synthetic containers
+        if: always()
+        run: supabase stop --no-backup || true
