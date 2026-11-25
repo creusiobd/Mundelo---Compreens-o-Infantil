@@ -23,7 +23,7 @@ const perspectives=n=>[
  '20000000-0000-4000-8000-00000000001'+n,
 ];
 const version=n=>n===1||n===2||n===7||n===8?2:1;
-const origin=n=>n===2?1:n;
+const origin=n=>n===2?1:n===3?2:n===4?3:n;
 const snapshot=n=>[{id:source(origin(n)),version:version(n)}];
 const reason='Synthetic reviewed observations, limitations and distinct adult perspectives retained.';
 let assertions=0;
