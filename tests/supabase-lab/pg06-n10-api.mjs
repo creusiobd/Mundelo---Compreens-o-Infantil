@@ -101,9 +101,23 @@ check(write.status===200&&write.data===4,'concurrent event committed in serial r
 check((first.status===200&&first.data==='SYNTH-RACE-DERIVED')||first.status===403,
  'racing export delivery serialized before or after event');
 await allDenied(5,'no READ/SHARE/EXPORT after concurrent event commit');
+for(const scenario of [
+  {operation:'READ',n:7,revision:4},
+  {operation:'SHARE',n:8,revision:5},
+]){
+ const started=deliver('professional',scenario.n,scenario.operation,600);
+ await new Promise(resolve=>setTimeout(resolve,125));
+ const eventInRace=event('SOURCE_REVISED',scenario.n,scenario.revision);
+ const [delivery,commitInRace]=await Promise.all([started,submit('guardian',eventInRace)]);
+ check(commitInRace.status===200&&commitInRace.data===scenario.revision+1,
+   'concurrent '+scenario.operation+' event commits exact revision');
+ check((delivery.status===200&&delivery.data.includes('SYNTH-'))||delivery.status===403,
+   'concurrent '+scenario.operation+' is serialized');
+ await allDenied(scenario.n,'no new delivery after concurrent '+scenario.operation+' event');
+}
 const replay=await submit('guardian',raceEvent);
 check(replay.status===200&&replay.data===4,'concurrent event replay did not increment revision');
-const newEvent=event('SOURCE_REVISED',4,4);
+const newEvent=event('SOURCE_REVISED',4,6);
 isDenied(await submit('outsider',newEvent),'unauthorized fresh event denied');
 for(const endpoint of ['nodes','events','grants','child_state']){
  const q=await fetch(url+'/rest/v1/pg06_events_'+endpoint+'?select=*',{
