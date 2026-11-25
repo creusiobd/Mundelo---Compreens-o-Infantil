@@ -74,17 +74,7 @@ if [[ "$seen" != "1" ]]; then
 fi
 psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.access_grant SET revoked=true WHERE id='g-prof';" >/dev/null
 wait "$reader_pid"
-readings="$(grep -E '^[01]
-psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.policy_state SET policy_revision=2;" >/dev/null
-check_count "stale policy invalidates grant" mundelo_lab_family_a care 0
-psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.access_grant SET policy_revision=2 WHERE id='g-a';" >/dev/null
-check_count "explicit renewed policy restores allowed scope" mundelo_lab_family_a care 1
-psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.policy_state SET restriction_revision=2;" >/dev/null
-check_count "restriction revision invalidates grant" mundelo_lab_family_a care 0
-# Existing sessions must not be evaluated under REPEATABLE READ for mutable access grants:
-# production will require server-enforced effect ordering / a transaction-level strategy.
-echo "PG06-N05: $passed isolated PostgreSQL assertions passed."
- "$result_file" | paste -sd, -)"
+readings="$(grep -E '^[01]$' "$result_file" | paste -sd, -)"
 if [[ "$readings" != "1,0" ]]; then
   echo "FAIL: expected read-committed transaction to observe revoke (1,0), got $readings" >&2; exit 1
 fi
@@ -96,6 +86,5 @@ psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.access_grant SET policy_rev
 check_count "explicit renewed policy restores allowed scope" mundelo_lab_family_a care 1
 psql -X -q -v ON_ERROR_STOP=1 -c "UPDATE mundelo_lab.policy_state SET restriction_revision=2;" >/dev/null
 check_count "restriction revision invalidates grant" mundelo_lab_family_a care 0
-# Existing sessions must not be evaluated under REPEATABLE READ for mutable access grants:
-# production will require server-enforced effect ordering / a transaction-level strategy.
+# This lab does not certify REPEATABLE READ revocation or in-flight delivery.
 echo "PG06-N05: $passed isolated PostgreSQL assertions passed."
