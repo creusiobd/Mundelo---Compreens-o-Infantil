@@ -15,7 +15,7 @@ export type PerspectiveCommand =
 
 export type PerspectiveLedger = Readonly<{
   versions: readonly Perspective[];
-  receipts: Readonly<Record<string, string>>;
+  receipts: Readonly<Record<string, Readonly<{fingerprint:string; perspectiveId:string; version:number}>>>;
 }>;
 
 export const emptyPerspectiveLedger = (): PerspectiveLedger => ({versions:[],receipts:{}});
@@ -38,6 +38,16 @@ function policy(caregiver:Caregiver | null | undefined, childId:string, kind:Per
     allowedOperations: eligible ? (kind==='CREATE' ? ['CREATE'] : kind==='CONTEST' ? ['CONTEST'] : ['REVISE']) : [],
   };
 }
+function wellFormed(p:Perspective):boolean {
+  const states=['INFORMED','UNKNOWN','NOT_OBSERVED','NOT_APPLICABLE'];
+  const validClaim=(c:Perspective['observation']|undefined)=>
+    Boolean(c && states.includes(c.state) &&
+      (c.state==='INFORMED' ? typeof c.text==='string' && c.text.trim().length>0 : c.text===undefined));
+  return Boolean(p.id?.trim() && p.childId?.trim() && Number.isSafeInteger(p.version) &&
+    p.version>=1 && p.recordedAt?.trim() && p.attribution?.recorderId?.trim() &&
+    validClaim(p.observation) && validClaim(p.interpretation) && validClaim(p.context) &&
+    (p.interpretation.state!=='INFORMED' || p.attribution.interpreterId?.trim()));
+}
 function denial(ledger:PerspectiveLedger, reason:'DENIED'|'CONFLICT'|'INVALID'|'UNVERIFIED'):CommandResult {
   return {ok:false,ledger,reason};
 }
@@ -52,13 +62,14 @@ export function runPerspectiveCommand(
   if (!incoming || incoming.childId!==activeChildId || !syntheticChildIds.has(activeChildId)) return denial(ledger,'DENIED');
   const permission=policy(caregiver,activeChildId,command.kind);
   if (!permitted(permission,activeChildId,command.kind)) return denial(ledger,'DENIED');
-  if (!incoming.id?.trim() || !incoming.attribution?.recorderId) return denial(ledger,'INVALID');
+  if (!wellFormed(incoming)) return denial(ledger,'INVALID');
 
   // Receipts are scoped to this ephemeral session only, and cannot authorize a later retry.
   const fingerprint=JSON.stringify(command);
   if (Object.hasOwn(ledger.receipts,command.requestId)) {
-    if (ledger.receipts[command.requestId]!==fingerprint) return denial(ledger,'CONFLICT');
-    const existing=last(ledger,incoming.id);
+    const receipt=ledger.receipts[command.requestId];
+    if (receipt.fingerprint!==fingerprint) return denial(ledger,'CONFLICT');
+    const existing=ledger.versions.find(p=>p.id===receipt.perspectiveId && p.version===receipt.version);
     return existing ? {ok:true,ledger,perspective:structuredClone(existing),replayed:true} : denial(ledger,'CONFLICT');
   }
 
@@ -86,7 +97,7 @@ export function runPerspectiveCommand(
     ok:true, perspective:result, replayed:false,
     ledger:{
       versions:[...ledger.versions,result],
-      receipts:{...ledger.receipts,[command.requestId]:fingerprint},
+      receipts:{...ledger.receipts,[command.requestId]:{fingerprint,perspectiveId:result.id,version:result.version}},
     },
   };
 }
