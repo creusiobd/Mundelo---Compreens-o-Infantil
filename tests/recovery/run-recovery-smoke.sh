@@ -37,6 +37,7 @@ echo "PASS: restore resurrected pre-deletion bytes (quarantine required)"
 # local CI instances without application APIs or client access.
 psql -X -q -d "$dst" -v ON_ERROR_STOP=1 -c "truncate synthetic_deletion_register;"
 pg_dump --data-only --column-inserts --table=synthetic_deletion_register -d "$src" > "$work/post_snapshot_deletions.sql"
+sed -i '/^SET transaction_timeout = /d' "$work/post_snapshot_deletions.sql"
 psql -X -q -d "$dst" -v ON_ERROR_STOP=1 -f "$work/post_snapshot_deletions.sql" > /dev/null
 psql -X -q -d "$dst" -v ON_ERROR_STOP=1 <<'SQL'
 do $$
