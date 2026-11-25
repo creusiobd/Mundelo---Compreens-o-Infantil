@@ -80,8 +80,7 @@ test.describe('PG06-N14 · real local Supabase checkpoint reached through UI',()
   await page.getByLabel('Aprovar revisão humana',{exact:true}).check();
   await reason.fill('Tentativa sintética de reuso de evidência após uma alteração posterior na fonte.');
   await check.check();
-  await page.getByRole('button',{name:'Registrar no laboratório: Aprovar revisão humana'}).click();
-  await expect(page.getByRole('alert')).toContainText('Não existe evidência válida');
+  await expect(page.getByRole('button',{name:'Registrar no laboratório: Aprovar revisão humana'})).toBeDisabled();
   await expect(page.getByTestId('connected-review-status')).toContainText('Síntese bloqueada');
 
   const evilPage=await page.context().newPage();
