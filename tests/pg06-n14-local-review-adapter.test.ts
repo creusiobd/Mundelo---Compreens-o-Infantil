@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {createLocalReviewAdapter,ReviewServerUnavailable} from '../src/domain/localReviewTransactionAdapter';
+import {createLocalReviewAdapter,ReviewServerUnavailable,type ServerReviewSnapshot} from '../src/domain/localReviewTransactionAdapter';
 
 const credentials={
  url:'http://127.0.0.1:54321',
@@ -10,7 +10,7 @@ const credentials={
  derivedId:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb1',
  purpose:'care' as const
 };
-const state={
+const state:ServerReviewSnapshot={
  childId:credentials.childId,derivedId:credentials.derivedId,purpose:'care',
  revision:6,
  sourceVersions:[{id:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa1',version:2}],
