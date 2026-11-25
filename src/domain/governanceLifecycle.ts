@@ -79,7 +79,7 @@ export type ExportRequest = Readonly<{actorId:string;childId:string;purpose:stri
 export type ExportResult = Readonly<{ok:true;items:readonly Unit[]}>|Readonly<{ok:false;reason:string}>;
 /** Demonstrative serializer selection only. No file, network, or export capability. */
 export function selectExport(units:readonly Unit[],grants:readonly ScopedGrant[],req:ExportRequest):ExportResult {
- if(!req.actorId||!req.purpose||!req.recipientId||!req.refs.length)return {ok:false,reason:'DENIED'};
+ if(!req.actorId||!req.purpose||!req.recipientId||req.recipientId!==req.actorId||!req.refs.length)return {ok:false,reason:'DENIED'};
  const seen=new Set<string>();
  const selected:Unit[]=[];
  for(const ref of req.refs){
