@@ -17,6 +17,10 @@ INSERT INTO pg06_events.nodes (id,child_id,version,kind,body) VALUES
  ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb4','11111111-1111-4111-8111-111111111111',1,'DERIVED','SYNTH-REVOKE-DERIVED'),
  ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4','11111111-1111-4111-8111-111111111111',1,'SOURCE','SYNTH-RACE-SOURCE'),
  ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb5','11111111-1111-4111-8111-111111111111',1,'DERIVED','SYNTH-RACE-DERIVED'),
+ ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa7','11111111-1111-4111-8111-111111111111',1,'SOURCE','SYNTH-READ-RACE-SOURCE'),
+ ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb7','11111111-1111-4111-8111-111111111111',1,'DERIVED','SYNTH-READ-RACE-DERIVED'),
+ ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa8','11111111-1111-4111-8111-111111111111',1,'SOURCE','SYNTH-SHARE-RACE-SOURCE'),
+ ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb8','11111111-1111-4111-8111-111111111111',1,'DERIVED','SYNTH-SHARE-RACE-DERIVED'),
  ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa5','22222222-2222-4222-8222-222222222222',1,'SOURCE','SYNTH-OTHER-CHILD-SOURCE'),
  ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb6','22222222-2222-4222-8222-222222222222',1,'DERIVED','SYNTH-OTHER-CHILD-DERIVED');
 INSERT INTO pg06_events.edges (child_id,derived_id,input_id) VALUES
@@ -25,6 +29,8 @@ INSERT INTO pg06_events.edges (child_id,derived_id,input_id) VALUES
  ('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb3','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa2'),
  ('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb4','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa3'),
  ('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb5','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa4'),
+ ('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb7','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa7'),
+ ('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb8','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa8'),
  ('22222222-2222-4222-8222-222222222222','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb6','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaa5');
 INSERT INTO pg06_events.grants(child_id,derived_id,recipient_id,purpose,operation)
 SELECT n.child_id,n.id,:'professional'::uuid,'care',ops.operation
