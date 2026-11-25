@@ -23,8 +23,10 @@ test.describe('PG06-N14 · real local Supabase checkpoint reached through UI',()
  test('request, approve, server history, stale correction and unauthorized credentials',async({page,request})=>{
   const {url,anonKey,users}=local();
   await page.setViewportSize({width:390,height:844});
+  const guardianJwt=users.guardian.token;
+  const outsiderJwt=users.outsider.token;
   const synthetic={
-   url,anonKey,accessToken:users.guardian.token,
+   url,anonKey,accessToken:guardianJwt,
    childId:'11111111-1111-4111-8111-111111111111',
    derivedId:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb1',purpose:'care'
   };
@@ -86,7 +88,7 @@ test.describe('PG06-N14 · real local Supabase checkpoint reached through UI',()
   const evilPage=await page.context().newPage();
   await evilPage.addInitScript(value=>{
    Object.defineProperty(window,'__MUNDELO_N14_LOCAL_REVIEW__',{value,writable:false});
-  },{...synthetic,accessToken:users.outsider.token});
+  },{...synthetic,accessToken:outsiderJwt});
   await evilPage.goto('http://127.0.0.1:4174/review-lab');
   await expect(evilPage.getByTestId('connected-review-status')).toContainText('Estado indisponível');
   await expect(evilPage.getByRole('alert')).toContainText('não foi autorizada');
