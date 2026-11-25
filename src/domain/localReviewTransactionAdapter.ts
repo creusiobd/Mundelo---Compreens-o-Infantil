@@ -131,7 +131,7 @@ export function createLocalReviewAdapter(
    p_request:command.outcome==='REQUEST_COMPLEMENT'?command.requestedInformation:null,
    p_purpose:credentials.purpose
   });
-  if(!Number.isSafeInteger(receipt)||Number(receipt)!==command.expectedRevision+1)
+  if(typeof receipt!=='number'||!Number.isSafeInteger(receipt)||receipt!==command.expectedRevision+1)
    throw new ReviewServerUnavailable('MALFORMED');
   const current=await load();
   if(current.revision<receipt)throw new ReviewServerUnavailable('MALFORMED');
