@@ -21,7 +21,7 @@ A fixture `approved_authority=true` é plantada pelo administrador de laboratór
 
 ## Consistência e revogação
 
-Os testes verificam revogação **após commit**, em outra instrução e outra conexão, usando semântica de snapshots de leitura normal. Não demonstram revogação linearizável durante SELECT já iniciado, nem prevenção de `REPEATABLE READ` mantendo um snapshot antigo. Para entrega e exports futuros exigimos RPC transacional com ordenação/locks, versões das fontes/grants/política e guarda na fronteira do efeito, sem confiar em validação do React.
+Os testes verificam revogação **após commit** em outra conexão e incluem um experimento concorrente no qual uma transação READ COMMITTED executa SELECT, aguarda e volta a consultar depois da revogação administrativa. A segunda consulta deve perder acesso. Isso **não** demonstra revogação linearizável para SELECT já iniciado, bloqueio de bytes preparados para exportação, nem prevenção de `REPEATABLE READ` mantendo um snapshot antigo. Para entrega e exports futuros exigimos RPC transacional com ordenação/locks, versões das fontes/grants/política e guarda na fronteira do efeito, sem confiar em validação do React.
 
 O conjunto não autoriza WRITE/SHARE/EXPORT, transferência a terceiros, V2/V3, retenção, backups ou prontidão de dados reais. Não há integração com Diário ou cofre.
 
