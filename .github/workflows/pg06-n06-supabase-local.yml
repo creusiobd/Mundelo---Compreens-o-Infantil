@@ -20,7 +20,7 @@ jobs:
           node-version: '22'
       - uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 2.81.3
       - name: Start disposable Supabase services
         run: |
           supabase init --yes
