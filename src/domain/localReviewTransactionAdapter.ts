@@ -111,7 +111,11 @@ export function createLocalReviewAdapter(
   }
   return parsed.data;
  }
- async function decide(command:ReviewSubmission):Promise<ServerReviewSnapshot>{
+ async function decide(command:ReviewSubmission, prior:ServerReviewSnapshot):Promise<ServerReviewSnapshot>{
+  if(prior.revision!==command.expectedRevision || prior.childId!==credentials.childId ||
+    prior.derivedId!==credentials.derivedId || !prior.evidenceId){
+   throw new ReviewServerUnavailable('STALE');
+  }
   // No optimistic state update. An RPC response is not sufficient until we
   // have a fresh, authorized, server-confirmed state snapshot.
   const receipt=await rpc('pg06_n12_decide',{
@@ -120,9 +124,9 @@ export function createLocalReviewAdapter(
    p_derived:credentials.derivedId,
    p_outcome:command.outcome,
    p_expected_revision:command.expectedRevision,
-   p_versions:(await load()).sourceVersions,
+   p_versions:prior.sourceVersions,
    p_reason:command.reason,
-   p_evidence:(await load()).evidenceId,
+   p_evidence:prior.evidenceId,
    p_perspective_ids:command.perspectiveIds,
    p_request:command.outcome==='REQUEST_COMPLEMENT'?command.requestedInformation:null,
    p_purpose:credentials.purpose
