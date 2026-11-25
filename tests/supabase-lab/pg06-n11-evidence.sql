@@ -5,10 +5,6 @@ INSERT INTO pg06_n11.review_authorities(reviewer_id,child_id,derived_id,purpose,
 SELECT :'guardian'::uuid,n.child_id,n.id,'care',true
 FROM pg06_events.nodes n
 WHERE n.kind='DERIVED' AND n.child_id='11111111-1111-4111-8111-111111111111'::uuid;
-INSERT INTO pg06_n11.verified_evidence(
- evidence_id,reviewer_id,child_id,derived_id,purpose,
- bound_block_revision,source_snapshot,verification_reference,verified,expires_at
-)
 -- Explicit stable opaque synthetic evidence IDs, not source-derived tokens.
 INSERT INTO pg06_n11.verified_evidence(
  evidence_id,reviewer_id,child_id,derived_id,purpose,
