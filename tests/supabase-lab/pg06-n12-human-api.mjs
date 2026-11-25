@@ -94,7 +94,7 @@ denied(await decide('guardian',{...req,p_request:'Provide rewritten assertions a
 
 const keep=newDecision(3,'KEEP_BLOCKED',7);
 resp=await decide('guardian',keep);
-ok(resp.status===200&&resp.data===8,'KEEP_BLOCKED recorded with justification');
+ok(resp.status===200&&resp.data===8,'KEEP_BLOCKED recorded with justification '+JSON.stringify(resp).slice(0,450));
 await notDeliver(3,'human keeps contested interpretation blocked');
 denied(await decide('guardian',newDecision(2,'APPROVE',8)),
  'downstream approval cannot bypass blocked ancestor');
