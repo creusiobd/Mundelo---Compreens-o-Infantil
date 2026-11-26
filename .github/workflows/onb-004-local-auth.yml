@@ -1,0 +1,46 @@
+name: ONB-004 Local Adult Auth RLS
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/onb-auth-lab/**'
+      - '.github/workflows/onb-004-local-auth.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local-auth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.81.3
+      - name: Start disposable local sandbox
+        run: |
+          set -euo pipefail
+          supabase init --yes
+          supabase start -x studio,imgproxy,realtime,storage-api,edge-runtime,logflare,vector,postgres-meta,supavisor
+          umask 077
+          supabase status -o env > "$RUNNER_TEMP/onb-local-env"
+      - name: Install SQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Apply local test schema only
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/onb-local-env"
+          set +a
+          [[ "$DB_URL" =~ ^postgresql://[^@]+@127\.0\.0\.1:54322/postgres$ ]] || { echo "Nonlocal DB rejected"; exit 1; }
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/onb-auth-lab/schema.sql >/dev/null
+      - name: Run real HTTP identity and authorization assertions
+        run: node tests/onb-auth-lab/auth.mjs "$RUNNER_TEMP/onb-local-env"
+      - name: Destroy local sandbox
+        if: always()
+        run: |
+          supabase stop --no-backup
+          rm -f "$RUNNER_TEMP/onb-local-env"
