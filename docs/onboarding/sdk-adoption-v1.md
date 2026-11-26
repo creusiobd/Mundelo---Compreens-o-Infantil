@@ -1,0 +1,3 @@
+# ONB-004.5B-02 — Adoption of approved manifests
+
+Artifact 15153007544 from successful run 45894257978 (PR #100). Exact archive SHA256 and both file SHA256 values are pinned in the temporary branch-specific adoption workflow. Only package.json and package-lock.json may be committed by the job. No force push, no main write, no hosted Supabase, no production activation, no child data. A push by GITHUB_TOKEN may not trigger further workflows; a subsequent connector commit or manually triggered validation is necessary before merge. Remove the temporary write-enabled workflow after adoption. SDK adapter and E2E integration remain separate. #87 remains open; #27/#29/#35/G5 remain blocked.
