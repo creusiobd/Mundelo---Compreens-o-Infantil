@@ -1,0 +1,3 @@
+# ONB-004.5B-04A — React lab
+
+Separate Vite development entry, no modification to App.tsx or production entry. Synthetic fixed identities; same-tab manual callback transfer from Mailpit, no browser storage; reload cancels pending PKCE. Real SDK/controller for login and family/professional acceptance; recovery controls provided. Browser test covers signup, confirmation, password login, two explicit acceptances, family empty space, logout, browser storage and axe at entry/welcome. Professional and recovery browser scenarios, reload continuity, expiry UI, revocation uncertainty and adversarial validation remain pending. No claim of complete 04 or #87. No real data, hosted changes or production enablement. #27/#29/#35/G5 blocked. CI pending.

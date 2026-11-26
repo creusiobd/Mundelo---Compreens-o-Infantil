@@ -31,7 +31,7 @@ export class AdultSessionController {
   private set(s:AdultState){this.state=s;this.publish(s);}
   async login(email:string,password:string){
     if(this.busy||this.state.kind!=='SIGNED_OUT')return;
-    if(!/^adulto-[abp]@example\.invalid$/.test(email)||password!=='exemplo-sintetico-123'){this.set({kind:'BLOCKED'});return;}
+    if(!/^adulto-[abp]@example\.invalid$/.test(email)||!['exemplo-sintetico-123','exemplo-sintetico-456'].includes(password)){this.set({kind:'BLOCKED'});return;}
     this.busy=true;const e=++this.epoch;this.set({kind:'BUSY'});
     try{await this.port.login(email,password);if(e===this.epoch)this.set({kind:'ACCEPTANCE'});}
     catch{if(e===this.epoch)this.set({kind:'UNCERTAIN'});}
