@@ -13,6 +13,15 @@ async function request(path,body,token,method='POST'){
  const data=await r.json().catch(()=>null);return {status:r.status,data};
 }
 const rejected=r=>r.status>=400&&r.status<500&&!r.data?.access_token;
+const forbidden=r=>[401,403].includes(r.status);
+function methods(token){
+ const value=JSON.parse(Buffer.from(token.split('.')[1],'base64url').toString('utf8')).amr;
+ return Array.isArray(value)?value.map(x=>x.method):[];
+}
+function diagnostic(r,label){
+ // Only status and validated SQLSTATE; never raw response, identifiers or tokens.
+ console.log(label+': HTTP '+r.status+' SQLSTATE '+(/^[A-Z0-9]{5}$/.test(r.data?.code||'')?r.data.code:'none'));
+}
 const verifier=()=>crypto.randomBytes(48).toString('base64url');
 async function emailLink(email,type='signup'){
  for(let i=0;i<40;i++){
@@ -64,7 +73,10 @@ async function confirmedAccount(alias){
  const authenticated=await login(a);
  ok(authenticated.status===200&&!!authenticated.data?.access_token,'explicit password login after confirmation');
  const token=authenticated.data.access_token;
- ok((await rpc('accept',{p_version:1,p_terms:true,p_privacy:true},token)).data===true,'explicit acceptance');
+ ok(methods(token).includes('password')&&!methods(token).includes('recovery'),'password session signed AMR eligible');
+ const acceptance=await rpc('accept',{p_version:1,p_terms:true,p_privacy:true},token);
+ diagnostic(acceptance,'acceptance');
+ ok(acceptance.status===200&&acceptance.data===true,'explicit acceptance');
  const space=await rpc('bootstrap',{p_alias:'Adulto Teste '+alias,p_journey:'FAMILY'},token);
  ok(space.status===200&&!!space.data?.space_id,'empty family space');
  return {...a,token,space:space.data.space_id};
@@ -82,17 +94,19 @@ const recovery=await exchange(code,v);
 ok(recovery.status===200&&!!recovery.data?.access_token,'recovery exchange returns provider session');
 ok(rejected(await exchange(code,v)),'recovery code replay denied');
 const token=recovery.data.access_token;
+ok(!methods(token).includes('password')||methods(token).includes('recovery'),'recovery AMR not eligible for protected effects');
 const read=await rpc('read_space',{p_space:a.space},token);
-ok(rejected(read),'recovery session cannot read own space');
-ok(rejected(await rpc('accept',{p_version:1,p_terms:true,p_privacy:true},token)),'recovery session cannot record acceptance');
-ok(rejected(await rpc('bootstrap',{p_alias:'Adulto Teste A',p_journey:'FAMILY'},token)),'recovery session cannot bootstrap');
+diagnostic(read,'recovery read');
+ok(forbidden(read),'recovery session cannot read own space');
+ok(forbidden(await rpc('accept',{p_version:1,p_terms:true,p_privacy:true},token)),'recovery session cannot record acceptance');
+ok(forbidden(await rpc('bootstrap',{p_alias:'Adulto Teste A',p_journey:'FAMILY'},token)),'recovery session cannot bootstrap');
 const newPassword=crypto.randomBytes(24).toString('hex');
 const change=await request('/auth/v1/user',{password:newPassword},token,'PUT');
 ok(change.status===200,'provider accepts password change');
 const logout=await request('/auth/v1/logout?scope=global',{},token);
 ok(logout.status>=200&&logout.status<300,'global logout after recovery');
-ok(rejected(await rpc('read_space',{p_space:a.space},a.token)),'prior session denied after global logout');
-ok(rejected(await rpc('read_space',{p_space:a.space},token)),'recovery session denied after logout');
+ok(forbidden(await rpc('read_space',{p_space:a.space},a.token)),'prior session denied after global logout');
+ok(forbidden(await rpc('read_space',{p_space:a.space},token)),'recovery session denied after logout');
 ok(rejected(await login(a)),'old password rejected');
 const fresh=await login({...a,password:newPassword});
 ok(fresh.status===200&&!!fresh.data?.access_token,'fresh password login required');

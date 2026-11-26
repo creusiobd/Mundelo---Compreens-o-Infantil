@@ -19,10 +19,10 @@ begin
  if actor is null or coalesce(auth.jwt()->>'is_anonymous','false')='true' then raise exception 'access unavailable' using errcode='42501'; end if;
  sid := (auth.jwt()->>'session_id')::uuid;
  if sid is null then raise exception 'access unavailable' using errcode='42501'; end if;
- -- Fail closed: only provider-recorded password authentication or signup
- -- confirmation (otp) is eligible in baseline; recovery-specific methods
- -- must be excluded. Use authoritative auth.amr_claims, not user metadata.
- if not exists(select 1 from auth.amr_claims m where m.session_id=sid and m.authentication_method='password') then
+ -- Use provider-signed AMR claims validated by PostgREST; never user metadata.
+ -- Require password and explicitly reject recovery, including mixed AMR.
+ if not (coalesce(auth.jwt()->'amr','[]'::jsonb) @> '[{"method":"password"}]'::jsonb)
+    or (coalesce(auth.jwt()->'amr','[]'::jsonb) @> '[{"method":"recovery"}]'::jsonb) then
   raise exception 'access unavailable' using errcode='42501';
  end if;
  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 873));
