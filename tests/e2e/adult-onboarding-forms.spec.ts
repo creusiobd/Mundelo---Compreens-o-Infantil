@@ -1,0 +1,60 @@
+import {test,expect} from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+const route='/#/adult-onboarding-demo';
+test('formulário sintético valida campos e aceita apenas fixture selecionada',async({page})=>{
+ await page.goto(route);
+ await page.getByRole('button',{name:'Começar minha jornada'}).click();
+ await page.getByRole('button',{name:'Jornada familiar'}).click();
+ await page.getByText('Experimentar formulário de cadastro',{exact:true}).click();
+ await page.getByRole('button',{name:'Validar cadastro de ensaio'}).click();
+ await expect(page.getByRole('alert')).toBeFocused();
+ await page.getByLabel('Identidade fictícia').selectOption('B');
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await expect(page.getByLabel('E-mail de ensaio')).toHaveValue('adulto-b@example.invalid');
+ await page.getByLabel('Senha de ensaio',{exact:true}).fill('curta');
+ await page.getByRole('button',{name:'Validar cadastro de ensaio'}).click();
+ await expect(page.getByRole('alert')).toContainText('12 caracteres');
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await page.getByLabel('Confirmar senha de ensaio').fill('diferente');
+ await page.getByRole('button',{name:'Validar cadastro de ensaio'}).click();
+ await expect(page.getByRole('alert')).toContainText('coincidir');
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await page.getByRole('checkbox').nth(0).check();
+ await page.getByRole('checkbox').nth(1).check();
+ await page.getByRole('button',{name:'Validar cadastro de ensaio'}).click();
+ await expect(page.getByRole('heading',{name:'Confirmação de e-mail simulada'})).toBeVisible();
+ await page.getByRole('button',{name:'Simular confirmação válida'}).click();
+ await page.getByText('Experimentar formulário de login',{exact:true}).click();
+ await expect(page.getByLabel('Senha de ensaio',{exact:true})).toHaveValue('');
+ await expect(page.getByLabel('E-mail de ensaio')).toHaveValue('');
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await page.getByRole('button',{name:'Validar login de ensaio'}).click();
+ await expect(page.getByRole('heading',{name:'Revise os aceites demonstrativos'})).toBeVisible();
+});
+test('recuperação e redefinição por formulários não persistem dados',async({page})=>{
+ await page.goto(route);
+ await page.getByRole('button',{name:'Já tenho uma conta de teste'}).click();
+ await page.getByRole('button',{name:'Esqueci a senha'}).click();
+ await page.getByText('Experimentar formulário de recuperação',{exact:true}).click();
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await page.getByRole('button',{name:'Validar recuperação de ensaio'}).click();
+ await page.getByText('Experimentar formulário de nova senha',{exact:true}).click();
+ await page.getByRole('button',{name:'Preencher dados fictícios'}).click();
+ await page.getByRole('button',{name:'Validar nova senha de ensaio'}).click();
+ await page.getByText('Experimentar formulário de login',{exact:true}).click();
+ await expect(page.getByLabel('Senha de ensaio',{exact:true})).toHaveValue('');
+ await page.reload();
+ await expect(page.getByRole('heading',{name:'Cada criança, um mundo.'})).toBeVisible();
+});
+for(const width of [320,768,1440]){
+ test(`formulário expandido: reflow e axe (${width}px)`,async({page})=>{
+  await page.setViewportSize({width,height:800});
+  await page.goto(route);
+  await page.getByRole('button',{name:'Começar minha jornada'}).click();
+  await page.getByRole('button',{name:'Jornada familiar'}).click();
+  await page.getByText('Experimentar formulário de cadastro',{exact:true}).click();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+  const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();
+  expect(result.violations).toEqual([]);
+ });
+}
