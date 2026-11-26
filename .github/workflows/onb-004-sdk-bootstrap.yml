@@ -39,6 +39,7 @@ jobs:
       - name: Generate candidate manifests without running lifecycle scripts
         run: |
           set -euo pipefail
+          cp package-lock.json "$RUNNER_TEMP/onb-sdk-baseline-lock.json"
           npm install --package-lock-only --ignore-scripts --save-exact --no-audit --no-fund "@supabase/supabase-js@$SDK_VERSION"
           node --input-type=module <<'JS'
           import fs from 'node:fs';
@@ -49,17 +50,47 @@ jobs:
           assert.equal(p.dependencies['@supabase/supabase-js'],v);
           assert.equal(l.packages[''].dependencies['@supabase/supabase-js'],v);
           assert.equal(l.packages['node_modules/@supabase/supabase-js'].version,v);
+          const baseline=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/onb-sdk-baseline-lock.json','utf8'));
+          const parent='node_modules/@tailwindcss/oxide-wasm32-wasi';
+          const trusted=item=>{
+            if(!item||typeof item.resolved!=='string'||typeof item.integrity!=='string')return false;
+            const u=new URL(item.resolved);
+            return u.origin==='https://registry.npmjs.org'&&!u.username&&!u.password&&!u.hash&&/^sha512-[A-Za-z0-9+/]+={0,2}$/.test(item.integrity);
+          };
+          const validate=(name,item,packages)=>{
+            if(item.inBundle===true){
+              assert.ok(name.startsWith(parent+'/node_modules/'),'Unapproved bundle: '+name);
+              assert.deepEqual(item,baseline.packages[name],'Bundled entry changed: '+name);
+              assert.ok(trusted(packages[parent]),'Untrusted parent tarball: '+parent);
+              assert.deepEqual(packages[parent],baseline.packages[parent],'Bundle parent changed');
+              assert.ok(item.resolved===undefined&&item.integrity===undefined,'Unexpected bundled origin: '+name);
+              return 'bundled';
+            }
+            assert.ok(trusted(item),'Untrusted registry or missing integrity: '+name);
+            return 'registry';
+          };
+          let bundled=0;
           for(const [name,item] of Object.entries(l.packages)){
             if(name==='')continue;
-            assert.ok(item.resolved?.startsWith('https://registry.npmjs.org/'), 'Unexpected registry: '+name);
-            assert.ok(item.integrity, 'Missing integrity: '+name);
+            if(validate(name,item,l.packages)==='bundled')bundled++;
           }
+          // Negative controls: no arbitrary bundle exemption or alternate registry.
+          assert.throws(()=>validate('node_modules/fake',{inBundle:true},l.packages));
+          assert.throws(()=>validate('node_modules/fake',{resolved:'https://evil.invalid/package.tgz',integrity:'sha512-AAAA'},l.packages));
+          assert.throws(()=>validate('node_modules/fake',{resolved:'https://registry.npmjs.org/package.tgz'},l.packages));
+          for(const [name,item] of Object.entries(baseline.packages)){
+            if(item.inBundle!==true)continue;
+            assert.deepEqual(l.packages[name],item,'Baseline bundle removed or changed: '+name);
+            assert.throws(()=>validate(name,{...item,version:'0.0.0'},l.packages));
+            assert.throws(()=>validate(name,item,{...l.packages,[parent]:{...l.packages[parent],integrity:'sha512-AAAA'}}));
+          }
+          console.log('Verified unchanged bundled entries: '+bundled);
           JS
           git diff --stat -- package.json package-lock.json
       - name: Audit candidate before installation
         run: npm audit --audit-level=high
       - name: Clean reproducible installation
-        run: npm ci --no-audit --no-fund
+        run: npm ci --include=dev --no-audit --no-fund
       - name: Verify SDK import and installed dependency
         run: |
           npm ls @supabase/supabase-js
