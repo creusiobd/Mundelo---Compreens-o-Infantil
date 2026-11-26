@@ -41,7 +41,7 @@ begin
  end if;
  update onb_lab.session_state x set last_activity=clock_timestamp() where x.sid=(auth.jwt()->>'session_id')::uuid;
  return actor;
-end $;
+end $$;
 revoke all on function onb_lab.actor() from public,anon,authenticated;
 -- Exposed wrappers are invoker; privileged helpers stay in unexposed schema.
 create function onb_lab.accept_terms(p_version int,p_terms boolean,p_privacy boolean) returns boolean language plpgsql security definer set search_path='' as $$
@@ -81,23 +81,23 @@ create function public.onb_lab_read_space(p_space uuid) returns jsonb language s
 revoke all on function public.onb_lab_accept(int,boolean,boolean),public.onb_lab_bootstrap(text,text),public.onb_lab_read_space(uuid) from public,anon,authenticated;
 grant execute on function public.onb_lab_accept(int,boolean,boolean),public.onb_lab_bootstrap(text,text),public.onb_lab_read_space(uuid) to authenticated;
 -- Same per-subject transaction lock as actor(); revocation survives token refresh.
-create function onb_lab.revoke_current() returns boolean language plpgsql security definer set search_path='' as $
+create function onb_lab.revoke_current() returns boolean language plpgsql security definer set search_path='' as $$
 declare a uuid := onb_lab.actor();
 begin
  update onb_lab.session_state x set revoked=true where x.sid=(auth.jwt()->>'session_id')::uuid and x.subject_id=a;
  return true;
-end $;
-create function onb_lab.write_effect(p_id uuid) returns boolean language plpgsql security definer set search_path='' as $
+end $$;
+create function onb_lab.write_effect(p_id uuid) returns boolean language plpgsql security definer set search_path='' as $$
 declare a uuid := onb_lab.actor();
 begin
  if not exists(select 1 from public.onb_lab_profiles p where p.subject_id=a) then raise exception 'access unavailable' using errcode='42501'; end if;
  insert into onb_lab.effects(id,subject_id,sid) values(p_id,a,(auth.jwt()->>'session_id')::uuid);
  return true;
-end $;
+end $$;
 revoke all on function onb_lab.revoke_current(),onb_lab.write_effect(uuid) from public,anon,authenticated;
 grant execute on function onb_lab.revoke_current(),onb_lab.write_effect(uuid) to authenticated;
-create function public.onb_lab_revoke_current() returns boolean language sql security invoker set search_path='' as $select onb_lab.revoke_current()$;
-create function public.onb_lab_write_effect(p_id uuid) returns boolean language sql security invoker set search_path='' as $select onb_lab.write_effect(p_id)$;
+create function public.onb_lab_revoke_current() returns boolean language sql security invoker set search_path='' as $$select onb_lab.revoke_current()$$;
+create function public.onb_lab_write_effect(p_id uuid) returns boolean language sql security invoker set search_path='' as $$select onb_lab.write_effect(p_id)$$;
 revoke all on function public.onb_lab_revoke_current(),public.onb_lab_write_effect(uuid) from public,anon,authenticated;
 grant execute on function public.onb_lab_revoke_current(),public.onb_lab_write_effect(uuid) to authenticated;
 notify pgrst,'reload schema';
