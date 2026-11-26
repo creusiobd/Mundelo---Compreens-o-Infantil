@@ -1,0 +1,96 @@
+name: ONB-004 SDK Bootstrap
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/onb-004-sdk-bootstrap.yml'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sdk-bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SDK_VERSION: '2.119.2'
+      npm_config_registry: https://registry.npmjs.org/
+      npm_config_fetch_retries: '2'
+      CI: 'true'
+      VITE_APP_ENV: test
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Registry connectivity and release metadata
+        run: |
+          set -euo pipefail
+          node --version
+          npm --version
+          getent ahosts registry.npmjs.org >/dev/null
+          npm ping
+          npm view "@supabase/supabase-js@$SDK_VERSION" version engines dist.integrity --json
+          test "$(npm view "@supabase/supabase-js@$SDK_VERSION" version)" = "$SDK_VERSION"
+      - name: Generate candidate manifests without running lifecycle scripts
+        run: |
+          set -euo pipefail
+          npm install --package-lock-only --ignore-scripts --save-exact --no-audit --no-fund "@supabase/supabase-js@$SDK_VERSION"
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const p=JSON.parse(fs.readFileSync('package.json','utf8'));
+          const l=JSON.parse(fs.readFileSync('package-lock.json','utf8'));
+          const v=process.env.SDK_VERSION;
+          assert.equal(p.dependencies['@supabase/supabase-js'],v);
+          assert.equal(l.packages[''].dependencies['@supabase/supabase-js'],v);
+          assert.equal(l.packages['node_modules/@supabase/supabase-js'].version,v);
+          for(const [name,item] of Object.entries(l.packages)){
+            if(name==='')continue;
+            assert.ok(item.resolved?.startsWith('https://registry.npmjs.org/'), 'Unexpected registry: '+name);
+            assert.ok(item.integrity, 'Missing integrity: '+name);
+          }
+          JS
+          git diff --stat -- package.json package-lock.json
+      - name: Audit candidate before installation
+        run: npm audit --audit-level=high
+      - name: Clean reproducible installation
+        run: npm ci --no-audit --no-fund
+      - name: Verify SDK import and installed dependency
+        run: |
+          npm ls @supabase/supabase-js
+          node --input-type=module -e "import {createClient} from '@supabase/supabase-js'; if(typeof createClient !== 'function') process.exit(1)"
+      - name: Verify registry signatures
+        run: npm audit signatures
+      - name: Credential scan and unit regression
+        run: |
+          node scripts/check-exposed-credentials.mjs
+          npm test
+      - name: TypeScript and production build
+        run: |
+          npm run lint
+          npm run build
+      - name: Browser regression and accessibility
+        run: |
+          npx --no-install playwright install --with-deps chromium
+          npm run test:e2e
+          npm run test:a11y
+      - name: Prepare validated candidate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/onb-sdk-candidate"
+          cp package.json package-lock.json "$RUNNER_TEMP/onb-sdk-candidate/"
+          cd "$RUNNER_TEMP/onb-sdk-candidate"
+          sha256sum package.json package-lock.json > SHA256SUMS
+          printf 'commit=%s\nsdk=%s\n' "$GITHUB_SHA" "$SDK_VERSION" > provenance.txt
+      - name: Upload validated manifests
+        uses: actions/upload-artifact@v4
+        with:
+          name: onb-sdk-validated-manifests
+          path: ${{ runner.temp }}/onb-sdk-candidate/
+          if-no-files-found: error
+          retention-days: 7
