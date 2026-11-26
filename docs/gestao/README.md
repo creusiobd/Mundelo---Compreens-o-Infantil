@@ -1,5 +1,17 @@
 # MUNDELO — Gestão e Entregas
 
+**Checkpoint histórico — 23/11/2026**
+
+Base: `e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9`. **19 issues encerradas, sete abertas e duas PRs abertas (#5/#17)**. As PRs #62/#63/#64 incorporaram #59/#60/#61; o contrato #60 é documental. [CI da main](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/45247961227) aprovada. #29 pausada; dados infantis reais bloqueados. [Checkpoint detalhado](andamentos/2026-11-23-consolidacao-pg06.md) · [Auditoria v0.4](../auditoria-conformidade-principios-xiii-xiv-pg06-v0-4.md).
+
+Pendências: #24/#25/#26 fontes, #27 validação competente, #29 capacidade externa pausada, #35 prontidão e #36 rotina recorrente. Fila planejada: PG06-N01 identidade das demais superfícies; PG06-N02 decisões do contrato. Uma execução por vez; itens ainda não executados. Campos nativos do Project não foram sincronizados.
+
+O plano estruturado e o backlog abaixo refletem o checkpoint; os registros datados anteriores permanecem como história. Responsável: **Creusio Kizua**.
+
+[Backlog](backlog.md) · [Sprints](sprints.md) · [Marcos](marcos-entregas.md) · [Bloqueios](bloqueios.md) · [Processo](processo.md) · [Plano estruturado](plano.json)
+
+## Histórico preservado — retratos anteriores
+
 Atualizado em 20/11/2026. Responsável atual: **Creusio Kizua**, idealizador e desenvolvedor, responsável por produto, governança e execução técnica conforme sua declaração.
 
 **[Abrir o GitHub Project](https://github.com/users/creusiobd/projects/4)** · [Tarefas](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues) · [Marcos](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/milestones)
@@ -95,3 +107,8 @@ Novo [roadmap de onboarding adulto e acolhimento](onboarding-roadmap-2026-11.md)
 
 [Arquitetura v1.0](../onboarding/arquitetura-v1.md), [jornadas e estados](../onboarding/jornadas-v1.md) e [critérios](../onboarding/criterios-v1.md) da [#84](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84): conciliação de ADR/plano/ameaças/código, separação entre demonstração e conta adulta e decisões propostas para #85–#88. Entrega documental sujeita a revisão e incorporação; não implementa Auth ou UI. Progresso de produto continua 0/5 até aceite da entrega correspondente. PM-003/#89 já concluída com M05 e campos nativos comprovados; o registro anterior de sincronização pendente é histórico. #27/#29/#35 permanecem independentes.
 
+
+
+## Conciliação — 26/11/2026
+
+O checkpoint de 23/11 e as propostas de 25/11 acima são históricos. A [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89) foi concluída: M05 nativa e SP04/SP05 confirmadas, SP01–SP03 preservadas. A [#84](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84) foi aceita documentalmente e incorporada pela PR #91; #85 permanece aberta. O roadmap ONB não representa liberação de Auth ou dados infantis. A main de referência contém incrementos PG06-N01–N14; a auditoria v0.4 e seus números permanecem evidência histórica, não avaliação da conformidade atual. #29 teve inventário parcial em 24/11, sem comprovação operacional; #27/#29/#35 e o bloqueio de dados reais permanecem. Sem alteração de calendário, escopo ou campos nativos nesta conciliação.

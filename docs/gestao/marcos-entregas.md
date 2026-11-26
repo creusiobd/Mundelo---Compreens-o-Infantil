@@ -1,5 +1,30 @@
 # Marcos e entregas
 
+Checkpoint em 23/11/2026; responsável: Creusio Kizua. Metas originais preservadas, sem alteração dos vencimentos nativos do GitHub.
+
+| Marco | Estado vigente | Pendência determinante |
+|---|---|---|
+| M00 | Concluído documentalmente | Não equivale a implementação ou habilitação de dados reais |
+| M01 | Em andamento | #24–#26: fontes e conciliação; #36 recorrente |
+| M02 | Entregas documentais parciais concluídas | #27 validação; #29 capacidade pausada; aplicação de GOV-003 conforme caso |
+| M03 | Diagnósticos/correções e revisão documental entregues | R01–R16 integrais e experiência humana ainda sem aceite demonstrado |
+| M04 | Bloqueado | #35 exige evidências e decisão explícita do escopo |
+
+## Entregas incorporadas nesta consolidação
+
+- #43–#46: correções demonstrativas incorporadas; não repetir FAIL históricos como falhas abertas.
+- #51–#54: linguagem, perfil e atribuição corrigidos nos recortes documentados.
+- #59/PR #62: Home com leitura condicionada e linguagem delimitada.
+- #60/PR #63: contrato documental; 24 cenários CP não executados e sete decisões abertas.
+- #61/PR #64: mensagens de registro/remoção alinhadas à memória demonstrativa.
+- [CI da base examinada](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/45247961227) SUCCESS. [Checkpoint](andamentos/2026-11-23-consolidacao-pg06.md).
+
+A PR #17 recebe reavaliação v0.4 para revisão; não está incorporada nesta rodada.
+
+## Histórico preservado — metas e entregas anteriores
+
+A lista “Próximas entregas” abaixo é histórica; a disposição atual está no backlog vigente.
+
 Responsável: Creusio Kizua. Metas iniciais de planejamento, não compromissos de liberação. As metas constam nas descrições dos marcos; o campo nativo de vencimento permanece sem data nesta versão.
 
 | Marco | Meta | Estado inicial | Condição de aceite |
@@ -41,6 +66,12 @@ As três PRs estão vinculadas ao marco nativo M00. A conclusão documental dess
 Qualquer implementação adicional revelada pelo inventário deverá virar tarefa própria com escopo, critérios e dependências antes da execução. A data de M03 depende da disponibilidade real dos controles necessários; especificação não substitui implementação.
 
 
+
 ## Marco candidato acrescentado ao planejamento em 25/11/2026
 
 **M05 — Onboarding adulto e jornada de acolhimento** está **planejada, NÃO criada como milestone GitHub nativa**. Critérios e questões de sincronização em [ONB-ROADMAP](onboarding-roadmap-2026-11.md) e [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89). M00–M04 permanecem separados; não tratar planejamento documental como milestone configurada.
+
+
+## Conciliação — 26/11/2026
+
+O checkpoint de 23/11 e as propostas de 25/11 acima são históricos. A [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89) foi concluída: M05 nativa e SP04/SP05 confirmadas, SP01–SP03 preservadas. A [#84](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84) foi aceita documentalmente e incorporada pela PR #91; #85 permanece aberta. O roadmap ONB não representa liberação de Auth ou dados infantis. A main de referência contém incrementos PG06-N01–N14; a auditoria v0.4 e seus números permanecem evidência histórica, não avaliação da conformidade atual. #29 teve inventário parcial em 24/11, sem comprovação operacional; #27/#29/#35 e o bloqueio de dados reais permanecem. Sem alteração de calendário, escopo ou campos nativos nesta conciliação.

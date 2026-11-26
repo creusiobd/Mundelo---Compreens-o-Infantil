@@ -112,3 +112,19 @@ A aprovação deste documento como norma institucional não significa que o MUND
 **Bloqueio obrigatório:** não aprovar funcionalidades que sobrescrevam contribuições de uma relação por outra, classifiquem divergência como erro, produzam consenso automático ou apresentem síntese como identidade definitiva. A autoria, o contexto e o tipo de contribuição devem permanecer rastreáveis.
 
 Aplicar PG-06 a schema, migrations, APIs, RLS, componentes, relatórios, analytics, prompts e automações. A autorização controla acesso, não a validade ou superioridade de uma perspectiva. Consultar [Princípio de Pluralidade das Perspectivas v0.1](principio-pluralidade-perspectivas-v0-1.md) como especificação normativa.
+
+
+## Reavaliação PG-06 — 23/11/2026 (v0.3)
+
+A [auditoria v0.3](auditoria-conformidade-principios-xiii-xiv-pg06-v0-3.md) reavalia a main `88a7eb84a3beae187cb880990d2b465ef00f378c`, após #51–#54 / PRs #55–#58. Reconhece as correções nos respectivos recortes, preserva v0.1/v0.2 como histórico e mantém **PG-06 integral: NÃO ATENDE; dados infantis reais: BLOCKED / NO-GO**. Efeitos do princípio XIV em uso humano não foram avaliados.
+
+Novo achado estático AUD-13 na Home originou #59 (próxima execução recomendada, com dados sintéticos). #60 trata primeiro do contrato documental de contribuições/autoria/versões; #61 trata linguagem e mensagens sem alterar permissões. O achado da Home não foi reproduzido dinamicamente nesta auditoria e não reabre o recorte concluído de #53.
+
+CI da main integrada conferida: run 45106790083, 150 testes de domínio/segurança e 87 E2E; 17 da etapa dedicada a11y são subconjunto. Isso não comprova R01–R16 integrais, retenção externa, legitimidade jurídica ou impacto humano. #29 permanece pausada; #24–#26 aguardam fontes; #27/#35 mantêm seus gates. Campos do GitHub Project não foram sincronizados. As regras normativas deste gate permanecem vigentes.
+
+
+## Consolidação vigente — 23/11/2026 (v0.4)
+
+A [auditoria v0.4](auditoria-conformidade-principios-xiii-xiv-pg06-v0-4.md) sucede a v0.3 na base `e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9`, após incorporação de #59–#61 pelas PRs #62–#64. Home e linguagem de registro/exclusão corrigidas nos recortes; contrato #60 documental, sem implementação de contribuições/versões. Sete decisões e 24 cenários CP não executados permanecem explícitos.
+
+[Checkpoint de gestão](gestao/andamentos/2026-11-23-consolidacao-pg06.md): 19 issues encerradas, sete abertas, PRs #5/#17 abertas. [CI da main](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/45247961227) SUCCESS conferida; regressão da nova revisão documental é separada. Próxima fila planejada: identidade nas demais superfícies, depois decisões do contrato. PG-06 integral NÃO ATENDE; dados infantis reais NO-GO; impacto humano XIV NÃO AVALIADO. #29 pausada, fontes #24–#26 e validação #27 pendentes; #36 recorrente. Nenhuma infraestrutura ou alteração funcional. Campos do Project não sincronizados.

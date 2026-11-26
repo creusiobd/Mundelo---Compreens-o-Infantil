@@ -1,5 +1,21 @@
 # Registro de bloqueios
 
+Atualização vigente: 23/11/2026. Creusio Kizua encaminha os bloqueios; competência jurídica ou pessoa independente não são presumidas.
+
+| ID | Disposição atual | Tarefas / evidência necessária |
+|---|---|---|
+| BL-01 | Aberto: exportação integral indisponível | #25/#26; arquivos originais, procedência e índice de cobertura |
+| BL-02 | Aberto: validação competente não demonstrada | #27; alcance, competência, conclusões e parâmetros aceitos |
+| BL-03 | Dependência documental resolvida: #31/#32 incorporadas | Não bloqueia a preparação já entregue; não comprova controles implementados |
+| BL-04 | Diagnóstico parcial #33 entregue; aceite operacional permanece pendente | R01–R16 integrais exigem pré-condições e controles; #43–#46 foram corrigidas |
+| BL-05 | Aberto: prontidão para dados reais | #35; validação, capacidade, verificação aplicável e testes por operação |
+| BL-06 | Aberto: acervo concreto dos 73 textos ausente na consulta registrada | #24; matriz/textos/fontes conferíveis, sem reconstrução de princípios |
+| BL-07 | Pausado: capacidade externa não comprovada | #29; aguardar instrução explícita de retomada e acesso/evidências, sem novos testes externos |
+
+A pausa da #29 permanece independente do trabalho sintético. A conclusão de GOV-003/#30 entrega um modelo; não nomeia nem comprova revisão independente aplicada. Nenhuma dependência externa recebeu data garantida. [Checkpoint](andamentos/2026-11-23-consolidacao-pg06.md).
+
+## Histórico preservado — causas no retrato de 20/11
+
 Atualização em 20/11/2026. Creusio Kizua responde pelo encaminhamento de todos os bloqueios. Isso não presume competência jurídica externa, assessoria contratada ou revisão humana independente já disponível.
 
 | Bloqueio | Causa | Tarefas diretamente afetadas | Ação e evidência de desbloqueio |
@@ -14,3 +30,4 @@ Ao resolver uma causa, registrar data, responsável, evidência e quais tarefas 
 
 
 TEC-003/#31 deixou de estar bloqueada por dependência documental após a PR #39. Essa resolução não comprova implementação, capacidade do ambiente ou encerramento dos gates para dados reais. A revisão adicional segue como proposta em GOV-003 até incorporação, sem pessoa designada automaticamente.
+

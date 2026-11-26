@@ -1,0 +1,231 @@
+{
+  "version": "0.4",
+  "date": "2026-11-23",
+  "base_commit": "e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9",
+  "base_tree": "ea527343cc25e62278353025837165589b020021",
+  "prior_pr_head": "b78bb62aec89528d44847e2668dd16376df42e36",
+  "prior_audits_preserved": [
+    {
+      "path": "docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-1.md",
+      "sha": "79e3faabb657f1913393923cf29fb34d7991289f"
+    },
+    {
+      "path": "docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-2.md",
+      "sha": "1796c1ef306dae50a5b9ab56c314798fe71847ef"
+    },
+    {
+      "path": "docs/auditoria-conformidade-principios-xiii-xiv-pg06-v0-3.md",
+      "sha": "f18d6b47d88c98274a83f77c16468041a4f01175"
+    },
+    {
+      "path": "docs/auditoria/pg06-2026-11-21/evidencias.json",
+      "sha": "11a71b263af45c214c1b6e8442f3ca446087b76e"
+    },
+    {
+      "path": "docs/auditoria/pg06-2026-11-23/evidencias.json",
+      "sha": "347db3412a6dcd273ee4773ac890b8df999aae65"
+    }
+  ],
+  "examined_sources": [
+    {
+      "path": "src/components/VaultExportModal.tsx",
+      "blob_sha": "2ddef0f930f19ddfaf2aa5263b00d904d77a8f9a"
+    },
+    {
+      "path": "src/components/ObservationModal.tsx",
+      "blob_sha": "e857ecf1fd9bd518aa084304a3a59e80445a2365"
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "blob_sha": "51a09dd573c53c0d62e9aeef2cfbd470c7c6c5e7"
+    },
+    {
+      "path": "docs/qa/fix-61/validacao.json",
+      "blob_sha": "1e0e40494060c2df86fedd2e592bec280827c34e"
+    },
+    {
+      "path": "src/types/index.ts",
+      "blob_sha": "196802ada34c85e9e634dc560347edfa8efbbbd8"
+    },
+    {
+      "path": "src/security/authorization.ts",
+      "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc"
+    },
+    {
+      "path": "docs/qa/fix-59/inventario.json",
+      "blob_sha": "30967d228f7a41c5c303e0104db3ab46c37a2a66"
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "blob_sha": "292b3431ae5374ffec79625fcbafbb790fed4ab6"
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "blob_sha": "7c3cbd8ffa95289d60e17cdf13ea0d8a4dc741f9"
+    },
+    {
+      "path": "docs/contratos/contribuicoes-perspectivas/modelo.json",
+      "blob_sha": "53b96c7dbbbf04ad0aa9805d4e8c3319ad76be5d"
+    }
+  ],
+  "findings": [
+    {
+      "id": "AUD-01",
+      "status": "Pendente de implementação",
+      "disposition": "Contrato #60 incorporado; atributos globais continuam sem origem individual."
+    },
+    {
+      "id": "AUD-02",
+      "status": "Corrigido no recorte #53",
+      "disposition": "Comandos/gestão do protótipo; não demonstra fronteira de servidor."
+    },
+    {
+      "id": "AUD-03",
+      "status": "Pendente de implementação",
+      "disposition": "Edição ainda substitui objeto e incrementa revisão; contrato não cria acervo governado."
+    },
+    {
+      "id": "AUD-04",
+      "status": "Pendente de capacidade e implementação",
+      "disposition": "Exclusão da sessão não comprova destinação de versões/derivados/backups; #29 pausada."
+    },
+    {
+      "id": "AUD-05",
+      "status": "Corrigido no recorte #51",
+      "disposition": "Padrões fixos removidos; preservar aceite e limites."
+    },
+    {
+      "id": "AUD-06",
+      "status": "Apresentação corrigida; modelo pendente",
+      "disposition": "#54 explicita atribuições/lacunas; #60 especifica, sem implementar autoria por perspectiva."
+    },
+    {
+      "id": "AUD-07",
+      "status": "Parcial",
+      "disposition": "Defaults retirados; identidade/legados e contribuições independentes permanecem em T01/T03."
+    },
+    {
+      "id": "AUD-08",
+      "status": "Pendente",
+      "disposition": "Autorização cliente não demonstra autorização persistente/servidor ou capacidade externa."
+    },
+    {
+      "id": "AUD-09",
+      "status": "Corrigido no registro da #61; revisão ampla pendente",
+      "disposition": "Toast delimita sessão. Wrapper de edição ainda usa 'autor original que registrou'; não extrapolar #61 para toda linguagem/autoria."
+    },
+    {
+      "id": "AUD-10",
+      "status": "Corrigido no recorte de exclusão #61",
+      "disposition": "Comentário, negativa, confirmação e sucesso alinhados; helper e matriz preservados."
+    },
+    {
+      "id": "AUD-11",
+      "status": "Corrigido no recorte #52",
+      "disposition": "Ausência/proposta não vira experiência; preservar testes."
+    },
+    {
+      "id": "AUD-12",
+      "status": "Corrigido no recorte #53",
+      "disposition": "Cobertura de Meu Mundo/configuração; identidade das demais superfícies em fila própria."
+    },
+    {
+      "id": "AUD-13",
+      "status": "Corrigido na Home pela #59; cobertura externa pendente",
+      "disposition": "Leitura e linguagem do resumo protegidas. Cabeçalho, seletores, títulos e exportador visual continuam no inventário."
+    }
+  ],
+  "issue_snapshot": {
+    "closed": [
+      22,
+      23,
+      28,
+      30,
+      31,
+      32,
+      33,
+      34,
+      43,
+      44,
+      45,
+      46,
+      51,
+      52,
+      53,
+      54,
+      59,
+      60,
+      61
+    ],
+    "open": [
+      24,
+      25,
+      26,
+      27,
+      29,
+      35,
+      36
+    ],
+    "open_prs": [
+      5,
+      17
+    ]
+  },
+  "base_ci": {
+    "run_id": 45247961227,
+    "head_sha": "e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/actions/runs/45247961227"
+  },
+  "execution": {
+    "new_local_functional_tests": 0,
+    "real_device_tests": 0,
+    "independent_human_review": false,
+    "contract_CP_cases_executed": 0,
+    "task29_resumed": false,
+    "real_child_data_authorized": false
+  },
+  "gate": {
+    "PG06": "NAO_ATENDE_INTEGRALMENTE",
+    "real_child_data": "NO_GO",
+    "principle_XIV_human_effect": "NAO_AVALIADO"
+  },
+  "next_cycle": [
+    {
+      "id": "PG06-N01",
+      "priority": "P1",
+      "status": "Planejado; não executado",
+      "title": "Minimizar identidade nas superfícies restantes",
+      "dependency": "Inventário fix-59 e auditoria v0.4; sem depender da #29",
+      "scope": "Cabeçalho/seletores, mensagens de troca, títulos de Journal/Discoveries/Understand/Privacy/Welcome e resumo visual de exportação. Preservar comandos e formatos já corrigidos.",
+      "acceptance": [
+        "Definir por superfície se a identidade pode ser mostrada segundo a leitura vigente; acesso negado não deve ser descrito como acervo vazio.",
+        "Cobrir troca de contexto, perda de acesso, renderização e impressão onde aplicável, com caminhos legítimos preservados.",
+        "Executar testes proporcionais nos componentes/provider reais e conferir acessibilidade; sem declarar proteção fora das superfícies verificadas."
+      ]
+    },
+    {
+      "id": "PG06-N02",
+      "priority": "P1",
+      "status": "Planejado; não executado",
+      "title": "Resolver decisões do contrato de contribuições antes do primeiro incremento",
+      "dependency": "Contrato #60; J01/#27 e J02/GOV-003 permanecem condicionantes",
+      "scope": "Preparar decisões T01/T03 e um primeiro incremento lógico com cenários CP selecionados. Registrar T02/T04/T05 com dependências, sem retomar capacidade externa ou antecipar schema.",
+      "acceptance": [
+        "Registrar alternativas, decisão ou pendência, responsável e efeito por operação; ausência de fonte/autoria continua explícita.",
+        "Definir unidade mínima que distingue registrador, observador, relator, intérprete e editor sem inventar autoria de legados.",
+        "Vincular cenários CP ao incremento futuro, separando descrito de executado; nenhum dos 24 casos recebe PASS pela documentação.",
+        "Manter T02 condicionado à pausa da #29 quando pertinente; J01/J02 não são resolvidos por aprovação técnica."
+      ]
+    }
+  ],
+  "native_project_fields_synchronized": false,
+  "document_checks": {
+    "changed_documents": 11,
+    "relative_links_checked": 77,
+    "broken_relative_links": 0,
+    "task_coverage": "26 issues; 19 closed, 7 open; PRs excluded",
+    "code_changes_planned": 0
+  }
+}

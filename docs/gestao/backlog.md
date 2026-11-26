@@ -1,5 +1,73 @@
 # Backlog do MUNDELO
 
+Atualização vigente: 23/11/2026. Responsável: Creusio Kizua. Base `e8bc3495422f5470f8f20c7d0ce58b948aeaa4a9`. Estados abaixo reconciliados com issues e incorporações; não correspondem a sincronização dos campos nativos do Project.
+
+| Tarefa | Estado atual | Alcance / pendência |
+|---|---|---|
+| [#22](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/22) — Implantar a estrutura de gestão do MUNDELO | Concluído | Entrega no recorte original |
+| [#23](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/23) — Mapear o código atual contra contrato e critérios por operação | Concluído | Entrega no recorte original |
+| [#24](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/24) — Conciliar versões e aprovação dos 73 INF-ID documentados | Bloqueado | Acervo dos 73 textos e fontes concretas não localizado na consulta anterior; conciliação não executada |
+| [#25](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/25) — Disponibilizar a exportação integral das conversas do MUNDELO | Bloqueado | Exportação integral ainda indisponível no acervo acessível |
+| [#26](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/26) — Recuperar os 219 identificadores sem texto transcrito | Bloqueado | Depende das fontes integrais de INF-001 |
+| [#27](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/27) — Validar os enquadramentos jurídicos por categoria e operação | Bloqueado | Competência e validação dos enquadramentos ainda não demonstradas |
+| [#28](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/28) — Detalhar exceções de retenção, contestação e medidas urgentes | Concluído | Entrega no recorte original |
+| [#29](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/29) — Comprovar capacidade do ambiente para retenção e backups | Pausado | Capacidade externa não comprovada; tarefa pausada a pedido de Creusio |
+| [#30](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/30) — Definir verificação adicional para medidas destrutivas ou disputadas | Concluído | Entrega no recorte original |
+| [#31](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/31) — Especificar autorização, versões e propagação aos derivados | Concluído | Entrega no recorte original |
+| [#32](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/32) — Preparar roteiro executável dos 16 cenários de retenção | Concluído | Entrega no recorte original |
+| [#33](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/33) — Executar cenários aplicáveis com dados sintéticos e registrar resultados | Concluído | Entrega no recorte original |
+| [#34](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/34) — Revisar a experiência de pedidos, restrições e acompanhamento | Concluído | Entrega no recorte original |
+| [#35](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/35) — Avaliar os gates para o próximo avanço do produto | Bloqueado | Gates jurídicos, técnicos e de teste ainda abertos |
+| [#36](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36) — Manter atualização de sprint, entregas e bloqueios | Recorrente | Consultar issue e checkpoint |
+| [#43](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/43) — Revalidar leitura de detalhe já aberto ao perder acesso | Concluído | Entrega no recorte original |
+| [#44](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/44) — Revalidar contexto após criptografia e antes de baixar cofre | Concluído | Entrega no recorte original |
+| [#45](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/45) — Minimizar e proteger identificadores públicos do envelope do cofre | Concluído | Entrega no recorte original |
+| [#46](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/46) — Aplicar restrição de acesso ao perfil usado no relatório | Concluído | Entrega no recorte original |
+| [#51](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/51) — Retirar padrões fixos apresentados como resultados da amostra | Concluído | Entrega no recorte original |
+| [#52](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/52) — Impedir respostas e fatos observados preenchidos sem relato | Concluído | Entrega no recorte original |
+| [#53](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/53) — Revalidar acesso ao perfil e aos comandos de Meu Mundo | Concluído | Entrega no recorte original |
+| [#54](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/54) — Preservar atribuição das interpretações em detalhe e relatório | Concluído | Entrega no recorte original |
+| [#59](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/59) — Restringir resumo do perfil na Home e retirar atribuições sem evidência | Concluído | Entrega no recorte original |
+| [#60](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/60) — Consolidar contrato de contribuições, autoria e versões por perspectiva | Concluído | Documento; não implementação |
+| [#61](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/61) — Alinhar linguagem de registro e mensagens de exclusão à política demonstrativa | Concluído | Entrega no recorte original |
+
+## Fila planejada do próximo incremento
+
+### PG06-N01 — Minimizar identidade nas superfícies restantes
+
+Prioridade: P1. Estado: Planejado; não executado. Responsável: Creusio Kizua.
+
+Escopo: Cabeçalho/seletores, mensagens de troca, títulos de Journal/Discoveries/Understand/Privacy/Welcome e resumo visual de exportação. Preservar comandos e formatos já corrigidos.
+
+Dependências: Inventário fix-59 e auditoria v0.4; sem depender da #29.
+
+Critérios:
+
+- [ ] Definir por superfície se a identidade pode ser mostrada segundo a leitura vigente; acesso negado não deve ser descrito como acervo vazio.
+- [ ] Cobrir troca de contexto, perda de acesso, renderização e impressão onde aplicável, com caminhos legítimos preservados.
+- [ ] Executar testes proporcionais nos componentes/provider reais e conferir acessibilidade; sem declarar proteção fora das superfícies verificadas.
+
+### PG06-N02 — Resolver decisões do contrato de contribuições antes do primeiro incremento
+
+Prioridade: P1. Estado: Planejado; não executado. Responsável: Creusio Kizua.
+
+Escopo: Preparar decisões T01/T03 e um primeiro incremento lógico com cenários CP selecionados. Registrar T02/T04/T05 com dependências, sem retomar capacidade externa ou antecipar schema.
+
+Dependências: Contrato #60; J01/#27 e J02/GOV-003 permanecem condicionantes.
+
+Critérios:
+
+- [ ] Registrar alternativas, decisão ou pendência, responsável e efeito por operação; ausência de fonte/autoria continua explícita.
+- [ ] Definir unidade mínima que distingue registrador, observador, relator, intérprete e editor sem inventar autoria de legados.
+- [ ] Vincular cenários CP ao incremento futuro, separando descrito de executado; nenhum dos 24 casos recebe PASS pela documentação.
+- [ ] Manter T02 condicionado à pausa da #29 quando pertinente; J01/J02 não são resolvidos por aprovação técnica.
+
+Não foram criadas issues duplicadas nem iniciada implementação desses itens. #36 é recorrente, #29 pausada e #35 bloqueada para dados reais. Conferir [checkpoint](andamentos/2026-11-23-consolidacao-pg06.md).
+
+## Histórico preservado — planejamento e aceites anteriores
+
+As tabelas e expressões de estado a seguir representam o retrato datado original. O estado vigente está na tabela acima; os critérios originais não foram alterados.
+
 Atualização de acompanhamento: 20/11/2026. Responsável por todas as tarefas: Creusio Kizua (@creusiobd). P0 = caminho crítico; P1 = relevante para completar a base e a experiência. Seleção de sprint é planejamento sujeito à capacidade e às dependências.
 
 | Tarefa | Estado | Prioridade | Sprint | Marco | Dependências |
@@ -207,3 +275,4 @@ Entrega: Rotina de acompanhamento; não automação agendada.
 
 
 Registro de execução: [PM-002 #36](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/36).
+
