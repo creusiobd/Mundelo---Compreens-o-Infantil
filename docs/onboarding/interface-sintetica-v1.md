@@ -1,0 +1,4 @@
+# ONB-003 — incremento sintético de interface
+Escopo #86. Entrada explícita /#/adult-onboarding-demo, sem alterar a Home existente. Reutiliza BrandLogo e cores existentes. Não coleta texto livre, senha ou e-mail real: identidade fixa fictícia, cenários selecionáveis. Aceites v1 simulados e não jurídicos. Estado em memória isolado do AppProvider; sem rede, Auth, armazenamento, grants, dados infantis ou migrations.
+Rastreio: ONB-C01/C03/C04/C05/C07/C08/C13/C14/C15/C17/C19/C21/C24 em recortes de UI, não testes de provedor. Cinco testes E2E propostos em tests/e2e/adult-onboarding.spec.ts. Acessibilidade automática não equivale a homologação assistiva.
+Limites: entrada por URL explícita, não cadastro público; sem formulário real, sem troca de conta real, revogação e callback são simulações, #87 deverá integrar Auth/RLS em laboratório. Não declarar todos os critérios #86 satisfeitos até CI e revisão visual/manual. Gates #27/#29/#35 e G5 preservados.

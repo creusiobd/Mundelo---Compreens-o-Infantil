@@ -312,7 +312,13 @@ const MainAppContent: React.FC = () => {
   );
 };
 
+const LazyAdultOnboarding = React.lazy(() => import('./screens/AdultOnboardingScreen').then(m => ({ default: m.AdultOnboardingScreen })));
+
 export default function App() {
+  // Explicit synthetic entry; existing demo and all existing routes remain unchanged.
+  if (window.location.hash === '#/adult-onboarding-demo') {
+    return <React.Suspense fallback={<main role="status">Carregando demonstração adulta…</main>}><LazyAdultOnboarding /></React.Suspense>;
+  }
   return (
     <AppProvider>
       <MainAppContent />
