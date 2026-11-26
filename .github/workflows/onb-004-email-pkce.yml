@@ -1,0 +1,66 @@
+name: ONB-004 Email Confirmation PKCE
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/onb-auth-lab/**'
+      - '.github/workflows/onb-004-email-pkce.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  email-pkce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.81.3
+      - name: Configure disposable Auth and local mail
+        run: |
+          set -euo pipefail
+          supabase init --yes
+          python - <<'PY'
+          import pathlib,re,tomllib
+          p=pathlib.Path('supabase/config.toml')
+          s=p.read_text()
+          def change(section,key,value):
+              global s
+              pattern=r'(?ms)(^\['+re.escape(section)+r'\]\n)(.*?)(?=^\[|\Z)'
+              m=re.search(pattern,s)
+              assert m, section
+              body,n=re.subn(r'(?m)^'+re.escape(key)+r'\s*=.*$',key+' = '+value,m[2])
+              assert n==1,key
+              s=s[:m.start(2)]+body+s[m.end(2):]
+          change('auth','site_url','"http://127.0.0.1:3000"')
+          change('auth','additional_redirect_urls','["http://127.0.0.1:3000/onb-callback"]')
+          change('auth.email','enable_confirmations','true')
+          config=tomllib.loads(s)
+          assert config['auth']['email']['enable_confirmations'] is True
+          assert config['auth']['additional_redirect_urls']==['http://127.0.0.1:3000/onb-callback']
+          p.write_text(s)
+          PY
+          supabase start -x studio,imgproxy,realtime,storage-api,edge-runtime,logflare,vector,postgres-meta,supavisor
+          umask 077
+          supabase status -o env > "$RUNNER_TEMP/onb-pkce-env"
+      - name: Install SQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Apply adult-only local fixture
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/onb-pkce-env"
+          set +a
+          [[ "$DB_URL" =~ ^postgresql://[^@]+@127\.0\.0\.1:54322/postgres$ ]] || exit 1
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/onb-auth-lab/schema.sql >/dev/null
+      - name: Test real confirmation and PKCE
+        run: node tests/onb-auth-lab/email-pkce.mjs "$RUNNER_TEMP/onb-pkce-env"
+      - name: Destroy local sandbox
+        if: always()
+        run: |
+          supabase stop --no-backup
+          rm -f "$RUNNER_TEMP/onb-pkce-env"
