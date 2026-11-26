@@ -1,0 +1,39 @@
+name: PG06-N07 Synthetic Backup Restore Gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/recovery/**'
+      - '.github/workflows/pg06-n07-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: synthetic-only
+          POSTGRES_DB: mundelo_recovery_lab
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d mundelo_recovery_lab"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: '5432'
+      PGUSER: postgres
+      PGPASSWORD: synthetic-only
+      PGDATABASE: mundelo_recovery_lab
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Synthetic snapshot, restore and reapply deletion policy
+        run: bash tests/recovery/run-recovery-smoke.sh

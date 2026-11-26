@@ -25,7 +25,7 @@ interface DiscoveriesScreenProps {
 export const DiscoveriesScreen: React.FC<DiscoveriesScreenProps> = ({
   onStartObservationFromDiscovery,
 }) => {
-  const { activeProfile, canCreate } = useApp();
+  const { activeProfile, canCreate, canReadProfile } = useApp();
 
   const [selectedAge, setSelectedAge] = useState<AgeGroupFilter>('todos');
   const [selectedCategory, setSelectedCategory] = useState<DiscoveryCategory>('todos');
@@ -55,7 +55,7 @@ export const DiscoveriesScreen: React.FC<DiscoveriesScreenProps> = ({
           <span>Atividades Offline & Vínculo</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-[#133E43] font-display">
-          Descobertas Sem Tela para {activeProfile.name}
+          Descobertas Sem Tela{canReadProfile ? ` para ${activeProfile.name}` : ''}
         </h1>
         <p className="text-xs sm:text-sm text-[#265358] mt-1 max-w-2xl leading-relaxed">
           Propostas simples, sensoriais e com materiais cotidianos para viver momentos presentes, observar reações sem julgamentos e fortalecer o apego seguro.

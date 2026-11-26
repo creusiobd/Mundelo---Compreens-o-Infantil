@@ -25,14 +25,16 @@ interface PrivacyScreenProps {
   onOpenExportVault?: () => void;
   onOpenImportVault?: () => void;
   onOpenSecurityLab?: () => void;
+  onOpenReviewLab?: () => void;
 }
 
 export const PrivacyScreen: React.FC<PrivacyScreenProps> = ({
   onOpenExportVault,
   onOpenImportVault,
   onOpenSecurityLab,
+  onOpenReviewLab,
 }) => {
-  const { clearActiveChildObservationsToEmpty, restoreDemoData, activeChildObservations, activeProfile } = useApp();
+  const { clearActiveChildObservationsToEmpty, restoreDemoData, activeChildObservations, activeProfile, canReadProfile, canManageProfile } = useApp();
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8 animate-in fade-in duration-150">
@@ -68,15 +70,16 @@ export const PrivacyScreen: React.FC<PrivacyScreenProps> = ({
 
         <div className="pt-2 border-t border-[#133E43]/10 flex flex-wrap items-center justify-between gap-3 text-xs">
           <span className="text-[#265358]">
-            Registros temporários em memória ({activeProfile.name}): <strong>{activeChildObservations.length}</strong>
+            {canReadProfile ? <>Registros temporários em memória ({activeProfile.name}): <strong>{activeChildObservations.length}</strong></> : 'Leitura do perfil e contagem indisponíveis neste contexto.'}
           </span>
           <div className="flex items-center gap-2">
             <button
               onClick={clearActiveChildObservationsToEmpty}
+              disabled={!canManageProfile}
               className="px-3 py-1.5 rounded-xl border border-[#CFA5A0] text-[#133E43] hover:bg-red-50 flex items-center gap-1.5 transition-colors min-h-[36px]"
             >
               <Trash2 className="w-3.5 h-3.5 text-[#8C4F48]" />
-              Zerar Memória de {activeProfile.name}
+              Zerar Memória{canReadProfile ? ` de ${activeProfile.name}` : ''}
             </button>
             <button
               onClick={restoreDemoData}
@@ -114,10 +117,20 @@ export const PrivacyScreen: React.FC<PrivacyScreenProps> = ({
         <div className="pt-3 border-t border-[#133E43]/10 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-[#265358] text-[11px]">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
-            <span>Perfil Ativo: <strong>{activeProfile.name}</strong> ({activeChildObservations.length} observações sintéticas)</span>
+            <span>{canReadProfile ? <>Perfil Ativo: <strong>{activeProfile.name}</strong> ({activeChildObservations.length} observações sintéticas)</> : 'Resumo do perfil indisponível neste contexto.'}</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {import.meta.env.DEV && onOpenReviewLab && (
+              <button
+                type="button"
+                onClick={onOpenReviewLab}
+                className="px-3 py-2 rounded-xl border border-[#133E43]/25 bg-[#E5F5EE] text-[#133E43] hover:bg-[#D1EBE1] flex items-center gap-1.5 text-xs font-semibold min-h-[44px]"
+              >
+                <FileCheck2 className="w-4 h-4" aria-hidden="true" />
+                <span>Revisão Humana (Lab Dev)</span>
+              </button>
+            )}
             {import.meta.env.DEV && onOpenSecurityLab && (
               <button
                 onClick={onOpenSecurityLab}

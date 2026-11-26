@@ -1,0 +1,60 @@
+name: PG06-N06 Supabase Auth and RLS Synthetic Gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/supabase-lab/**'
+      - '.github/workflows/pg06-n06-supabase-local.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  auth-rls:
+    name: Local Supabase Auth JWT, API, grants and revocation
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.81.3
+      - name: Start disposable Supabase services
+        run: |
+          supabase init --yes
+          supabase start -x studio,imgproxy,realtime,storage-api,edge-runtime,logflare,vector,postgres-meta,supavisor
+          supabase status -o env > "$RUNNER_TEMP/mundelo-local-env"
+      - name: Install SQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Apply isolated synthetic lab SQL (never hosted)
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          test -n "$DB_URL"
+          case "$DB_URL" in
+            *"127.0.0.1"*|*"localhost"*) ;;
+            *) echo "Remote database prohibited"; exit 1;;
+          esac
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/supabase-lab/schema.sql > /dev/null
+      - name: Authenticate four synthetic accounts using local GoTrue
+        run: node tests/supabase-lab/auth-api.mjs setup "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Install scoped synthetic authority fixtures
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/mundelo-local-env"
+          set +a
+          export MUNDELO_USERS_FILE="$RUNNER_TEMP/mundelo-local-users.json"
+          guardian=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).guardian.id)")
+          family_b=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).familyB.id)")
+          professional=$(node -e "const fs=require('fs');process.stdout.write(JSON.parse(fs.readFileSync(process.env.MUNDELO_USERS_FILE,'utf8')).professional.id)")
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -v guardian="$guardian" -v family_b="$family_b" -v professional="$professional" -f tests/supabase-lab/seed.sql > /dev/null
+      - name: Signed-JWT API isolation and revocation checks
+        run: node tests/supabase-lab/auth-api.mjs verify "$RUNNER_TEMP/mundelo-local-env" "$RUNNER_TEMP/mundelo-local-users.json"
+      - name: Stop and purge sandbox
+        if: always()
+        run: supabase stop --no-backup || true

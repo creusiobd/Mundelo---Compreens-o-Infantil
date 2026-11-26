@@ -31,6 +31,11 @@ import {
 } from '../security/authorization';
 import { resolveObservationBatch } from '../security/conflictResolver';
 import { DomainConcurrencyManager } from '../security/domainLock';
+import type { Perspective } from '../domain/perspectives';
+import {
+  emptyPerspectiveLedger, readPerspectiveCurrent, runPerspectiveCommand,
+  type PerspectiveLedger, type PerspectiveCommand, type CommandResult,
+} from '../domain/perspectiveCommands';
 
 interface ToastNotification {
   id: string;
@@ -58,6 +63,10 @@ interface AppContextType {
   canDelete: (obs: Observation) => boolean;
   canReport: (obs: Observation) => boolean;
   canIncludeInReport: (obs: Observation) => boolean;
+  // Isolated synthetic perspective-command ledger; legacy observations are NOT silently migrated.
+  activeChildPerspectives: Perspective[];
+  getPerspectiveHistory: (perspectiveId: string) => Perspective[];
+  executePerspectiveCommand: (command: PerspectiveCommand) => CommandResult;
   // All in-memory observations
   allObservations: Observation[];
   // Observations strictly isolated for the active child profile & authorized for the active caregiver
@@ -144,6 +153,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [caregivers, setCaregivers] = useDomainState<Caregiver[]>(MOCK_CAREGIVERS, domainConcurrencyManager);
   const [activeCaregiverId, setActiveCaregiverId] = useDomainState<string>('cg-helena', domainConcurrencyManager);
   const [observations, setObservations] = useDomainState<Observation[]>(MOCK_OBSERVATIONS, domainConcurrencyManager);
+  // Separate from vault/profile/legacy observations. Session-only experimental commands.
+  const [perspectiveLedger, setPerspectiveLedger] = useDomainState<PerspectiveLedger>(
+    emptyPerspectiveLedger(), domainConcurrencyManager
+  );
+  const perspectiveLedgerRef = useRef<PerspectiveLedger>(perspectiveLedger);
 
 
   // Default selection for reports: initially active profile's observations
@@ -189,6 +203,39 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return observations.filter((o) => o.childId === activeProfileId);
   }, [observations, activeProfileId, activeCaregiver]);
 
+  const activeChildPerspectives = useMemo(
+    () => readPerspectiveCurrent(perspectiveLedger, activeCaregiver, activeProfileId),
+    [perspectiveLedger, activeCaregiver, activeProfileId]
+  );
+  const getPerspectiveHistory = (perspectiveId: string): Perspective[] => {
+    const current = exportContextRef.current;
+    if (!perspectiveId || current.childId !== activeProfileId ||
+        current.caregiver.id !== activeCaregiver.id ||
+        !canReadObservation(current.caregiver, current.childId)) return [];
+    const latest = readPerspectiveCurrent(perspectiveLedgerRef.current,current.caregiver,current.childId)
+      .find(p => p.id === perspectiveId);
+    if (!latest) return [];
+    return perspectiveLedgerRef.current.versions
+      .filter(p => p.childId === current.childId && p.id === perspectiveId)
+      .map(p => structuredClone(p));
+  };
+  // A command binds to the current render and its domain generation. Old closures fail closed.
+  const perspectiveCommandGeneration = domainConcurrencyManager.getGeneration();
+  const executePerspectiveCommand = (command: PerspectiveCommand): CommandResult => {
+    const current = exportContextRef.current;
+    const oldLedger = perspectiveLedgerRef.current;
+    if (domainConcurrencyManager.getGeneration() !== perspectiveCommandGeneration ||
+        current.childId !== activeProfileId || current.caregiver.id !== activeCaregiver.id) {
+      return {ok:false,ledger:oldLedger,reason:'DENIED'};
+    }
+    const outcome = runPerspectiveCommand(oldLedger,current.caregiver,current.childId,command);
+    if (outcome.ok && !outcome.replayed) {
+      // Synchronous ref update avoids duplicate acceptance before React renders.
+      perspectiveLedgerRef.current = outcome.ledger;
+      setPerspectiveLedger(outcome.ledger);
+    }
+    return outcome;
+  };
   const canReadProfile = canReadChildProfile(activeCaregiver, activeProfileId);
   const canManageProfile = canManageChildProfile(activeCaregiver, activeProfileId);
   const canRead = (obs: Observation) =>
@@ -234,9 +281,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const childObs = observations.filter((o) => o.childId === profileId);
     setSelectedObservationIds(childObs.map((o) => o.id));
 
-    if (!activeCaregiver.linkedChildIds.includes(profileId)) {
+    if (!canReadChildProfile(activeCaregiver, profileId)) {
       showNotification(
-        `Aviso de Autorização: ${activeCaregiver.displayName} não possui vínculo ativo com ${target.name}. Acesso restrito.`,
+        `Aviso de Autorização: leitura do perfil selecionado indisponível para ${activeCaregiver.displayName}. Acesso restrito.`,
         'error'
       );
     } else {
@@ -263,7 +310,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       );
     } else if (!isLinked) {
       showNotification(
-        `Simulação de Cuidador: ${target.displayName} (${target.role}). Sem vínculo com ${activeProfile.name}.`,
+        `Simulação de Cuidador: ${target.displayName} (${target.role}). Sem vínculo com o perfil selecionado.`,
         'error'
       );
     } else {
@@ -782,6 +829,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         canReport,
         canIncludeInReport: canReport,
         switchProfile,
+        activeChildPerspectives,
+        getPerspectiveHistory,
+        executePerspectiveCommand,
         allObservations: observations,
         activeChildObservations,
         selectedObservationIds,

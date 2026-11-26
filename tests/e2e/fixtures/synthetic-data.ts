@@ -24,7 +24,7 @@ export const INTERNAL_SCREENS: readonly InternalScreenDescriptor[] = [
     id: 'journal',
     navLabel: 'Diário',
     inBottomNav: true,
-    expectedHeadingRegex: /Diário de Observações:\s*(Tomás|Lia)/i,
+    expectedHeadingRegex: /^Diário de Observações(?::\s*(Tomás|Lia))?$/i,
   },
   {
     id: 'world',
@@ -36,13 +36,13 @@ export const INTERNAL_SCREENS: readonly InternalScreenDescriptor[] = [
     id: 'discoveries',
     navLabel: 'Descobertas',
     inBottomNav: true,
-    expectedHeadingRegex: /Descobertas Sem Tela para\s*(Tomás|Lia)/i,
+    expectedHeadingRegex: /^Descobertas Sem Tela(?: para\s*(Tomás|Lia))?$/i,
   },
   {
     id: 'understand',
     navLabel: 'Compreender',
     inBottomNav: true,
-    expectedHeadingRegex: /Compreender\s*(Tomás|Lia):\s*Registros & Contextos/i,
+    expectedHeadingRegex: /^Compreender(?:\s*(Tomás|Lia))?:\s*Registros & Contextos$/i,
   },
   {
     id: 'report',

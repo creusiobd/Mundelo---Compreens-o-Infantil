@@ -1,0 +1,40 @@
+name: PG06-N05 PostgreSQL RLS Synthetic Gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tests/postgres/**'
+      - '.github/workflows/pg06-n05-postgres-rls.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rls:
+    name: Isolated PostgreSQL RLS / revoked access
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: synthetic-only
+          POSTGRES_DB: mundelo_rls_lab
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d mundelo_rls_lab"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: '5432'
+      PGUSER: postgres
+      PGPASSWORD: synthetic-only
+      PGDATABASE: mundelo_rls_lab
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Test synthetic PostgreSQL RLS policy
+        run: bash tests/postgres/run-pg06-n05.sh

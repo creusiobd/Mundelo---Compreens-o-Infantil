@@ -65,3 +65,13 @@ As três PRs estão vinculadas ao marco nativo M00. A conclusão documental dess
 
 Qualquer implementação adicional revelada pelo inventário deverá virar tarefa própria com escopo, critérios e dependências antes da execução. A data de M03 depende da disponibilidade real dos controles necessários; especificação não substitui implementação.
 
+
+
+## Marco candidato acrescentado ao planejamento em 25/11/2026
+
+**M05 — Onboarding adulto e jornada de acolhimento** está **planejada, NÃO criada como milestone GitHub nativa**. Critérios e questões de sincronização em [ONB-ROADMAP](onboarding-roadmap-2026-11.md) e [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89). M00–M04 permanecem separados; não tratar planejamento documental como milestone configurada.
+
+
+## Conciliação — 26/11/2026
+
+O checkpoint de 23/11 e as propostas de 25/11 acima são históricos. A [PM-003 #89](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/89) foi concluída: M05 nativa e SP04/SP05 confirmadas, SP01–SP03 preservadas. A [#84](https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/issues/84) foi aceita documentalmente e incorporada pela PR #91; #85 permanece aberta. O roadmap ONB não representa liberação de Auth ou dados infantis. A main de referência contém incrementos PG06-N01–N14; a auditoria v0.4 e seus números permanecem evidência histórica, não avaliação da conformidade atual. #29 teve inventário parcial em 24/11, sem comprovação operacional; #27/#29/#35 e o bloqueio de dados reais permanecem. Sem alteração de calendário, escopo ou campos nativos nesta conciliação.

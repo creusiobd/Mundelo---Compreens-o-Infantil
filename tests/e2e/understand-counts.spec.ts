@@ -57,9 +57,10 @@ test('PG06-51: esvaziar e restaurar a amostra atualiza contagens sem fabricar ac
 test('PG06-51: perda de vínculo ou suspensão retira registros das contagens', async ({page}) => {
   for (const actor of ['cg-ana-unlinked', 'cg-pedro-suspended']) {
     await selectCaregiver(page, actor);
-    await expect(page.getByRole('status').filter({hasText:'disponíveis para leitura'})).toContainText('0 registros');
-    await expect(page.getByRole('region', {name:'Registros por Ambiente', exact:true}).getByRole('group')).toHaveCount(0);
-    await expectNoInventedFindings(page);
+    await expect(page.locator('main').getByRole('status')).toContainText('Leitura do perfil indisponível');
+    await expect(page.getByRole('region', {name:'Registros por Ambiente', exact:true})).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('0 registros');
+    await expect(page.locator('main')).not.toContainText('Tomás');
     await selectCaregiver(page, 'cg-helena');
     await expect(page.getByRole('status').filter({hasText:'disponíveis para leitura'})).toContainText('5 registros');
   }

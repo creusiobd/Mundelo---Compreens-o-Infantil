@@ -1,0 +1,90 @@
+{
+  "task": 84,
+  "date": "2026-11-25",
+  "base_commit": "c2a8d1f6d10da13324c6a0b7de21da87068f9345",
+  "method": "Leitura estática; não execução funcional",
+  "sources": [
+    {
+      "path": "docs/adr/005-identidade-e-persistencia-supabase.md",
+      "blob_sha": "91a8d90ea8755e0522c43281034b1f1c1deea90a",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/adr/005-identidade-e-persistencia-supabase.md"
+    },
+    {
+      "path": "docs/public-family-onboarding-implementation-plan-v0.1.md",
+      "blob_sha": "951f3539d08cf67895600dd90702e6237fbdb2f0",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/public-family-onboarding-implementation-plan-v0.1.md"
+    },
+    {
+      "path": "docs/threat-model-public-family-onboarding-v0.1.md",
+      "blob_sha": "065190067acc0aa51473824b0ec66f6a529da715",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/threat-model-public-family-onboarding-v0.1.md"
+    },
+    {
+      "path": "src/screens/WelcomeScreen.tsx",
+      "blob_sha": "80602322b08ce276f2558df3e5442935368d67bb",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/screens/WelcomeScreen.tsx"
+    },
+    {
+      "path": "src/screens/OnboardingScreen.tsx",
+      "blob_sha": "197f84c55d9b344c60512ed5e921804e5f6c1988",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/screens/OnboardingScreen.tsx"
+    },
+    {
+      "path": "src/App.tsx",
+      "blob_sha": "6cc6ee4f90005b9cf21a82555dab6133c05e27c4",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/App.tsx"
+    },
+    {
+      "path": "src/context/AppContext.tsx",
+      "blob_sha": "994f61042a77fe8020d2efda287bede9b2acf8d4",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/context/AppContext.tsx"
+    },
+    {
+      "path": "src/security/authorization.ts",
+      "blob_sha": "9f6689e948ec618fceac2da96da74fb4d460c4dc",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/security/authorization.ts"
+    },
+    {
+      "path": "src/domain/persistentAccessContract.ts",
+      "blob_sha": "8542534b98f9bb1395d5b14293e89c42df97ab1a",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/src/domain/persistentAccessContract.ts"
+    },
+    {
+      "path": "docs/contratos/contribuicoes-perspectivas/contrato.md",
+      "blob_sha": "cb1f195550843d0316e09fd21d0b2db3a7334536",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/contratos/contribuicoes-perspectivas/contrato.md"
+    },
+    {
+      "path": "docs/principio-pluralidade-perspectivas-v0-1.md",
+      "blob_sha": "333027b47f44564b0792c0b36a0fdfd511d1a1ad",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/principio-pluralidade-perspectivas-v0-1.md"
+    },
+    {
+      "path": "docs/gestao/onboarding-roadmap-2026-11.md",
+      "blob_sha": "eb945b4163990430b56da6e15dba4cbd4b2f4412",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/gestao/onboarding-roadmap-2026-11.md"
+    },
+    {
+      "path": "docs/gestao/processo.md",
+      "blob_sha": "1708d9b418a03647c088250c25079d987c64e5f7",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/gestao/processo.md"
+    },
+    {
+      "path": "docs/parametros-retencao-categorias-v0-1.md",
+      "blob_sha": "5118c29e8fdc68c275d13e4c9dab784d3a51fa1e",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/docs/parametros-retencao-categorias-v0-1.md"
+    },
+    {
+      "path": "package.json",
+      "blob_sha": "5d598b17dfa01b4bc43aa11fb06338d78cc8d3b8",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/package.json"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "blob_sha": "9ed83933536b60fae41461869df610b8217d9ffb",
+      "url": "https://github.com/creusiobd/Mundelo---Compreens-o-Infantil/blob/c2a8d1f6d10da13324c6a0b7de21da87068f9345/.github/workflows/ci.yml"
+    }
+  ],
+  "functional_scenarios": "NOT_EXECUTED",
+  "approval": "PENDING"
+}
