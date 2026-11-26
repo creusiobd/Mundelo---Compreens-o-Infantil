@@ -59,6 +59,7 @@ const destination=await openLink(link);
 ok(destination.origin+destination.pathname===callback,'exact allowlisted callback');
 const code=destination.searchParams.get('code');
 ok(!!code&&!destination.hash.includes('access_token'),'authorization code, no access token in fragment');
+ok(strictCallback(destination),'callback guard before code exchange');
 const session=await exchange(code,a.v);
 ok(session.status===200&&!!session.data?.access_token,'valid PKCE exchange');
 ok(rejected(await exchange(code,a.v)),'authorization code replay rejected');
@@ -76,7 +77,29 @@ ok(rejected(await exchange(bCode,verifier())),'wrong verifier rejected');
 const c=await signup();
 const cDest=await openLink(await emailLink(c.email));
 ok(rejected(await request('/auth/v1/token?grant_type=pkce',{auth_code:cDest.searchParams.get('code')})),'missing verifier rejected');
-const d=await signup('http://127.0.0.1:3999/unapproved');
+// GoTrue may permit additional loopback ports/paths on SITE_URL's hostname.
+// A different reserved hostname tests the provider boundary without following it.
+const d=await signup('http://redirect-denied.invalid/unapproved');
 const dDest=await openLink(await emailLink(d.email));
-ok(dDest.origin==='http://127.0.0.1:3000'&&dDest.pathname!=='/unapproved','unapproved redirect not honored');
+ok(dDest.origin==='http://127.0.0.1:3000'&&dDest.pathname==='/','foreign hostname falls back to configured site');
+// Application boundary is stricter than provider redirect policy. Never exchange
+// codes delivered to a different origin/path, including same-host local ports.
+function strictCallback(u){
+ return u.origin+u.pathname===callback&&!u.username&&!u.password&&!u.hash&&
+ u.searchParams.getAll('code').length===1&&!!u.searchParams.get('code')&&
+ [...u.searchParams.keys()].every(k=>k==='code');
+}
+ok(strictCallback(destination),'exact application callback accepted');
+ok(!strictCallback(dDest),'fallback is not an application callback');
+const e=await signup('http://127.0.0.1:3999/unapproved');
+const eDest=await openLink(await emailLink(e.email));
+ok(!strictCallback(eDest),'alternate loopback port or fallback rejected by application boundary');
+console.log('Provider loopback redirect classification: '+(eDest.origin==='http://127.0.0.1:3999'?'alternate-port':'other'));
+for(const candidate of [
+ 'http://127.0.0.1:3000/unapproved?code=synthetic',
+ 'http://127.0.0.1:3999/onb-callback?code=synthetic',
+ callback+'?code=one&code=two',
+ callback+'?code=synthetic&next=http://redirect-denied.invalid',
+ callback+'?code=synthetic#access_token=synthetic'
+])ok(!strictCallback(new URL(candidate)),'noncanonical application callback denied');
 console.log('ONB-004.2: '+checks+' assertions; no tokens or email contents emitted.');
