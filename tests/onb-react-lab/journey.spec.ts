@@ -53,6 +53,7 @@ test('professional, recovery, reload cancellation and expiry',async({page,reques
  await expect(page.getByRole('status')).toHaveText('Identidade sintética');
  await page.getByRole('button',{name:'Recuperar senha'}).click();
  await expect(page.getByRole('status')).toHaveText('Recuperação pendente');
+ await page.reload();await expect(page.getByRole('status')).toHaveText('Recuperação pendente');
  const recovery=await mailCallback(request,'adulto-p@example.invalid','recovery');
  await page.getByLabel('URL de retorno').fill(recovery);
  await page.getByRole('button',{name:'Confirmar retorno'}).click();
@@ -74,13 +75,17 @@ test('professional, recovery, reload cancellation and expiry',async({page,reques
  await page.reload();
  await expect(page.getByRole('status')).toHaveText('Identidade sintética');
 });
-test('reload cancels pending confirmation without retaining verifier',async({page})=>{
+test('same-tab reload resumes confirmation, never session',async({page,request})=>{
  await page.goto('/tests/onb-react-lab/index.html');
  await page.getByLabel('Identidade').selectOption('adulto-b@example.invalid');
  await page.getByRole('button',{name:'Cadastrar',exact:true}).click();
  await expect(page.getByRole('status')).toHaveText('Confirmação pendente');
  await page.reload();
+ await expect(page.getByRole('status')).toHaveText('Confirmação pendente');
+ expect(await page.evaluate(()=>[localStorage.length,sessionStorage.length])).toEqual([0,1]);
+ await page.getByLabel('URL de retorno').fill(await mailCallback(request,'adulto-b@example.invalid','signup'));
+ await page.getByRole('button',{name:'Confirmar retorno'}).click();
  await expect(page.getByRole('status')).toHaveText('Identidade sintética');
- await expect(page.getByLabel('URL de retorno')).toHaveCount(0);
  expect(await page.evaluate(()=>[localStorage.length,sessionStorage.length])).toEqual([0,0]);
+ await expect(page.getByRole('button',{name:'Continuar'})).toHaveCount(0);
 });
