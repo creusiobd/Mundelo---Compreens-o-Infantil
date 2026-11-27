@@ -1,0 +1,7 @@
+# ONB-004.5B-04C — PKCE continuity (DEV only)
+
+Technical: opt-in custom SDK storage; session data stays in instance Map; only verifier and synthetic flow metadata in sessionStorage, five minute TTL, clear after exchange/cancel, email match on returned user, explicit login after confirmation. SDK persistSession is enabled ONLY to invoke custom storage; it does not persist access/refresh tokens. Node adapter default unchanged. Protected RPC results recheck deadline before returning; this is not rollback of server effects.
+
+Architecture: same-tab manual callback after reload, no automatic URL exchange, no production import. sessionStorage is readable by same-origin JS and can be copied by opener/duplicate tabs; not a secure vault or proof of tab isolation. Provider code single-use remains authoritative; XSS, concurrent tabs, clock manipulation and storage errors require adversarial review. TTL intentionally starts at request; may require retry. No production adoption without threat review. Revocation uncertainty remains fail closed; no claim of full concurrent revocation closure. SDK private verifier key/format is a version-bound integration assumption tested by real CI. Source: https://supabase.com/docs/guides/auth/sessions/pkce-flow .
+
+Business: reduce accidental loss of signup/recovery progress without restoring authenticated access; preserve explicit consent and distinct professional/family journeys. No hosted changes, real data, deploy or child enrollment. #27/#29/#35/G5 blocked. #87 open; CI pending.
