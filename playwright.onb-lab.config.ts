@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'./tests/onb-react-lab',testMatch:'*.spec.ts',workers:1,timeout:90000,use:{baseURL:'http://127.0.0.1:3000',trace:'off',screenshot:'off',video:'off',launchOptions:{args:['--no-sandbox']}},webServer:{command:'npx --no-install vite --host 127.0.0.1 --port 3000 --strictPort',url:'http://127.0.0.1:3000/tests/onb-react-lab/index.html',reuseExistingServer:false,timeout:60000}});
