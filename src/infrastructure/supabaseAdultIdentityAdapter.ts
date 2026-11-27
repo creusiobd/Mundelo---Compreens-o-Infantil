@@ -32,6 +32,7 @@ export class SupabaseAdultIdentityAdapter implements AdultIdentityPort {
   try{return await action();}catch{throw unavailable();}finally{this.busy=false;}
  }
  private require(p:Phase){if(this.phase!==p)throw unavailable();}
+ sessionDeadline():number|null{return this.phase==='PASSWORD'?this.expires:null;}
  private protected(){this.require('PASSWORD');if(Date.now()>=this.expires)throw unavailable();}
  private credentials(email:string,password:string){if(!fixtureEmail(email)||!fixturePassword(password))throw unavailable();}
  async signup(email:string,password:string){return this.run(async()=>{
