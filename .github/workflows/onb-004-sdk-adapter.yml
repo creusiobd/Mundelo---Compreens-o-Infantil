@@ -29,7 +29,7 @@ jobs:
           set -euo pipefail
           supabase init --yes
           python - <<'PY'
-          import pathlib,re,tomllib
+          import os,pathlib,re,socket,tomllib
           p=pathlib.Path('supabase/config.toml')
           s=p.read_text()
           def change(section,key,value):
@@ -40,6 +40,51 @@ jobs:
               body,n=re.subn(r'(?m)^'+re.escape(key)+r'\s*=.*$',key+' = '+value,m[2])
               assert n==1,key
               s=s[:m.start(2)]+body+s[m.end(2):]
+          # Keep Auth/Mailpit endpoints fixed; allocate only the SQL fixture port.
+          # Never stop an unrelated container or service to reclaim a port.
+          project_id='onb-adapter-'+os.environ['GITHUB_RUN_ID']+'-'+os.environ['GITHUB_RUN_ATTEMPT']
+          s,n=re.subn(r'(?m)^project_id\s*=.*,'"http://127.0.0.1:3000"')
+          change('auth','additional_redirect_urls','["http://127.0.0.1:3000/onb-callback"]')
+          change('auth.email','enable_confirmations','true')
+          config=tomllib.loads(s)
+          assert config['project_id']==project_id and config['db']['port']==db_port
+          assert config['auth']['email']['enable_confirmations'] is True
+          assert config['auth']['additional_redirect_urls']==['http://127.0.0.1:3000/onb-callback']
+          p.write_text(s)
+          PY
+          supabase start -x studio,imgproxy,realtime,storage-api,edge-runtime,logflare,vector,postgres-meta,supavisor
+          umask 077
+          supabase status -o env > "$RUNNER_TEMP/onb-pkce-env"
+      - name: Install SQL client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Apply adult-only local fixture
+        run: |
+          set -euo pipefail
+          set -a
+          source "$RUNNER_TEMP/onb-pkce-env"
+          set +a
+          [[ "${ONB_ADAPTER_DB_PORT:-}" =~ ^[0-9]+$ ]] || exit 1
+          [[ "$DB_URL" =~ ^postgresql://[^@]+@127\.0\.0\.1:${ONB_ADAPTER_DB_PORT}/postgres$ ]] || exit 1
+          psql "$DB_URL" -X -v ON_ERROR_STOP=1 -f tests/onb-auth-lab/session-schema.sql >/dev/null
+      - name: Test SDK adapter with real local Auth
+        run: npx --no-install tsx tests/onb-auth-lab/sdk-adapter.ts "$RUNNER_TEMP/onb-pkce-env"
+      - name: Destroy local sandbox
+        if: always()
+        run: |
+          if [[ -f supabase/config.toml ]] && grep -Fxq "project_id = \"onb-adapter-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}\"" supabase/config.toml; then
+            supabase stop --no-backup
+          fi
+          rm -f "$RUNNER_TEMP/onb-pkce-env"
+, 'project_id = "'+project_id+'"',s)
+          assert n==1,'project_id'
+          with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as probe:
+              probe.bind(('0.0.0.0',0))
+              db_port=probe.getsockname()[1]
+          assert db_port>=1024 and db_port not in (54321,54322,54324)
+          change('db','port',str(db_port))
+          with open(os.environ['GITHUB_ENV'],'a') as env:
+              env.write(f'ONB_ADAPTER_DB_PORT={db_port}\n')
+          print(f'Isolated SDK adapter database port: {db_port}')
           change('auth','site_url','"http://127.0.0.1:3000"')
           change('auth','additional_redirect_urls','["http://127.0.0.1:3000/onb-callback"]')
           change('auth.email','enable_confirmations','true')
